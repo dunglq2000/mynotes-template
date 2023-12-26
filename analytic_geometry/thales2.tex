@@ -1,0 +1,49 @@
+\documentclass{standalone}
+
+\input{../figure_config.tex}
+
+\usepackage{tikz, tikz-3dplot}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots}
+
+\pgfplotsset{width=7cm,compat=1.18}
+
+\begin{document}
+	\tdplotsetmaincoords{70}{100}
+	\begin{tikzpicture}[tdplot_main_coords]
+		\coordinate (O) at (0,0,0);
+		\coordinate (S) at (0,0,2);
+		\coordinate (A) at (3,3,-1);
+		\coordinate (B) at (-3,3,-1);
+		\coordinate (C) at (-3,-3,-1);
+		\coordinate (D) at (3,-3,-1);
+		
+		\coordinate (A') at (2,2,0);
+		\coordinate (B') at (-2,2,0);
+		\coordinate (C') at (-2,-2,0);
+		\coordinate (D') at (2,-2,0);
+		
+		\coordinate (x) at (4,0,0);
+		\coordinate (y) at (0,4,0);
+		\coordinate (z) at (0,0,4);
+		%\tkzDrawSegments[->, dashed](O,x O,y O,z)
+		%\draw[->, dashed] (0,0,0) -- (4,0,0) node[anchor=north east]{$x$};
+		%\draw[->, dashed] (0,0,0) -- (0,4,0) node[anchor=north west]{$y$};
+		%\draw[->, dashed] (0,0,0) -- (0,0,4) node[anchor=south]{$z$};
+		\tkzDrawPoints(S)
+		\tkzDrawPoints(A,B,C,D)
+		\tkzDrawPoints(A',B',C',D')
+		\tkzDrawSegments(A,B C,D D,A)
+		\tkzDrawSegment[dashed](B,C)
+		\tkzDrawSegments(A',B' C',D' D',A')
+		\tkzDrawSegment[dashed](B',C')
+		\tkzDrawSegments(S,A S,B S,C S,D)
+		\tkzLabelPoints[above](S)
+		\tkzLabelPoints(A,D)
+		\tkzLabelPoints(D')
+		\tkzLabelPoints[below left](A')
+		\tkzLabelPoints[left](C,C')
+		\tkzLabelPoints[right](B)
+		\tkzLabelPoints[above right](B')
+	\end{tikzpicture}
+\end{document}

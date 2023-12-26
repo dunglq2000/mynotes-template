@@ -1,0 +1,68 @@
+\section{Introduction}
+
+Toán tử $NOT$ được biểu diễn dưới dạng ma trận $\begin{pmatrix}
+    0 & 1 \\ 1 & 0
+\end{pmatrix}$. Khi đó $NOT(\alpha \lvert 0 \rangle + \beta \lvert 1 \rangle) = \beta \lvert 0 \rangle + \alpha \lvert 1 \rangle$.
+
+Nếu cho $\alpha = \beta = 1$ và $x \in \{0, 1\}$ thì $NOT \lvert x \rangle = \lvert x \oplus 1 \rangle$.
+
+Toán tử Hadarmard được biểu diễn dưới dạng ma trận \[ \mathcal{H} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+    1 & 1 \\ 1 & -1
+\end{pmatrix} \]
+
+Khi đó \[ \mathcal{H} (\alpha \lvert 0 \rangle + \beta \lvert 1 \rangle) = \frac{1}{\sqrt{2}} \begin{pmatrix}
+    1 & 1 \\ 1 & - 1
+\end{pmatrix} \begin{pmatrix}
+    \alpha \\ \beta
+\end{pmatrix} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+    \alpha + \beta \\ \alpha - \beta
+\end{pmatrix} = \frac{\alpha + \beta}{\sqrt{2}} \lvert 0 \rangle + \frac{\alpha - \beta}{\sqrt{2}} \lvert 1 \rangle \]
+
+Nếu $\alpha = 1, \beta = 0$ thì $\mathcal{H} (\lvert 0 \rangle) = \dfrac{1}{\sqrt{2}} \lvert 0 \rangle + \dfrac{1}{\sqrt{2}} \lvert 1 \rangle$.
+
+Nếu $\alpha = 0, \beta = 1$ thì $\mathcal{H} (\lvert 1 \rangle) = \dfrac{1}{\sqrt{2}} \lvert 0 \rangle + \dfrac{-1}{\sqrt{2}} \lvert 1 \rangle$.
+
+Tổng hợp lại, nếu $x \in \{0, 1\}$ thì $\mathcal{H} \lvert x \rangle = \dfrac{1}{\sqrt{2}} \lvert 0 \rangle + \dfrac{(-1)^x}{\sqrt{2}} \lvert 1 \rangle$.
+
+Ta thấy rằng toán tử ngược của toán tử Hadamard là chính nó.
+
+Đố vui: nếu ta có qubit là $\alpha \lvert 0 \rangle + \beta \lvert 1 \rangle$, hãy xây dựng mạch logic để biến đổi qubit trên thành $\alpha \lvert 000 \rangle + \beta \lvert 111 \rangle$.
+
+Giải: sử dụng toán tử Hadamard và NOT. Ta có \[ NOT(\alpha \lvert 0 \rangle + \beta \lvert 1 \rangle) = \beta \lvert 0 \rangle + \alpha \lvert 1 \rangle\] và \[\mathcal{H} (\alpha \lvert 0 \rangle + \beta \lvert 1 \rangle) = \dfrac{1}{\sqrt{2}} (\alpha + \beta) \lvert 0 \rangle + \dfrac{1}{\sqrt{2}} (\alpha - \beta) \lvert 1 \rangle \]
+
+Toán tử $CNOT$ được biểu diễn bởi ma trận \[ CNOT = \begin{pmatrix}
+    1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0
+\end{pmatrix}\]
+
+Giả sử ta có hai qubit là $\lvert \alpha \rangle = x \lvert 0 \rangle + y \lvert 1 \rangle$ và $\lvert \beta \rangle = z \lvert 0 \rangle + t \lvert 1 \rangle$.
+
+Khi đó $\lvert \alpha \rangle \otimes \lvert \beta \rangle = xz \lvert 00 \rangle + xt \lvert 01 \rangle + yz \lvert 10 \rangle + yt \lvert 11 \rangle$.
+
+Qua toán tử $CNOT$ ta có
+
+\begin{align*}
+    CNOT (\lvert \alpha \rangle \otimes \lvert \beta \rangle) 
+    = & \begin{pmatrix}
+    1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0
+    \end{pmatrix} \begin{pmatrix}
+    xz \\ xt \\ yz \\ yt
+    \end{pmatrix}
+    = \begin{pmatrix}
+    xz \\ xt \\ yt \\ yz
+    \end{pmatrix} \\
+    = & xz \lvert 00 \rangle + xt \lvert 01 \rangle + yt \lvert 10 \rangle + yz \lvert 11 \rangle
+\end{align*}
+
+Trường hợp $\lvert \alpha \rangle = \lvert 0 \rangle$ thì $x = 1, y = 0$. Khi đó ta có tương đương \[ CNOT (\lvert 0 \rangle \otimes \lvert \beta \rangle) = z \lvert 00 \rangle + t \lvert 01 \rangle = \lvert 0 \rangle \otimes (z \lvert 0 \rangle + t \lvert 1 \rangle) = \lvert 0 \rangle \otimes \lvert \beta \rangle. \]
+
+Trường hợp $\lvert \alpha \rangle = \lvert 1 \rangle$ thì $x = 0, y = 1$. Khi đó ta có tương đương \[ CNOT (\lvert 1 \rangle) \otimes \lvert \beta \rangle) = t \lvert 10 \rangle + z \lvert 11 \rangle = \lvert 1 \rangle \otimes (t \lvert 0 \rangle + z \lvert 1 \rangle) = \lvert 1 \rangle \otimes NOT(\lvert \beta \rangle). \]
+
+Nói cách khác, nếu $x \in \{0, 1\}$ thì \[ CNOT (\lvert x \rangle \otimes \lvert \beta \rangle) = \begin{cases}
+    \lvert x \rangle \otimes \lvert \beta \rangle, & \text{nếu } x = 0 \\ \lvert x \rangle \otimes NOT(\lvert \beta \rangle), & \text{nếu } x = 1
+\end{cases} \]
+
+Do đó các toán tử có ma trận $\begin{pmatrix}
+    I_n & \mathcal{O} \\ \mathcal{O} & \mathcal{U}
+\end{pmatrix}$ được gọi là toán tử kiểm soát (controlled).
+
+Một trường hợp riêng nữa là khi $\beta = 0$ hoặc $\beta = 1$. Khi đó, với toán tử $NOT$ bên trên ta suy ra \[ CNOT (\lvert x \rangle \otimes \lvert y \rangle) = \lvert x \rangle \otimes \lvert x \oplus y \rangle \]

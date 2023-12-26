@@ -1,0 +1,20 @@
+\documentclass{standalone}
+
+\input{../figure_config.tex}
+
+\usepackage{tkz-euclide}
+
+\begin{document}
+	\begin{tikzpicture}
+		\tkzDefPoints{0/0/C,4/0/B,0/3/A}
+		\tkzDrawPoints(A,B,C)
+		\tkzLabelSegment[above right](A,B){$c$}
+		\tkzLabelSegment(B,C){$a$}
+		\tkzLabelSegment[left](C,A){$b$}
+		\tkzDrawSegments(A,B B,C C,A)
+		%\tkzLabelPoints[below left](A)
+		%\tkzLabelPoints[below right](B)
+		%\tkzLabelPoints[above left](C)
+		\tkzMarkRightAngle(A,C,B)
+	\end{tikzpicture}
+\end{document}

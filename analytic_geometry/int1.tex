@@ -1,0 +1,45 @@
+\documentclass[tikz]{standalone}
+
+\input{../figure_config.tex}
+
+\usepackage{tikz,tkz-euclide}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+
+\begin{document}
+	\begin{tikzpicture}
+		\begin{axis}[
+			xmin=-4,xmax=4,ymin=0,ymax=5,
+			axis line style={->},
+			%ticks=none,
+			xlabel=$x$,ylabel=$y$,
+			%xlabel style={at=right},
+			%ylabel style={at=above},
+			axis x line=middle,
+			axis y line=middle,
+			xtick={-2,-1,0,1,2},ytick={0,1,2,3,4}
+			]
+			\addplot [domain=-2:2, samples=100, name path=f] {-x*x+4};
+			\addplot [name path=xaxis] (-2,0) -- (2,0);
+			\addplot [gray, opacity=0.5] fill between [of=f and xaxis, soft clip={domain=-2:2}];
+		\end{axis}
+	\end{tikzpicture}
+	
+\foreach \n in {8,16,32}{
+	\begin{tikzpicture}[remember picture]
+		\pgfmathsetmacro{\a}{-2}
+		\pgfmathsetmacro{\b}{2}
+		\draw[->] (-4,0) -- (4,0) node[right] {$x$};
+		\draw[->] (0,0) -- (0,5) node[above] {$y$};
+		\foreach \i in {1,2,...,\n}{
+			\pgfmathsetmacro\xi{\a+((\b-\a)*\i/\n)}
+			\pgfmathsetmacro\xj{\a+((\b-\a)*(\i-1)/\n)}
+			\pgfmathsetmacro\fx{-\xi*\xi+4}
+			\draw [fill=gray,opacity=0.5] (\xj,0) rectangle (\xi,\fx);
+		}
+		\draw [domain=-2:2, smooth] plot ({\x}, {-\x*\x+4});
+	\end{tikzpicture}
+}
+\end{document}

@@ -1,0 +1,26 @@
+\documentclass{standalone}
+
+\input{../figure_config.tex}
+
+\usepackage{tkz-euclide}
+
+\begin{document}
+	\begin{tikzpicture}
+		%\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+		%\tkzDrawX
+		%\tkzDrawY
+		\tkzDefPoints{0/3/A,-2/0/B,4/0/C}
+		\tkzDefPoints{-2/1/e,4/1/f}
+		
+		\tkzInterLL(e,f)(A,B)\tkzGetPoint{E}
+		\tkzInterLL(e,f)(A,C)\tkzGetPoint{F}
+		
+		\tkzDrawPoints(A,B,C,E,F)
+		\tkzDrawPolygon(A,B,C)
+		\tkzDrawSegment(E,F)
+		\tkzLabelPoints[above](A)
+		\tkzLabelPoints(B,C)
+		\tkzLabelPoints[left](E)
+		\tkzLabelPoints[right](F)
+	\end{tikzpicture}
+\end{document}
