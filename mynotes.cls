@@ -7,13 +7,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Language part
 \RequirePackage{fontspec}
-\RequirePackage{polyglossia}
-\setdefaultlanguage{vietnamese}
-\setotherlanguages{english,russian}
-\SetLanguageKeys{vietnamese}{indentfirst=true}
+%\RequirePackage{polyglossia}
+%\setdefaultlanguage{vietnamese}
+%\setotherlanguages{english,russian}
+%\SetLanguageKeys{vietnamese}{indentfirst=true}
 
 \setmainfont{CMU Serif}
-%\setsansfont{FreeSans}
+\setsansfont{CMU Sans Serif}
 %\setmonofont{FreeMono}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -38,8 +38,6 @@
 \usetikzlibrary{shadows}
 
 
-
-
 \tikzset{titregris/.style =
     {draw=gray, thick, fill=white, shading = definitiontitle,
     text=gray, rectangle, rounded corners, right,
@@ -59,7 +57,7 @@
         \mdfsetup{
             frametitle={
                 \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                \node[line width=1pt,anchor=east,rectangle,rounded corners,draw=blue!20,fill=white]
+                \node[line width=1pt,anchor=east,rectangle,rounded corners,draw=blue!20,fill=white,shading=definitiontitle]
                 {\strut \color{black}{Định nghĩa}~\thedefinition};
             },
         }
@@ -182,6 +180,7 @@
 }{\end{mdframed}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{enumitem}
-
-\usepackage{hyperref}
+\RequirePackage{enumitem}
+\RequirePackage{hyperref}
+\RequirePackage{graphicx}
+\RequirePackage{indentfirst}

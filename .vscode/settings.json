@@ -11,6 +11,17 @@
         ]
     },
     {
+        "name": "lualatex",
+        "command": "lualatex",
+        "args": [
+            "-lualatex",
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "%DOC%"
+        ]
+    },
+    {
         "name": "pdflatex",
         "command": "pdflatex",
         "args": [
@@ -31,6 +42,21 @@
     ],
     "latex-workshop.latex.recipes": [
         {
+            "name": "lualatex",
+            "tools": [
+                "lualatex",
+            ]
+        },
+        {
+            "name": "lualatex ➞ biber ➞ lualatex x 2x",
+            "tools": [
+                "lualatex",
+                "biber",
+                "lualatex",
+                "lualatex"
+            ]
+        },
+        {
             "name": "xelatex",
             "tools": [
                 "xelatex",
@@ -50,7 +76,8 @@
             "tools": [
                 "pdflatex"
             ]
-        }
+        },
+        
     ],
     "cSpell.enabled": false
 }

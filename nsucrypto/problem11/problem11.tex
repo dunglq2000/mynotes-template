@@ -1,0 +1,97 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb}
+
+\title{Problem 11. Ant cipher}
+\author{Dung Le Quoc}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Problem}
+
+The cipher must be represented by the equation CNF=True. In Sam's CNF, $x_1$ and $x_2$ correspond to the plaintext, $x_9$ and $x_{10}$ correspond to the ciphertext, while the remaining 6 variables are auxiliary. The equation is as follow:
+\begin{align*}
+    (x_1 \lor x_2 \lor x_9) \land (\lnot x_1 \lor \lnot x_2 \lor \lnot x_9) \land (\lnot x_1 \lor x_2 \lnot x_9) \land (x_1 \lor \lnot x_2 \lor x_9) \land \\
+    (x_1 \lor x_2 \lor x_3) \land (\lnot x_9 \lor \lnot x_{10} \lor \lnot x_3) \land (x_1 \lor \lnot x_2 \lor x_4) \land (\lnot x_9 \lor x_{10} \lor \lnot x_4) \land \\
+    (\lnot x_1 \lor x_2 \lor x_5) \land (x_9 \lor \lnot x_{10} \lor \lnot x_5) \land (\lnot x_1 \lor \lnot x_2 \lor x_6) \land (x_9 \lor x_{10} \lor \lnot x_6) \land \\
+    (x_1 \lor x_2 \lor x_3 \lor x_4 \lor \lnot x_7) \land (x_2 \lor x_3 \lor x_4 \lor \lnot x_7 \lor \lnot x_8) = True
+\end{align*}
+
+\section{Solution}
+
+By examing truth table of equation above, I get some notice. Suppose that I write vectors by order $(x_1, x_2, \ldots, x_{10})$. 
+
+According to the problem, $(x_1, x_2)$ is encrypted to $(x_9, x_{10})$ where the value in truth table is True.
+
+This means that, where $f(x_1, x_2, \ldots, x_9, x_{10}) = 1$ with $f$ is boolean function above, then $(x_1, x_2)$ is encrypted to $(x_9, x_{10})$.
+
+From truth table, I see that $(0, 0)$ is encrypted to $(1, 0)$, $(0, 1)$ is encrypted to $(1, 1)$, $(1, 0)$ is encrypted to $(0, 0)$, $(1, 1)$ is encrypted to $(0 ,1)$.
+
+As a result, we can ignore all variables $x_3, x_4, x_5, x_6, x_7, x_8$, because they do not affect how we decrypt the ciphertext. This is because the encryption from $(x_1, x_2)$ to $(x_9, x_{10})$ is bijection.
+
+In fact, we only need to consider truth table of 4 variables, where 
+\begin{align*}
+    f(0, 0, 1, 0) = 1, \\
+    f(0, 1, 1, 1) = 1, \\
+    f(1, 0, 0, 0) = 1, \\
+    f(1, 1, 0, 1) = 1
+\end{align*}
+
+Full truth table is written in table \ref{func}.
+
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $x_1$ & $x_2$ & $x_9$ & $x_{10}$ & $f$ \\
+        \hline
+        0 & 0 & 0 & 0 & 0 \\
+        \hline
+        0 & 0 & 0 & 1 & 0 \\
+        \hline
+        0 & 0 & 1 & 0 & 1 \\
+        \hline
+        0 & 0 & 1 & 1 & 0 \\
+        \hline
+        0 & 1 & 0 & 0 & 0 \\
+        \hline
+        0 & 1 & 0 & 1 & 0 \\
+        \hline
+        0 & 1 & 1 & 0 & 0 \\
+        \hline
+        0 & 1 & 1 & 1 & 1 \\
+        \hline
+        1 & 0 & 0 & 0 & 1 \\
+        \hline
+        1 & 0 & 0 & 1 & 0 \\
+        \hline
+        1 & 0 & 1 & 0 & 0 \\
+        \hline
+        1 & 0 & 1 & 1 & 0 \\
+        \hline
+        1 & 1 & 0 & 0 & 0 \\
+        \hline
+        1 & 1 & 0 & 1 & 1 \\
+        \hline
+        1 & 1 & 1 & 0 & 0 \\
+        \hline
+        1 & 1 & 1 & 1 & 0 \\
+        \hline
+    \end{tabular}
+    \caption{Boolean function $f$}
+    \label{func}
+\end{table}
+
+By method Karnaugh map, I convert this truth table to CNF and receive the following equation
+
+\begin{align*}
+    f(x_1, x_2, x_9, x_{10}) = & (\lnot x_1 \lor \lnot x_9) \land (x_1 \lor x_9) \land \\ 
+    & (\lnot x_1 \lor \lnot x_2 \lor x_{10}) \land (x_1 \lor x_2 \lor \lnot x_{10}) \land \\
+    & (\lnot x_1 \lor x_2 \lor \lnot x_{10}) \land (x_1 \lor \lnot x_2 \lor x_{10})
+\end{align*}
+
+This CNF has four variables and 16 literals.
+
+\end{document}

@@ -1,31 +1,59 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.12)  26 DEC 2023 21:15
-entering extended mode
- restricted \write18 enabled.
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2023.9.12)  28 DEC 2023 15:33
+ restricted system commands enabled.
  file:line:error style messages enabled.
- %&-line parsing enabled.
 **d:/mynotes-template/main
 (d:/mynotes-template/main.tex
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
-(./mynotes.cls
+Lua module: luaotfload 2023-08-31 3.26 Lua based OpenType font support
+Lua module: lualibs 2023-07-13 2.76 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2023-07-13 2.76 ConTeXt Lua libraries -- extended collection.
+luaotfload | conf : Root cache directory is "D:/texlive/2023/texmf-var/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2023-08-19.lua" from kpse-resolved path "d:/texlive/2023/texmf-dist/tex/luatex/luaotfload/fontloader-2023-08-19.lua".
+Lua-only attribute luaotfload@noligature = 1
+luaotfload | init : Context OpenType loader version 3.133
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
+Inserting `luaotfload.define_font' in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 2
+luaotfload | conf : Root cache directory is "D:/texlive/2023/texmf-var/luatex-cache/generic/names".
+Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
+Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
+Inserting `luaotfload.harf.glyphstream' in `glyph_stream_provider'.
+Inserting `luaotfload.harf.finalize_vlist' in `post_linebreak_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `luaotfload.cleanup_files' in `wrapup_run'.
+Inserting `luaotfload.harf.finalize_unicode' in `finish_pdffile'.
+Inserting `luaotfload.glyphinfo' in `glyph_info'.
+Lua-only attribute luaotfload.letterspace_done = 3
+Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
+Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
+Inserting `tracingstacklevels' in `input_level_string'. (./mynotes.cls
 Document Class: mynotes 2023/11/03 LaTeX Template for Notes
 (d:/texlive/2023/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
 (d:/texlive/2023/texmf-dist/tex/latex/base/bk10.clo
 File: bk10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
-)
-\c@part=\count181
-\c@chapter=\count182
-\c@section=\count183
-\c@subsection=\count184
-\c@subsubsection=\count185
-\c@paragraph=\count186
-\c@subparagraph=\count187
-\c@figure=\count188
-\c@table=\count189
+luaotfload | db : Font names database loaded from D:/texlive/2023/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz)
+\c@part=\count183
+\c@chapter=\count184
+\c@section=\count185
+\c@subsection=\count186
+\c@subsubsection=\count187
+\c@paragraph=\count188
+\c@subparagraph=\count189
+\c@figure=\count190
+\c@table=\count191
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
-\bibindent=\dimen140
+\bibindent=\dimen139
 ) (d:/texlive/2023/texmf-dist/tex/latex/fontsize/fontsize.sty
 Package: fontsize 2021/08/04 v0.8.5 'fontsize' package. Set main font sizes (Ivan Valbusa)
  (d:/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
@@ -34,335 +62,43 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 \XKV@toks=\toks17
 \XKV@tempa@toks=\toks18
  (d:/texlive/2023/texmf-dist/tex/generic/xkeyval/keyval.tex))
-\XKV@depth=\count190
+\XKV@depth=\count192
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (d:/texlive/2023/texmf-dist/tex/latex/l3packages/xfp/xfp.sty (d:/texlive/2023/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2023-08-29 L3 programming layer (loader) 
- (d:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
-File: l3backend-xetex.def 2023-04-19 L3 backend support: XeTeX
-\g__graphics_track_int=\count191
+ (d:/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
+File: l3backend-luatex.def 2023-04-19 L3 backend support: PDF output (LuaTeX)
+\l__color_backend_stack_int=\count193
+Inserting `l3color' in `luaotfload.parse_color'.
 \l__pdf_internal_box=\box51
-\g__pdf_backend_object_int=\count192
-\g__pdf_backend_annotation_int=\count193
-\g__pdf_backend_link_int=\count194
 ))
 Package: xfp 2023-08-29 L3 Floating point unit
 )) (d:/texlive/2023/texmf-dist/tex/latex/fontspec/fontspec.sty (d:/texlive/2023/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 Package: xparse 2023-08-29 L3 Experimental document command parser
 )
 Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
- (d:/texlive/2023/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
-Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
-\l__fontspec_script_int=\count195
-\l__fontspec_language_int=\count196
-\l__fontspec_strnum_int=\count197
-\l__fontspec_tmp_int=\count198
-\l__fontspec_tmpa_int=\count199
-\l__fontspec_tmpb_int=\count266
-\l__fontspec_tmpc_int=\count267
-\l__fontspec_em_int=\count268
-\l__fontspec_emdef_int=\count269
-\l__fontspec_strong_int=\count270
-\l__fontspec_strongdef_int=\count271
-\l__fontspec_tmpa_dim=\dimen141
-\l__fontspec_tmpb_dim=\dimen142
-\l__fontspec_tmpc_dim=\dimen143
+Lua module: fontspec 2022/01/15 2.8a Font selection for XeLaTeX and LuaLaTeX (d:/texlive/2023/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
+Package: fontspec-luatex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
+\l__fontspec_script_int=\count194
+\l__fontspec_language_int=\count195
+\l__fontspec_strnum_int=\count196
+\l__fontspec_tmp_int=\count197
+\l__fontspec_tmpa_int=\count198
+\l__fontspec_tmpb_int=\count199
+\l__fontspec_tmpc_int=\count266
+\l__fontspec_em_int=\count267
+\l__fontspec_emdef_int=\count268
+\l__fontspec_strong_int=\count269
+\l__fontspec_strongdef_int=\count270
+\l__fontspec_tmpa_dim=\dimen140
+\l__fontspec_tmpb_dim=\dimen141
+\l__fontspec_tmpc_dim=\dimen142
  (d:/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-) (d:/texlive/2023/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (d:/texlive/2023/texmf-dist/tex/latex/polyglossia/polyglossia.sty
-Package: polyglossia 2023/07/21 v1.64 Modern multilingual typesetting with XeLaTeX and LuaLaTeX
- (d:/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count272
-) (d:/texlive/2023/texmf-dist/tex/latex/makecmds/makecmds.sty
-Package: makecmds 2009/09/03 v1.0a extra command making commands
-) (d:/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
-) (d:/texlive/2023/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-Package: l3keys2e 2023-08-29 LaTeX2e option processing using LaTeX3 keys
-)
-\xpg@normalclass=\XeTeXcharclass1
- (d:/texlive/2023/texmf-dist/tex/latex/polyglossia/gloss-latex.lde
-Package: gloss-latex 2023/07/21 v1.64 polyglossia: module for default language
-The property list \polyglossia@langsetup contains the pairs (without outer
-braces):
->  {latex/script}  =>  {latin}
->  {latex/lcscript}  =>  {latin}
->  {latex/scripttag}  =>  {}
->  {latex/language}  =>  {Latex}
->  {latex/langtag}  =>  {ENG}
->  {latex/bcp47}  =>  {en-US}
->  {latex/bcp47-language}  =>  {en}
->  {latex/bcp47-region}  =>  {US}
->  {latex/bcp47-script}  =>  {Latn}
->  {latex/bcp47-variant}  =>  {}
->  {latex/bcp47-extension-t}  =>  {}
->  {latex/bcp47-extension-u}  =>  {}
->  {latex/bcp47-extension-x}  =>  {}
->  {latex/bcp47-casing}  =>  {}
->  {latex/hyphennames}  =>  {english}
->  {latex/direction}  =>  {LR}
->  {latex/hyphenmins}  =>  {2,3}
->  {latex/frenchspacing}  =>  {false}
->  {latex/indentfirst}  =>  {false}
->  {latex/fontsetup}  =>  {true}
->  {latex/envname}  =>  {latex}
->  {latex/babelname}  =>  {latex}
->  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
->  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
->  {latex/DefineCommandsCmd}  =>  {use_none:n}.
-)
-Package polyglossia Info: Default language is latex.
-) (d:/texlive/2023/texmf-dist/tex/latex/polyglossia/gloss-vietnamese.ldf
-File: gloss-vietnamese.ldf polyglossia: module for Vietnamese
-The property list \polyglossia@langsetup contains the pairs (without outer
-braces):
->  {latex/script}  =>  {latin}
->  {latex/lcscript}  =>  {latin}
->  {latex/scripttag}  =>  {}
->  {latex/language}  =>  {Latex}
->  {latex/langtag}  =>  {ENG}
->  {latex/bcp47}  =>  {en-US}
->  {latex/bcp47-language}  =>  {en}
->  {latex/bcp47-region}  =>  {US}
->  {latex/bcp47-script}  =>  {Latn}
->  {latex/bcp47-variant}  =>  {}
->  {latex/bcp47-extension-t}  =>  {}
->  {latex/bcp47-extension-u}  =>  {}
->  {latex/bcp47-extension-x}  =>  {}
->  {latex/bcp47-casing}  =>  {}
->  {latex/hyphennames}  =>  {english}
->  {latex/direction}  =>  {LR}
->  {latex/hyphenmins}  =>  {2,3}
->  {latex/frenchspacing}  =>  {false}
->  {latex/indentfirst}  =>  {false}
->  {latex/fontsetup}  =>  {true}
->  {latex/envname}  =>  {latex}
->  {latex/babelname}  =>  {latex}
->  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
->  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
->  {latex/DefineCommandsCmd}  =>  {use_none:n}
->  {vietnamese/script}  =>  {latin}
->  {vietnamese/lcscript}  =>  {latin}
->  {vietnamese/scripttag}  =>  {}
->  {vietnamese/language}  =>  {Vietnamese}
->  {vietnamese/langtag}  =>  {VIT}
->  {vietnamese/bcp47}  =>  {vi}
->  {vietnamese/bcp47-language}  =>  {vi}
->  {vietnamese/bcp47-region}  =>  {}
->  {vietnamese/bcp47-script}  =>  {Latn}
->  {vietnamese/bcp47-variant}  =>  {}
->  {vietnamese/bcp47-extension-t}  =>  {}
->  {vietnamese/bcp47-extension-u}  =>  {}
->  {vietnamese/bcp47-extension-x}  =>  {}
->  {vietnamese/bcp47-casing}  =>  {}
->  {vietnamese/hyphennames}  =>  {nohyphenation}
->  {vietnamese/direction}  =>  {LR}
->  {vietnamese/hyphenmins}  =>  {2,2}
->  {vietnamese/frenchspacing}  =>  {true}
->  {vietnamese/indentfirst}  =>  {false}
->  {vietnamese/fontsetup}  =>  {true}
->  {vietnamese/envname}  =>  {vietnamese}
->  {vietnamese/babelname}  =>  {vietnamese}
->  {vietnamese/localnumeral}  =>  {polyglossia@C@localnumeral}
->  {vietnamese/Localnumeral}  =>  {polyglossia@C@localnumeral}
->  {vietnamese/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}.
-)
-Package polyglossia Info: Default language is vietnamese.
- (d:/texlive/2023/texmf-dist/tex/latex/polyglossia/gloss-english.ldf
-File: gloss-english.ldf polyglossia: module for English
-The property list \polyglossia@langsetup contains the pairs (without outer
-braces):
->  {latex/script}  =>  {latin}
->  {latex/lcscript}  =>  {latin}
->  {latex/scripttag}  =>  {}
->  {latex/language}  =>  {Latex}
->  {latex/langtag}  =>  {ENG}
->  {latex/bcp47}  =>  {en-US}
->  {latex/bcp47-language}  =>  {en}
->  {latex/bcp47-region}  =>  {US}
->  {latex/bcp47-script}  =>  {Latn}
->  {latex/bcp47-variant}  =>  {}
->  {latex/bcp47-extension-t}  =>  {}
->  {latex/bcp47-extension-u}  =>  {}
->  {latex/bcp47-extension-x}  =>  {}
->  {latex/bcp47-casing}  =>  {}
->  {latex/hyphennames}  =>  {english}
->  {latex/direction}  =>  {LR}
->  {latex/hyphenmins}  =>  {2,3}
->  {latex/frenchspacing}  =>  {false}
->  {latex/indentfirst}  =>  {false}
->  {latex/fontsetup}  =>  {true}
->  {latex/envname}  =>  {latex}
->  {latex/babelname}  =>  {latex}
->  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
->  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
->  {latex/DefineCommandsCmd}  =>  {use_none:n}
->  {vietnamese/script}  =>  {latin}
->  {vietnamese/lcscript}  =>  {latin}
->  {vietnamese/scripttag}  =>  {}
->  {vietnamese/language}  =>  {Vietnamese}
->  {vietnamese/langtag}  =>  {VIT}
->  {vietnamese/bcp47}  =>  {vi}
->  {vietnamese/bcp47-language}  =>  {vi}
->  {vietnamese/bcp47-region}  =>  {}
->  {vietnamese/bcp47-script}  =>  {Latn}
->  {vietnamese/bcp47-variant}  =>  {}
->  {vietnamese/bcp47-extension-t}  =>  {}
->  {vietnamese/bcp47-extension-u}  =>  {}
->  {vietnamese/bcp47-extension-x}  =>  {}
->  {vietnamese/bcp47-casing}  =>  {}
->  {vietnamese/hyphennames}  =>  {nohyphenation}
->  {vietnamese/direction}  =>  {LR}
->  {vietnamese/hyphenmins}  =>  {2,2}
->  {vietnamese/frenchspacing}  =>  {true}
->  {vietnamese/indentfirst}  =>  {false}
->  {vietnamese/fontsetup}  =>  {true}
->  {vietnamese/envname}  =>  {vietnamese}
->  {vietnamese/babelname}  =>  {vietnamese}
->  {vietnamese/localnumeral}  =>  {polyglossia@C@localnumeral}
->  {vietnamese/Localnumeral}  =>  {polyglossia@C@localnumeral}
->  {vietnamese/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
->  {english/script}  =>  {latin}
->  {english/lcscript}  =>  {latin}
->  {english/scripttag}  =>  {}
->  {english/language}  =>  {English}
->  {english/langtag}  =>  {ENG}
->  {english/bcp47}  =>  {en-US}
->  {english/bcp47-language}  =>  {en}
->  {english/bcp47-region}  =>  {US}
->  {english/bcp47-script}  =>  {Latn}
->  {english/bcp47-variant}  =>  {}
->  {english/bcp47-extension-t}  =>  {}
->  {english/bcp47-extension-u}  =>  {}
->  {english/bcp47-extension-x}  =>  {}
->  {english/bcp47-casing}  =>  {}
->  {english/hyphennames}  =>  {english,american,usenglish,USenglish}
->  {english/direction}  =>  {LR}
->  {english/hyphenmins}  =>  {2,3}
->  {english/frenchspacing}  =>  {false}
->  {english/indentfirst}  =>  {false}
->  {english/fontsetup}  =>  {true}
->  {english/envname}  =>  {english}
->  {english/babelname}  =>  {english}
->  {english/localnumeral}  =>  {polyglossia@C@localnumeral}
->  {english/Localnumeral}  =>  {polyglossia@C@localnumeral}
->  {english/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}.
-Package polyglossia Info: Option: English, variant=american.
-) (d:/texlive/2023/texmf-dist/tex/latex/polyglossia/gloss-russian.ldf
-File: gloss-russian.ldf polyglossia: module for Russian
- (d:/texlive/2023/texmf-dist/tex/latex/polyglossia/xpg-cyrillicnumbers.sty
-Package: xpg-cyrillicnumbers 2019/11/15 v0.2 Formatting of Cyrillic alphabetic numbers
-)
-The property list \polyglossia@langsetup contains the pairs (without outer
-braces):
->  {latex/script}  =>  {latin}
->  {latex/lcscript}  =>  {latin}
->  {latex/scripttag}  =>  {}
->  {latex/language}  =>  {Latex}
->  {latex/langtag}  =>  {ENG}
->  {latex/bcp47}  =>  {en-US}
->  {latex/bcp47-language}  =>  {en}
->  {latex/bcp47-region}  =>  {US}
->  {latex/bcp47-script}  =>  {Latn}
->  {latex/bcp47-variant}  =>  {}
->  {latex/bcp47-extension-t}  =>  {}
->  {latex/bcp47-extension-u}  =>  {}
->  {latex/bcp47-extension-x}  =>  {}
->  {latex/bcp47-casing}  =>  {}
->  {latex/hyphennames}  =>  {english}
->  {latex/direction}  =>  {LR}
->  {latex/hyphenmins}  =>  {2,3}
->  {latex/frenchspacing}  =>  {false}
->  {latex/indentfirst}  =>  {false}
->  {latex/fontsetup}  =>  {true}
->  {latex/envname}  =>  {latex}
->  {latex/babelname}  =>  {latex}
->  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
->  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
->  {latex/DefineCommandsCmd}  =>  {use_none:n}
->  {vietnamese/script}  =>  {latin}
->  {vietnamese/lcscript}  =>  {latin}
->  {vietnamese/scripttag}  =>  {}
->  {vietnamese/language}  =>  {Vietnamese}
->  {vietnamese/langtag}  =>  {VIT}
->  {vietnamese/bcp47}  =>  {vi}
->  {vietnamese/bcp47-language}  =>  {vi}
->  {vietnamese/bcp47-region}  =>  {}
->  {vietnamese/bcp47-script}  =>  {Latn}
->  {vietnamese/bcp47-variant}  =>  {}
->  {vietnamese/bcp47-extension-t}  =>  {}
->  {vietnamese/bcp47-extension-u}  =>  {}
->  {vietnamese/bcp47-extension-x}  =>  {}
->  {vietnamese/bcp47-casing}  =>  {}
->  {vietnamese/hyphennames}  =>  {nohyphenation}
->  {vietnamese/direction}  =>  {LR}
->  {vietnamese/hyphenmins}  =>  {2,2}
->  {vietnamese/frenchspacing}  =>  {true}
->  {vietnamese/indentfirst}  =>  {false}
->  {vietnamese/fontsetup}  =>  {true}
->  {vietnamese/envname}  =>  {vietnamese}
->  {vietnamese/babelname}  =>  {vietnamese}
->  {vietnamese/localnumeral}  =>  {polyglossia@C@localnumeral}
->  {vietnamese/Localnumeral}  =>  {polyglossia@C@localnumeral}
->  {vietnamese/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
->  {english/script}  =>  {latin}
->  {english/lcscript}  =>  {latin}
->  {english/scripttag}  =>  {}
->  {english/language}  =>  {English}
->  {english/langtag}  =>  {ENG}
->  {english/bcp47}  =>  {en-US}
->  {english/bcp47-language}  =>  {en}
->  {english/bcp47-region}  =>  {US}
->  {english/bcp47-script}  =>  {Latn}
->  {english/bcp47-variant}  =>  {}
->  {english/bcp47-extension-t}  =>  {}
->  {english/bcp47-extension-u}  =>  {}
->  {english/bcp47-extension-x}  =>  {}
->  {english/bcp47-casing}  =>  {}
->  {english/hyphennames}  =>  {english,american,usenglish,USenglish}
->  {english/direction}  =>  {LR}
->  {english/hyphenmins}  =>  {2,3}
->  {english/frenchspacing}  =>  {false}
->  {english/indentfirst}  =>  {false}
->  {english/fontsetup}  =>  {true}
->  {english/envname}  =>  {english}
->  {english/babelname}  =>  {american}
->  {english/localnumeral}  =>  {polyglossia@C@localnumeral}
->  {english/Localnumeral}  =>  {polyglossia@C@localnumeral}
->  {english/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
->  {russian/script}  =>  {Cyrillic}
->  {russian/lcscript}  =>  {cyrillic}
->  {russian/scripttag}  =>  {cyrl}
->  {russian/language}  =>  {Russian}
->  {russian/langtag}  =>  {RUS}
->  {russian/bcp47}  =>  {ru}
->  {russian/bcp47-language}  =>  {ru}
->  {russian/bcp47-region}  =>  {}
->  {russian/bcp47-script}  =>  {Cyrl}
->  {russian/bcp47-variant}  =>  {luna1918}
->  {russian/bcp47-extension-t}  =>  {}
->  {russian/bcp47-extension-u}  =>  {}
->  {russian/bcp47-extension-x}  =>  {}
->  {russian/bcp47-casing}  =>  {}
->  {russian/hyphennames}  =>  {russian}
->  {russian/direction}  =>  {LR}
->  {russian/hyphenmins}  =>  {2,2}
->  {russian/frenchspacing}  =>  {true}
->  {russian/indentfirst}  =>  {true}
->  {russian/fontsetup}  =>  {true}
->  {russian/envname}  =>  {russian}
->  {russian/babelname}  =>  {russian}
->  {russian/localnumeral}  =>  {russiannumerals}
->  {russian/Localnumeral}  =>  {Russiannumerals}
->  {russian/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}.
-Package polyglossia Info: Option: Russian, numerals=arabic.
- (d:/texlive/2023/texmf-dist/tex/latex/polyglossia/babelsh.def
-File: babelsh.def 2022/06/21 Babel common definitions for shorthands
- Taken verbatim from babel files (2022/06/06 v3.76)
-)
-Package babel Info: Making " an active character on input line 106.
-)
+) (d:/texlive/2023/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+luaotfload | cache : Lookup cache loaded from D:/texlive/2023/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.
+luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn with language dflt
+luaotfload | aux : font no 27 (nil) does not define feature smcp for script latn with language dflt
 
 Package fontspec Info: Font family 'CMUSerif(0)' created for font 'CMU Serif'
 (fontspec)             with options [Ligatures=TeX].
@@ -370,37 +106,63 @@ Package fontspec Info: Font family 'CMUSerif(0)' created for font 'CMU Serif'
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"CMU
-(fontspec)             Serif/OT:script=latn;language=dflt;mapping=tex-text;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->"CMU
-(fontspec)             Serif/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
-(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"CMU
-(fontspec)             Serif/B/OT:script=latn;language=dflt;mapping=tex-text;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: <->"CMU
-(fontspec)             Serif/B/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
-(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"CMU
-(fontspec)             Serif/I/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"CMUSerif:mode=node;script=latn;language=dflt;+tlig;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->"CMUSerif:mode=node;script=latn;language=dflt;+tlig;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"CMUSerif/B:mode=node;script=latn;language=dflt;+tlig;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"CMUSerif/B:mode=node;script=latn;language=dflt;+tlig;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"CMUSerif/I:mode=node;script=latn;language=dflt;+tlig;"
 (fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
-(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"CMU
-(fontspec)             Serif/BI/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"CMUSerif/BI:mode=node;script=latn;language=dflt;+tlig;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+
+luaotfload | aux : font no 35 (nil) does not define feature smcp for script latn with language dflt
+luaotfload | aux : font no 36 (nil) does not define feature smcp for script latn with language dflt
+luaotfload | aux : font no 37 (nil) does not define feature smcp for script latn with language dflt
+luaotfload | aux : font no 38 (nil) does not define feature smcp for script latn with language dflt
+
+Package fontspec Info: Font family 'CMUSansSerif(0)' created for font 'CMU
+(fontspec)             Sans Serif' with options [Ligatures=TeX].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"CMUSansSerif:mode=node;script=latn;language=dflt;+tlig;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"CMUSansSerif/B:mode=node;script=latn;language=dflt;+tlig;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"CMUSansSerif/I:mode=node;script=latn;language=dflt;+tlig;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"CMUSansSerif/BI:mode=node;script=latn;language=dflt;+tlig;"
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
  (d:/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
  (d:/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-)
-\Gm@cnth=\count273
-\Gm@cntv=\count274
-\c@Gm@tempcnt=\count275
-\Gm@bindingoffset=\dimen144
-\Gm@wd@mp=\dimen145
-\Gm@odd@mp=\dimen146
-\Gm@even@mp=\dimen147
-\Gm@layoutwidth=\dimen148
-\Gm@layoutheight=\dimen149
-\Gm@layouthoffset=\dimen150
-\Gm@layoutvoffset=\dimen151
+ (d:/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\Gm@cnth=\count271
+\Gm@cntv=\count272
+\c@Gm@tempcnt=\count273
+\Gm@bindingoffset=\dimen143
+\Gm@wd@mp=\dimen144
+\Gm@odd@mp=\dimen145
+\Gm@even@mp=\dimen146
+\Gm@layoutwidth=\dimen147
+\Gm@layoutheight=\dimen148
+\Gm@layouthoffset=\dimen149
+\Gm@layoutvoffset=\dimen150
 \Gm@dimlist=\toks19
 ) (d:/texlive/2023/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2023/03/05 v3.19 programmable bibliographies (PK/MW)
@@ -413,14 +175,18 @@ Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode not found.
+Package pdftexcmds Info: \pdfdraftmode found.
+\pdftexcmds@toks=\toks20
+) (d:/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count274
 ) (d:/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
  (d:/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 )) (d:/texlive/2023/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count276
+\lrq@indent=\count275
  (d:/texlive/2023/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 )) (d:/texlive/2023/texmf-dist/tex/latex/base/ifthen.sty
@@ -429,49 +195,49 @@ Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-\c@tabx@nest=\count277
-\c@listtotal=\count278
-\c@listcount=\count279
-\c@liststart=\count280
-\c@liststop=\count281
-\c@citecount=\count282
-\c@citetotal=\count283
-\c@multicitecount=\count284
-\c@multicitetotal=\count285
-\c@instcount=\count286
-\c@maxnames=\count287
-\c@minnames=\count288
-\c@maxitems=\count289
-\c@minitems=\count290
-\c@citecounter=\count291
-\c@maxcitecounter=\count292
-\c@savedcitecounter=\count293
-\c@uniquelist=\count294
-\c@uniquename=\count295
-\c@refsection=\count296
-\c@refsegment=\count297
-\c@maxextratitle=\count298
-\c@maxextratitleyear=\count299
-\c@maxextraname=\count300
-\c@maxextradate=\count301
-\c@maxextraalpha=\count302
-\c@abbrvpenalty=\count303
-\c@highnamepenalty=\count304
-\c@lownamepenalty=\count305
-\c@maxparens=\count306
-\c@parenlevel=\count307
-\blx@tempcnta=\count308
-\blx@tempcntb=\count309
-\blx@tempcntc=\count310
-\c@blx@maxsection=\count311
-\blx@maxsegment@0=\count312
-\blx@notetype=\count313
-\blx@parenlevel@text=\count314
-\blx@parenlevel@foot=\count315
-\blx@sectionciteorder@0=\count316
-\blx@sectionciteorderinternal@0=\count317
-\blx@entrysetcounter=\count318
-\blx@biblioinstance=\count319
+\c@tabx@nest=\count276
+\c@listtotal=\count277
+\c@listcount=\count278
+\c@liststart=\count279
+\c@liststop=\count280
+\c@citecount=\count281
+\c@citetotal=\count282
+\c@multicitecount=\count283
+\c@multicitetotal=\count284
+\c@instcount=\count285
+\c@maxnames=\count286
+\c@minnames=\count287
+\c@maxitems=\count288
+\c@minitems=\count289
+\c@citecounter=\count290
+\c@maxcitecounter=\count291
+\c@savedcitecounter=\count292
+\c@uniquelist=\count293
+\c@uniquename=\count294
+\c@refsection=\count295
+\c@refsegment=\count296
+\c@maxextratitle=\count297
+\c@maxextratitleyear=\count298
+\c@maxextraname=\count299
+\c@maxextradate=\count300
+\c@maxextraalpha=\count301
+\c@abbrvpenalty=\count302
+\c@highnamepenalty=\count303
+\c@lownamepenalty=\count304
+\c@maxparens=\count305
+\c@parenlevel=\count306
+\blx@tempcnta=\count307
+\blx@tempcntb=\count308
+\blx@tempcntc=\count309
+\c@blx@maxsection=\count310
+\blx@maxsegment@0=\count311
+\blx@notetype=\count312
+\blx@parenlevel@text=\count313
+\blx@parenlevel@foot=\count314
+\blx@sectionciteorder@0=\count315
+\blx@sectionciteorderinternal@0=\count316
+\blx@entrysetcounter=\count317
+\blx@biblioinstance=\count318
 \labelnumberwidth=\skip50
 \labelalphawidth=\skip51
 \biblabelsep=\skip52
@@ -482,10 +248,10 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 \bibhang=\skip57
 \blx@bcfin=\read2
 \blx@bcfout=\write3
-\blx@langwohyphens=\language87
-\c@mincomprange=\count320
-\c@maxcomprange=\count321
-\c@mincompwidth=\count322
+\blx@langwohyphens=\language2
+\c@mincomprange=\count319
+\c@maxcomprange=\count320
+\c@mincompwidth=\count321
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
  (d:/texlive/2023/texmf-dist/tex/latex/biblatex/blx-dm.def
@@ -493,74 +259,74 @@ File: blx-dm.def 2023/03/05 v3.19 biblatex localization (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count323
-\c@savedafterword=\count324
-\c@annotator=\count325
-\c@savedannotator=\count326
-\c@author=\count327
-\c@savedauthor=\count328
-\c@bookauthor=\count329
-\c@savedbookauthor=\count330
-\c@commentator=\count331
-\c@savedcommentator=\count332
-\c@editor=\count333
-\c@savededitor=\count334
-\c@editora=\count335
-\c@savededitora=\count336
-\c@editorb=\count337
-\c@savededitorb=\count338
-\c@editorc=\count339
-\c@savededitorc=\count340
-\c@foreword=\count341
-\c@savedforeword=\count342
-\c@holder=\count343
-\c@savedholder=\count344
-\c@introduction=\count345
-\c@savedintroduction=\count346
-\c@namea=\count347
-\c@savednamea=\count348
-\c@nameb=\count349
-\c@savednameb=\count350
-\c@namec=\count351
-\c@savednamec=\count352
-\c@translator=\count353
-\c@savedtranslator=\count354
-\c@shortauthor=\count355
-\c@savedshortauthor=\count356
-\c@shorteditor=\count357
-\c@savedshorteditor=\count358
-\c@labelname=\count359
-\c@savedlabelname=\count360
-\c@institution=\count361
-\c@savedinstitution=\count362
-\c@lista=\count363
-\c@savedlista=\count364
-\c@listb=\count365
-\c@savedlistb=\count366
-\c@listc=\count367
-\c@savedlistc=\count368
-\c@listd=\count369
-\c@savedlistd=\count370
-\c@liste=\count371
-\c@savedliste=\count372
-\c@listf=\count373
-\c@savedlistf=\count374
-\c@location=\count375
-\c@savedlocation=\count376
-\c@organization=\count377
-\c@savedorganization=\count378
-\c@origlocation=\count379
-\c@savedoriglocation=\count380
-\c@origpublisher=\count381
-\c@savedorigpublisher=\count382
-\c@publisher=\count383
-\c@savedpublisher=\count384
-\c@language=\count385
-\c@savedlanguage=\count386
-\c@origlanguage=\count387
-\c@savedoriglanguage=\count388
-\c@pageref=\count389
-\c@savedpageref=\count390
+\c@afterword=\count322
+\c@savedafterword=\count323
+\c@annotator=\count324
+\c@savedannotator=\count325
+\c@author=\count326
+\c@savedauthor=\count327
+\c@bookauthor=\count328
+\c@savedbookauthor=\count329
+\c@commentator=\count330
+\c@savedcommentator=\count331
+\c@editor=\count332
+\c@savededitor=\count333
+\c@editora=\count334
+\c@savededitora=\count335
+\c@editorb=\count336
+\c@savededitorb=\count337
+\c@editorc=\count338
+\c@savededitorc=\count339
+\c@foreword=\count340
+\c@savedforeword=\count341
+\c@holder=\count342
+\c@savedholder=\count343
+\c@introduction=\count344
+\c@savedintroduction=\count345
+\c@namea=\count346
+\c@savednamea=\count347
+\c@nameb=\count348
+\c@savednameb=\count349
+\c@namec=\count350
+\c@savednamec=\count351
+\c@translator=\count352
+\c@savedtranslator=\count353
+\c@shortauthor=\count354
+\c@savedshortauthor=\count355
+\c@shorteditor=\count356
+\c@savedshorteditor=\count357
+\c@labelname=\count358
+\c@savedlabelname=\count359
+\c@institution=\count360
+\c@savedinstitution=\count361
+\c@lista=\count362
+\c@savedlista=\count363
+\c@listb=\count364
+\c@savedlistb=\count365
+\c@listc=\count366
+\c@savedlistc=\count367
+\c@listd=\count368
+\c@savedlistd=\count369
+\c@liste=\count370
+\c@savedliste=\count371
+\c@listf=\count372
+\c@savedlistf=\count373
+\c@location=\count374
+\c@savedlocation=\count375
+\c@organization=\count376
+\c@savedorganization=\count377
+\c@origlocation=\count378
+\c@savedoriglocation=\count379
+\c@origpublisher=\count380
+\c@savedorigpublisher=\count381
+\c@publisher=\count382
+\c@savedpublisher=\count383
+\c@language=\count384
+\c@savedlanguage=\count385
+\c@origlanguage=\count386
+\c@savedoriglanguage=\count387
+\c@pageref=\count388
+\c@savedpageref=\count389
 \shorthandwidth=\skip58
 \shortjournalwidth=\skip59
 \shortserieswidth=\skip60
@@ -587,19 +353,19 @@ Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
  (d:/texlive/2023/texmf-dist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2023/03/05 v3.19 biblatex compatibility (PK/MW)
-\c@textcitecount=\count391
-\c@textcitetotal=\count392
-\c@textcitemaxnames=\count393
-\c@biburlbigbreakpenalty=\count394
-\c@biburlbreakpenalty=\count395
-\c@biburlnumpenalty=\count396
-\c@biburlucpenalty=\count397
-\c@biburllcpenalty=\count398
+\c@textcitecount=\count390
+\c@textcitetotal=\count391
+\c@textcitemaxnames=\count392
+\c@biburlbigbreakpenalty=\count393
+\c@biburlbreakpenalty=\count394
+\c@biburlnumpenalty=\count395
+\c@biburlucpenalty=\count396
+\c@biburllcpenalty=\count397
 \biburlbigskip=\muskip17
 \biburlnumskip=\muskip18
 \biburlucskip=\muskip19
 \biburllcskip=\muskip20
-\c@smartand=\count399
+\c@smartand=\count398
 )
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
@@ -609,8 +375,8 @@ Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
  (d:/texlive/2023/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2023/03/05 v3.19 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count400
-\c@bbx:relatedtotal=\count401
+\c@bbx:relatedcount=\count399
+\c@bbx:relatedtotal=\count400
 ))
 Package biblatex Info: Trying to load citation style 'numeric'...
 Package biblatex Info: ... file 'numeric.cbx' found.
@@ -633,7 +399,7 @@ Package biblatex Info: ... file 'biblatex.cfg' found.
  (d:/texlive/2023/texmf-dist/tex/latex/biblatex/biblatex.cfg
 File: biblatex.cfg 
 )
-Package biblatex Info: XeTeX detected.
+Package biblatex Info: LuaTeX detected.
 (biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Document encoding is UTF8 ....
 Package biblatex Info: ... and expl3
@@ -662,7 +428,7 @@ Package zref Info: New property: page on input line 769.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\c@abspage=\count402
+\c@abspage=\count401
 Package zref Info: New property: abspage on input line 65.
 ) (d:/texlive/2023/texmf-dist/tex/latex/needspace/needspace.sty
 Package: needspace 2010/09/12 v1.3d reserve vertical space
@@ -671,12 +437,12 @@ Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
  (d:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package color Info: Driver file: xetex.def on input line 149.
- (d:/texlive/2023/texmf-dist/tex/latex/graphics-def/xetex.def
-File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
+Package color Info: Driver file: luatex.def on input line 149.
+ (d:/texlive/2023/texmf-dist/tex/latex/graphics-def/luatex.def
+File: luatex.def 2022/09/22 v1.2d Graphics/color driver for luatex
 ) (d:/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 \mdf@templength=\skip72
-\c@mdf@globalstyle@cnt=\count403
+\c@mdf@globalstyle@cnt=\count402
 \mdf@skipabove@length=\skip73
 \mdf@skipbelow@length=\skip74
 \mdf@leftmargin@length=\skip75
@@ -717,9 +483,9 @@ File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
 \mdf@subsubtitleinneraboveskip@length=\skip110
 \mdf@subsubtitleinnerbelowskip@length=\skip111
  (d:/texlive/2023/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (d:/texlive/2023/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (d:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (d:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks20
-\pgfutil@tempdima=\dimen152
-\pgfutil@tempdimb=\dimen153
+\pgfutil@everybye=\toks21
+\pgfutil@tempdima=\dimen151
+\pgfutil@tempdimb=\dimen152
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 \pgfutil@abb=\box52
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (d:/texlive/2023/texmf-dist/tex/generic/pgf/pgf.revision.tex)
@@ -735,54 +501,50 @@ Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 ) (d:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: xetex.def on input line 107.
+Package graphics Info: Driver file: luatex.def on input line 107.
 )
-\Gin@req@height=\dimen154
-\Gin@req@width=\dimen155
+\Gin@req@height=\dimen153
+\Gin@req@width=\dimen154
 ) (d:/texlive/2023/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (d:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
  (d:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks21
-\pgfkeys@temptoks=\toks22
+\pgfkeys@pathtoks=\toks22
+\pgfkeys@temptoks=\toks23
  (d:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks23
+\pgfkeys@tmptoks=\toks24
 ))
-\pgf@x=\dimen156
-\pgf@y=\dimen157
-\pgf@xa=\dimen158
-\pgf@ya=\dimen159
-\pgf@xb=\dimen160
-\pgf@yb=\dimen161
-\pgf@xc=\dimen162
-\pgf@yc=\dimen163
-\pgf@xd=\dimen164
-\pgf@yd=\dimen165
+\pgf@x=\dimen155
+\pgf@y=\dimen156
+\pgf@xa=\dimen157
+\pgf@ya=\dimen158
+\pgf@xb=\dimen159
+\pgf@yb=\dimen160
+\pgf@xc=\dimen161
+\pgf@yc=\dimen162
+\pgf@xd=\dimen163
+\pgf@yd=\dimen164
 \w@pgf@writea=\write4
 \r@pgf@reada=\read3
-\c@pgf@counta=\count404
-\c@pgf@countb=\count405
-\c@pgf@countc=\count406
-\c@pgf@countd=\count407
-\t@pgf@toka=\toks24
-\t@pgf@tokb=\toks25
-\t@pgf@tokc=\toks26
-\pgf@sys@id@count=\count408
+\c@pgf@counta=\count403
+\c@pgf@countb=\count404
+\c@pgf@countc=\count405
+\c@pgf@countd=\count406
+\t@pgf@toka=\toks25
+\t@pgf@tokb=\toks26
+\t@pgf@tokc=\toks27
+\pgf@sys@id@count=\count407
  (d:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
-Driver file for pgf: pgfsys-xetex.def
- (d:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
-File: pgfsys-xetex.def 2023-01-15 v3.1.10 (3.1.10)
- (d:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
-File: pgfsys-dvipdfmx.def 2023-01-15 v3.1.10 (3.1.10)
+Driver file for pgf: pgfsys-luatex.def
+ (d:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-luatex.def
+File: pgfsys-luatex.def 2023-01-15 v3.1.10 (3.1.10)
  (d:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
-)
-\pgfsys@objnum=\count409
 ))) (d:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count410
-\pgfsyssoftpath@bigbuffer@items=\count411
+\pgfsyssoftpath@smallbuffer@items=\count408
+\pgfsyssoftpath@bigbuffer@items=\count409
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (d:/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
@@ -790,10 +552,11 @@ Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
  (d:/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: xetex.def on input line 227.
+Package xcolor Info: Driver file: luatex.def on input line 227.
 LaTeX Info: Redefining \color on input line 711.
  (d:/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
 Package xcolor Info: Model `RGB' extended on input line 1369.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
 Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
@@ -804,52 +567,52 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
  (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen166
-\pgfmath@count=\count412
+\pgfmath@dimen=\dimen165
+\pgfmath@count=\count410
 \pgfmath@box=\box53
-\pgfmath@toks=\toks27
-\pgfmath@stack@operand=\toks28
-\pgfmath@stack@operation=\toks29
+\pgfmath@toks=\toks28
+\pgfmath@stack@operand=\toks29
+\pgfmath@stack@operation=\toks30
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count413
+\c@pgfmathroundto@lastzeros=\count411
 )) (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (d:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen167
-\pgf@picmaxx=\dimen168
-\pgf@picminy=\dimen169
-\pgf@picmaxy=\dimen170
-\pgf@pathminx=\dimen171
-\pgf@pathmaxx=\dimen172
-\pgf@pathminy=\dimen173
-\pgf@pathmaxy=\dimen174
-\pgf@xx=\dimen175
-\pgf@xy=\dimen176
-\pgf@yx=\dimen177
-\pgf@yy=\dimen178
-\pgf@zx=\dimen179
-\pgf@zy=\dimen180
+\pgf@picminx=\dimen166
+\pgf@picmaxx=\dimen167
+\pgf@picminy=\dimen168
+\pgf@picmaxy=\dimen169
+\pgf@pathminx=\dimen170
+\pgf@pathmaxx=\dimen171
+\pgf@pathminy=\dimen172
+\pgf@pathmaxy=\dimen173
+\pgf@xx=\dimen174
+\pgf@xy=\dimen175
+\pgf@yx=\dimen176
+\pgf@yy=\dimen177
+\pgf@zx=\dimen178
+\pgf@zy=\dimen179
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen181
-\pgf@path@lasty=\dimen182
+\pgf@path@lastx=\dimen180
+\pgf@path@lasty=\dimen181
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen183
-\pgf@shorten@start@additional=\dimen184
+\pgf@shorten@end@additional=\dimen182
+\pgf@shorten@start@additional=\dimen183
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfpic=\box54
 \pgf@hbox=\box55
 \pgf@layerbox@main=\box56
-\pgf@picture@serial@count=\count414
+\pgf@picture@serial@count=\count412
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen185
+\pgflinewidth=\dimen184
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen186
-\pgf@pt@y=\dimen187
-\pgf@pt@temp=\dimen188
+\pgf@pt@x=\dimen185
+\pgf@pt@y=\dimen186
+\pgf@pt@temp=\dimen187
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
@@ -858,12 +621,12 @@ File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen189
+\pgfarrowsep=\dimen188
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen190
-\pgf@sys@shading@range@num=\count415
-\pgf@shadingcount=\count416
+\pgf@max=\dimen189
+\pgf@sys@shading@range@num=\count413
+\pgf@shadingcount=\count414
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
@@ -884,46 +647,46 @@ File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (d:/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen191
-\pgf@nodesepend=\dimen192
+\pgf@nodesepstart=\dimen190
+\pgf@nodesepend=\dimen191
 ) (d:/texlive/2023/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 )) (d:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (d:/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (d:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (d:/texlive/2023/texmf-dist/tex/latex/pgf/math/pgfmath.sty (d:/texlive/2023/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (d:/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen193
-\pgffor@skip=\dimen194
-\pgffor@stack=\toks30
-\pgffor@toks=\toks31
+\pgffor@iter=\dimen192
+\pgffor@skip=\dimen193
+\pgffor@stack=\toks31
+\pgffor@toks=\toks32
 )) (d:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
  (d:/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count417
-\pgfplotmarksize=\dimen195
+\pgf@plot@mark@count=\count415
+\pgfplotmarksize=\dimen194
 )
-\tikz@lastx=\dimen196
-\tikz@lasty=\dimen197
-\tikz@lastxsaved=\dimen198
-\tikz@lastysaved=\dimen199
-\tikz@lastmovetox=\dimen256
-\tikz@lastmovetoy=\dimen257
-\tikzleveldistance=\dimen258
-\tikzsiblingdistance=\dimen259
+\tikz@lastx=\dimen195
+\tikz@lasty=\dimen196
+\tikz@lastxsaved=\dimen197
+\tikz@lastysaved=\dimen198
+\tikz@lastmovetox=\dimen199
+\tikz@lastmovetoy=\dimen256
+\tikzleveldistance=\dimen257
+\tikzsiblingdistance=\dimen258
 \tikz@figbox=\box59
 \tikz@figbox@bg=\box60
 \tikz@tempbox=\box61
 \tikz@tempbox@bg=\box62
-\tikztreelevel=\count418
-\tikznumberofchildren=\count419
-\tikznumberofcurrentchild=\count420
-\tikz@fig@count=\count421
+\tikztreelevel=\count416
+\tikznumberofchildren=\count417
+\tikznumberofcurrentchild=\count418
+\tikz@fig@count=\count419
  (d:/texlive/2023/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count422
-\pgfmatrixcurrentcolumn=\count423
-\pgf@matrix@numberofcolumns=\count424
+\pgfmatrixcurrentrow=\count420
+\pgfmatrixcurrentcolumn=\count421
+\pgf@matrix@numberofcolumns=\count422
 )
-\tikz@expandcount=\count425
+\tikz@expandcount=\count423
  (d:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (d:/texlive/2023/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
@@ -961,28 +724,28 @@ File: md-frame-1.mdf 2013/07/01\ 1.9b: md-frame-1
 \mdf@horizontalspaceofbox=\skip136
 \mdfsubtitleheight=\skip137
 \mdfsubsubtitleheight=\skip138
-\c@mdfcountframes=\count426
+\c@mdfcountframes=\count424
 
 ****** mdframed patching \endmdf@trivlist
 
 ****** -- success******
 
-\mdf@envdepth=\count427
-\c@mdf@env@i=\count428
-\c@mdf@env@ii=\count429
-\c@mdf@zref@counter=\count430
+\mdf@envdepth=\count425
+\c@mdf@env@i=\count426
+\c@mdf@env@ii=\count427
+\c@mdf@zref@counter=\count428
 Package zref Info: New property: mdf@pagevalue on input line 895.
 ) (d:/texlive/2023/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
-\thm@style=\toks32
-\thm@bodyfont=\toks33
-\thm@headfont=\toks34
-\thm@notefont=\toks35
-\thm@headpunct=\toks36
+\thm@style=\toks33
+\thm@bodyfont=\toks34
+\thm@headfont=\toks35
+\thm@notefont=\toks36
+\thm@headpunct=\toks37
 \thm@preskip=\skip139
 \thm@postskip=\skip140
 \thm@headsep=\skip141
-\dth@everypar=\toks37
+\dth@everypar=\toks38
 ) (d:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshadows.code.tex
 File: tikzlibraryshadows.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (d:/texlive/2023/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadings.code.tex
@@ -990,20 +753,20 @@ File: tikzlibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (d:/texlive/2023/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
 File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )))
-\c@definition=\count431
-\c@remark=\count432
-\c@theorem=\count433
-\c@lemma=\count434
+\c@definition=\count429
+\c@remark=\count430
+\c@theorem=\count431
+\c@lemma=\count432
  (d:/texlive/2023/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\enitkv@toks@=\toks38
+\enitkv@toks@=\toks39
 \labelindent=\skip142
-\enit@outerparindent=\dimen260
-\enit@toks=\toks39
+\enit@outerparindent=\dimen259
+\enit@toks=\toks40
 \enit@inbox=\box68
-\enit@count@id=\count435
-\enitdp@description=\count436
-)) (d:/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+\enit@count@id=\count433
+\enitdp@description=\count434
+) (d:/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2023-07-08 v7.01b Hypertext links for LaTeX
  (d:/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
@@ -1018,18 +781,17 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (d:/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count437
+\c@section@level=\count435
 )
-\@linkdim=\dimen261
-\Hy@linkcounter=\count438
-\Hy@pagecounter=\count439
-
-(d:/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
+\@linkdim=\dimen260
+\Hy@linkcounter=\count436
+\Hy@pagecounter=\count437
+ (d:/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2023-07-08 v7.01b Hyperref: PDFDocEncoding definition (HO)
 ) (d:/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count440
+\Hy@SavedSpaceFactor=\count438
  (d:/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2023-07-08 v7.01b Hyperref: PDF Unicode definition (HO)
 )
@@ -1040,17 +802,17 @@ Package hyperref Info: Plain pages OFF on input line 4182.
 Package hyperref Info: Backreferencing OFF on input line 4187.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4434.
-\c@Hy@tempcnt=\count441
+\c@Hy@tempcnt=\count439
 LaTeX Info: Redefining \url on input line 4772.
-\XeTeXLinkMargin=\dimen262
+\XeTeXLinkMargin=\dimen261
  (d:/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (d:/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count442
-\Field@Width=\dimen263
-\Fld@charsize=\dimen264
+\Fld@menulength=\count440
+\Field@Width=\dimen262
+\Fld@charsize=\dimen263
 Package hyperref Info: Hyper figures OFF on input line 6051.
 Package hyperref Info: Link nesting OFF on input line 6056.
 Package hyperref Info: Hyper index ON on input line 6059.
@@ -1058,33 +820,33 @@ Package hyperref Info: backreferencing OFF on input line 6066.
 Package hyperref Info: Link coloring OFF on input line 6071.
 Package hyperref Info: Link coloring with OCG OFF on input line 6076.
 Package hyperref Info: PDF/A mode OFF on input line 6081.
-\Hy@abspage=\count443
-\c@Item=\count444
-\c@Hfootnote=\count445
+\Hy@abspage=\count441
+\c@Item=\count442
+\c@Hfootnote=\count443
 )
-Package hyperref Info: Driver (autodetected): hxetex.
- (d:/texlive/2023/texmf-dist/tex/latex/hyperref/hxetex.def
-File: hxetex.def 2023-07-08 v7.01b Hyperref driver for XeTeX
+Package hyperref Info: Driver (autodetected): hluatex.
+ (d:/texlive/2023/texmf-dist/tex/latex/hyperref/hluatex.def
+File: hluatex.def 2023-07-08 v7.01b Hyperref driver for luaTeX
  (d:/texlive/2023/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
-)
-\pdfm@box=\box69
-\c@Hy@AnnotLevel=\count446
-\HyField@AnnotCount=\count447
-\Fld@listcount=\count448
-\c@bookmark@seq@number=\count449
- (d:/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
- (d:/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
+) (d:/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
-) (d:/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+)
+\Fld@listcount=\count444
+\c@bookmark@seq@number=\count445
+ (d:/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+ (d:/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
 \Hy@SectionHShift=\skip143
-) (d:/texlive/2023/texmf-dist/tex/latex/amsmath/amsmath.sty
+)) (d:/texlive/2023/texmf-dist/tex/latex/tools/indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(d:/texlive/2023/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2023/05/13 v2.17o AMS math features
 \@mathmargin=\skip144
 
@@ -1093,59 +855,59 @@ For additional information on amsmath, use the `?' option.
 Package: amstext 2021/08/26 v2.01 AMS text
  (d:/texlive/2023/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks40
-\ex@=\dimen265
+\@emptytoks=\toks41
+\ex@=\dimen264
 )) (d:/texlive/2023/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen266
+\pmbraise@=\dimen265
 ) (d:/texlive/2023/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count450
-LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count451
-\leftroot@=\count452
+\inf@bad=\count446
+LaTeX Info: Redefining \frac on input line 236.
+\uproot@=\count447
+\leftroot@=\count448
 LaTeX Info: Redefining \overline on input line 399.
 LaTeX Info: Redefining \colon on input line 410.
-\classnum@=\count453
-\DOTSCASE@=\count454
+\classnum@=\count449
+\DOTSCASE@=\count450
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box70
-\strutbox@=\box71
+\Mathstrutbox@=\box69
+\strutbox@=\box70
 LaTeX Info: Redefining \big on input line 722.
 LaTeX Info: Redefining \Big on input line 723.
 LaTeX Info: Redefining \bigg on input line 724.
 LaTeX Info: Redefining \Bigg on input line 725.
-\big@size=\dimen267
+\big@size=\dimen266
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count455
+\macc@depth=\count451
 LaTeX Info: Redefining \bmod on input line 905.
 LaTeX Info: Redefining \pmod on input line 910.
 LaTeX Info: Redefining \smash on input line 940.
 LaTeX Info: Redefining \relbar on input line 970.
 LaTeX Info: Redefining \Relbar on input line 971.
-\c@MaxMatrixCols=\count456
+\c@MaxMatrixCols=\count452
 \dotsspace@=\muskip21
-\c@parentequation=\count457
-\dspbrk@lvl=\count458
-\tag@help=\toks41
-\row@=\count459
-\column@=\count460
-\maxfields@=\count461
-\andhelp@=\toks42
-\eqnshift@=\dimen268
-\alignsep@=\dimen269
-\tagshift@=\dimen270
-\tagwidth@=\dimen271
-\totwidth@=\dimen272
-\lineht@=\dimen273
-\@envbody=\toks43
+\c@parentequation=\count453
+\dspbrk@lvl=\count454
+\tag@help=\toks42
+\row@=\count455
+\column@=\count456
+\maxfields@=\count457
+\andhelp@=\toks43
+\eqnshift@=\dimen267
+\alignsep@=\dimen268
+\tagshift@=\dimen269
+\tagwidth@=\dimen270
+\totwidth@=\dimen271
+\lineht@=\dimen272
+\@envbody=\toks44
 \multlinegap=\skip145
 \multlinetaggap=\skip146
-\mathdisplay@stack=\toks44
+\mathdisplay@stack=\toks45
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 ) (d:/texlive/2023/texmf-dist/tex/latex/amsfonts/amsfonts.sty
@@ -1167,170 +929,156 @@ Package bm Info: No bold for \U/msa/m/n, using \pmb.
 Package bm Info: No bold for \U/msb/m/n, using \pmb.
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 ) (d:/texlive/2023/texmf-dist/tex/latex/algorithms/algorithm.sty
-Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
  (d:/texlive/2023/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count462
-\float@exts=\toks45
-\float@box=\box72
-\@float@everytoks=\toks46
-\@floatcapt=\box73
+\c@float@type=\count458
+\float@exts=\toks46
+\float@box=\box71
+\@float@everytoks=\toks47
+\@floatcapt=\box72
 )
-\@float@every@algorithm=\toks47
-\c@algorithm=\count463
+\@float@every@algorithm=\toks48
+\c@algorithm=\count459
 ) (d:/texlive/2023/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 Package: algpseudocode 
  (d:/texlive/2023/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count464
-\c@ALG@rem=\count465
-\c@ALG@nested=\count466
+\c@ALG@line=\count460
+\c@ALG@rem=\count461
+\c@ALG@nested=\count462
 \ALG@tlm=\skip147
 \ALG@thistlm=\skip148
-\c@ALG@Lnr=\count467
-\c@ALG@blocknr=\count468
-\c@ALG@storecount=\count469
-\c@ALG@tmpcounter=\count470
+\c@ALG@Lnr=\count463
+\c@ALG@blocknr=\count464
+\c@ALG@storecount=\count465
+\c@ALG@tmpcounter=\count466
 \ALG@tmplength=\skip149
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
+) (d:/texlive/2023/texmf-dist/tex/latex/emoji/emoji.sty
+Package: emoji 2021/07/17 v0.2.2 Emoji support in (Lua)LaTeX
+ (d:/texlive/2023/texmf-dist/tex/latex/emoji/emoji-table.def
+File: emoji-table.def 2021/07/17 v0.2.2 Emojisupportin(Lua)LaTeX
+)) (d:/texlive/2023/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+ (d:/texlive/2023/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/07/31 v3.6n Customizing captions (AR)
+ (d:/texlive/2023/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen273
+\captionmargin=\dimen274
+\caption@leftmargin=\dimen275
+\caption@rightmargin=\dimen276
+\caption@width=\dimen277
+\caption@indent=\dimen278
+\caption@parindent=\dimen279
+\caption@hangindent=\dimen280
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count467
+\c@continuedfloat=\count468
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count469
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count470
 )
 \c@example=\count471
 \@quotelevel=\count472
 \@quotereset=\count473
  (./main.aux)
-\openout1 = `main.aux'.
+\openout1 = main.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 32.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 55.
  (d:/texlive/2023/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
 
 \symlegacymaths=\mathgroup9
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 32.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 32.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 32.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 32.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 32.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 32.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 32.
-LaTeX Font Info:    Redeclaring math accent \check on input line 32.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 32.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 32.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 32.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 32.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 55.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 55.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 55.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 55.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 55.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 55.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 55.
+LaTeX Font Info:    Redeclaring math accent \check on input line 55.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 55.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 55.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 55.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 55.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 55.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 55.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 55.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 55.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 55.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 55.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 55.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 55.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 55.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 55.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 55.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 55.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 32.
+(Font)              `operators' in the math version `normal' on input line 55.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/CMUSerif(0)/m/n on input line 32.
+(Font)                  OT1/cmr/m/n --> TU/CMUSerif(0)/m/n on input line 55.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 32.
+(Font)              `operators' in the math version `bold' on input line 55.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/CMUSerif(0)/m/n on input line 32.
+(Font)                  OT1/cmr/bx/n --> TU/CMUSerif(0)/m/n on input line 55.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/CMUSerif(0)/m/n --> TU/CMUSerif(0)/m/n on input line 32.
+(Font)                  TU/CMUSerif(0)/m/n --> TU/CMUSerif(0)/m/n on input line 55.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/CMUSerif(0)/m/it on input line 32.
+(Font)                  OT1/cmr/m/it --> TU/CMUSerif(0)/m/it on input line 55.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/CMUSerif(0)/b/n on input line 32.
+(Font)                  OT1/cmr/bx/n --> TU/CMUSerif(0)/b/n on input line 55.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 32.
+(Font)                  OT1/cmss/m/n --> TU/CMUSansSerif(0)/m/n on input line 55.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 32.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 55.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/CMUSerif(0)/m/n --> TU/CMUSerif(0)/b/n on input line 32.
+(Font)                  TU/CMUSerif(0)/m/n --> TU/CMUSerif(0)/b/n on input line 55.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/CMUSerif(0)/b/it on input line 32.
+(Font)                  OT1/cmr/bx/it --> TU/CMUSerif(0)/b/it on input line 55.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 32.
+(Font)                  OT1/cmss/bx/n --> TU/CMUSansSerif(0)/b/n on input line 55.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 32.
-The property list \__xpg_alias contains the pairs (without outer braces):
->  {latex/target}  =>  {latex}
->  {vietnamese/target}  =>  {vietnamese}
->  {vi/target}  =>  {vietnamese}
->  {english/target}  =>  {english}
->  {en/target}  =>  {english}
->  {en-AU/target}  =>  {english}
->  {en-AU/variant}  =>  {australian}
->  {en-AU/options}  =>  {variant=australian}
->  {en-CA/target}  =>  {english}
->  {en-CA/variant}  =>  {canadian}
->  {en-CA/options}  =>  {variant=canadian}
->  {en-GB/target}  =>  {english}
->  {en-GB/variant}  =>  {british}
->  {en-GB/options}  =>  {variant=british}
->  {en-NZ/target}  =>  {english}
->  {en-NZ/variant}  =>  {newzealand}
->  {en-NZ/options}  =>  {variant=newzealand}
->  {en-US/target}  =>  {english}
->  {en-US/variant}  =>  {us}
->  {en-US/options}  =>  {variant=us}
->  {american/target}  =>  {english}
->  {american/variant}  =>  {us}
->  {american/options}  =>  {variant=us}
->  {australian/target}  =>  {english}
->  {australian/variant}  =>  {australian}
->  {australian/options}  =>  {variant=australian}
->  {british/target}  =>  {english}
->  {british/variant}  =>  {british}
->  {british/options}  =>  {variant=british}
->  {canadian/target}  =>  {english}
->  {canadian/variant}  =>  {canadian}
->  {canadian/options}  =>  {variant=canadian}
->  {newzealand/target}  =>  {english}
->  {newzealand/variant}  =>  {newzealand}
->  {newzealand/options}  =>  {variant=newzealand}
->  {russian/target}  =>  {russian}
->  {ru/target}  =>  {russian}
->  {ru-luna1918/target}  =>  {russian}
->  {ru-luna1918/options}  =>  {spelling=modern}
->  {ru-petr1708/target}  =>  {russian}
->  {ru-petr1708/options}  =>  {spelling=old}.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 55.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: xetex
+*geometry* detected driver: luatex
 *geometry* verbose mode - [ preamble ] result:
-* driver: xetex
+* driver: luatex
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -1361,556 +1109,639 @@ The property list \__xpg_alias contains the pairs (without outer braces):
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package biblatex Info: Trying to load language 'american'...
-Package biblatex Info: ... file 'american.lbx' found.
-(d:/texlive/2023/texmf-dist/tex/latex/biblatex/lbx/american.lbx
-File: american.lbx 2023/03/05 v3.19 biblatex localization (PK/MW)
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
- (d:/texlive/2023/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+(d:/texlive/2023/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2023/03/05 v3.19 biblatex localization (PK/MW)
 )
-Package biblatex Info: Trying to load language 'english'...
-Package biblatex Info: ... file 'english.lbx' found.
- (d:/texlive/2023/texmf-dist/tex/latex/biblatex/lbx/english.lbx
-File: english.lbx 2023/03/05 v3.19 biblatex localization (PK/MW)
-))
-Package biblatex Info: Trying to load language 'russian'...
-Package biblatex Info: ... file 'russian.lbx' found.
- (d:/texlive/2023/texmf-dist/tex/latex/biblatex/lbx/russian.lbx
-File: russian.lbx 2023/03/05 v3.19 biblatex localization (PK/MW)
-)
-Package biblatex Info: Trying to load language 'vietnamese'...
-Package biblatex Info: ... file 'vietnamese.lbx' not found.
-
-
-Package biblatex Warning: Language 'vietnamese' not supported.
-(biblatex)                Using dummy definitions on input line 32.
-
-Package biblatex Info: XeTeX detected.
+Package biblatex Info: LuaTeX detected.
 (biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
-\openout3 = `main.bcf'.
 
+\openout3 = main.bcf
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
-(./main.bbl)
-Package biblatex Info: Reference section=0 on input line 32.
-Package biblatex Info: Reference segment=0 on input line 32.
-Package hyperref Info: Link coloring OFF on input line 32.
+ (./main.bbl)
+Package biblatex Info: Reference section=0 on input line 55.
+Package biblatex Info: Reference segment=0 on input line 55.
+ (d:/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count474
+\scratchdimen=\dimen281
+\scratchbox=\box73
+\nofMPsegments=\count475
+\nofMParguments=\count476
+\everyMPshowfont=\toks49
+\MPscratchCnt=\count477
+\MPscratchDim=\dimen282
+\MPnumerator=\count478
+\makeMPintoPDFobject=\count479
+\everyMPtoPDFconversion=\toks50
+) (d:/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (d:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+Package hyperref Info: Link coloring OFF on input line 55.
  (./main.out) (./main.out)
 \@outlinefile=\write5
-\openout5 = `main.out'.
 
-LaTeX Info: Redefining \rmfamily on input line 32.
-LaTeX Info: Redefining \sffamily on input line 32.
-LaTeX Info: Redefining \ttfamily on input line 32.
+\openout5 = main.out
 
-Package fontspec Info: Font family 'CMUSerif(1)' created for font 'CMU Serif'
-(fontspec)             with options [Ligatures=TeX,Language=Vietnamese].
+Package fontspec Info: Font family 'SegoeUIEmoji(0)' created for font 'Segoe
+(fontspec)             UI Emoji' with options
+(fontspec)             [BoldFont={},ItalicFont={},SmallCapsFont={},Renderer=HarfBuzz].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"CMU
-(fontspec)             Serif/OT:script=latn;language=VIT;mapping=tex-text;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"SegoeUIEmoji:mode=harf;script=latn;language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"CMU
-(fontspec)             Serif/B/OT:script=latn;language=VIT;mapping=tex-text;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"CMU
-(fontspec)             Serif/I/OT:script=latn;language=VIT;mapping=tex-text;"
-(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
-(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"CMU
-(fontspec)             Serif/BI/OT:script=latn;language=VIT;mapping=tex-text;"
-(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
  (./main.toc
-LaTeX Info: Redefining \rmfamily on input line 2.
-LaTeX Info: Redefining \sffamily on input line 2.
-LaTeX Info: Redefining \ttfamily on input line 2.
-LaTeX Font Info:    Calculating math sizes for size <14> on input line 4.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
+LaTeX Font Info:    Calculating math sizes for size <14> on input line 2.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
  (d:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
  (d:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 
-])
+{d:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
 \tf@toc=\write6
-\openout6 = `main.toc'.
 
-LaTeX Font Info:    Font shape `TU/CMUSerif(1)/m/sl' in size <14> not available
-(Font)              Font shape `TU/CMUSerif(1)/m/it' tried instead on input line 36.
- [2] [3]
+\openout6 = main.toc
+LaTeX Font Info:    Font shape `TU/CMUSerif(0)/m/sl' in size <14> not available
+(Font)              Font shape `TU/CMUSerif(0)/m/it' tried instead on input line 59.
+ [2]
 Chương 1.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 46.
+(mdframed)              on input line 73.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 50.
+(mdframed)              on input line 77.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 56.
+(mdframed)              on input line 85.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 62.
-[4
+(mdframed)              on input line 91.
+[3
 
 ]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 88.
+(mdframed)              on input line 120.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 94.
- [5]
+(mdframed)              on input line 126.
+ [4]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 108.
+(mdframed)              on input line 130.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 110.
- [6] [7]
+(mdframed)              on input line 132.
+ [5] [6]
 Chương 2.
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 121.
-[8
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 160.
+[7
 
-] [9]
+] [8]
 Chương 3.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 163.
+(mdframed)              on input line 202.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 167.
+(mdframed)              on input line 206.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 171.
+(mdframed)              on input line 210.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 179.
-[10
+(mdframed)              on input line 218.
+(./lattice_crypto.tex [9
 
 ]
 Chương 4.
-[11
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 5.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 10.
+[10
 
-] [12]
+] [11]) (./group_action.tex [12]
 Chương 5.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 224.
+(mdframed)              on input line 10.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 225.
+(mdframed)              on input line 11.
 [13
 
 ] [14]
-File: ./mynotes-figures/bool1.pdf Graphic file (type pdf)
-<use ./mynotes-figures/bool1.pdf>
-File: ./mynotes-figures/book2.pdf Graphic file (type pdf)
-<use ./mynotes-figures/book2.pdf>
-File: ./mynotes-figures/book3.pdf Graphic file (type pdf)
-<use ./mynotes-figures/book3.pdf>
- [15] [16]
+<figures/burnside.pdf, id=392, page=1, 264.83943pt x 198.81578pt>
+File: figures/burnside.pdf Graphic file (type pdf)
+<use figures/burnside.pdf, page 1>
+Package luatex.def Info: figures/burnside.pdf , page1 used on input line 76.
+(luatex.def)             Requested size: 264.83878pt x 198.81529pt.
+<figures/burnside.pdf, id=394, page=2, 264.83943pt x 198.81578pt>
+File: figures/burnside.pdf Graphic file (type pdf)
+<use figures/burnside.pdf, page 2>
+Package luatex.def Info: figures/burnside.pdf , page2 used on input line 87.
+(luatex.def)             Requested size: 264.83878pt x 198.81529pt.
+<figures/burnside.pdf, id=396, page=3, 264.83943pt x 198.81578pt>
+File: figures/burnside.pdf Graphic file (type pdf)
+<use figures/burnside.pdf, page 3>
+Package luatex.def Info: figures/burnside.pdf , page3 used on input line 98.
+(luatex.def)             Requested size: 264.83878pt x 198.81529pt.
+) [15<./figures/burnside.pdf>] [16<./figures/burnside.pdf><./figures/burnside.pdf>]
 Chương 6.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 318.
+(mdframed)              on input line 226.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 320.
+(mdframed)              on input line 228.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 322.
+(mdframed)              on input line 230.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 324.
+(mdframed)              on input line 232.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 326.
+(mdframed)              on input line 234.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 328.
+(mdframed)              on input line 236.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 342.
+(mdframed)              on input line 250.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 344.
+(mdframed)              on input line 252.
 [17
 
 ]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 346.
+(mdframed)              on input line 254.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 348.
+(mdframed)              on input line 256.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 350.
+(mdframed)              on input line 258.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 355.
- [18]
+(mdframed)              on input line 263.
+ (./quantum_computing.tex [18]
 Chương 7.
-(./quantum.tex [19
+[19
 
-]) [20]
+] [20] [21] [22]) (./probability.tex [23]
 Chương 8.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 365.
+(mdframed)              on input line 5.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 367.
-[21
+(mdframed)              on input line 7.
+[24
 
 ]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 397.
+(mdframed)              on input line 37.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 399.
+(mdframed)              on input line 39.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 405.
+(mdframed)              on input line 45.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 407.
- [22]
+(mdframed)              on input line 47.
+ [25]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 426.
+(mdframed)              on input line 66.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 430.
+(mdframed)              on input line 70.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 432.
+(mdframed)              on input line 72.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 438.
+(mdframed)              on input line 78.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 459.
+(mdframed)              on input line 99.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 465.
- [23]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 467.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 473.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 475.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 479.
- [24]
-Chương 9.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 487.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 494.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 503.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 508.
-[25
-
-]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 550.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 556.
+(mdframed)              on input line 105.
  [26]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 568.
+(mdframed)              on input line 107.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 573.
+(mdframed)              on input line 113.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 579.
+(mdframed)              on input line 115.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 585.
+(mdframed)              on input line 119.
  [27]
+Chương 9.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 604.
+(mdframed)              on input line 127.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 610.
+(mdframed)              on input line 134.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 615.
+(mdframed)              on input line 143.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 616.
- [28]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 619.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 620.
- [29]
-Chương 10.
-(./2023-20-11-onthi.tex
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 11.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 16.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 18.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 23.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 29.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 35.
- [30
-
-] [31]) [32]
-Chương 11.
-(./analytic_geometry/analytic_geometry.tex [33
-
-] [34]
-Chương 12.
-File: analytic_geometry/Thales.jpeg Graphic file (type bmp)
-<analytic_geometry/Thales.jpeg>
-[35
+(mdframed)              on input line 148.
+[28
 
 ]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 190.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 196.
+ [29]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 208.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 213.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 219.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 225.
+ [30]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 244.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 250.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 255.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 256.
+ [31]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 259.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 260.
+) (./analytic_geometry/analytic_geometry.tex [32]
+Chương 10.
+LaTeX Font Info:    Calculating math sizes for size <11.66681> on input line 11.
+<analytic_geometry/Thales.jpeg, id=519, 269.005pt x 327.2225pt>
+File: analytic_geometry/Thales.jpeg Graphic file (type jpg)
+<use analytic_geometry/Thales.jpeg>
+Package luatex.def Info: analytic_geometry/Thales.jpeg  used on input line 15.
+(luatex.def)             Requested size: 134.50217pt x 163.61084pt.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 23.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 25.
+[33
+
+]
+<analytic_geometry/thales1.pdf, id=527, 191.32478pt x 124.10365pt>
 File: analytic_geometry/thales1.pdf Graphic file (type pdf)
 <use analytic_geometry/thales1.pdf>
+Package luatex.def Info: analytic_geometry/thales1.pdf  used on input line 29.
+(luatex.def)             Requested size: 191.32431pt x 124.10333pt.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 38.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 40.
+<analytic_geometry/thales2.pdf, id=529, 243.43948pt x 152.77075pt>
 File: analytic_geometry/thales2.pdf Graphic file (type pdf)
 <use analytic_geometry/thales2.pdf>
- [36]
-File: analytic_geometry/Pythagoras.jpeg Graphic file (type bmp)
-<analytic_geometry/Pythagoras.jpeg>
- [37]
+Package luatex.def Info: analytic_geometry/thales2.pdf  used on input line 44.
+(luatex.def)             Requested size: 243.43889pt x 152.77037pt.
+ [34<./analytic_geometry/Thales.jpeg><./analytic_geometry/thales1.pdf>]
+<analytic_geometry/Pythagoras.jpeg, id=545, 312.16624pt x 327.2225pt>
+File: analytic_geometry/Pythagoras.jpeg Graphic file (type jpg)
+<use analytic_geometry/Pythagoras.jpeg>
+Package luatex.def Info: analytic_geometry/Pythagoras.jpeg  used on input line 57.
+(luatex.def)             Requested size: 156.08273pt x 163.61084pt.
+ [35<./analytic_geometry/thales2.pdf><./analytic_geometry/Pythagoras.jpeg>]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 67.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 69.
+<analytic_geometry/pythagoras1.pdf, id=567, 130.53769pt x 102.29216pt>
 File: analytic_geometry/pythagoras1.pdf Graphic file (type pdf)
 <use analytic_geometry/pythagoras1.pdf>
- [38]
-File: analytic_geometry/Euclid.jpeg Graphic file (type bmp)
-<analytic_geometry/Euclid.jpeg>
- [39]
+Package luatex.def Info: analytic_geometry/pythagoras1.pdf  used on input line 75.
+(luatex.def)             Requested size: 130.53737pt x 102.2919pt.
+ [36<./analytic_geometry/pythagoras1.pdf>]
+<analytic_geometry/Euclid.jpeg, id=580, 336.25626pt x 327.2225pt>
+File: analytic_geometry/Euclid.jpeg Graphic file (type jpg)
+<use analytic_geometry/Euclid.jpeg>
+Package luatex.def Info: analytic_geometry/Euclid.jpeg  used on input line 92.
+(luatex.def)             Requested size: 168.12772pt x 163.61084pt.
+ [37<./analytic_geometry/Euclid.jpeg>]
+<analytic_geometry/oxy1.pdf, id=598, page=1, 249.05045pt x 221.09601pt>
 File: analytic_geometry/oxy1.pdf Graphic file (type pdf)
 <use analytic_geometry/oxy1.pdf, page 1>
- [40] [41]
+Package luatex.def Info: analytic_geometry/oxy1.pdf , page1 used on input line 142.
+(luatex.def)             Requested size: 249.04982pt x 221.09546pt.
+ [38] [39<./analytic_geometry/oxy1.pdf>] [40]
+<analytic_geometry/oxy1.pdf, id=647, page=2, 161.5335pt x 126.10112pt>
 File: analytic_geometry/oxy1.pdf Graphic file (type pdf)
 <use analytic_geometry/oxy1.pdf, page 2>
- [42] [43] [44] [45]
-File: analytic_geometry/int1.pdf Graphic file (type pdf)
-<use analytic_geometry/int1.pdf, page 1>
- [46]
-File: analytic_geometry/int1.pdf Graphic file (type pdf)
-<use analytic_geometry/int1.pdf, page 2>
-File: analytic_geometry/int1.pdf Graphic file (type pdf)
-<use analytic_geometry/int1.pdf, page 3>
-File: analytic_geometry/int1.pdf Graphic file (type pdf)
-<use analytic_geometry/int1.pdf, page 4>
- [47] [48]
+Package luatex.def Info: analytic_geometry/oxy1.pdf , page2 used on input line 211.
+(luatex.def)             Requested size: 161.5331pt x 126.1008pt.
+ [41<./analytic_geometry/oxy1.pdf>] [42] [43]
+<analytic_geometry/int2.pdf, id=675, page=1, 303.95558pt x 219.09856pt>
 File: analytic_geometry/int2.pdf Graphic file (type pdf)
 <use analytic_geometry/int2.pdf, page 1>
+Package luatex.def Info: analytic_geometry/int2.pdf , page1 used on input line 303.
+(luatex.def)             Requested size: 227.96611pt x 164.3235pt.
+<analytic_geometry/int2.pdf, id=677, page=2, 303.95558pt x 219.09856pt>
 File: analytic_geometry/int2.pdf Graphic file (type pdf)
 <use analytic_geometry/int2.pdf, page 2>
- [49]) [50]
-Chương 13.
-[51
+Package luatex.def Info: analytic_geometry/int2.pdf , page2 used on input line 312.
+(luatex.def)             Requested size: 227.96611pt x 164.3235pt.
+ [44<./analytic_geometry/int2.pdf>]
+<analytic_geometry/int1.pdf, id=710, page=1, 195.40001pt x 184.33868pt>
+File: analytic_geometry/int1.pdf Graphic file (type pdf)
+<use analytic_geometry/int1.pdf, page 1>
+Package luatex.def Info: analytic_geometry/int1.pdf , page1 used on input line 336.
+(luatex.def)             Requested size: 195.3995pt x 184.33823pt.
+ [45<./analytic_geometry/int2.pdf>]
+<analytic_geometry/int1.pdf, id=723, page=2, 245.36668pt x 168.55974pt>
+File: analytic_geometry/int1.pdf Graphic file (type pdf)
+<use analytic_geometry/int1.pdf, page 2>
+Package luatex.def Info: analytic_geometry/int1.pdf , page2 used on input line 350.
+(luatex.def)             Requested size: 245.36607pt x 168.55931pt.
+<analytic_geometry/int1.pdf, id=724, page=3, 245.36668pt x 168.55974pt>
+File: analytic_geometry/int1.pdf Graphic file (type pdf)
+<use analytic_geometry/int1.pdf, page 3>
+Package luatex.def Info: analytic_geometry/int1.pdf , page3 used on input line 357.
+(luatex.def)             Requested size: 245.36607pt x 168.55931pt.
+<analytic_geometry/int1.pdf, id=725, page=4, 245.36668pt x 168.55974pt>
+File: analytic_geometry/int1.pdf Graphic file (type pdf)
+<use analytic_geometry/int1.pdf, page 4>
+Package luatex.def Info: analytic_geometry/int1.pdf , page4 used on input line 364.
+(luatex.def)             Requested size: 245.36607pt x 168.55931pt.
+ [46<./analytic_geometry/int1.pdf><./analytic_geometry/int1.pdf>] [47<./analytic_geometry/int1.pdf><./analytic_geometry/int1.pdf>]) (./affine_geometry.tex [48]
+Chương 11.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 7.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 21.
+[49
 
-] [52] [53] [54] [55] [56] [57] [58]
-The property list \polyglossia@langsetup contains the pairs (without outer
-braces):
->  {latex/script}  =>  {latin}
->  {latex/lcscript}  =>  {latin}
->  {latex/scripttag}  =>  {}
->  {latex/language}  =>  {Latex}
->  {latex/langtag}  =>  {ENG}
->  {latex/bcp47}  =>  {en-US}
->  {latex/bcp47-language}  =>  {en}
->  {latex/bcp47-region}  =>  {US}
->  {latex/bcp47-script}  =>  {Latn}
->  {latex/bcp47-variant}  =>  {}
->  {latex/bcp47-extension-t}  =>  {}
->  {latex/bcp47-extension-u}  =>  {}
->  {latex/bcp47-extension-x}  =>  {}
->  {latex/bcp47-casing}  =>  {}
->  {latex/hyphennames}  =>  {english}
->  {latex/direction}  =>  {LR}
->  {latex/hyphenmins}  =>  {2,3}
->  {latex/frenchspacing}  =>  {false}
->  {latex/indentfirst}  =>  {false}
->  {latex/fontsetup}  =>  {true}
->  {latex/envname}  =>  {latex}
->  {latex/babelname}  =>  {latex}
->  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
->  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
->  {latex/DefineCommandsCmd}  =>  {use_none:n}
->  {vietnamese/script}  =>  {latin}
->  {vietnamese/lcscript}  =>  {latin}
->  {vietnamese/scripttag}  =>  {}
->  {vietnamese/language}  =>  {Vietnamese}
->  {vietnamese/langtag}  =>  {VIT}
->  {vietnamese/bcp47}  =>  {vi}
->  {vietnamese/bcp47-language}  =>  {vi}
->  {vietnamese/bcp47-region}  =>  {}
->  {vietnamese/bcp47-script}  =>  {Latn}
->  {vietnamese/bcp47-variant}  =>  {}
->  {vietnamese/bcp47-extension-t}  =>  {}
->  {vietnamese/bcp47-extension-u}  =>  {}
->  {vietnamese/bcp47-extension-x}  =>  {}
->  {vietnamese/bcp47-casing}  =>  {}
->  {vietnamese/hyphennames}  =>  {nohyphenation}
->  {vietnamese/direction}  =>  {LR}
->  {vietnamese/hyphenmins}  =>  {2,2}
->  {vietnamese/frenchspacing}  =>  {true}
->  {vietnamese/indentfirst}  =>  {true}
->  {vietnamese/fontsetup}  =>  {true}
->  {vietnamese/envname}  =>  {vietnamese}
->  {vietnamese/babelname}  =>  {vietnamese}
->  {vietnamese/localnumeral}  =>  {polyglossia@C@localnumeral}
->  {vietnamese/Localnumeral}  =>  {polyglossia@C@localnumeral}
->  {vietnamese/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
->  {english/script}  =>  {latin}
->  {english/lcscript}  =>  {latin}
->  {english/scripttag}  =>  {}
->  {english/language}  =>  {English}
->  {english/langtag}  =>  {ENG}
->  {english/bcp47}  =>  {en-US}
->  {english/bcp47-language}  =>  {en}
->  {english/bcp47-region}  =>  {US}
->  {english/bcp47-script}  =>  {Latn}
->  {english/bcp47-variant}  =>  {}
->  {english/bcp47-extension-t}  =>  {}
->  {english/bcp47-extension-u}  =>  {}
->  {english/bcp47-extension-x}  =>  {}
->  {english/bcp47-casing}  =>  {}
->  {english/hyphennames}  =>  {english,american,usenglish,USenglish}
->  {english/direction}  =>  {LR}
->  {english/hyphenmins}  =>  {2,3}
->  {english/frenchspacing}  =>  {false}
->  {english/indentfirst}  =>  {false}
->  {english/fontsetup}  =>  {true}
->  {english/envname}  =>  {english}
->  {english/babelname}  =>  {american}
->  {english/localnumeral}  =>  {polyglossia@C@localnumeral}
->  {english/Localnumeral}  =>  {polyglossia@C@localnumeral}
->  {english/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
->  {russian/script}  =>  {Cyrillic}
->  {russian/lcscript}  =>  {cyrillic}
->  {russian/scripttag}  =>  {cyrl}
->  {russian/language}  =>  {Russian}
->  {russian/langtag}  =>  {RUS}
->  {russian/bcp47}  =>  {ru}
->  {russian/bcp47-language}  =>  {ru}
->  {russian/bcp47-region}  =>  {}
->  {russian/bcp47-script}  =>  {Cyrl}
->  {russian/bcp47-variant}  =>  {luna1918}
->  {russian/bcp47-extension-t}  =>  {}
->  {russian/bcp47-extension-u}  =>  {nu-latn}
->  {russian/bcp47-extension-x}  =>  {}
->  {russian/bcp47-casing}  =>  {}
->  {russian/hyphennames}  =>  {russian}
->  {russian/direction}  =>  {LR}
->  {russian/hyphenmins}  =>  {2,2}
->  {russian/frenchspacing}  =>  {true}
->  {russian/indentfirst}  =>  {true}
->  {russian/fontsetup}  =>  {true}
->  {russian/envname}  =>  {russian}
->  {russian/babelname}  =>  {russian}
->  {russian/localnumeral}  =>  {russiannumerals}
->  {russian/Localnumeral}  =>  {Russiannumerals}
->  {russian/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}.
-The property list \__xpg_alias contains the pairs (without outer braces):
->  {latex/target}  =>  {latex}
->  {vietnamese/target}  =>  {vietnamese}
->  {vi/target}  =>  {vietnamese}
->  {english/target}  =>  {english}
->  {en/target}  =>  {english}
->  {en-AU/target}  =>  {english}
->  {en-AU/variant}  =>  {australian}
->  {en-AU/options}  =>  {variant=australian}
->  {en-CA/target}  =>  {english}
->  {en-CA/variant}  =>  {canadian}
->  {en-CA/options}  =>  {variant=canadian}
->  {en-GB/target}  =>  {english}
->  {en-GB/variant}  =>  {british}
->  {en-GB/options}  =>  {variant=british}
->  {en-NZ/target}  =>  {english}
->  {en-NZ/variant}  =>  {newzealand}
->  {en-NZ/options}  =>  {variant=newzealand}
->  {en-US/target}  =>  {english}
->  {en-US/variant}  =>  {us}
->  {en-US/options}  =>  {variant=us}
->  {american/target}  =>  {english}
->  {american/variant}  =>  {us}
->  {american/options}  =>  {variant=us}
->  {australian/target}  =>  {english}
->  {australian/variant}  =>  {australian}
->  {australian/options}  =>  {variant=australian}
->  {british/target}  =>  {english}
->  {british/variant}  =>  {british}
->  {british/options}  =>  {variant=british}
->  {canadian/target}  =>  {english}
->  {canadian/variant}  =>  {canadian}
->  {canadian/options}  =>  {variant=canadian}
->  {newzealand/target}  =>  {english}
->  {newzealand/variant}  =>  {newzealand}
->  {newzealand/options}  =>  {variant=newzealand}
->  {russian/target}  =>  {russian}
->  {ru/target}  =>  {russian}
->  {ru-luna1918/target}  =>  {russian}
->  {ru-luna1918/options}  =>  {spelling=modern}
->  {ru-petr1708/target}  =>  {russian}
->  {ru-petr1708/options}  =>  {spelling=old}.
- [59
+] [50]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 86.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 92.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 99.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 111.
+ [51]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 120.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 127.
+ [52]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 163.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 164.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 171.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 173.
+ [53]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 186.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 188.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 192.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 194.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 200.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 202.
+ [54]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 219.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 223.
+ [55]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 232.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 244.
+ [56]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 266.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 272.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 277.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 279.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 286.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 287.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 294.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 295.
+ [57]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 299.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 303.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 314.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 323.
+ [58]) (./machine_learning.tex [59]
+Chương 12.
+[60
+
+] [61] [62] [63] [64] [65] [66]) (./nsucrypto/nsucrypto_2023.tex [67]
+Phụ lục A.
+[68
+
+] [69] [70] [71]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 171.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 172.
+ [72] [73] [74] [75] [76] [77]
+<nsucrypto/problem10_figures.pdf, id=948, page=1, 268.64667pt x 115.30478pt>
+File: nsucrypto/problem10_figures.pdf Graphic file (type pdf)
+<use nsucrypto/problem10_figures.pdf, page 1>
+Package luatex.def Info: nsucrypto/problem10_figures.pdf , page1 used on input line 428.
+(luatex.def)             Requested size: 268.646pt x 115.30449pt.
+ [78<./nsucrypto/problem10_figures.pdf>]
+<nsucrypto/problem10_figures.pdf, id=979, page=2, 426.56564pt x 238.1708pt>
+File: nsucrypto/problem10_figures.pdf Graphic file (type pdf)
+<use nsucrypto/problem10_figures.pdf, page 2>
+Package luatex.def Info: nsucrypto/problem10_figures.pdf , page2 used on input line 443.
+(luatex.def)             Requested size: 426.56459pt x 238.17023pt.
+<nsucrypto/problem10_figures.pdf, id=980, page=3, 112.53041pt x 68.6304pt>
+File: nsucrypto/problem10_figures.pdf Graphic file (type pdf)
+<use nsucrypto/problem10_figures.pdf, page 3>
+Package luatex.def Info: nsucrypto/problem10_figures.pdf , page3 used on input line 453.
+(luatex.def)             Requested size: 112.53014pt x 68.63022pt.
+<nsucrypto/problem10_figures.pdf, id=981, page=4, 112.53041pt x 57.74373pt>
+File: nsucrypto/problem10_figures.pdf Graphic file (type pdf)
+<use nsucrypto/problem10_figures.pdf, page 4>
+Package luatex.def Info: nsucrypto/problem10_figures.pdf , page4 used on input line 463.
+(luatex.def)             Requested size: 112.53014pt x 57.74358pt.
+<nsucrypto/problem10_figures.pdf, id=982, page=5, 112.53041pt x 57.74373pt>
+File: nsucrypto/problem10_figures.pdf Graphic file (type pdf)
+<use nsucrypto/problem10_figures.pdf, page 5>
+Package luatex.def Info: nsucrypto/problem10_figures.pdf , page5 used on input line 467.
+(luatex.def)             Requested size: 112.53014pt x 57.74358pt.
+ [79<./nsucrypto/problem10_figures.pdf><./nsucrypto/problem10_figures.pdf>]
+<nsucrypto/problem10_figures.pdf, id=991, page=6, 204.16777pt x 181.25116pt>
+File: nsucrypto/problem10_figures.pdf Graphic file (type pdf)
+<use nsucrypto/problem10_figures.pdf, page 6>
+Package luatex.def Info: nsucrypto/problem10_figures.pdf , page6 used on input line 478.
+(luatex.def)             Requested size: 204.16725pt x 181.2507pt.
+<nsucrypto/problem10_figures.pdf, id=993, page=7, 102.0352pt x 238.1708pt>
+File: nsucrypto/problem10_figures.pdf Graphic file (type pdf)
+<use nsucrypto/problem10_figures.pdf, page 7>
+Package luatex.def Info: nsucrypto/problem10_figures.pdf , page7 used on input line 490.
+(luatex.def)             Requested size: 102.03494pt x 238.17023pt.
+ [80<./nsucrypto/problem10_figures.pdf><./nsucrypto/problem10_figures.pdf><./nsucrypto/problem10_figures.pdf>]
+<nsucrypto/problem10_figures.pdf, id=1009, page=8, 244.42216pt x 198.91716pt>
+File: nsucrypto/problem10_figures.pdf Graphic file (type pdf)
+<use nsucrypto/problem10_figures.pdf, page 8>
+Package luatex.def Info: nsucrypto/problem10_figures.pdf , page8 used on input line 507.
+(luatex.def)             Requested size: 244.42155pt x 198.91667pt.
+ [81<./nsucrypto/problem10_figures.pdf><./nsucrypto/problem10_figures.pdf>] [82]) (./onthi.tex [83]
+Phụ lục B.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 13.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 18.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 20.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 25.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 31.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 37.
+[84
+
+] [85]) [86]
+Phụ lục C.
+[87
+
+] [88]
+Phụ lục D.
+[89
+
+]
+<brachistochrone/fermat.pdf, id=1076, 247.055pt x 278.39407pt>
+File: brachistochrone/fermat.pdf Graphic file (type pdf)
+<use brachistochrone/fermat.pdf>
+Package luatex.def Info: brachistochrone/fermat.pdf  used on input line 338.
+(luatex.def)             Requested size: 247.05438pt x 278.39339pt.
+ [90<./brachistochrone/fermat.pdf>]
+<brachistochrone/brachistochrone.pdf, id=1104, 275.40692pt x 268.78719pt>
+File: brachistochrone/brachistochrone.pdf Graphic file (type pdf)
+<use brachistochrone/brachistochrone.pdf>
+Package luatex.def Info: brachistochrone/brachistochrone.pdf  used on input line 393.
+(luatex.def)             Requested size: 275.40623pt x 268.78653pt.
+ [91] [92<./brachistochrone/brachistochrone.pdf>] [93] [94] [95] [96
 
 ] (./main.aux)
  ***********
@@ -1918,18 +1749,26 @@ LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 6FC80588F935C965BA839E4D57EE71C0;9567.
+(rerunfilecheck)             Checksum: A0F54DA5D69F3C456AC9D3FB72C32170;8281.
 Package logreq Info: Writing requests to 'main.run.xml'.
-\openout1 = `main.run.xml'.
 
- ) 
-Here is how much of TeX's memory you used:
- 34824 strings out of 475591
- 722597 string characters out of 5777374
- 1932432 words of memory out of 5000000
- 55565 multiletter control sequences out of 15000+600000
- 564381 words of font info for 104 fonts, out of 8000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 142i,20n,159p,806b,4872s stack positions out of 10000i,1000n,20000p,200000b,200000s
+\openout1 = main.run.xml
+)
 
-Output written on main.pdf (59 pages).
+Here is how much of LuaTeX's memory you used:
+ 40097 strings out of 477259
+ 125121,1977958 words of node,token memory allocated
+ 2496 words of node memory still in use:
+   23 hlist, 2 vlist, 10 rule, 9 glue, 4 kern, 1 glyph, 340 attribute, 107 glue_spec, 340 attribute_list, 2 write, 16 pdf_literal, 2 pdf_action, 16 pdf_colorstack nodes
+   avail lists: 1:3,2:3275,3:1479,4:164,5:1086,6:94,7:6934,8:103,9:2328,10:20,11:70,12:1
+ 60119 multiletter control sequences out of 65536+600000
+ 142 fonts using 59577303 bytes
+ 142i,20n,151p,1236b,1203s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<d:/texlive/2023/texmf-dist/fonts/opentype/public/lm/lmmono12-regular.otf><c:/Windows/Fonts/seguiemj.ttf><d:/texlive/2023/texmf-dist/fonts/opentype/public/cm-unicode/cmunti.otf><d:/texlive/2023/texmf-dist/fonts/opentype/public/cm-unicode/cmunrm.otf><d:/texlive/2023/texmf-dist/fonts/opentype/public/cm-unicode/cmunbx.otf><d:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><d:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (96 pages, 755999 bytes).
+
+PDF statistics: 1247 PDF objects out of 1440 (max. 8388607)
+ 1011 compressed objects within 11 object streams
+ 339 named destinations out of 1000 (max. 131072)
+ 648 words of extra memory for PDF output out of 10000 (max. 100000000)
+

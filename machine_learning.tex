@@ -1,0 +1,180 @@
+\chapter{Machine Learning}
+
+\section{Các thuật toán cơ sở}
+
+\subsection*{Linear Regression}
+
+Giả sử ta có $N$ điểm dữ liệu đầu vào $\bm{x}_1, \bm{x}_2, \ldots, \bm{x}_N$ với $\bm{x}_i \in \RR^d$. Ứng với từng điểm dữ liệu đầu vào $\bm{x}_i$ ta có một đầu ra $y_i$. Nghĩa là ta có $N$ cặp dữ liệu $(\bm{x}_i, y_i)$.
+
+Mục tiêu là xây dựng hàm số $\hat{y} = f(x_1, x_2, \ldots, x_d)$ sao cho tổng sai số của $y_i$ và $\hat{y}_i$ là nhỏ nhất, tức là \[ \sum_{i=1}^N \lVert y_i - \hat{y}_i \rVert^2 \to \min \]
+
+Để hàm số đạt giá trị nhỏ nhất (hoặc lớn nhất) ta tìm cực trị của hàm số và khảo sát. Tuy nhiên không phải hàm số nào cũng đạo hàm được. Một cách tiếp cận đơn giản là sử dụng hàm tuyến tính, dễ xây dựng và luôn khả vi. Ta đặt \[ \hat{y} = f(x_1, x_2, \ldots, x_d) = w_0 + w_1 x_1 + w_2 x_2 + \ldots + w_d x_d \]
+
+Lúc này, hàm mất mát ở trên có dạng \[ \mathcal{L} = \sum_{i=1}^N \lVert y_i - (w_0 + w_1 x_{i1} + w_2 x_{i2} + \ldots + w_d x_{id} \rVert^2 \]
+
+Bình phương chuẩn Euclid chính là bình phương của vector. Do đó dưới dấu tổng là các hàm số bình phương. Khi đạo hàm riêng theo $w_j$ ta có \[ \dfrac{\partial \mathcal{L}}{\partial w_j} = \sum_{i=1}^N 2 x_{ij} (y_i - (w_0 + w_1 x_{i1} + w_2 x_{i2} + \ldots + w_d x_{id})) \] với $1 \leq j \leq d$. Với $j = 0$ có chút khác biệt, $\dfrac{\partial \mathcal{L}}{\partial w_0} = \sum_{i=1}^N 2 (y_i - (w_0 + w_1 x_{i1} + \ldots + w_d x_{id}))$.
+
+Ta cho các đạo hàm riêng $\dfrac{\partial \mathcal{L}}{\partial w_j}$ bằng 0 thì được
+\begin{align*}
+    \sum_{i=1}^N x_{ij} (w_0 + w_1 x_{i1} + w_2 x_{i2} + \ldots + w_d x_{id}) & = \sum_{i=1}^N x_{ij} y_i \\ \Leftrightarrow w_0 \sum_{i=1}^N x_{ij} + w_1 \sum_{i=1}^N x_{ij} x_{i1} + w_2 \sum_{i=1}^N x_{ij} x_{i2} \\ + \cdots + w_d \sum_{i=1}^N x_{ij} x_{id} & = \sum_{i=1}^N x_{ij} y_i
+\end{align*}
+
+Bây giờ chúng ta cần biểu diễn các dấu tổng lại thành dạng đại số (ma trận, vector) vì chúng sẽ được sử dụng để nhân với vector $\bm{w} = (w_0, w_1, \ldots, w_d)$.
+
+Ta có $\sum_{i=1}^N x_{ij} = \begin{pmatrix}
+    1 & 1 & \cdots & 1
+\end{pmatrix} \cdot \begin{pmatrix}
+    x_{1j} \\ x_{2j} \\ \vdots \\ x_{Nj}
+\end{pmatrix}$.
+
+Ta cũng có $\sum_{i=1}^N x_{ij} x_{i1} = \begin{pmatrix}
+    x_{11} & x_{21} & \cdots & x_{N1}
+\end{pmatrix} \cdot \begin{pmatrix}
+    x_{1j} \\ x_{2j} \\ \vdots \\ x_{Nj}
+\end{pmatrix}$.
+
+Cứ tương tự như vậy, ta xếp các dấu sigma thành dạng cột thì tương đương với \[\begin{pmatrix}
+    * & \sum_{i=1}^N x_{ij} & * \\ * & \sum_{i=1}^N x_{ij} x_{i1} & * \\ \vdots & \vdots & \vdots \\ * & \sum_{i=1}^N x_{ij} x_{id} & *
+\end{pmatrix} = \begin{pmatrix}
+    1 & 1 & \cdots & 1 \\ x_{11} & x_{21} & \cdots & x_{N1} \\ \cdots & \cdots & \ddots & \cdots \\ x_{1d} & x_{2d} & \cdots & x_{Nd} 
+\end{pmatrix} \cdot \begin{pmatrix}
+    * & x_{1j} & * \\ * & x_{2j} & * \\ \vdots & \vdots & \vdots \\ * & x_{Nj} & *
+\end{pmatrix}\]
+
+Ghép các cột theo thứ tự $j$ từ 0 tới $d$ ta có
+\begin{align*}
+    \begin{pmatrix}
+        w_0 & w_1 & \cdots & w_d
+    \end{pmatrix} & \cdot \begin{pmatrix}
+        1 & 1 & \cdots & 1 \\ x_{11} & x_{21} & \cdots & x_{N1} \\ \cdots & \cdots & \ddots & \cdots \\ x_{1d} & x_{2d} & \cdots & x_{Nd}
+    \end{pmatrix} \\ & \times \begin{pmatrix}
+        1 & x_{11} & \cdots & x_{1d} \\ 1 & x_{21} & \cdots & x_{2d} \\ \cdots & \cdots & \ddots & \cdots \\ 1 & x_{N1} & \cdots & x_{Nd}
+    \end{pmatrix} \\ = \begin{pmatrix}
+        y_1 & y_2 & \cdots & y_N
+    \end{pmatrix} & \cdot \begin{pmatrix}
+        1 & x_{11} & \cdots & x_{1d} \\ 1 & x_{21} & \cdots & x_{2d} \\ \cdots & \cdots & \ddots & \cdots \\ 1 & x_{N1} & \cdots & x_{Nd}
+    \end{pmatrix}
+\end{align*}
+
+Hay nói cách khác, nếu ta đặt $\bm{w} = (w_0, w_1, \ldots, w_d)$ là ma trận hàng, $\bm{X}$ là ma trận có các hàng là các input, thì phương trình trên được viết lại là $\bm{w} \bm{X}^T \bm{X} = \bm{y} \bm{X}$.
+
+Nếu đặt $\bm{A} = \bm{X}^T \bm{X}$ và $\bm{b} = \bm{y} \bm{X}$ thì đây là hệ phương trình theo các ẩn $w_0, w_1, \ldots, w_d$. Tuy nhiên không phải lúc nào $\bm{A}$ cũng khả nghịch nên chúng ta sẽ sử dụng một khái niệm gọi là \textit{giả nghịch đảo} để tìm nghiệm cho hệ phương trình.
+
+Ký hiệu $\bm{A}^\dag$ là giả nghịch đảo của ma trận $\bm{A}$. Khi đó nghiệm của hệ phương trình là $\bm{w} = \bm{b} \bm{A}^\dag$.
+
+\subsection*{K-Means clustering}
+
+Một công việc thường được quan tâm là phân loại một nhóm các đối tượng thành những nhóm nhỏ hơn theo những tiêu chí nhất định.
+
+Tương tự như phần trước, chúng ta có $N$ điểm dữ liệu $\bm{x}_i$ thuộc $\RR^d$. Ta muốn phân cụm các vector này vào những cluster (cụm) sao cho chúng gần nhau nhất (về mặt khoảng cách Euclid).
+
+Giả sử ta muốn phân $N$ điểm dữ liệu trên vào $K < N$ cluster. Ta cần tìm các điểm $\bm{m}_1, \bm{m}_2, \ldots, \bm{m}_K$ là tâm của các cụm, sao cho tổng khoảng cách từ các điểm $\bm{x}_i$ tới tâm cluster mà nó được phân vào là nhỏ nhất. Nghĩa là ứng với center $\bm{m}_1$ ta cần tìm các điểm $\bm{x}_{i_1}, \bm{x}_{i_2}, \ldots, \bm{x}_{i_t}$ sao cho $\sum_{j=1}^t \lVert \bm{x}_{i_j} - \bm{m}_1 \rVert^2$ nhỏ nhất. Tương tự cho các tâm khác.
+
+Nhưng câu chuyện phức tạp ở đây là, tâm nằm ở đâu để có thể bao quát các điểm? Tâm được chọn phải có tính tổng quát, và việc phân các điểm vào cluster tương ứng với tâm thực hiện như thế nào?
+
+Một kỹ thuật thường được sử dụng là \textit{one-hot}. Với mỗi điểm dữ liệu $\bm{x}_i$ ta thêm một label $\bm{y}_i = (y_{i1}, \cdots y_{iK})$. Điểm $\bm{x}_i$ sẽ thuộc cluster $j$ khi $y_{ij} = 1$, không thuộc thì bằng 0. Như vậy chỉ có đúng một phần tử của $\bm{y}_i$ bằng 1, còn lại bằng 0. Như vậy ràng buộc của $\bm{y}_i = (y_{i1}, y_{i2}, \ldots, y_{iK})$ là $y_{ij} \in \{ 0, 1 \}$ và $\sum_{j=1}^K y_{ij} = 1$.
+
+Khi đó, ta mong muốn phân các điểm $\bm{x}_i$ vào cluster $\bm{m}_k$ để khoảng cách tới tâm $\bm{m}_k$ là ngắn nhất, hay $\lVert \bm{x}_i - \bm{m}_k \rVert^2 \to \min$. Thêm nữa, với cách ký hiệu $y_{ij}$ như trên, biểu thức tương đương với \[ \lVert \bm{x}_i - \bm{m}_k \rVert^2 = y_{ik} \lVert \bm{x}_i - \bm{m}_k \rVert^2 = \sum_{j=1}^K y_{ij} \lVert \bm{x}_i - \bm{m}_j \rVert^2 \] vì điểm $\bm{x}_i$ sẽ thuộc cluster $\bm{m}_k$ nào đó với $1 \leq k \leq K$.
+
+Sai số cho toàn bộ dữ liệu lúc này sẽ là \[ \mathcal{L} (\bm{Y}, \bm{M}) = \sum_{i=1}^N \sum_{j=1}^K y_{ij} \lVert \bm{x}_i - \bm{m}_j \rVert^2 \]
+
+Ta cần tối ưu $\bm{Y}$ và $\bm{M}$. Việc tối ưu hai ma trận cùng lúc là rất khó thậm chí bất khả thi. Do đó chúng ta có một cách tiếp cận khác là luân phiên cố định một bên và tối ưu bên còn lại. Từ đó công việc được chia làm hai bước.
+
+\underline{Bước 1. Cố định $\bm{M}$, tìm $\bm{Y}$.}
+
+Giả sử ta đã biết các center $\bm{m}_1, \bm{m}_2, \ldots, \bm{m}_K$. Lúc này ta cần phân các điểm $\bm{x}_i$ vào cluster gần nó nhất. Dễ thấy rằng center gần nó nhất sẽ có khoảng cách Euclid ngắn nhất. Do đó ta tìm $j$ sao cho $\lVert \bm{x}_i - \bm{m}_j \rVert^2$ đạt nhỏ nhất. Không cần thiết phải tính căn bậc hai để giảm độ phức tạp.
+
+\underline{Bước 2. Cố định $\bm{Y}$, tìm $\bm{M}$.}
+
+Khi đã biết $\bm{Y}$ tức là ta đã biết điểm nào được phân vào cluster nào. Khi đó ta cần tìm tâm cho từng cluster. Gọi $l (\bm{m}_j)$ là hàm tổng bình phương khoảng cách các điểm trong cluster tới tâm $\bm{m}_j$. Nghĩa là \[ l (\bm{m}_j) = \sum_{i=1}^N y_{ij} \lVert \bm{x}_i - \bm{m}_j \rVert^2 \]
+
+Mục tiêu của chúng ta là tối ưu tâm $\bm{m}_j$. Do đó ta đạo hàm theo vector $\bm{m}_j$ thu được $\dfrac{\partial l(\bm{m}_j}{\partial \bm{m}_j} = \sum_{i=1}^N 2 y_{ij} (\bm{x}_i - \bm{m}_j)$. Cho đạo hàm bằng 0 và biến đổi ta có \begin{align*}
+    & 2 \sum_{i=1}^N y_{ij} (\bm{x}_i - \bm{m}_j) = 0 \\ \Leftrightarrow \, & \bm{m}_j \sum_{i=1}^N y_{ij} = \sum_{i=1}^N y_{ij} \bm{x}_i \\ \Leftrightarrow \, & \bm{m}_j = \dfrac{\sum_{i=1}^N y_{ij} \bm{x}_i}{\sum_{i=1}^N y_{ij}}
+\end{align*}
+
+Để ý rằng, $\sum_{i=1}^N y_{ij}$ là số lượng điểm trong cluster, và $\sum_{i=1}^N y_{ij} \bm{x}_i$ là tổng các điểm trong cluster. Như vậy $\bm{m}_j$ là trung bình cộng các điểm trong cluster $j$.
+
+\begin{algorithm}
+    \caption{Thuật toán K-Means clustering}
+    \begin{algorithmic}
+        \Require Dữ liệu $\bm{X}$ (có $N$ điểm dữ liệu) và số cluster $K$
+        \Ensure Các center $\bm{M}$ và label $\bm{y}$ cho mỗi điểm dữ liệu
+        \State 1. Chọn $K$ điểm bất kì làm các cluster ban đầu.
+        \State 2. Phân mỗi điểm dữ liệu vào cluster gần nó nhất (cố định $M$, tìm $Y$).
+        \State 3. Nếu việc phân dữ liệu vào các cluster ở bước 2 không thay đổi so với trước đó thì dừng thuật toán.
+        \State 4. Cập nhật center mới cho mỗi cluster bằng cách lấy trung bình cộng các điểm trong cluster (cố định $Y$, tìm $M$).
+        \State 5. Quay lại bước 2.
+    \end{algorithmic}
+\end{algorithm}
+
+\subsection*{Gradient Descent}
+
+Trong nhiều trường hợp chúng ta thường không thể tìm nghiệm của phương trình đạo hàm để từ đó tìm các cực trị địa phương. Một phương pháp hiệu quả là gradient descent.
+
+\subsubsection*{Hàm một biến}
+
+Giả sử $x^*$ là local extremum (cực trị địa phương) của hàm số $f(x)$. Khi đó chúng ta xây dựng dãy số $\{ x_n \}$ hội tụ về $x^*$. Ý tưởng thực hiện là dựa trên nhận xét, nếu $x_n$ nằm bên phải $x^*$ thì $x_{n+1}$ nằm giữa $x^*$ và $x_n$. Ta đã biết nếu $x^*$ là một điểm cực trị thì $f'(x) > 0$ với $x > x^*$ mà $x_n$ đi từ bên phải sang bên trái (ngược chiều $Ox$ nên mang dấu âm). Từ đó chúng ta có công thức chung sau \[x_{n+1} = x_n - \eta f'(x_n)\]
+
+Trong đó $\eta$ là một số dương nhỏ, gọi là \textit{learning rate} (tốc độ học).
+
+Ta chọn $x_0$ là một điểm bất kì. Tuy nhiên việc chọn $x_0$ cũng có thể ảnh hưởng đến tốc độ hội tụ.
+
+Ví dụ với hàm số $f(x) = x^2 + 5 \sin x$. Ta có đạo hàm là $f'(x) = 2x + 5 \cos x$. Việc giải phương trình đạo hàm bằng 0 là điều không dễ dàng. Do đó gradient descent tỏ ra hiệu quả trong trường hợp này.
+
+Chọn $\eta = 0.1$ và $x_0 = 5$. Sau đó chọn $\eta = 0.1$ và $x_0 = -5$. Ta thấy trường hợp sau tốn ít vòng lặp hơn do $x_0 = -5$ gần điểm cực trị hơn ($\approx -1.11$).
+
+\subsubsection*{Hàm nhiều biến}
+
+Lúc này đầu vào của hàm số là một vector $\bm{x}$. Đặt $\nabla f(\bm{x})$ là đạo hàm của hàm $f$ theo vector $\bm{x}$. Tương tự, ta xây dựng dãy vector $\{ \bm{x}_n \}$ hội tụ về cực trị $\bm{x}^*$. Công thức lúc này là \[\bm{x}_{n+1} = \bm{x}_n - \eta \cdot \nabla f(\bm{x}_n)\]
+
+Ta đã biết đạo hàm của hàm số theo vector cũng là vector cùng cỡ. Do đó giả sử $f(\bm{x}) = f(x_1, x_2, \ldots, x_n)$ thì đạo hàm của nó là \[\nabla f(\bm{x}) = \Bigl( \dfrac{\partial f}{\partial x_1}, \dfrac{\partial f}{\partial x_2}, \ldots, \dfrac{\partial f}{\partial x_n}\Bigr)\]
+
+Với ví dụ là bài toán Linear Regression, lúc này hàm mất mát là \[\mathcal{L} = \dfrac{1}{2N} \sum_{i=1}^N \lVert y_i - \bm{x}_i \bm{w}^T \rVert^2 = \dfrac{1}{2N} \lVert \bm{y} - \bm{X} \bm{w}^T \rVert^2\]
+
+Đạo hàm của hàm mất mát là \[\nabla \mathcal{L} = \dfrac{1}{N} (\bm{w} \bm{X}^T - \bm{y}) \bm{X}\]
+
+Lúc này, với vector khởi đầu $\bm{w}_0$ chúng ta xây dựng dãy $\{ \bm{w}_n \}$ tới khi nhận được $\bm{w}_n / d < \varepsilon$, với $d$ là độ dài vector $\bm{w}$.
+
+\subsection*{Perception Learning Algorithm}
+
+Một trong những nhiệm vụ quan trọng nhất của ML là phân loại (tiếng Anh - classification).
+
+Perception là thuật toán phân loại cho trường hợp đơn giản nhất khi có hai lớp. Nếu ta có các điểm dữ liệu cho trước trong không gian $d$ chiều, ta muốn tìm một siêu phẳng ($(d-1)$-phẳng) chia các điểm dữ liệu đó thành hai phần. Sau đó khi có một điểm dữ liệu mới ta chỉ cần bỏ nó vào bên này hoặc bên kia của siêu phẳng.
+
+Trong dạng này, mỗi điểm dữ liệu được biểu diễn ở dạng cột của ma trận. Giả sử các điểm dữ liệu là $\bm{x}_1, \bm{x}_2, \ldots, \bm{x}_N$, với $\bm{x}_i \in \RR^d$, thì ma trận dữ liệu là $\bm{X} = \begin{pmatrix}
+    \bm{x}_1^T & \bm{x}_2^T & \cdots & \bm{x}_N^T
+\end{pmatrix}$. Ta gọi nhãn tương ứng với $N$ điểm dữ liệu trên là vector $\bm{y} = (y_1, y_2, \ldots, y_N)$ với $y_i = 1$ nếu $\bm{x}_i$ thuộc class xanh, và $y_i = -1$ nếu $\bm{x}_i$ thuộc class đỏ.
+
+Một siêu phẳng có phương trình là \[ f_{\bm{w}} (\bm{x}) = w_0 + w_1 x_1 + \ldots + w_d x_d = \bm{w} \cdot \bm{x}^T\]
+
+Một điểm thuộc nửa không gian (tạm gọi là \textit{bên này}) đối với siêu phẳng thì $f_{\bm{w}} (\bm{x}) < 0$, nếu thuộc nửa bên kia thì $f_{\bm{w}} (\bm{x}) > 0$, nếu nằm trên phẳng thì bằng 0.
+
+Gọi $\lb (\bm{x})$ là nhãn của điểm $\bm{x}$. Khi đó điểm $\bm{x}$ thuộc một trong hai bên của phẳng nên $\lb (\bm{x}) = \sgn(\bm{w} \cdot \bm{x}^T)$ với $\sgn$ là hàm dấu. Ta quy ước $\sgn(0) = 1$.
+
+Khi một điểm bị phân loại sai class thì ta nói điểm đó bị \textbf{misclassified}. Ý tưởng của thuật toán là làm giảm thiểu số lượng điểm bị misclassified qua nhiều lần lặp. Đặt \[ J_1 (\bm{w}) = \sum_{\bm{x}_i \in \mathcal{M}} (-y_i \cdot \sgn (\bm{w} \cdot \bm{w}_i^T)) \] trong đó $\mathcal{M}$ là tập các điểm bị misclassified (tập này sẽ thay đổi theo $\bm{w}$.
+
+Nếu $\bm{x}_i$ bị misclassified thì $y_i$ và $\sgn (\bm{w} \cdot \bm{x}_i^T)$ ngược dấu nhau. Nói cách khác, $-y_i \cdot \sgn (\bm{w} \cdot \bm{x}_i^T) = 1$. Từ đó $J_1(\bm{w})$ là hàm đếm số lượng điểm bị misclassified. Ta thấy rằng $J_1(\bm{w}) \geq 0$ nên ta cần tối ưu để hàm này đạt giá trị nhỏ nhất bằng 0. Khi đó không điểm nào bị misclassified.
+
+Tuy nhiên có một vấn đề. Hàm $J_1(\bm{w})$ là hàm rời rạc (hàm $\sgn$) nên rất khó tối ưu vì không thể tính đạo hàm. Do đó chúng ta cần một cách tiếp cận khác, một hàm mất mát khác tốt hơn.
+
+Nếu ta bỏ đi hàm $\sgn$ thì có hàm \[ J(\bm{w}) = \sum_{\bm{x}_i \in \mathcal{M}} (-y_i \cdot \bm{w} \cdot \bm{x}^T) \]
+
+\textbf{Nhận xét}. Một điểm bị misclassified nằm càng xa biên giới (siêu phẳng) thì giá trị $\bm{w} \cdot \bm{x}_i^T$ càng lớn, tức là hàm $J$ đi ra xa so với giá trị nhỏ nhất. Hàm $J$ cũng đạt min ở 0 nên ta cũng có thể dùng hàm này để loại bỏ các điểm bị misclassified.
+
+Lúc này hàm $J(\bm{x})$ khả vi nên ta có thể dùng GD hoặc SGD để tìm nghiệm cho bài toán.
+
+Nếu xét tại một điểm thì \[ J(\bm{w}, \bm{x}_i, y_i) = -y_i \cdot \bm{w} \cdot \bm{x}_i^T \Rightarrow \dfrac{\partial J}{\partial \bm{w}} = -y_i \bm{x}_i \]
+
+Khi đó quy tắc để cập nhật là $\bm{w} = \bm{w} + \eta \cdot y_i \cdot \bm{x}_i$ với $\eta$ là learning rate (thường chọn bằng 1). Nói cách khác ta đang xây dựng dãy $\{ \bm{w}_n \}$ hội tụ lại nghiệm bài toán với công thức $\bm{w}_{n+1} = \bm{w}_n + \eta \cdot y_i \cdot \bm{x}_i$.
+
+Thuật toán PLA có thể được mô tả như sau:
+
+\begin{enumerate}
+    \item Chọn ngẫu nhiên vector $\bm{w}$ với $w_i$ xấp xỉ 0.
+    \item Duyệt ngẫu nhiên qua các $\bm{x}_i$:
+    \begin{itemize}
+        \item Nếu $\bm{x}_i$ được phân lớp đúng, tức $\sgn(\bm{w} \cdot \bm{x}_i^T) = y_i$ thì ta không cần làm gì.
+        \item Nếu $\bm{x}_i$ bị misclassified, ta cập nhật $\bm{w}$ theo công thức $\bm{w} = \bm{w} + \eta \cdot y_i \cdot \bm{x}$.
+    \end{itemize}
+    \item Kiểm tra xem có bao nhiêu điểm bị misclassified. Nếu không còn điểm nào thì ta dừng thuật toán, ngược lại thì quay lại bước 2.
+\end{enumerate}

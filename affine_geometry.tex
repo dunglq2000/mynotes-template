@@ -1,0 +1,323 @@
+\chapter{Hình học affine}
+
+\section{Không gian affine}
+
+\subsection*{Không gian affine}
+
+\begin{definition}[Không gian affine]
+	Cho $\Vv$ là một không gian vector trên trường $\FF$, và $\Aa$ là một tập khác rỗng mà các phần tử của nó gọi là \textbf{điểm}. Giả sử có ánh xạ $\varphi$
+	\begin{align*}
+		\varphi: \Aa \times \Aa & \to \Vv \\ (M, N) & \to \varphi(M, N)
+	\end{align*} 
+	thỏa mãn hai điều kiện sau
+	\begin{enumerate}
+		\item Với mọi điểm $M \in \Aa$ và vector $\overrightarrow{v} \in \Vv$ có duy nhất một điểm $N \in \Aa$ sao cho $\varphi(M, N) = \overrightarrow{v}$;
+		\item Với ba điểm $M$, $N$, $P$ bất kì ta luôn có \[\varphi(M,N) + \varphi(N,P) = \varphi(M,P). \]
+	\end{enumerate}
+	
+	Ta nói $\Aa$ là một \textbf{không gian affine}.
+    
+    Tên gọi đầy đủ: \textbf{$\Aa$ là không gian affine trên trường $\FF$ liên kết với không gian vector $\Vv$ bởi ánh xạ liên kết $\varphi$}.
+\end{definition}
+
+Khi đó, $\Vv$ được gọi là \textbf{không gian vector liên kết} với (hay \textbf{không gian nền}) của $\Aa$ và được ký hiệu là $\overrightarrow{\Aa}$.
+
+$\varphi$ được gọi là \textbf{ánh xạ liên kết}. Ta ký hiệu $\varphi(M, N) = \overrightarrow{MN}$ từ đây về sau. Khi đó hai điều kiện trên được viết lại là
+
+\begin{enumerate}
+	\item Với mọi $M \in \Aa$, với mọi $\overrightarrow{v} \in \Vv$, tồn tại duy nhất $N \in \Aa$ sao cho $\overrightarrow{MN} = \overrightarrow{v}$
+	\item Với mọi $M$, $N$, $P$ thuộc $\Aa$, $\overrightarrow{MN} + \overrightarrow{NP} = \overrightarrow{MP}$
+\end{enumerate}
+
+Biểu thức ở điều kiện 2 còn được gọi là \textbf{hệ thức Chales}.
+
+Nếu $\FF = \RR$ thì ta gọi là không gian affine thực.
+
+Nếu $\FF = \CC$ thì ta gọi là không gian affine phức.
+
+Nếu muốn nhấn mạnh trường $\FF$ ta nói là $\FF$-không gian affine.
+
+Ta ký hiệu một không gian affine là bộ $(\Aa, \overrightarrow{\Aa}, \varphi)$. Ta cũng có thể ghi tắt là $\Aa(\FF)$ hoặc chỉ là $\Aa$.
+
+Nếu $\overrightarrow{\Aa}$ là không gian vector $n$ chiều thì ta nói $\Aa$ là không gian affine $n$ chiều và ký hiệu là $\Aa^n$. Như vậy \[\dim \Aa = \dim \overrightarrow{\Aa}\]
+
+\begin{example}
+	Xét tập hợp các điểm trong không gian $\RR^3$ học ở THTP. Khi đó $\Aa = \RR^3$ là tập hợp các điểm, $\overrightarrow{\Aa}$ là tập hợp các vector trong $\RR^3$. Một vector từ điểm $A$ tới điểm $B$ (theo nghĩa hình học) là một đoạn thẳng có hướng nối từ $A$ tới $B$.
+\end{example}
+
+\textbf{Lưu ý}. Ở THPT chúng ta học rằng tọa độ của một điểm $M$ cũng chính là tọa độ của vector $\overrightarrow{OM}$. Tuy nhiên điều đó không phải lúc nào cũng đúng. Ở các phần sau sẽ giải thích lý do tại sao.
+
+\textbf{Tính chất của không gian affine}
+
+Với mọi $M$, $N$, $Q$ thuộc $\Aa$ ta có
+
+\begin{enumerate}
+	\item $\overrightarrow{MN} = \overrightarrow{0}$ khi và chỉ khi $M \equiv N$
+	\item $\overrightarrow{MN} = -\overrightarrow{NM}$
+	\item $\overrightarrow{MN} = \overrightarrow{PQ}$ khi và chỉ khi $\overrightarrow{MP} = \overrightarrow{NQ}$
+	\item $\overrightarrow{MN} = \overrightarrow{PN} - \overrightarrow{PM}$
+\end{enumerate}
+
+\begin{proof}
+	Để chứng minh các tính chất trên ta sử dụng hai điều kiện trong định nghĩa không gian affine (đặc biệt là hệ thức Chales).
+	
+    1. Nếu $M \equiv N$ thì $\overrightarrow{MM} = \overrightarrow{MN} + \overrightarrow{NM} = \overrightarrow{MM} + \overrightarrow{MM}$. Suy ra $\overrightarrow{MM} = \overrightarrow{0}$ hay $\overrightarrow{MN} = \overrightarrow{0}$. Từ đây, nếu $\overrightarrow{MN} = \overrightarrow{0}$ thì theo điều kiện 1 trong định nghĩa, tồn tại duy nhất điểm $N$ thỏa $\overrightarrow{MN} = \overrightarrow{0}$. Điều này tương đương với $M \equiv N$.
+
+    2. Từ hệ thức Chales ta có 
+    \begin{equation*}
+        \overrightarrow{0} = \overrightarrow{MM} = \overrightarrow{MN} + \overrightarrow{NM} \Leftrightarrow \overrightarrow{MN} = -\overrightarrow{NM}
+    \end{equation*}
+	
+    3. $\overrightarrow{MN} = \overrightarrow{MP} + \overrightarrow{PN}$ và $\overrightarrow{PQ} = \overrightarrow{PN} + \overrightarrow{NQ}$ nên $\overrightarrow{MP} + \overrightarrow{PN} = \overrightarrow{PN} + \overrightarrow{NQ}$, hay $\overrightarrow{MP} = \overrightarrow{NQ}$.
+	
+    4. $\overrightarrow{PM} + \overrightarrow{MN} = \overrightarrow{PN}$, chuyển vế $\overrightarrow{PM}$ ta có điều phải chứng minh.
+\end{proof}
+
+\subsection*{Phẳng}
+
+Ở THPT ta có điểm tương đương 0-phẳng, đường thẳng tương đương 1-phẳng, mặt phẳng tương đương 2-phẳng.
+
+Trong mặt phẳng $Oxy$, một đường thẳng được xác định khi biết một điểm thuộc nó và một vector chỉ phương $\overrightarrow{v} \neq \overrightarrow{0}$. Khi đó đường thẳng đi qua $P$ nhận $\overrightarrow{v}$ làm vector chỉ phương là tập hợp các điểm $M \in \RR^2$ sao cho $\overrightarrow{PM}$ cùng phương $\overrightarrow{v}$. Nói cách khác \[d = \{ M \in \RR^2: \, \overrightarrow{PM} = a \overrightarrow{v},\, a \in \RR \}\]
+
+Trong không gian $Oxyz$, tương tự một đường thẳng xác định khi biết một điểm thuộc nó và một vector chỉ phương $\overrightarrow{v}$ tương ứng \[d = \{ M \in \RR^3:\, \overrightarrow{PM} = a \overrightarrow{v},\, a \in \RR \}\]
+Một mặt phẳng trong $\RR^3$ xác định khi biết một điểm thuộc nó và một cặp vector chỉ phương $\overrightarrow{u}$, $\overrightarrow{v}$ của nó \[\alpha = \{ M \in \RR^3:\, \overrightarrow{PM} = a \overrightarrow{u} + b \overrightarrow{v}, \, a, b \in \RR \}\]
+Trong hình học affine ta mở rộng các khái niệm phẳng trên.
+
+\begin{definition}[Phẳng]
+	Cho không gian affine $(\Aa, \overrightarrow{\Aa}, \varphi)$, $P$ là một điểm thuộc $\Aa$ và $\overrightarrow{\alpha}$ là một không gian vector con của $\overrightarrow{\Aa}$. Khi đó tập hợp 
+    \begin{equation*}
+        \alpha = \{ M \in \Aa: \, \overrightarrow{PM} \in \alpha\}
+    \end{equation*}
+    được gọi là \textbf{phẳng} đi qua $P$ với (không gian chỉ) phương $\overrightarrow{\alpha}$.
+\end{definition}
+
+Nếu $\dim \overrightarrow{\alpha} = m$ thì ta nói $\alpha$ là một \textbf{phẳng $m$ chiều} hay một $m$-phẳng và viết $\dim \alpha = m$. Như vậy \[\dim \alpha = \dim \overrightarrow{\alpha}\]
+
+Theo cách gọi thông thường, 1-phẳng là đường thẳng, 2-phẳng là mặt phẳng. \textbf{Siêu phẳng} là tên gọi của phẳng có đối chiều 1, tức là nếu số chiều của không gian là $n$ thì số chiều của siêu phẳng là $n-1$.
+
+\begin{remark}
+
+\begin{enumerate}
+	\item Nếu $\alpha$ là phẳng đi qua $P$ thì $P \in \alpha$ và với mọi $M$, $N$ thuộc $\alpha$ ta có $\overrightarrow{MN} = \overrightarrow{PN} - \overrightarrow{PM}$ cũng thuộc $\alpha$;
+	\item 0-phẳng là tập chỉ gồm một điểm. Do đó ta có thể xem một điểm là một 0-phẳng;
+	\item Điểm $P$ trong định nghĩa không có vai trò quan trọng gì. Mọi điểm $P$ trong $\alpha$ đều có ý nghĩa như nhau;
+	\item Giả sử $\alpha$ là phẳng đi qua $P$ với phương $\overrightarrow{\alpha}$, $\beta$ là phẳng đi qua $Q$ với phương $\overrightarrow{\beta}$. Khi đó $\alpha \subset \beta$ khi và chỉ khi $P \in \beta$ và $\overrightarrow{\alpha} \subset \overrightarrow{\beta}$. Suy ra $\alpha \equiv \beta$ khi $P \in \beta$ (hay $Q \in \alpha$) và $\overrightarrow{\alpha} \equiv \overrightarrow{\beta}$;
+	\item Nếu $\alpha$ là phẳng với phương $\overrightarrow{\alpha}$ thì $\alpha$ được gọi là không gian affine liên kết với $\overrightarrow{\alpha}$ bởi ánh xạ liên kết
+    \begin{equation*}
+        \varphi_{\alpha \times \alpha}: \alpha \times \alpha \to \overrightarrow{\alpha}
+    \end{equation*}
+	Vì vậy ta có thể xem phẳng là không gian affine con.
+\end{enumerate}
+\end{remark}
+
+Để xác định đường thẳng ta chỉ cần biết một vector chỉ phương là đủ. Để xác định mặt phẳng ta chỉ cần biết hai vector không song song của mặt phẳng đó là đủ. Tổng quát, để xác định phương $\overrightarrow{\alpha}$ của $m$-phẳng $\alpha$ ta chỉ cần biết một cơ sở là đủ.
+
+Từ định nghĩa của không gian vector (tập sinh) ta thấy rằng một $m$-phẳng chỉ có một không gian chỉ phương duy nhất, nhưng có thể có nhiều cơ sở khác nhau.
+
+\subsection*{Độc lập affine và phụ thuộc affine}
+
+\begin{definition}
+	Hệ $m+1$ điểm $\{A_0, A_1, \ldots, A_m\}$ ($m \geq 1$) của không gian affine $\Aa$ được gọi là \textbf{độc lập affine} nếu hệ $m$ vector 
+    \begin{equation*}
+        \{\overrightarrow{A_0 A_1}, \overrightarrow{A_0 A_2}, \ldots, \overrightarrow{A_0 A_m}\}
+    \end{equation*}
+    của $\overrightarrow{\Aa}$ là một hệ vector độc lập tuyến tính.
+	
+	Hệ điểm không độc lập tuyến tính được gọi là \textbf{phụ thuộc affine}.
+\end{definition}
+
+Chúng ta có một số lưu ý từ định nghĩa.
+
+\begin{enumerate}
+	\item Tập chỉ gồm một điểm $A_0$ bất kì được quy ước là luôn độc lập;
+	\item Trong định nghĩa trên điểm $A_0$ bình đẳng như các điểm khác vì nếu hệ
+    \begin{equation*}
+        \{\overrightarrow{A_0 A_1}, \overrightarrow{A_0 A_2}, \ldots, \overrightarrow{A_0 A_m}\}
+    \end{equation*}
+    độc lập affine thì hệ
+    \begin{equation*}
+        \{\overrightarrow{A_i A_0}, \ldots, \overrightarrow{A_i A_{i-1}}, \overrightarrow{A_i A_{i+1}}, \ldots, \overrightarrow{A_i A_m}\}
+    \end{equation*}
+    cũng độc lập affine;
+	\item Hệ $\{A_0, \ldots, A_m\}$ phụ thuộc affine thì hệ
+    \begin{equation*}
+        \{\overrightarrow{A_0 A_1}, \ldots, \overrightarrow{A_0 A_m}\}
+    \end{equation*}
+    phụ thuộc affine;
+	\item Hệ con của một hệ độc lập thì độc lập, nhưng hệ con của một hệ phụ thuộc chưa chắc phụ thuộc.
+\end{enumerate}
+
+Ta sẽ chứng minh lưu ý thứ hai.
+
+\begin{proof}
+	Ta xét tổ hợp tuyến tính \[\lambda_1 \overrightarrow{A_0 A_1} + \lambda_2 \overrightarrow{A_0 A_2} + \ldots + \lambda_m \overrightarrow{A_0 A_m}\]
+	Do hệ vector độc lập tuyến tính nên $\lambda_1 = \ldots = \lambda_m = 0$. Khi đó ta khai triển vế trái
+	\begin{align*}
+		& \lambda_1 \overrightarrow{A_0 A_1} + \lambda_2 \overrightarrow{A_0 A_2} + \ldots + \lambda_m \overrightarrow{A_0 A_m} \\ = & \lambda_1 (\overrightarrow{A_i A_1} - \overrightarrow{A_i A_0}) + \lambda_2 (\overrightarrow{A_i A_2} - \overrightarrow{A_i A_0}) + \ldots \\ & + \lambda_{i-1} (\overrightarrow{A_i A_{i-1}} - \overrightarrow{A_i A_0}) - \lambda_i \overrightarrow{A_i A_0} + \lambda_{i+1} (\overrightarrow{A_i A_{i+1}} - \overrightarrow{A_i A_0}) \\ & + \lambda_m (\overrightarrow{A_i A_m} - \overrightarrow{A_i A_0}) \\ = & \lambda_1 \overrightarrow{A_i A_1} + \lambda_2 \overrightarrow{A_i A_2} + \ldots + \lambda_{i-1} \overrightarrow{A_i A_{i-1}} + \lambda_{i+1} \overrightarrow{A_i A_{i+1}} + \ldots \\ & + \lambda_m \overrightarrow{A_i A_m} - (\lambda_1 + \lambda_2 + \ldots + \lambda_m) \overrightarrow{A_i A_0} = \overrightarrow{0}
+	\end{align*}
+	
+	Do $\lambda_1 = \ldots = \lambda_m = 0$ nên tổ hợp tuyến tính ứng với các vector $\overrightarrow{A_i A_j}$ ($j \neq i$) độc lập tuyến tính và ta có điều phải chứng minh.
+\end{proof}
+
+\begin{theorem}
+	Trong không gian affine $n$ chiều $\Aa^n$, với $0 < m \leq n+1$, luôn tồn tại các hệ $m$ điểm độc lập. Mọi hệ gồm hơn $n+1$ điểm đều phụ thuộc.
+\end{theorem}
+
+\section{Giao của các phẳng. Bao affine}
+
+Cho $\{\alpha_i: i \in I\}$ là một họ không rỗng các phẳng trong không gian affine $\Aa$.
+
+\begin{theorem}
+	Nếu $\displaystyle{\bigcap_{i \in I} \alpha_i \neq \emptyset}$ thì $\displaystyle{\bigcap_{i \in I} \alpha_i}$ là một phẳng có phương $\displaystyle{\bigcap_{i \in I}\overrightarrow{\alpha_i}}$.
+	\label{theorem2}
+\end{theorem}
+
+\begin{proof}
+	Vì $\bigcap_{i \in I} \alpha_i \neq \emptyset$ nên tồn tại $P \in \bigcap_{i \in I} \alpha_i$, hay $P \in \alpha_i$ với $i \in I$.
+	
+	Nếu $\displaystyle{M \in \bigcap_{i \in I}}$ thì $M \in \alpha_i$ với $i \in I$. Suy ra $\overrightarrow{PM} \in \alpha_i$. Do đó 
+    \begin{equation*}
+        \displaystyle{\bigcap_{i \in I} \alpha_i = \{ M \in \Aa: \overrightarrow{PM} \in \bigcap_{i \in I} \overrightarrow{\alpha_i}\}}
+    \end{equation*}
+	
+	Điều này nghĩa là $\displaystyle{\bigcap_{i \in I} \alpha_i}$ là phẳng đi qua $P$ với không gian chỉ phương là $\displaystyle{\bigcap_{i \in I} \overrightarrow{\alpha_i}}$.
+\end{proof}
+
+\begin{definition}[Phẳng giao]
+	Phẳng $\displaystyle{\bigcap_{i \in I} \alpha_i}$ trong định lý trên được gọi là \textbf{phẳng giao} của các phẳng $\alpha_i$.
+\end{definition}
+
+Từ định nghĩa trên ta thấy rằng $\displaystyle{\bigcap_{i \in I} \alpha_i}$ là phẳng lớn nhất (theo quan hệ bao hàm) chứa trong tất cả các phẳng $\alpha_i$, $i \in I$.
+
+\begin{definition}[Bao affine]
+	Cho $X$ là một tập con khác rỗng của không gian affine $\Aa$. Khi đó giao của mọi phẳng chứa $X$ trong $\Aa$ sẽ là một phẳng, gọi là \textbf{bao affine} của $X$, ký hiệu là $\langle X \rangle$.
+\end{definition}
+
+Như vậy, bao affine $\langle X \rangle$, theo quan hệ bao hàm, của tập $X$ là phẳng bé nhất chứa $X$.
+
+Tương tự phép giao và hợp của hai tập hợp, chúng ta có phép giao các phẳng ở trên và phép tổng của các phẳng sẽ đề cập sau đây.
+
+\begin{definition}[Phẳng tổng]
+	Cho $\{ \alpha_i: i \in I \}$ là một họ không rỗng các phẳng. Bao affine của tập hợp $\displaystyle{\bigcup_{i \in I} \alpha_i}$ được gọi là \textbf{phẳng tổng} (hay \textbf{tổng}) của các phẳng $\alpha_i$, ký hiệu là $\displaystyle{\sum_{i \in I} \alpha_i}$.
+\end{definition}
+
+Như vậy, phẳng tổng là phẳng bé nhất chứa tất cả các phẳng $\alpha_i$, $i \in I$. 
+
+Ta có nhận xét sau. Nếu $X$ là một hệ hữu hạn điểm $X = \{P_0, P_1, \ldots, P_m \}$ thì tổng $P_0 + P_1 + \ldots + P_m$ (ta xem các $P_i$ là các 0-phẳng) là phẳng có số chiều bé nhất đi qua các điểm này. Hơn nữa \[\dim (P_0 + P_1 + \ldots + P_m) = \text{rank} \{ \overrightarrow{P_0 P_1}, \overrightarrow{P_0 P_2}, \ldots, \overrightarrow{P_0 P_m} \}\]
+
+Do đó hệ điểm $\{ P_0, P_1, \ldots, P_m \}$ độc lập thì $\dim (P_0 + P_1 + \ldots + P_m) = m$.
+
+\begin{proof}
+	Đặt $I = P_0 + P_1 + \ldots + P_m$ là phẳng tổng của hệ điểm \[ \{P_0, P_1, \ldots, P_m\} \]
+    
+    Khi đó $I$ đi qua các điểm $P_0$, $P_1$, ..., $P_m$.
+	
+	Đặt $\alpha_i$ là phẳng đi qua $P_0$ và $P_i$, $i = 1, 2, \ldots, m$. Khi đó $\alpha_i$ có phương là $\overrightarrow{P_0 P_i}$. Tổng $I$ chính là tổng các phẳng $\alpha_1 + \alpha_2 + \ldots + \alpha_m$, và $\overrightarrow{P_0 P_1}$, $\overrightarrow{P_0 P_2}$, ..., $\overrightarrow{P_0 P_m}$ là các vector chỉ phương của nó. Như vậy nếu $\overrightarrow{I}$ là không gian chỉ phương của $I$ thì nó gồm các vector độc lập tuyến tính $\overrightarrow{P_0 P_{i_1}}$, $\overrightarrow{P_0 P_{i_2}}$, ..., $\overrightarrow{P_0 P_{i_k}}$. Khi đó $\dim I = \dim \overrightarrow{I} = k = \text{rank} \{ \overrightarrow{P_0 P_1}, \overrightarrow{P_0 P_2}, \ldots, \overrightarrow{P_0 P_m}\}$. Từ đây ta có điều phải chứng minh.
+\end{proof}
+
+\begin{theorem}
+	Cho $\alpha$ và $\beta$ là hai phẳng. Nếu $\alpha \cap \beta \neq \emptyset$ thì với mọi $P \in \alpha$ và với mọi $Q \in \beta$ ta có $\overrightarrow{PQ} = \overrightarrow{\alpha} + \overrightarrow{\beta}$.
+    
+    Ngược lại nếu có điểm $P \in \alpha$ và $Q \in \beta$ sao cho $\overrightarrow{PQ} = \overrightarrow{\alpha} + \overrightarrow{\beta}$ thì $\alpha \cap \beta \neq \emptyset$.
+	\label{theorem3}
+\end{theorem}
+
+\begin{proof}
+	Giả sử $\alpha \cap \beta \neq \emptyset$. Khi đó tồn tại điểm $M \in \alpha \cap \beta$, suy ra $M \in \alpha$ và $M \in \beta$. Với mọi $P \in \alpha$ và với mọi $Q \in \beta$ thì $\overrightarrow{PM} \in \overrightarrow{\alpha}$ và $\overrightarrow{MQ} \in \overrightarrow{\beta}$. Từ đó $\overrightarrow{PQ} = \overrightarrow{PM} + \overrightarrow{MQ} = \overrightarrow{\alpha} + \overrightarrow{\beta}$.
+	
+	Đảo lại, giả sử ta có điểm $P \in \alpha$ và điểm $Q \in \beta$ sao cho $\overrightarrow{PQ} = \overrightarrow{\alpha} + \overrightarrow{\beta}$. Khi đó tồn tại hai vector $\overrightarrow{u}$ và $\overrightarrow{v}$ sao cho $\overrightarrow{PQ} = \overrightarrow{u} + \overrightarrow{v}$ với $\overrightarrow{u} \in \overrightarrow{\alpha}$ và $\overrightarrow{v} \in \overrightarrow{\beta}$. Theo định nghĩa của không gian affine thì với điểm $P \in \alpha$, tồn tại duy nhất điểm $M \in \alpha$ sao cho $\overrightarrow{PM} = \overrightarrow{u}$. Tương tự với điểm $Q \in \beta$ tồn tại duy nhất điểm $N \in \beta$ sao cho $\overrightarrow{QN} = \overrightarrow{v}$. Suy ra $\overrightarrow{PQ} = \overrightarrow{u} + \overrightarrow{v} = \overrightarrow{PM} - \overrightarrow{QN}$. Chuyển vế $\overrightarrow{QN}$ ta có $\overrightarrow{PM} = \overrightarrow{u} = \overrightarrow{PQ} + \overrightarrow{QN} = \overrightarrow{PN}$. Điều này chỉ xảy ra khi $M \equiv N$, hay nói cách khác $M$ và $N$ thuộc $\alpha \cap \beta$. Như vậy $\alpha \cap \beta \neq \emptyset$.
+\end{proof}
+
+\begin{theorem}
+	Giả sử $\alpha$ và $\beta$ là hai phẳng với phương lần lượt là $\overrightarrow{\alpha}$ và $\overrightarrow{\beta}$. Khi đó
+	
+	\begin{enumerate}[nosep,leftmargin=*]
+		\item Nếu $\alpha \cap \beta \neq \emptyset$ thì
+        \begin{equation*}
+            \dim(\alpha + \beta) = \dim(\alpha) + \dim(\beta) - \dim(\alpha \cap \beta)
+        \end{equation*}
+		\item Nếu $\alpha \cap \beta = \emptyset$ thì
+        \begin{equation*}
+            \dim(\alpha + \beta) = \dim(\alpha) + \dim(\beta) - \dim(\overrightarrow{\alpha} \cap \overrightarrow{\beta}) + 1
+        \end{equation*}
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	1. Nếu $\alpha \cap \beta \neq \emptyset$ thì theo định lý \ref{theorem2} ta có $\alpha \cap \beta$ là một phẳng có phương $\overrightarrow{\alpha} \cap \overrightarrow{\beta}$. Lấy $P \in \alpha \cap \beta$ và gọi $\gamma$ là phẳng đi qua $P$ với phương $\overrightarrow{\gamma} = \overrightarrow{\alpha} + \overrightarrow{\beta}$. Ta có $\alpha \subset \gamma$ và $\beta \subset \gamma$. Ngoài ra nếu có phẳng $\gamma'$ chứa $\alpha$ và $\beta$ thì $P \in \gamma'$ và phương của $\gamma'$ phải chứa $\overrightarrow{\alpha}$ và $\overrightarrow{\beta}$. Nói cách khác $\gamma \subset \gamma'$. Vậy $\gamma$ là phẳng bé nhất chứa $\alpha$ và $\beta$, tức là $\gamma = \alpha + \beta$. Do đó 
+    \begin{align*}
+        \dim(\alpha + \beta) = & \dim\gamma = \dim\overrightarrow{\gamma} = \dim(\alpha + \beta) \\ 
+        = & \dim\overrightarrow{\alpha} + \dim\overrightarrow{\beta} - \dim(\overrightarrow{\alpha} \cap \overrightarrow{\beta}) \\ 
+        = & \dim\alpha + \dim\beta - \dim(\overrightarrow{\alpha} \cap \overrightarrow{\beta})
+    \end{align*}
+	
+    2. Nếu $\alpha \cap \beta = \emptyset$ thì theo định lý \ref{theorem3}, nếu ta lấy $P \in \alpha$ và $Q \in \beta$ thì $\overrightarrow{PQ} \not\in \overrightarrow{\alpha} + \overrightarrow{\beta}$. Gọi $\overrightarrow{\gamma}$ là không gian con một chiều sinh bởi $\overrightarrow{PQ}$, ta có $(\overrightarrow{\alpha} + \overrightarrow{\beta}) \cap \overrightarrow{\gamma} = \{ \overrightarrow{0} \}$ (các không gian vector không có vector nào chung ngoài $\overrightarrow{0}$). Gọi $\eta$ là phẳng đi qua $P$ có không gian chỉ phương là $\overrightarrow{\alpha} + \overrightarrow{\beta} + \overrightarrow{\gamma}$ thì ta có $\alpha \subset \eta$ và $\beta \subset \eta$. Suy ra $\alpha + \beta \subset \eta$.
+		
+	3. $\eta'$ là một phẳng chứa $\alpha$ và $\beta$ thì $P \in \eta'$ và phương $\overrightarrow{\eta'}$ của $\eta'$ phải chứa $\overrightarrow{\alpha}$, $\overrightarrow{\beta}$ và $\overrightarrow{\gamma}$. Từ đó $\eta \subset \eta'$. Suy ra $\eta$ là phẳng bé nhất chứa $\alpha$ và $\beta$, hay $\eta = \alpha + \beta$. Do $\dim((\overrightarrow{\alpha} + \overrightarrow{\beta}) \cap \overrightarrow{\gamma}) = 0$ nên
+    \begin{align*}
+        \dim(\alpha + \beta) = & \dim\eta = \dim(\overrightarrow{\alpha} + \overrightarrow{\beta} + \overrightarrow{\gamma}) \\ 
+        = & \dim\overrightarrow{\alpha} + \dim\overrightarrow{\beta} + \dim\overrightarrow{\gamma} - \dim(\overrightarrow{\alpha} \cap \overrightarrow{\beta}) \\ 
+        = & \dim\alpha + \dim\beta + 1 - \dim(\overrightarrow{\alpha} \cap \overrightarrow{\beta})
+    \end{align*}
+\end{proof}
+
+\subsection*{Vị trí tương đối}
+
+\begin{definition}[Cắt nhau, chéo nhau, song song]
+    Hai phẳng $\alpha$ và $\beta$ được gọi là \textbf{cắt nhau cấp $r$} nếu $\alpha \cap \beta$ là một $r$-phẳng. 
+    
+    Chúng được gọi là \textbf{chéo nhau cấp $r$} nếu $\alpha \cap \beta = \emptyset$ và $\dim(\overrightarrow{\alpha} \cap \overrightarrow{\beta}) = r$. 
+    
+    Chúng được gọi là \textbf{song song} (với nhau) nếu $\overrightarrow{\alpha} \subset \overrightarrow{\beta}$ hoặc $\overrightarrow{\beta} \subset \overrightarrow{\alpha}$. 
+\end{definition}
+
+Theo định lý về dim bên trên, trong $\RR^3$ không tồn tại hai mặt phẳng chéo nhau cấp 0 hoặc 1.
+
+\begin{theorem}
+    \label{theorem5}
+    Cho hai phẳng  song song $\alpha$ và $\beta$. Nếu $\alpha \cap \beta \neq \emptyset$ thì $\alpha \subset \beta$ hoặc $\beta \subset \alpha$.
+\end{theorem}
+
+\begin{proof}
+	Do $\alpha$ và $\beta$ có điểm chung nên $\alpha \cap \beta$ là một phẳng có phương $\overrightarrow{\alpha} \cap \overrightarrow{\beta}$. Theo định nghĩa về sự song song, $\alpha$ song song $\beta$ dẫn tới $\overrightarrow{\alpha} \subset \overrightarrow{\beta}$ hoặc $\overrightarrow{\beta} \subset \overrightarrow{\alpha}$. Nếu $\overrightarrow{\alpha} \subset \overrightarrow{\beta}$ thì $\overrightarrow{\alpha} \cap \overrightarrow{\beta} = \overrightarrow{\alpha}$. Suy ra $\alpha \cap \beta = \alpha$ hay $\alpha \subset \beta$. Trường hợp $\overrightarrow{\beta} \subset \overrightarrow{\alpha}$ tương tự.
+\end{proof}
+
+\begin{theorem}
+    Qua một điểm $A$ có một và chỉ một $m$-phẳng song song với $m$-phẳng $\alpha$ đã cho.
+\end{theorem}
+
+\begin{proof}
+	Gọi $\beta$ là $m$-phẳng đi qua $A$ với phương là $\overrightarrow{\alpha}$. Khi đó $\beta$ là phẳng $m$ chiều song song với $\alpha$. Nếu $\beta'$ cũng là $m$-phẳng đi qua $A$ và song song với $\alpha$ thì $\overrightarrow{\beta'} = \overrightarrow{\beta} = \overrightarrow{\alpha}$. Do $\beta$ và $\beta'$ có điểm chung nên theo định lý \ref{theorem5} ta có $\beta \equiv \beta'$
+\end{proof}
+
+\begin{theorem}
+    Trong không gian affine $n$ chiều $\Aa^n$ cho một siêu phẳng $\alpha$ và một $m$-phẳng $\beta$ ($1 \leq m \leq n-1$). Khi đó $\alpha$ và $\beta$ hoặc song song hoặc cắt nhau theo một $(m-1)$-phẳng.
+\end{theorem}
+
+\subsection*{Mục tiêu và tọa độ affine}
+
+\begin{definition}[Mục tiêu affine]
+    Cho $\Aa^n$ là một không gian affine $n$ chiều. Hệ $\{O, \overrightarrow{e_1}, \overrightarrow{e_2}, \ldots, \overrightarrow{e_n}\}$ gồm một điểm $O \in \Aa^n$ và một cơ sở $\{\overrightarrow{e_1}, \overrightarrow{e_2}, \ldots, \overrightarrow{e_n}\}$ của $\overrightarrow{\Aa^n}$ được gọi là \textbf{mục tiêu affine} (hay \textbf{mục tiêu}) của $\Aa^n$.
+    
+    Điểm $O$ được gọi là \textbf{gốc}, vector $\overrightarrow{e_i}$ được gọi là \textbf{vector cơ sở thứ $i$}, $i = 1, 2, \ldots, n$. 
+\end{definition}
+
+Giả sử $\{O, \overrightarrow{e_i}\}$ là một mục tiêu của không gian affine $\Aa^n$. Khi đó với mọi $M \in \Aa^n$, vector $\overrightarrow{OM} \in \overrightarrow{\Aa^n}$ nên ta có biểu diễn tuyến tính của $\overrightarrow{OM}$ qua các cơ sở $\{\overrightarrow{e_i}\}$ \[\overrightarrow{OM} = \sum_{i=1}^n x_i \overrightarrow{e_i}\]
+
+Nhắc lại đại số tuyến tính, lúc này vector $\overrightarrow{OM}$ có tọa độ $(x_1, x_2, \ldots, x_n)$ đối với cơ sở $\{\overrightarrow{e_i}\}$, $x_i \in \FF$, $i = 1, 2, \ldots, n$.
+
+Khi đó bộ $(x_1, x_2, \ldots, x_n)$ được gọi là \textit{tọa độ} của $M$ trong mục tiêu $\{O, \overrightarrow{e_i}\}$ và $x_i$ được gọi là tọa độ thứ $i$. Ta ký hiệu tọa độ của $M$ là $M(x_i)$ hoặc $(x_i)$.
+
+Giả sử $M$ có tọa độ $(x_i)$ và $N$ có tọa độ $(y_i)$ đối với mục tiêu $\{\overrightarrow{e_i}\}$. Ta có $\overrightarrow{MN} = \overrightarrow{ON} - \overrightarrow{OM} = (y_i - x_i)$. Như vậy $(y_i - x_i)$ là tọa độ của vector $\overrightarrow{MN}$ trong mục tiêu $\{O, \overrightarrow{e_i}\}$.
+
+\begin{remark}
+    \begin{enumerate}
+        \item Giả sử trên $\Aa^n$ đã chọn được mục tiêu cố định $\{O, \overrightarrow{e_i}\}$. Xét ánh xạ 
+        \begin{align*}
+            \varphi: \, & \Aa \to \FF^n \\ & M \to (x_i)
+        \end{align*}
+        với $(x_i)$ là tọa độ của $M$. Khi đó $\varphi$ là song ánh và mỗi điểm được đồng nhất với một phần tử của $\FF^n$. Nói cách khác đối tượng hình học được đồng nhất với đối tượng đại số.
+        \item Xét mục tiêu affine $\{O, \overrightarrow{e_i}\}$ của $\Aa^n$ và gọi $E_i \in \Aa$ là các điểm sao cho $\overrightarrow{OE_i} = \overrightarrow{e_i}$. Khi đó hệ điểm $\{O, E_1, E_2, \ldots, E_n\}$ độc lập affine. Ngược lại, một hệ gồm $n+1$ điểm $\{O, E_1, E_2, \ldots, E_n\}$ độc lập affine xác định một mục tiêu affine $\{O, \overrightarrow{e_i}\}$ với $\overrightarrow{e_i} = \overrightarrow{OE_i}$. Nếu ta chọn $O = (0, \ldots, 0)$ và $E_i = (0, \ldots, 0, 1, 0, \ldots, 0)$ với số 1 ở vị trí $i$ thì đây được gọi là cơ sở chính tắc.
+        \item Siêu phẳng đi qua $n$ điểm độc lập $O$, $E_1$, $E_2$, ..., $E_{i-1}$, $E_{i+1}$, ..., $E_n$ được gọi là \textbf{siêu phẳng tọa độ thứ $i$}. Dễ thấy $M$ thuộc siêu phẳng tọa độ thứ $i$ khi và chỉ khi $x_i = 0$ với $x_i$ là tọa độ thứ $i$ của $M$.
+    \end{enumerate}
+\end{remark}

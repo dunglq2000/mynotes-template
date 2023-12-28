@@ -1,0 +1,27 @@
+\documentclass{standalone}
+
+\usepackage[fontsize=14pt]{fontsize}
+\usepackage{tkz-euclide}
+
+\begin{document}
+	\begin{tikzpicture}
+		\tkzInit[xmin=0,xmax=8,ymin=0,ymax=8]
+		\tkzDrawX
+		\tkzDrawY
+		\tkzDefPoints{0/0/O, 0/4/A, 8/0/B}
+		\tkzDefPoint(2,{9/4}){P}
+		\tkzDefPoints{0/{15/4}/M, 5/0/N}
+		\tkzDefPoints{2/4/m, 6/{9/4}/n}
+		
+		\tkzDrawLines[dashed](M,N P,m P,n)
+		
+		\tkzDrawPoints(A,B,P)
+		\tkzLabelPoints[left](A)
+		\tkzLabelPoints(B)
+		\draw [scale=1, domain=0:8, smooth, variable=\x] plot ({\x}, {(\x-8)*(\x-8)/16});
+		
+		\tkzMarkAngle(m,P,M)
+		\tkzLabelAngle[above=0.125cm](m,P,M){$\alpha$}
+		%\tkzMarkAngle(M,P,n)
+	\end{tikzpicture}
+\end{document}

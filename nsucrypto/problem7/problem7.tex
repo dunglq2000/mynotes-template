@@ -1,0 +1,347 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{bm}
+\usepackage{mdframed}
+\usepackage{xcolor}
+
+\title{Problem 7. A unique decoding}
+\author{Dung Le Quoc}
+\date{\today}
+
+\newcommand{\FF}{\mathbb{F}}
+
+\mdfdefinestyle{conclusionstyle}{%
+    linecolor=red,linewidth=2pt,%
+    frametitlerule=true,%
+    frametitlebackgroundcolor=gray!20,
+    innertopmargin=\topskip,
+}
+
+\mdfdefinestyle{remarkstyle}{%
+    linecolor=blue,linewidth=2pt,%
+    frametitlerule=true,%
+    frametitlebackgroundcolor=gray!20,
+    innertopmargin=\topskip,
+}
+
+\mdtheorem[style=conclusionstyle,nobreak]{conclusion}{Conclusion}
+\mdtheorem[style=remarkstyle,nobreak]{remark}{Remark}
+%\theoremstyle{definition}
+\newtheorem{example}{Example}
+
+\begin{document}
+\maketitle
+
+\section{Problem}
+
+Consider a binary error-correcting code $\mathcal{C}$ of length $n$. Obtaining some $\bm{y} \in \FF_2^n$, we suppose that the number of errors happend, say $d_{\bm{y}}$, is minimal possible, i.e. \[ d_{\bm{y}} = \min_{\bm{x} \in \mathcal{C}} wt(\bm{x} \oplus \bm{y}) \]
+
+Next, let $\mathcal{D}(\bm{y}) = \{ \bm{x} \in \mathcal{C} : wt(\bm{x} \oplus \bm{y}) = d_{\bm{y}} \}$. Finally, we decode $\bm{y}$ into any $\bm{x} \in \mathcal{D}(\bm{y})$.
+
+We are interested in all cases of codes for which
+
+\begin{equation}\label{problem7}
+    \lvert \mathcal{D}(\bm{y}) \rvert = 1, \quad \text{ for all } \bm{y} \in \FF_2^n
+\end{equation}
+
+\section{Solution}
+
+This solution can be applied for both two questions.
+
+\begin{remark}
+    If code $\mathcal{C} \equiv \FF_2^n$. Then $\mathcal{C}$ satisfies property about $\mathcal{D}(\bm{y})$.
+\end{remark}
+
+\begin{proof}
+    For every vector $\bm{y} \in \FF_2^n$, we take $\bm{x} \equiv \bm{y} \in \mathcal{C}$. So for each vector $\bm{y} \in \FF_2^n$, \[ d_{\bm{y}} = \min_{\bm{x} \in \mathcal{C}} wt(\bm{x} \oplus \bm{y})= 0 \] when $\bm{x} \equiv \bm{y}$.
+
+    As the result, only one vector $\bm{x} \in \mathcal{C}$ can give $d_{\bm{y}} = 0$. In other word \[ \mathcal{D}(\bm{y}) = \{ \bm{x} \in \mathcal{C} : \bm{x} \equiv \bm{y} \} \]
+
+    For each vector $\bm{y} \in \FF_2^n$, the set $\mathcal{D}(\bm{y})$ contains only one element. So when code $\mathcal{C} \equiv \FF_2^n$, it satisfies given property.
+\end{proof}
+
+\begin{conclusion}
+    For all $n \geq 1$, the code $\mathcal{C} \equiv \FF_2^n$ satisfies property (\ref{problem7}).
+\end{conclusion}
+
+\begin{remark}
+    Considering $\FF_2^n$, if we take above half of $\FF_2^n$ (in decimal they are numbers from 0 to $2^{n-1}-1$) as code $\mathcal{C}$, then this code also satisfies property (\ref{problem7}).
+\end{remark}
+
+\begin{proof}
+    Every vector of above half of $\FF_2^n$ have form \[ \bm{x} = (0, x_1, x_2, \ldots, x_{n-1}) \in \FF_2^n, \quad x_i \in \FF_2 \]
+
+    Or I can say that
+
+    \begin{equation*}
+        \mathcal{C} = \{ \bm{x} = (0, x_1, x_2, \ldots, x_{n-1}), x_i \in \FF_2 \}
+    \end{equation*}
+
+    Now consider $\bm{y} \in \FF_2^n$.
+
+    \textbf{First case.} Vector $\bm{y}$ has form \[ \bm{y} = (0, y_1, y_2, \ldots, y_{n-1}) \in \FF_2^n \]
+
+    In decimal, vector $\bm{y}$ is equivalent with number from $0$ to $2^{n-1}-1$.
+
+    Then in $\mathcal{C}$ exists only one vector $\bm{x}$ such that $\bm{x} \equiv \bm{y}$. In other word $wt(\bm{x} \oplus \bm{y}) = 0$.
+
+    So for every vector $\bm{y} = (0, y_1, y_2, \ldots, y_{n-1})$, we have \[ d_{\bm{y}} = \min_{\bm{x} \in \mathcal{C}} wt(\bm{x} \oplus \bm{y}) = 0 \]
+
+    As the result, \[ \mathcal{D}(\bm{y}) = \{ \bm{x} \in \mathcal{C} : \bm{x} \equiv \bm{y} \} \] and this set contains only one element $\bm{x} \equiv \bm{y}$.
+
+    \textbf{Second case.} Vector $\bm{y}$ has the form \[ \bm{y} = (1, y_1, y_2, \ldots, y_{n-1}) \in \FF_2^n \]
+
+    In decimal, vector $\bm{y}$ is equivalent with number from from $2^{n-1}$ to $2^n-1$.
+
+    Then in $\mathcal{C}$ exists only one vector $\bm{x} = (0, y_1, y_2, \ldots, y_{n-1})$. In other word $wt(\bm{x} \oplus \bm{y}) = 1$.
+
+    So for every vector $\bm{y} = (1, y_1, y_2, \ldots, y_{n-1})$, we have \[ d_{\bm{y}} = \min_{\bm{x} \in \mathcal{C}} wt(\bm{x} \oplus \bm{y}) = 1 \]
+
+    As the result, if $\bm{y} = (1, y_1, y_2, \ldots, y_{n-1})$ then \[ \mathcal{D}(\bm{y}) = \{ \bm{x} \in \mathcal{C} : \bm{x} = (0, y_1, y_2, \ldots, y_{n-1}) \} \] and this set contains only one element, too.
+
+    In both cases, we see that if code $\mathcal{C}$ defined as
+
+    \begin{equation}
+        \mathcal{C} = \{ \bm{x} = (0, x_1, x_2, \ldots, x_n), x_i \in \FF_2 \}
+    \end{equation}
+
+    Then code $\mathcal{C}$ satisfies given property and we finish our proof.
+\end{proof}
+
+\begin{example}
+    For $n=4$, then \[ \mathcal{C} = \{ 0000, 0001, 0010, 0011, 0100, 0101, 0110, 0111 \} \]
+\end{example}
+
+\begin{conclusion}
+    Code of length $n$ \[ \mathcal{C} = \{ (0, x_1, x_2, \ldots, x_{n-1}) \in \FF_2^n, x_i \in \FF_2 \} \] satisfies property in (\ref{problem7}).
+\end{conclusion}
+
+Now we write all vector in $\mathcal{C}$ as rows of matrix $\bm{C}$. Then we permutate its columns. For example, for $n=4$ and code $\mathcal{C}$ as above, we write 
+\[ \bm{C} = \begin{pmatrix}
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 1 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 1 & 1 \\
+    0 & 1 & 0 & 0 \\
+    0 & 1 & 0 & 1 \\
+    0 & 1 & 1 & 0 \\
+    0 & 1 & 1 & 1
+\end{pmatrix} \]
+
+Now we change position of the first and third columns, and change position of the second and fourth columns. We can do this by multiple matrix $\bm{C}$ to matrix $\bm{A}$ such that \[ \bm{A} = \begin{pmatrix}
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1 \\
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0
+\end{pmatrix} \]
+
+We have the result
+
+\[ \bm{C} \cdot \bm{A} = \begin{pmatrix}
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 1 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 1 & 1 \\
+    0 & 1 & 0 & 0 \\
+    0 & 1 & 0 & 1 \\
+    0 & 1 & 1 & 0 \\
+    0 & 1 & 1 & 1    
+\end{pmatrix} \cdot \begin{pmatrix}
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1 \\
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 
+\end{pmatrix} = \begin{pmatrix}
+    0 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    1 & 0 & 0 & 0 \\
+    1 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1 \\
+    0 & 1 & 0 & 1 \\
+    1 & 0 & 0 & 1 \\
+    1 & 1 & 0 & 1
+\end{pmatrix} \]
+
+In the result, we have exchanged position of first and third columns, and the same for second and fourth columns.
+
+We can see that, in any way of changing position of columns, matrix $\bm{A}$ is always invertible. Matrix $\bm{A}$ has only one element (number 1) on each column and each row, so its determinant is $\pm 1$.
+
+Return to our problem, let $\bm{A}$ is the matrix that changing position of columns in matrix $\bm{C}$. Then let \[ \mathcal{C}' = \{ \bm{x} \cdot \bm{A} : \bm{x} \in \mathcal{C} \} \]
+
+For every vector $\bm{y} \in \FF_2^n$, let $\bm{y}' = \bm{y} \cdot \bm{A}$. Because $\bm{A}$ is invertible matrix, the map
+
+\begin{equation}
+    \bm{A}: \FF_2^n \mapsto \FF_2^n, \quad \bm{y} \mapsto \bm{y}' = \bm{y} \cdot \bm{A}
+\end{equation}
+is bijection from $\FF_2^n$ to $\FF_2^n$.
+
+Also because $\bm{A}$ is invertible matrix, then the map
+
+\begin{equation}
+    \bm{A}: \mathcal{C} \mapsto \mathcal{C}', \quad \bm{x} \to \bm{x}' = \bm{x} \cdot \bm{A}
+\end{equation}
+is also bijection from $\mathcal{C}$ to $\mathcal{C}'$.
+
+%And we also need to notice that transform from $\bm{y}$ to $\bm{y}'$ is a linear map and that map is bijection.
+
+%So, for every $\bm{y} \in \FF_2^n$, exists one and only one $\bm{y}' = \bm{y} \cdot \bm{A}$. 
+
+Now we will prove that code $\mathcal{C}'$ also satisfies property (\ref{problem7}).
+
+\begin{proof}
+    \textbf{First case.} If $\bm{y}$ has the form $(0, y_1, y_2, \ldots, y_{n-1})$, in code $\mathcal{C}$ has element $\bm{x} = (0, y_1, y_2, \ldots, y_{n-1})$, and $wt(\bm{x} \oplus \bm{y}) = 0$ is minimal weight among vectors $\bm{y}$ of that form.
+
+    From here, if $\bm{y}' = \bm{y} \cdot \bm{A} \in \FF_2^n$, then from $\bm{x}' = \bm{x} \cdot \bm{A} \in \mathcal{C}'$ we will have \[ wt(\bm{x}' \oplus \bm{y}') = wt((\bm{x} \cdot \bm{A}) \oplus (\bm{y} \cdot \bm{A})) = wt((\bm{x} \oplus \bm{y}) \cdot \bm{A}) = wt(\bm{0} \cdot \bm{A}) = 0 \]
+
+    Here I wrote $\bm{0}$ as zero-vector $(0, 0, \ldots, 0) \in \FF_2^n$. This means that $d_{\bm{y}'} = 0$.
+
+    From here it is similar to proof above (for code $\mathcal{C}$), which means if $\bm{y}' = \bm{y} \cdot \bm{A}$, then \[ \mathcal{D}(\bm{y}') = \{ \bm{x}' = \bm{x} \cdot \bm{A}: \bm{x} = \bm{y} \} \] and this set has only one element.
+
+    \textbf{Second case.} Similarly, if $\bm{y}$ has the form $(1, y_1, y_2, \ldots, y_{n-1})$, in code $\mathcal{C}$ has element $\bm{x} = (1, y_1, y_2, \ldots, y_{n-1})$ and $wt(\bm{x} \oplus \bm{y}) = 1$ is minimal weight among vectors $\bm{y}$ of that form.
+
+    From here, if $\bm{y}' = \bm{y} \cdot \bm{A} \in \FF_2^n$, then with $\bm{x}' = \bm{x} \cdot \bm{A}$ we will have \[ wt(\bm{x}' \oplus \bm{y}') = wt((\bm{x} \cdot \bm{A}) \oplus (\bm{y} \cdot \bm{A})) = wt((\bm{x} \oplus \bm{y}) \cdot \bm{A}) = wt((1, 0, 0, \ldots, 0) \cdot \bm{A}) = 1 \]
+
+    This is because each column of matrix $\bm{A}$ contains only one element 1, so only column $(1, 0, 0, \ldots, 0)^T$ will give product 1, other columns will give product 0. As a result, received vector has only one element 1 and its Hamming weight is 1.
+
+    So, if $\bm{y}' = \bm{y} \cdot \bm{A}$ where $\bm{y} = (1, y_1, y_2, \ldots, y_{n-1})$ then \[ \mathcal{D}(\bm{y}') = \{ \bm{x}' = \bm{x} \cdot \bm{A}: \bm{x} = (1, y_1, y_2, \ldots, y_{n-1}) \in \FF_2^n \} \] and this set has only one element.
+
+    In both cases, $\mathcal{D}(\bm{y}')$ contains only one element, we finish our proof.
+\end{proof}
+
+From the conclusion above, I have said that every code $\mathcal{C}$ containing vectors $(0, x_1, x_2, \ldots, x_{n-1})$ satisfies property (\ref{problem7}).
+
+This code is linear supspace of $\FF_2^n$ with basis is set of vectors
+\begin{align*}
+    \bm{v}_1 & = (0, 1, 0, 0, \ldots, 0), \\
+    \bm{v}_2 & = (0, 0, 1, 0, \ldots, 0), \\
+    \cdots & = \cdots \\
+    \bm{v}_{n-1} & = (0, 0, 0, 0, \ldots, 1)
+\end{align*}
+
+When we multiply these vectors to matrix $\bm{A}$ in order to change position of columns, we received another basis of another linear supspace in $\FF_2^n$. As a result, code $\mathcal{C}'$ as defined above is also linear subspace spanned by new basis \[ \{ \bm{v}_1 \cdot \bm{A}, \bm{v}_2 \cdot \bm{A}, \ldots, \bm{v}_{n-1} \cdot \bm{A}\}. \]
+
+So I can conclude that:
+
+\begin{conclusion}
+    Code $\mathcal{C}$, which is linear supspace of $\FF_2^n$ spanned from $n-1$ vectors in $n$ following vectors
+    \begin{align*}
+        \bm{v}_1 & = (1, 0, 0, \ldots, 0), \\
+        \bm{v}_2 & = (0, 1, 0, \ldots, 0), \\
+        \cdots & = \cdots \\
+        \bm{v}_n & = (0, 0, 0, \ldots, 1)
+    \end{align*}
+    satisfies property (\ref{problem7}). This code then has $2^{n-1}$ elements and dimension $n-1$.
+
+    If code $\mathcal{C}$ is linear supspace spanned by all these $n$ vectors, then $\mathcal{C} \equiv \FF_2^n$, which is also satisfies property (\ref{problem7}) as I proved at the beginning.
+\end{conclusion}
+
+Now let's consider linear supspace spanned by $n-2$ vectors from $n$ vectors above.
+
+If code $\mathcal{C}$ is spanned $n-2$ vectors, it also satisfies property (\ref{problem7}).
+
+We can easily notice that, in general, suppose that basis contain 
+\begin{align*}
+    \bm{v}_1 & = (0, 0, 1, 0, \ldots, 0), \\
+    \bm{v}_2 & = (0, 0, 0, 1, \ldots, 0), \\
+    \cdots & = \cdots, \\
+    \bm{v}_{n-2} & = (0, 0, 0, 0, \ldots, 1)
+\end{align*}
+then all vectors in code $\mathcal{C}$ have 2 first elements is zero. This code also satisfies property (\ref{problem7}).
+
+\begin{remark}
+    Code $\mathcal{C}$ containing above one-forth of $\FF_2^n$ (in decimal they are numbers from 0 to $2^{n-2}-1$) satisfies property (\ref{problem7}). In other word \[ \mathcal{C} = \{ \bm{x} = (0, 0, x_1, x_2, \ldots, x_{n-2}): x_i \in \FF_2 \} \]
+\end{remark}
+
+\begin{proof}
+    \textbf{First case.} Vector $\bm{y} \in \FF_2^n$ has the form \[ \bm{y} = (0, 0, y_1, y_2, \ldots, y_{n-2}) \in \FF_2 \]
+
+    In decimal, vector $\bm{y}$ is equivalent to number from 0 to $2^{n-2}-1$.
+
+    Then in $\mathcal{C}$ exists only one vector $\bm{x} = (0, 0, y_1, y_2, \ldots, y_{n-2})$. In other word $wt(\bm{x} \oplus \bm{y}) = 0$ is minimal weight. This means that for every vector $\bm{y} = (0, 0, y_1, y_2, \ldots, y_{n-2})$, we have \[ d_{\bm{y}} = \min_{\bm{x} \in \mathcal{C}} wt(\bm{x} \oplus \bm{y}) = 0 \]
+
+    As the result, $\mathcal{D} (\bm{y}) = \{ \bm{x} \in \mathcal{C}: \bm{x} = (0, 0, y_1, y_2, \ldots, y_{n-2}) \}$, which means $\lvert \mathcal{D}(\bm{y}) \rvert= 1$.
+
+    \textbf{Second cases.} Vector $\bm{y} \in \FF_2^n$ has the form \[ \bm{y} = (0, 1, y_1, y_2, \ldots, y_{n-2}) \in \FF_2^n \]
+
+    In decimal, vector $\bm{y}$ is equivalent to number from $2^{n-2}$ to $2^{n-1}-1$.
+
+    Then in $\mathcal{C}$ exists only one vector $\bm{x} = (0, 0, y_1, y_2, \ldots, y_{n-2})$. In other word $wt(\bm{x} \oplus \bm{y}) = 1$ is minimal weight. This means that for every vector $\bm{y} = (0, 1, y_1, y_2, \ldots, y_{n-2})$, we have \[ d_{\bm{y}} = \min_{\bm{x} \in \mathcal{C}} = 0 \]
+
+    As the result, $\mathcal{D}(\bm{y}) = \{ \bm{x} \in \mathcal{C} : \bm{x} = (0, 0, y_1, y_2, \ldots, y_{n-2}) \}$, which means $\lvert \mathcal{D}(\bm{y}) \rvert = 1$.
+
+    \textbf{Third cases.} Vectors $\bm{y} = (1, 0, y_1, y_2, \ldots, y_{n-2})$ also give $\lvert \mathcal{D}(\bm{y}) \rvert = 1$.
+
+    \textbf{Fourth cases.} Vectors $\bm{y} = (1, 1, y_1, y_2, \ldots, y_{n-2})$ also give $\lvert \mathcal{D}(\bm{y}) \rvert = 1$.
+
+    So in all cases of vector $\bm{y} \in \FF_2^2$, code $\mathcal{C}$ gives us $\lvert \mathcal{D}(\bm{y}) \rvert = 1$. We finish our proof.
+\end{proof}
+
+By induction, we can see following remark.
+
+\begin{remark}
+    Code $\mathcal{C}$ of length $n$ containing first $\dfrac{1}{2^i}$ where $0 \leq i \leq n$ satisfies property (\ref{problem7}). In other word 
+    
+    \begin{equation}\label{linspace-i}
+        \mathcal{C} = \{ \bm{x} = (0, 0, \ldots, 0, x_1, x_2, \ldots, x_{n-i}): x_i \in \FF_2 \}
+    \end{equation} where $\bm{x}$ starts with $i$ zero numbers.
+\end{remark}
+
+Similarly to above, if we write all vectors in code $\mathcal{C}$ as rows of a matrix $\bm{C}$ and exchange its columns, it is equivalent to multiply matrix $\bm{C}$ with invertible matrix $\bm{A}$ that has only one elemnt (number 1) on each row and on each column.
+
+Then, if code \[ \mathcal{C} = \{ \bm{x} = (0, 0, \ldots, 0, x_1, x_2, \ldots, x_{n-i}): x_i \in \FF_2 \}, \] if we multiply all its vectors to matrix $\bm{A}$ then we receive new code also satisfies property (\ref{problem7}).
+
+\begin{equation*}
+    \mathcal{C}' = \{ \bm{x}' = \bm{x} \cdot \bm{A}: \bm{x} \in \mathcal{C} \}
+\end{equation*}
+
+We can see that code $\mathcal{C}$ is linear supspace spanned by $i$ vectors 
+\begin{align*}
+    \bm{v}_1 & = (0, 0, \ldots, 0, 1, 0, \ldots, 0), \\
+    \bm{v}_2 & = (0, 0, \ldots, 0, 0, 1, \ldots, 0), \\
+    \cdots & = \cdots, \\
+    \bm{v}_i & = (0, 0, \ldots, 0, 0, 0, \ldots, 1)
+\end{align*}
+
+Therefore, every code $\mathcal{C}'$, which is receive by multiply all its vectors to matrix $\bm{A}$, is also a linear supspace spanned by 
+
+\begin{align*}
+    \bm{v}_1' & = \bm{v}_1 \cdot \bm{A}, \\
+    \bm{v}_2' & = \bm{v}_2 \cdot \bm{A}, \\
+    \cdots & = \cdots, \\
+    \bm{v}_i' & = \bm{v}_i \cdot \bm{A}
+\end{align*}
+
+So the answer for the problem (in both Q1 and Q2) is
+
+\begin{conclusion}
+    Code $\mathcal{C}$, which is linear supspace of $\FF_2^n$ spanned by $0, 1, \ldots, n$ vectors in $n$ following vectors
+
+    \begin{align*}
+        \bm{v}_1 & = (1, 0, 0, \ldots, 0), \\
+        \bm{v}_2 & = (0, 1, 0, \ldots, 0), \\
+        \cdots & = \cdots, \\
+        \bm{v}_n & = (0, 0, 0, \ldots, 1)
+    \end{align*}
+    satisfies property (\ref{problem7}), or $\lvert \mathcal{D}(\bm{y}) \rvert = 1$ for all $\bm{y} \in \FF_2^n$.
+\end{conclusion}
+
+\begin{example}
+    For $n=3$, all codes that satisfy given property are
+
+    \begin{align*}
+        & \mathcal{C}_1 = \{ 000 \}, \\
+        & \mathcal{C}_2 = \{ 000, 001 \}, \\
+        & \mathcal{C}_3 = \{ 000, 010 \}, \\
+        & \mathcal{C}_4 = \{ 000, 100 \}, \\
+        & \mathcal{C}_5 = \{ 000, 001, 010, 011 \}, \\
+        & \mathcal{C}_6 = \{ 000, 001, 100, 101 \}, \\
+        & \mathcal{C}_7 = \{ 000, 010, 100, 110 \}, \\
+        & \mathcal{C}_8 = \{ 000, 001, 010, 011, 100, 101, 110, 111 \}
+    \end{align*}
+\end{example}
+
+\begin{remark}
+    The number of codes that are linear supspace are the number of ways choosing basis vectors. There are $n$ vectors $\bm{v}$, and  we choose $0, 1, \ldots, n$ vectors from them. So as the result there are \[ C_n^0 + C_n^1 + \ldots + C_n^n = 2^n \] codes $\mathcal{C}$ satisfying our problem.
+\end{remark}
+\end{document}

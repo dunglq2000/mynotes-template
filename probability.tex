@@ -1,0 +1,262 @@
+\chapter{Lý thuyết xác suất}
+
+\section{Định nghĩa xác suất}
+
+\begin{definition}[Định nghĩa cổ điển của xác suất]
+    Định nghĩa thống kê của xác suất nói rằng, giả sử trong một phép thử có $n$ khả năng có thể xảy ra. Xét một biến cố $A$ xảy ra khi thực hiện phép thử có $k$ khả năng xảy ra. Khi đó xác suất của biến cố $A$ ký hiệu là $P(A)$ và được tính \[P(A) = \frac{k}{n}\]
+\end{definition}
+
+Dễ thấy, do biến cố $A$ là một trường hợp nhỏ trong tổng thể tất cả trường hợp khi thực hiện phép thử, do đó $0 \leq k \leq n$. Nghĩa là \[0 \leq P(A) \leq 1\] với mọi biến cố $A$ bất kì.
+
+\begin{example}
+    Xét phép thử tung hai đồng xu. Gọi $A$ là biến cố hai đồng xu cùng mặt.
+    
+    Ta ký hiệu $S$ là đồng xu sấp, $N$ là đồng xu ngửa. Khi đó các trường hợp có thể xảy ra của phép thử là $S-S$, $S-N$, $N-S$, $N-N$ (4 trường hợp). 
+    
+    Trong khi đó, các trường hợp có thể xảy ra của biến cố $A$ là $S-S$, $N-N$ (2 trường hợp).
+    
+    Kết luận: $P(A) = \frac{2}{4} = \frac{1}{2}$
+\end{example}
+
+Chúng ta gọi tập hợp tất cả các trường hợp khi thực hiện phép thử là \textbf{không gian mẫu} và ký hiệu là $\Omega$. Mỗi phần tử trong không gian mẫu được gọi là \textbf{biến cố sơ cấp}. Trong ví dụ trên, $\Omega = \{S-S, S-N, N-S, N-N\}$.
+    
+Tập hợp các trường hợp có thể xảy ra của biến cố gọi là \textbf{không gian biến cố} và ký hiệu là $\Omega_A$. Trong ví dụ trên, $\Omega_A = \{S-S, N-N\}$.
+    
+Như vậy, $P(A) = \frac{|\Omega_A|}{|\Omega|}$
+
+\begin{example}
+    Tung hai con súc sắc cân đối và đồng chất. Tính xác suất tổng số nút của hai con súc sắc bằng 4.
+    
+    Việc tung mỗi con súc sắc có 6 trường hợp. Do đó $|\Omega| = 6^2 = 36$
+    
+    Gọi $A$ là biến cố tổng số nút của hai con súc sắc bằng 4. Ta có các trường hợp là $4=1+3=3+1=2+2$ (3 trường hợp).
+    
+    Như vậy $|\Omega_A| = 3$ và $P(A) = \frac{3}{36} = \frac{1}{12}$
+\end{example}
+
+\begin{definition}[Biến cố xung khắc]
+    Hai biến cố được gọi là \textbf{xung khắc} nếu biến cố này xảy ra thì biến cố kia chắc chắn không xảy ra. Nói cách khác giao của chúng bằng rỗng.
+\end{definition}
+    
+Khi đó, nếu $A$ và $B$ là hai biến cố xung khắc, \[P(A + B) = P(A) + P(B)\]
+    
+Ta còn có thể ký hiệu $P(A+B)$ là $P(A \cup B)$ (hợp hai biến cố).
+    
+\begin{definition}[Biến cố độc lập]
+    Hai biến cố được gọi là \textbf{độc lập} nếu việc xảy ra của biến cố này không ảnh hưởng đến việc xảy ra của biến cố kia. 
+\end{definition}
+
+Khi đó, nếu $A$ và $B$ là hai biến cố độc lập thì \[P(AB) = P(A)P(B)\]    
+
+\section{Xác suất có điều kiện}
+
+Xét hai tập hợp $A$ và $B$. Số phần tử của phép hợp hai tập hợp trong trường hợp tổng quát được tính như sau: \[|A \cup B| = |A| + |B| - |A \cap B|\]
+    
+Tương tự, xác suất của phép cộng xác suất đối với hai biến cố có giao khác rỗng là: \[P(A + B) = P(A) + P(B) - P(A \cap B)\]
+
+Xét các tập hợp $A_1$, $A_2$, ..., $A_n$. Khi đó, số phần tử khi hợp các tập hợp này là:
+\begin{equation*}
+    \begin{split}
+        |A_1 \cup A_2 \cup \cdots \cup A_n| & = |A_1| + |A_2| + \cdots + |A_n| - \sum_{i, j}|A_i \cap A_j| \\ & + \sum_{i, j, k} |A_i \cap A_j \cap A_k| + \cdots \\ & = \sum_{i=1}^n (-1)^{i+1} \sum_{j_1, j_2, \cdots, j_i} |A_{j_1} \cap A_{j_2} \cap \cdots \cap A_{j_i} |
+    \end{split}
+\end{equation*}
+
+Tương tự, ta có phép cộng xác suất:
+
+\begin{theorem}[Phép cộng xác suất mở rộng]
+    \begin{equation*}
+        P(A_1 \cup A_2 \cup \cdots \cup A_n) = \sum_{i=1}^n (-1)^{i+1} \sum_{j_1, j_2, \cdots, j_i} P(A_{j_1} \cap A_{j_2} \cap \cdots \cap A_{j_i})
+    \end{equation*}
+\end{theorem}
+
+\begin{theorem}[Xác suất có điều kiện]
+    Xét hai biến cố $A$ và $B$. Khi đó xác suất xảy ra của biến cố $B$ với điều kiện biến cố $A$ xảy ra là: 
+    \begin{equation}
+        P(B | A) = \frac{P(AB)}{P(A)}
+    \end{equation}
+    Lúc này, $A$ và $B$ không độc lập.
+\end{theorem}
+
+Tổng quát, nếu $n$ biến cố $A_i$, $i=1, \ldots, n$ không độc lập thì:
+\begin{align*}
+    P(A_1 A_2 \cdots A_n) = & P(A_1) \cdot P(A_2|A_1) \cdot P(A_3 | A_2A_1) \cdots \\ & P(A_n|A_1A_2 \cdots A_{n-1})
+\end{align*}
+
+\begin{example}
+    Xét hai câu hỏi trắc nghiệm có 4 lựa chọn. Tính xác suất học sinh trả lời đúng câu thứ hai với điều kiện câu đầu trả lời sai.
+    
+    \textbf{Giải}. Gọi $A$ là biến cố câu đầu tiên học sinh trả lời sai. $P(A) = \frac{3}{4}$
+    
+    Gọi $B$ là biến cố câu thứ hai học sinh trả lời đúng. $P(B) = \frac{1}{4}$.
+    
+    Do $A$ và $B$ là hai biến cố độc lập nên $P(AB) = P(A) P(B) = \frac{3}{16}$
+    
+    Như vậy, xác suất học sinh trả lời đúng câu thứ hai với điều kiện câu đầu trả lời đúng là: $P(B | A) = \frac{P(AB)}{P(A)} = \frac{3 / 16}{3 / 4} = \frac{1}{4}$
+\end{example}
+
+\section{Công thức xác suất đầy đủ}
+
+\begin{definition}[Hệ biến cố đầy đủ]
+    Xét phép thử có không gian mẫu là $\Omega$. Một hệ các biến cố $A_1$, $A_2$, ..., $A_n$ được gọi là \textbf{đầy đủ} nếu chúng thỏa các điều kiện:
+    \begin{itemize}
+        \item $A_1 \cup A_2 \cup \cdots \cup A_n = \Omega$
+        \item $A_i \cap A_j = \emptyset$ với mọi $i \neq j$
+    \end{itemize}
+\end{definition}
+    
+\begin{theorem}[Công thức xác suất đầy đủ]
+    Gọi $A_1, A_2, \ldots, A_n$ là một hệ biến cố đầy đủ. Khi đó, với biến cố $B$ bất kì trong phép thử: 
+    
+    \begin{equation}    
+        P(B) = P(A_1) \cdot P(B | A_1) + \cdots P(A_n) \cdot P(B | A_n)
+    \end{equation}
+\end{theorem}
+
+\begin{theorem}[Công thức Bayes]
+    Xét hệ có $n$ biến cố đầy đủ $\{ A_1, A_2, \ldots, A_n \}$. 
+    
+    Với biến cố $B$ bất kì thì: \[P(A_i | B) = \frac{P(A_i) P(B | A_i)}{\displaystyle{\sum_{j=1}^n P(A_j) P(B | A_j)}}\] với $1 \leq i \leq n$.
+\end{theorem}
+
+\chapter{Biến ngẫu nhiên}
+
+\section{Biến ngẫu nhiên}
+
+Xét phép thử với không gian mẫu $\Omega$. Với mỗi biến cố sơ cấp $\omega \in \Omega$ ta liên kết với một số thực $\xi(\omega) \in \RR$ thì $\xi$ được gọi là \textbf{biến ngẫu nhiên} (BNN).
+
+\begin{definition}[Biến ngẫu nhiên]
+    \textbf{Biến ngẫu nhiên} $\xi$ của một phép thử với không gian mẫu $\Omega$ là ánh xạ: 
+    \begin{equation*}
+        \begin{split}
+            \xi = \xi (\omega), \quad \omega \in \Omega
+        \end{split}
+    \end{equation*}
+\end{definition}
+    
+Giá trị $\xi(\omega)$ được gọi là một giá trị của biến ngẫu nhiên $\xi$.
+
+\begin{itemize}
+    \item Nếu $\xi(\Omega)$ là một tập hữu hạn $\{\xi_1, \xi_2, \ldots,\xi_n\}$ hay tập vô hạn đếm được thì $\xi$ được gọi là \textbf{biến ngẫu nhiên rời rạc}.
+    \item Nếu $\xi(\Omega)$ là một khoảng của $\RR$ hay toàn bộ $\RR$ thì $\xi$ được gọi là \textbf{biến ngẫu nhiên liên tục}.
+\end{itemize}
+
+\begin{definition}[Hàm phân phối]
+    \textbf{Hàm phân phối} của biến ngẫu nhiên $\xi$ là hàm số $F(x)$, xác định bởi:
+    \begin{equation}
+        F(x) = P(\xi \leq x), \quad x \in \RR
+    \end{equation}
+\end{definition}
+
+Ở đây ta viết gọn $P(\xi \leq x)$ từ $P(\{ \omega: \xi(\omega) \leq x \})$. Tập hợp $\{ \omega: \xi(\omega) \leq x\}$ có thể không thuộc một biến cố nào, do đó có thể là tập rỗng (ứng với xác suất là 0).
+\section{Tính chất của hàm phân phối}
+
+\textbf{Tính chất 1.} Hàm phân phối $F(x)$ không giảm trên mọi đoạn thẳng.
+
+\begin{proof}
+    Đặt $x_2 > x_1$. Ta thấy rằng \[\{ \xi \leq x_2 \} = \{ \xi \leq x_1 \} + \{ x_1 < \xi \leq x_2 \},\]
+    
+    Do đó nếu ta lấy xác suất thì cũng có \[ P(\xi \leq x_2) = P(\xi \leq x_1) + P(x_1 < \xi \leq x_2) \]
+
+    Xác suất luôn không âm, hay $P(x_1 < \xi \leq x_2) \geq 0$, suy ra $P(\xi \leq x_2) \geq P(\xi \leq x_1)$, hay $F(x_2) \geq F(x_1)$.
+\end{proof}
+
+\textbf{Tính chất 2.} $\displaystyle{\lim_{x \to -\infty} F(x) = 0}$.
+
+\textbf{Tính chất 3.} $\displaystyle{\lim_{x \to +\infty} F(x) = 1}$.
+
+\textbf{Tính chất 4.} Hàm phân phối $F(x)$ liên tục phải trên toàn trục số.
+
+Để chứng minh các tính chất 2, 3, 4 chúng ta cần các tiên đề của sự liên tục (continunity axioms) và sẽ không đề cập ở đây.
+
+\section{Biến ngẫu nhiên rời rạc}
+
+Cho BNN rời rạc $\xi = \xi(\omega)$, $\xi = \{ a_1, a_2, \ldots, a_n, \ldots \}$. Giả sử $a_1 < a_2 < \ldots < a_n < \ldots$ với xác suất tương ứng là $P(\xi = a_i) = p_i$, $i = 1, 2, \ldots$
+
+Ta có thể biểu diễn biến ngẫu nhiên và xác suất tương ứng của nó bằng bảng phân phối xác suất của $\xi$.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c c c c c}
+        $\xi$ & $a_1$ & $a_2$ & $\cdots$ & $a_n$ & $\cdots$ \\ \hline $P$ & $p_1$ & $p_2$ & $\cdots$ & $p_n$ & $\cdots$
+    \end{tabular}
+\end{table}
+
+Rõ ràng rằng $p_n \geq 0$ với mọi $n$. Hơn nữa \[ \sum_{n=1}^\infty p_n = 1 \]
+
+Không gian mẫu lúc này là hợp của các tập biến ngẫu nhiên rời rạc: \[ \Omega = \{ \xi = a_1 \} \cup \{ \xi = a_2 \} \cup \ldots \]
+
+Các biến ngẫu nhiên xung khắc nhau (vì $\xi$ không thể nhận hai giá trị khác nhau cùng lúc), do đó xác suất cả không gian mẫu là \[ 1 = P(\Omega) = P(\xi = a_1) + P(\xi = a_2) + \ldots = p_1 + p_2 + \ldots \]
+
+\begin{definition}[Phân phối nhị thức]
+    Biến ngẫu nhiên $\xi$ được gọi là có \textbf{phân phối nhị thức} với tham số $p$, $n$, với $p \in (0, 1)$ và $n$ là số tự nhiên, nếu $\xi$ nhận các giá trị $0, 1, \ldots, n$ và 
+    \begin{equation}
+        P(\xi = k) = C^k_n p^k q^{n-k}, \quad k = 0, 1, \ldots, n
+    \end{equation}
+    Ở đây $q = 1 - p$.
+\end{definition}
+
+\begin{example}
+    Một bài kiểm tra có 100 câu hỏi trắc nghiệm bốn đáp án. Xác suất chọn ngẫu nhiên đúng đáp án của mỗi câu hỏi thì bằng nhau và bằng $\dfrac{1}{4}$.
+
+    Ở đây xác suất chọn ngẫu nhiên đúng đáp án của một câu hỏi bất kì là $p = \dfrac{1}{4}$, và số lượng câu hỏi là $n = 100$.
+
+    Gọi $\xi$ là biến ngẫu nhiên số câu hỏi trả lời đúng. Khi đó $\xi$ nhận các giá trị $0, 1, \ldots, 100$.
+
+    Do đó bài toán này có phân phối nhị nhức và \[ P(\xi = k) = C^k_{100} \Bigl(\dfrac{1}{4}\Bigr)^k \Bigl(\dfrac{3}{4}\Bigr)^{100-k}\]    
+\end{example}
+
+\begin{definition}[Phân phối Poisson]
+    Biến ngẫu nhiên $\xi$ được gọi là có \textbf{phân phối Poisson} với tham số $\lambda$, nếu $\xi$ nhận các giá trị $0, 1, \ldots, n$ và 
+    \begin{equation}
+        P(\xi = k) = \dfrac{\lambda^k \cdot e^{-\lambda}}{k!}, \quad k = 0, 1, \ldots, n
+    \end{equation}
+\end{definition}
+
+Tham số $\lambda$ thể hiện số lần trung bình mà một sự kiện xảy ra trong một khoảng thời gian nhất định. Khi đó, nếu một biến ngẫu nhiên có số lần xuất hiện trung bình của một sự kiện trong thời gian $t$ thì nó có phân phối Poisson với tham số $\lambda t$, với $\lambda$ là số lần trung bình trong một đơn vị thời gian.
+
+\section{Biến ngẫu nhiên liên tục}
+
+\begin{definition}[Biến ngẫu nhiên liên tục]
+    Biến ngẫu nhiên $\xi$ được gọi là \textbf{liên tục}, nếu nó nhận giá trị tại mọi điểm thuộc một đoạn liên tục nào đó trên trục số, và tồn tại một hàm số không âm $p(x)$ sao cho với mọi đoạn $[a ,b]$ (hữu hạn hoặc vô hạn) ta có
+    \begin{equation}
+        P(a \leq \xi \leq b) = \int_{a}^{b} p(x)\, dx
+    \end{equation}
+    Hàm $p(x)$ được gọi là \textbf{hàm mật độ} của biến ngẫu nhiên $\xi$.
+\end{definition}
+
+Tương tự biến ngẫu nhiên rời rạc, $p(x) \geq 0$ với mọi $x \in \RR$ và khi hai cận là vô cực thì biến ngẫu nhiên bao quát toàn bộ không gian mẫu. Nghĩa là \[ \int_{-\infty}^{+\infty} p(x)\, dx = 1 \]
+
+Từ định nghĩa của hàm phân phối $F(x) = P(\xi \leq x)$ ta có hai tính chất của hàm mật độ:
+
+\begin{enumerate}
+    \item $\displaystyle{F(x) = \int_{-\infty}^{x} p(x)\, dx}$
+    \item $p(x) = F'(x)$
+\end{enumerate}
+
+Tính chất thứ nhất là từ định nghĩa hàm phân phối. Tính chất thứ hai suy ra từ việc cận trên của tích phân là hữu hạn.
+
+\textbf{Hàm mật độ của $X$ là} \[f(x) = \begin{cases}
+        p_i & \text{khi } x = x_i, \\
+        0 & \text{khi } x \neq x_i, \forall i
+\end{cases}\]
+
+\begin{remark}
+    Ta có các lưu ý sau:
+    \begin{itemize}
+        \item $p_i \geq 0$, $\sum p_i = 1$, $i = 1, 2, \ldots$
+    
+        \item $\displaystyle{P(a < X \leq b) = \sum_{a < x_i \leq b} p_i}$
+    \end{itemize}
+\end{remark}
+
+\section{Hàm mật độ của biến ngẫu nhiên liên tục}
+
+\begin{definition}
+    Hàm số $f: \mathbb{R} \mapsto \mathbb{R}$ được gọi là \textbf{hàm mật độ} của biến ngẫu nhiên liên tục $X$ nếu: \[P(a \leq X \leq b) = \displaystyle{\int_a^b f(x)\,dx}, \forall a, b \in \mathbb{R}\]
+\end{definition}
+
+\begin{remark}
+    Với mọi $x \in \mathbb{R}$, $f(x) \geq 0$ và $\displaystyle{\int_{-\infty}^{+\infty}f(x)\,dx = 1}$.
+\end{remark}
+
+\textbf{Ý nghĩa hình học}. Xác suất của biến ngẫu nhiên $X$ nhận giá trị trong $[a, b]$ bằng diện tích hình thang cong giới hạn bởi $x=a$, $x=b$, $y=f(x)$ và $Ox$.

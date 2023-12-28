@@ -1,0 +1,31 @@
+\documentclass{standalone}
+
+\usepackage[fontsize=14pt]{fontsize}
+\usepackage{tkz-euclide}
+
+\begin{document}
+	\begin{tikzpicture}
+		\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+		\tkzDefPoints{0/0/R, -3.5/4/P, 2/-4/Q}
+		\tkzDefPoints{0/4/P', 0/-4/Q'}
+		\tkzDrawX
+		\tkzDrawY
+		\tkzDrawPoints(R,P,Q)
+		\tkzDrawPoints(P',Q')
+		
+		\tkzShowPointCoord[xlabel=$x_1$,ylabel=$y_1$](P)
+		\tkzShowPointCoord[xlabel=$x_2$,ylabel=$y_2$](Q)
+		
+		\tkzLabelPoints[above](P)
+		\tkzLabelPoints[below=0.25cm](Q)
+		\tkzLabelPoint[below left](R){$R(x, 0)$}
+		\tkzLabelPoint[right](P'){$P' (0, y_1)$}
+		\tkzLabelPoint[below=0.25cm](Q'){$Q' (0, y_2)$}
+		\tkzMarkAngle(P',R,P) \tkzLabelAngle[pos=1.5](P',R,P){$\alpha_1$}
+		\tkzMarkAngle(Q',R,Q) \tkzLabelAngle[pos=1.5](Q',R,Q){$\alpha_2$}
+		\tkzDrawSegment(P,R)
+		\tkzDrawSegment(R,Q)
+		\tkzLabelSegment(P,R){$v_1$}
+		\tkzLabelSegment[below=0.5cm](R,Q){$v_2$}
+	\end{tikzpicture}
+\end{document}

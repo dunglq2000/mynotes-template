@@ -1,0 +1,172 @@
+\documentclass{article}
+
+\usepackage{quantikz}
+\usepackage{tikz}
+\usepackage{geometry}
+
+\title{Problem 10. Quantum encryption}
+\author{Dung Le Quoc}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Analyze circuit before Hadamard gates}
+
+We analyze the above half of circuit ($\lvert x_1 \rangle$ and $\lvert x_2 \rangle$). The below half is similar.
+
+\begin{figure}[ht]
+    \centering
+    \begin{quantikz}
+        \lstick{$\lvert x_1 \rangle$} & \targ{} & \ctrl{3} & \targ{} & \\
+        \lstick{$\lvert x_1 \rangle$} & & & & \\
+        \lstick{$\lvert x_2 \rangle$} & & & & \\
+        \lstick{$\lvert x_2 \rangle$} & \ctrl{-3} & \targ{} & \ctrl{-3} &
+    \end{quantikz}
+\end{figure}
+
+Let's analyze first and fourth lines.
+
+\begin{figure}[ht]    
+    \centering
+    \begin{quantikz}[slice all]
+        \lstick{$\lvert x_1 \rangle$} & \targ{} & \ctrl{1} &\targ{} & \\
+        \lstick{$\lvert x_2 \rangle$} & \ctrl{-1} & \targ{} & \ctrl{-1} &
+    \end{quantikz}
+\end{figure}
+
+On the first red verticle line, the CNOT gate gives us $\lvert x_1 \oplus x_2 \rangle$ and $\lvert x_2 \rangle$.
+
+On the second red verticle line, the CNOT gate give us $\lvert x_1 \oplus x_2 \rangle$ and $\lvert x_2 \oplus x_1 \oplus x_2 \rangle = \lvert x_1 \rangle$.
+
+On the third red verticle line, the CNOT gate give us $\lvert x_1 \oplus x_2 \oplus x_1 \rangle = \lvert x_2 \rangle$ and $\lvert x_1 \rangle$.
+
+Similarly, for second and third line.
+
+\begin{figure}[ht]    
+    \centering
+    \begin{quantikz}[slice all]
+        \lstick{$\lvert x_1 \rangle$} & \ctrl{1} & \targ{} & \ctrl{1} & \\
+        \lstick{$\lvert x_2 \rangle$} & \targ{} & \ctrl{-1} & \targ{} &
+    \end{quantikz}
+\end{figure}
+
+On the first red verticle line, the CNOT gate gives us $\lvert x_1 \rangle$ and $\lvert x_2 \oplus x_1 \rangle$.
+
+On the second red verticle line, the CNOT gate gives us $\lvert x_1 \oplus x_2 \oplus x_1 \rangle = \lvert x_2 \rangle$ and $\lvert x_2 \oplus x_1 \rangle$.
+
+On the third red verticle line, the CNOT gate gives us $\lvert x_2 \rangle$ and $\lvert x_2 \oplus x_1 \oplus x_2 \rangle = \lvert x_1 \rangle$.
+
+So, in fact, this circuit give us figure \ref{bHadamard}.
+
+\begin{figure}[ht]
+    \centering
+    \begin{quantikz}
+        \lstick{$\lvert x_1 \rangle$} & \targ{} & \ctrl{3} & \targ{} & & & & \rstick{$\lvert x_2 \rangle$} \\
+        \lstick{$\lvert x_1 \rangle$} & & & & \ctrl{1} & \targ{} & \ctrl{1} & \rstick{$\lvert x_2 \rangle$}  \\
+        \lstick{$\lvert x_2 \rangle$} & & & & \targ{} & \ctrl{-1} & \targ{} & \rstick{$\lvert x_1 \rangle$} \\
+        \lstick{$\lvert x_2 \rangle$} & \ctrl{-3} & \targ{} & \ctrl{-3} & & & & \rstick{$\lvert x_1 \rangle$} \\
+        \lstick{$\lvert x_3 \rangle$} & \ctrl{3} & \targ{} & \ctrl{3} & & & & \rstick{$\lvert x_4 \rangle$} \\
+        \lstick{$\lvert x_3 \rangle$} & & & & \targ{} & \ctrl{1} & \targ{} & \rstick{$\lvert x_4 \rangle$}  \\
+        \lstick{$\lvert x_4 \rangle$} & & & & \ctrl{-1} & \targ{} & \ctrl{-1} & \rstick{$\lvert x_3 \rangle$} \\
+        \lstick{$\lvert x_4 \rangle$} & \targ{} & \ctrl{-3} & \targ{} & & & & \rstick{$\lvert x_3 \rangle$}
+    \end{quantikz}
+    \label{bHadamard}
+    \caption{Circuit before Hadamard gates}
+\end{figure}
+
+\section{Analyze circuit after Hadamard gates}
+
+Suppose that $H^{k_i} (\lvert x_j \rangle) = \lvert z_j \rangle$. After the $H^{k_i}$ gate, we have figure \ref{Hadamard}.
+
+\begin{figure}[ht]
+    \centering
+    \begin{quantikz}
+        \lstick{$\lvert x_2 \rangle$} & \gate{H^{k_1}} & \rstick{$\lvert z_2 \rangle$} \\
+        \lstick{$\lvert x_2 \rangle$} & \gate{H^{k_1}} & \rstick{$\lvert z_2 \rangle$} \\
+        \lstick{$\lvert x_1 \rangle$} & \gate{H^{k_2}} & \rstick{$\lvert z_1 \rangle$} \\
+        \lstick{$\lvert x_1 \rangle$} & \gate{H^{k_2}} & \rstick{$\lvert z_1 \rangle$} \\
+        \lstick{$\lvert x_4 \rangle$} & \gate{H^{k_3}} & \rstick{$\lvert z_4 \rangle$} \\
+        \lstick{$\lvert x_4 \rangle$} & \gate{H^{k_3}} & \rstick{$\lvert z_4 \rangle$} \\
+        \lstick{$\lvert x_3 \rangle$} & \gate{H^{k_4}} & \rstick{$\lvert z_3 \rangle$} \\
+        \lstick{$\lvert x_3 \rangle$} & \gate{H^{k_4}} & \rstick{$\lvert z_3 \rangle$}
+    \end{quantikz}
+    \label{Hadamard}
+    \caption{Key $K$ acts on qubits}
+\end{figure}
+
+We need to notice that, if $k_i = 0$, then $\lvert x_j \rangle$ becomes $\lvert x_j \rangle$ (Hadamard gate is not considered). And if $k_i = 1$, then $\lvert x_i \rangle$ becomes $\dfrac{\lvert 0 \rangle + (-1)^{x_j} \lvert 1 \rangle}{\sqrt{2}} = \lvert z_j \rangle$. We can see that coefficient before $\lvert 0 \rangle$ is not negative for all cases of $x_j$ and $k_i$ (0, 1 or $\dfrac{1}{\sqrt{2}}$).
+
+After that, qubits $\lvert z_i \rangle$ go through CNOT gates (figure \ref{aHadamard}).
+
+\begin{figure}[ht]
+    \centering
+    \begin{quantikz}[slice all]
+        \lstick{$\lvert z_2 \rangle$} & \ctrl{2} & & & & & & \targ{} & & \rstick[8]{$\psi$} \\
+        \lstick{$\lvert z_2 \rangle$} & & \ctrl{2} & & & & & & \targ{} & \\
+        \lstick{$\lvert z_1 \rangle$} & \targ{} & & \ctrl{2} & & & & & & \\
+        \lstick{$\lvert z_1 \rangle$} & & \targ{} & & \ctrl{2} & & & & & \\
+        \lstick{$\lvert z_4 \rangle$} & & & \targ{} & & \ctrl{2} & & & & \\
+        \lstick{$\lvert z_4 \rangle$} & & & & \targ{} & & \ctrl{2} & & & \\
+        \lstick{$\lvert z_3 \rangle$} & & & & & \targ{} & & \ctrl{-6} & & \\
+        \lstick{$\lvert z_3 \rangle$} & & & & & & \targ{} & & \ctrl{-6} &
+    \end{quantikz}
+    \caption{CNOT gates after Hadamard gates}
+    \label{aHadamard}
+\end{figure}
+
+At each verticle red line, one qubit will control one other qubit by CNOT gate. Actually, CNOT gate is a matrix that has property: on each row and on each column there is only one element and it equals to 1.
+
+For example, with two qubits with product $\lvert \psi \rangle = \alpha_{00} \lvert 00 \rangle + \alpha_{01} \lvert 01 \rangle + \alpha_{10} \lvert 10 \rangle + \alpha_{11} \lvert 11 \rangle$. We know that CNOT gate actually is the matrix multiplication
+
+\begin{equation}
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0
+    \end{pmatrix} \cdot \begin{pmatrix}
+        \alpha_{00} \\ \alpha_{01} \\ \alpha_{10} \\ \alpha_{11}
+    \end{pmatrix} = \begin{pmatrix}
+        \alpha_{00} \\ \alpha_{01} \\ \alpha_{11} \\ \alpha_{10}
+    \end{pmatrix}
+\end{equation}
+
+It means that $\text{CNOT} \lvert \psi \rangle = \alpha_{00} \lvert 00 \rangle + \alpha_{01} \lvert 01 \rangle + \alpha_{11} \lvert 10 \rangle + \alpha_{10} \lvert 11 \rangle$.
+
+Now we consider three qubits. Their product will have form \[ \lvert \psi \rangle = \alpha_{000} \lvert 000 \rangle + \alpha_{001} \lvert 001 \rangle + \alpha_{010} \lvert 010 \rangle + \alpha_{011} \lvert 011 \rangle + \alpha_{100} \lvert 100 \rangle + \alpha_{101} \lvert 101 \rangle + \alpha_{110} \lvert 110 \rangle + \alpha_{111} \lvert 111 \rangle \]
+
+If the first qubit controls the third qubit by CNOT gate, this is equivalent with exchanging coefficient of $\lvert 1x0 \rangle$ and $\lvert 1x1 \rangle$, where $x \in \{0, 1\}$.
+
+As the result, we receive the product after the first qubit had controlled the third qubit as following \[ \lvert \psi' \rangle = \alpha_{000} \lvert 000 \rangle + \alpha_{001} \lvert 001 \rangle + \alpha_{010} \lvert 010 \rangle + \alpha_{011} \lvert 011 \rangle + \alpha_{101} \lvert 100 \rangle + \alpha_{100} \lvert 101 \rangle + \alpha_{111} \lvert 110 \rangle + \alpha_{110} \lvert 111 \rangle \]
+
+Here, the matrix for multiplication is
+
+\begin{equation}
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+        0 & 0 & 0 & 0 & 0 & 0 & 1 & 0
+    \end{pmatrix} \cdot \begin{pmatrix}
+        \alpha_{000} \\ \alpha_{001} \\ \alpha_{010} \\ \alpha_{011} \\ \alpha_{100} \\ \alpha_{101} \\ \alpha_{110} \\ \alpha_{111}
+    \end{pmatrix} = \begin{pmatrix}
+        \alpha_{000} \\ \alpha_{001} \\ \alpha_{010} \\ \alpha_{011} \\ \alpha_{101} \\ \alpha_{100} \\ \alpha_{111} \\ \alpha_{110}
+    \end{pmatrix}
+\end{equation}
+
+In other word, we can notice that the set of coefficients is unchanged. The coefficients only move from one amplitude to the other.
+
+So, if I let $\lvert z_2 \rangle = a \lvert 0 \rangle + b \lvert 1 \rangle$, $\lvert z_1 \rangle = c \lvert 0 \rangle + d \lvert 1 \rangle$, $\lvert z_4 \rangle = e \lvert 0 \rangle + f \lvert 1 \rangle$, and $\lvert z_3 \rangle = g \lvert 0 \rangle + h \lvert 1 \rangle$, then the state right after Hadamard gates is
+
+\begin{equation}
+    \lvert z_2 \rangle \otimes \lvert z_2 \rangle \otimes \lvert z_1 \rangle \otimes \lvert z_1 \rangle \otimes \lvert z_4 \rangle \otimes \lvert z_4 \rangle \otimes \lvert z_3 \rangle \otimes \lvert z_3 \rangle
+\end{equation}
+
+Notice that $\lvert z_2 \rangle \otimes \lvert z_2 \rangle = (a \lvert 0 \rangle + b \lvert 1 \rangle) \otimes (a \lvert 0 \rangle + b \lvert 1 \rangle) = a^2 \lvert 00 \rangle + ab \lvert 01 \rangle + ab \lvert 10 \rangle + b^2 \lvert 11 \rangle$. We see that in this product there are three different coefficients, and we need all three coefficients ($a^2, ab, b^2$) to determine $a$ and $b$, in other word - determine $\lvert z_2 \rangle$. This is because $b^2 = (-b)^2$, we need $ab$ in order to make sure that the product of square root is not $-ab$, and we has already known that $a$ is not negative (more precisely, 0, 1, or $\dfrac{1}{\sqrt{2}}$).
+
+We have 4 product $\lvert z_i \rangle \otimes \lvert z_i \rangle$, each need 3 (instead of 4) coefficients to recover qubit $\lvert z_i \rangle$. So we only need $3^4 = 81$ amplitudes to get the key, instead of 256.
+
+So the answer is 81.
+\end{document}

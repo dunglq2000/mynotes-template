@@ -1,0 +1,149 @@
+\documentclass{article}
+
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{bm}
+\usepackage{geometry}
+\usepackage{mdframed}
+\usepackage{xcolor}
+
+\title{Problem 4. Column functions}
+\author{Dung Le Quoc}
+\date{\today}
+
+\newcommand{\FF}{\mathbb{F}}
+\geometry{top=2cm, left=2cm, bottom=2cm, right=2cm}
+
+\mdfdefinestyle{conclusionstyle}{%
+    linecolor=red,linewidth=2pt,%
+    frametitlerule=true,%
+    frametitlebackgroundcolor=gray!20,
+    innertopmargin=\topskip,
+}
+
+\mdfdefinestyle{remarkstyle}{%
+    linecolor=blue,linewidth=2pt,%
+    frametitlerule=true,%
+    frametitlebackgroundcolor=gray!20,
+    innertopmargin=\topskip,
+}
+
+\mdtheorem[style=conclusionstyle,nobreak]{conclusion}{Conclusion}
+\mdtheorem[style=remarkstyle,nobreak]{remark}{Remark}
+%\theoremstyle{definition}
+\newtheorem{example}{Example}
+
+\begin{document}
+\maketitle
+
+\section{Problem}
+
+Consider $2^n$ pairwise distinct vectorial one-to-one functions, $G_i: \FF_2^n \to \FF_2^n$, where $i=1, 2, \ldots, 2^n$.
+
+For $n = 2^m$, $m \geqslant 5$, define a binary matrix $M$ of size $2^n \times n 2^n$ as follows. The $i$-th row, $i=1, 2, \ldots, 2^n$, is a concatenation of values $G_i(0, 0, \ldots, 0, 0)$, $G_i(0, 0, \ldots, 0, 1)$, ..., $G_i(1, 1, \ldots, 1, 0)$, $G_i(1, 1, \ldots, 1, 1)$. The columns of the matrix $M$ can be interpreted as vectors of values of $n 2^n$ Boolean functions in $n$ variables. We call them \textit{column functions}.
+
+Prove or disprove the following conjecture for at least one $m \geqslant 5$: for any matrix formed in the way describe above there exist $2^{n/2}$ column funcions $f_1, f_2, \ldots, f_{2^{n/2}}$ such that there is a nonzero Boolean function $f: \FF_2^{2^{n/2}} \to \FF_2$ satisfying the following conditions:
+
+\begin{itemize}
+    \item for every vector $\bm{x} \in \FF_2^n$ \[f(f_1(\bm{x}), f_2(\bm{x}), \ldots, f_{2^{n/2}}(x)) = 0 \]
+    \item for every vector $\bm{y} \in \FF_2^{2^{n/2}}$, the value $f(\bm{y})$ can be calculated using not more than $2^{n/2}$ addition and multiplication operations modulo 2.
+\end{itemize}
+
+\section{Solution}
+
+I will prove that if exist $2^n$ pairwise distinct vectorial one-to-one functions $G_i: \FF_2^n \to \FF_2^n$, where $i=1, 2, \ldots, 2^n$, then there also exist another $2^n$ functions $G_i': \FF_2^n \to \FF_2^n$, which are genereted from $G_i$, and satisfy two conditions.
+
+My purpose for this proof is that, from initial $2^n$ vectorial functions satisfying two conditions, then I can generate all combination of $2^n$ vectorial functions (among $(2^n)!$ one-to-one vectorial functions) that also satisfy two conditions.
+
+\begin{remark}
+    For all $n=2^n$, $m \geqslant 5$, there always exist $2^n$ vectorial one-to-one functions $G_i: \FF_2^n \to \FF_2^n$, where $i = 1, 2, \ldots, 2^n$, that satisfy two conditions.
+\end{remark}
+
+\begin{proof}
+    We consider bijection
+
+    \begin{align*}
+        G_1 & = (0, 1, 2, \ldots, 2^n-2, 2^n-1), \\
+        G_2 & = (1, 2, 3, \ldots, 2^n-1, 0), \\
+        G_3 & = (2, 3, 4, \ldots, 0, 1), \\
+        \cdots & = \cdots, \\
+        G_{2^n-1} & = (2^n-2, 2^n-1, 0, \ldots, 2^n-4, 2^n-3), \\
+        G_{2^n} & = (2^n-1, 0, 1, \ldots, 2^n-3, 2^n-2)
+    \end{align*}
+
+    Here, $G_i (j)$ represent value of $G_i (\bm{x})$, where $\bm{x}$ is vector corresponding to number $j$. For example, $G_3(0, \ldots, 1, 0) = G_3(2) = 4$.
+
+    Now we consider matrix $M$. I number the columns from $1, 2, 3, \ldots, n 2^n$.
+
+    1-st column is first bit of numbers $0, 1, 2, \ldots, 2^n-2, 2^n-1$. In other word \[ \underbrace{0, 0, \ldots, 0, 0}_{2^{n-1}}, \underbrace{1, 1, \ldots, 1, 1}_{2^{n-1}} \]
+
+    2-nd column is the second bit of numbers $0, 1, 2, \ldots, 2^n-2, 2^n-1$. In other word \[ \underbrace{0, \ldots, 0}_{2^{n-2}}, \underbrace{1, \ldots, 1}_{2^{n-2}}, \underbrace{0, \ldots, 0}_{2^{n-2}}, \underbrace{1, \ldots, 1}_{2^{n-2}} \]
+
+    Similarly, $n$-th column is the $n$-th bit of numbers $0, 1, 2, \ldots, 2^n-2, 2^n-1$. In other word \[ 0, 1, 0, 1, \ldots, 0, 1, 0, 1 \]
+
+    Now we consider following columns.
+
+    $(1+2^{n-1} \cdot n)$-th column is the first bit of numbers $2^{n-1}, 2^{n-1}+1, \ldots, 2^n-1, 0, 1, \ldots, 2^{n-1}-1$. In other word \[ \underbrace{1, 1, \ldots, 1, 1}_{2^{n-1}}, \underbrace{0, 0, \ldots, 0, 0}_{2^{n-1}} \]
+
+    $(2+2^{n-1} \cdot n)$-th column is the second bit of numbers $2^{n-1}, 2^{n-1}+1, \ldots, 2^n-1, 0, 1, \ldots, 2^{n-1}-1$. In other word \[ \underbrace{0, \ldots, 0}_{2^{n-2}}, \underbrace{1, \ldots, 1}_{2^{n-2}}, \underbrace{0, \ldots, 0}_{2^{n-2}}, \underbrace{1, \ldots, 1}_{2^{n-2}} \]
+
+    Similarly, $(n+2^{n-1} \cdot n)$-th column is the $n$-th bit of numbers $2^{n-1}, 2^{n-1}+1, \ldots, 2^n-1, 0, 1, \ldots, 2^{n-1}-1$. In other word \[ 0, 1, 0, 1, \ldots, 0, 1, 0, 1 \]
+
+    Now we already have $2n$ column functions. We need $2^{n/2}-2n$ more functions. Notice that $n=2^m$, then $2^{n/2} = 2^{2^{m-1}}$, so the number $2^{n/2}-2n$ is even. Next we will consider pair of column functions.
+
+    $(1+n)$-th column is first bit of numbers $1, 2, 3, \ldots, 2^{n-1}, 0$. In other word \[ \underbrace{0, 0, \ldots, 0, 0}_{2^{n-1}-1}, \underbrace{1, 1, \ldots, 1, 1}_{2^{n-1}}, 0 \] and its corresponding column function is $(1 + (2^{n-1}+1) \cdot n)$-th column.
+
+    $(1 + (2^{n-1} + 1) \cdot n)$-th column is the first bit of numbers $2^{n-1}+1, 2^{n-1}+2, \ldots, 2^n-1, 0, 1, \ldots, 2^{n-1}$. In other word \[ \underbrace{1, 1, \ldots, 1, 1}_{2^{n-1}-1}, \underbrace{0, 0, \ldots, 0, 0}_{2^{n-1}}, 1 \]
+
+    The reason why I choose this (and following) pair of column functions is to help us prove some property behind.
+
+    $(1 + 2n)$-th column is first bit of numbers $2, 3, 4, \ldots, 2^{n-1}, 0, 1$. In other word \[ \underbrace{0, 0, \ldots, 0, 0}_{2^{n-1}-2}, \underbrace{1, 1, \ldots, 1, 1}_{2^{n-1}}, 0, 0 \] and its corresponding column function is $(1 + (2^{n-1} + 2) \cdot)$-th column.
+
+    $(1 + (2^{n-1}+2) \cdot n)$-th column is the first bit of numbers $2^{n-1}+2, 2^{n-1}+3, \ldots, 0, 1, \ldots, 2^{n-1}, 2^{n-1}+1$. In other word \[ \underbrace{1, 1, \ldots, 1, 1}_{2^{n-1}-2}, \underbrace{0, 0, \ldots, 0, 0}_{2^{n-1}}, 1, 1 \]
+
+    Let $t = \dfrac{2^{n/2} - 2n}{2} = \dfrac{2^{n/2}}{2} - n$. Then we do this until get $(1 + tn)$-th column and $1 + (2^{n-1}+t) \cdot n$-th column is the last pair.
+
+    Now, let $f_i$ be
+
+    \begin{itemize}
+        \item $f_1$ is the 1-st column \[ f_1 = (\underbrace{0, 0, \ldots, 0, 0}_{2^{n-1}}, \underbrace{1, 1, \ldots, 1, 1}_{2^{n-1}}) \]
+        \item $f_2$ is the $(1 + 2^{n-1} \cdot n)$-th column \[ f_2 = (\underbrace{0, \ldots, 0}_{2^{n-2}}, \underbrace{1, \ldots, 1}_{2^{n-2}}, \underbrace{0, \ldots, 0}_{2^{n-2}}, \underbrace{1, \ldots, 1}_{2^{n-2}}) \]
+        \item for $i = 2, 3, 4, \ldots, n$, $f_{2i-1}$ is the $i$-th column and $f_{2i}$ is the $(i + 2^{n-1} \cdot n)$-th column \[ f_{2i-1} = f_{2i} = (\underbrace{0, \ldots, 0}_{2^{n-i}}, \underbrace{1, \ldots, 1}_{2^{n-i}}, \ldots, \underbrace{0, \ldots, 0}_{2^{n-i}}, \underbrace{1, \ldots, 1}_{2^{n-i}}) \]
+        \item for $i = n+1, \ldots, t$ we pair column functions as above
+    \end{itemize}
+
+    Now we have $2^{n/2}$ column functions. Let $f(f_1(\bm{x}), f_2(\bm{x}), \ldots, f_{2^{n/2}}(\bm{x})) = f(x_1, x_2, \ldots, x_{2^{n/2}}) = x_1 \cdot x_2 \cdots x_{2^{n/2}}$.
+
+    We can see that, by the choice of $f_1$ and $f_2$, the product is always zero. Therefore value of $f$ will always be zero, too. And there are $2^{n/2}$ operators, so we need $2^{n/2}-1$ multiplication modulo 2.
+\end{proof}
+
+Next, I will prove a property that allow us to find another tuple of vectorial one-to-one functions.
+
+In general, we consider $G_1: \FF_2^n \to \FF_2^n$. Let $GL(n, 2)$ is the general linear group. Recall that general linear group is group of invertible matrices size $n \times n$, whose elements is in $\{ 0, 1 \}$. For any $n$, this group contains $(2^n - 1) \cdot (2^n - 2) \cdots (2^n - 2^{n-1})$ elements.
+
+Now let $\bm{x}_0 = G_1(0, 0, \ldots, 0, 0)$, $\bm{x}_1 = G_1(0, 0, \ldots, 0, 1)$, ..., $\bm{x}_{2^n-2} = G_1(1, 1, \ldots, 1, 0)$, $\bm{x}_{2^n-1} = G_1(1, 1, \ldots, 1, 1)$. We consider map 
+
+\begin{equation}
+    G_1': \FF_2^n \to \FF_2^n, \quad \bm{x} \to \bm{x} \cdot A \oplus \bm{b}
+\end{equation}
+where $A$ is an element in $GL(n, 2)$ and $\bm{b}$ is vector in $\FF_2^n$. This map is an affine map, so it is a permutation, or in other word, one-to-one vectorial Boolean function.
+
+We see that $(\bm{x}_0 \cdot A \oplus \bm{b}) \oplus (\bm{x}_{2^{n-1}} \cdot A \oplus \bm{b}) = (\bm{x}_0 \oplus \bm{x}_{2^{n-1}}) \cdot A$. Because $A$ is an invertible matrix, so product $(\bm{x}_0 \oplus \bm{x}_{2^{n-1}}) \cdot A = \bm{0}$ can happend if and only if $\bm{x}_0 \equiv \bm{x}_{2^{n-1}}$. Therefore $\bm{x}_0 \neq \bm{x}_{2^{n-1}}$.
+
+Suppose that $\bm{x}_0$ is different from $\bm{x}_{2^{n-1}}$ at position $i$, $1 \leqslant i \leqslant n$. So from the choice of first $n$ column functions as above and their corresponding $n$ column functions from $(1+2^{n-1} \cdot n)$-th to $(n+2^{n-1} \cdot n)$-th columns, because the $i$-th is different so product $x_{2i-1} \cdot x_{2i} = 0$. This means that, same as above, product of function $f$ is always 0 and we need $2^{n/2}-1$ multiplication modulo 2.
+
+There are $(2^n - 1) \cdot (2^n - 2) \cdots (2^n - 2^{n-1})$ cases of matrix $A$, and $2^n$ cases of vector $\bm{b}$, in order to form affine map. So in total we can change $G_1$ to $G_1'$ with \[ 2^n \cdot (2^n - 1) \cdot (2^n - 2) \cdots (2^n - 2^{n-1}) \] different ways, and they all satisfy two conditions.
+
+We also need to notice that
+
+\begin{enumerate}
+    \item affine map $G_1$ to $G_1'$ must not be same with any other $G_2, \ldots, G_{2^n}$, which means $G_1' \neq G_i$, $i = 2, 3, \ldots, 2^n$.
+    \item we can apply this property for $G_2$, $G_3$, ..., $G_{2^n}$. As mentioned above, $G_i'$ must be different from $G_j$, where $i \neq j$.
+\end{enumerate}
+
+\begin{remark}
+    If $G_1$, $G_2$, ..., $G_{2^n}$ are vectorial one-to-one Boolean functions that satisfy two above conditions, then with any matrix $A$ in $GL(n, 2)$ and any vector $\bm{b} \in \FF_2^n$, the map \[ G_1': \FF_2^n \to \FF_2^n, \quad G_1(\bm{x}) \to G_1(\bm{x}) \cdot A \oplus \bm{b},\, \bm{x} \in \FF_2^n \] will also satisfy two conditions.
+
+    This means that $G_1'$, $G_2$, ..., $G_{2^n}$ are vectorial one-to-one Boolean functions that also satisfy two above conditions.
+\end{remark}
+
+\end{document}

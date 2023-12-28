@@ -42,18 +42,6 @@
       \field{isbn}{978-0-6151-7984-1}
       \field{title}{{Euclid's Elements of Geometry}}
     \endentry
-    \entry{MacTutorEuclid}{online}{}
-      \field{sortinit}{E}
-      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
-      \field{labeltitlesource}{title}
-      \field{title}{{Euclid of Alexandria}}
-      \verb{urlraw}
-      \verb https://mathshistory.st-andrews.ac.uk/Biographies/Euclid/
-      \endverb
-      \verb{url}
-      \verb https://mathshistory.st-andrews.ac.uk/Biographies/Euclid/
-      \endverb
-    \endentry
     \entry{HofJef-2014}{online}{}
       \name{author}{3}{}{%
         {{hash=c4c174b1abf76a48a5a282277d8a6831}{%
@@ -111,30 +99,6 @@
       \field{labeltitlesource}{title}
       \field{title}{{The First Six Books of the Elements of Euclid}}
       \field{year}{2007}
-    \endentry
-    \entry{MacTutorPythagoras}{online}{}
-      \field{sortinit}{P}
-      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
-      \field{labeltitlesource}{title}
-      \field{title}{{Pythagoras of Samos}}
-      \verb{urlraw}
-      \verb https://mathshistory.st-andrews.ac.uk/Biographies/Pythagoras/
-      \endverb
-      \verb{url}
-      \verb https://mathshistory.st-andrews.ac.uk/Biographies/Pythagoras/
-      \endverb
-    \endentry
-    \entry{MacTutorThales}{online}{}
-      \field{sortinit}{T}
-      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
-      \field{labeltitlesource}{title}
-      \field{title}{{Thales of Miletus}}
-      \verb{urlraw}
-      \verb https://mathshistory.st-andrews.ac.uk/Biographies/Thales/
-      \endverb
-      \verb{url}
-      \verb https://mathshistory.st-andrews.ac.uk/Biographies/Thales/
-      \endverb
     \endentry
   \enddatalist
 \endrefsection

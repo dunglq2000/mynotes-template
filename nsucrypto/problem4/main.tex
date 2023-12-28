@@ -1,0 +1,87 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc,vietnam}
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{bm}
+\usepackage{geometry}
+
+\newcommand{\FF}{\mathbb{F}}
+\geometry{left=2cm,top=2cm,right=2cm,bottom=2cm}
+
+\title{Problem 4. Column functions}
+\author{Dung Le Quoc}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Problem}
+
+Xét $2^n$ các hàm boolean vector phân biệt và là song ánh $G_i: \FF_2^n \to \FF_2^n$ với $i = 1, 2, \ldots, 2^n$.
+
+Với $n = 2^m, m \geq 5$ ta định nghĩa ma trận $M$ kích thước $2^n \times n 2^n$ như sau.
+
+Hàng thứ $i$, $i = 1, 2, \ldots, 2^n$, tạo bởi việc nối các giá trị $G_i(0, 0, \ldots, 0, 0)$, $G_i(0, 0, \ldots, 0, 1)$, ..., $G_i(1, 1, \ldots, 1, 1)$.
+
+Mỗi cột của ma trận $M$ có thể xem như một hàm boolean $n$ biến, ta gọi đó là \textit{column function}. Như vậy có $n 2^n$ column function theo ma trận $M$.
+
+Khi $m \geq 5$, giả thuyết đặt ra là, với mọi cách tạo ma trận $M$ như vậy, ta có thể tìm $2^{n/2}$ column function $f_1, f_2, \ldots, f_{2^{n/2}}$ thỏa mãn hai điều kiện sau:
+
+\begin{itemize}
+    \item với mọi vector $\bm{x} \in \FF_2^n$ ta có \[ f(f_1(\bm{x}), f_2(\bm{x}), \ldots, f_{2^{n/2}}(\bm{x})) = 0 \]
+    \item với mọi vector $\bm{y} \in \FF_2^{2^{n/2}}$ thì giá trị $f(\bm{y})$ được tính với không quá $2^{n/2}$ toán tử cộng và nhân modulo 2.
+\end{itemize}
+
+\section{Solution}
+
+Mình sẽ chứng minh rằng nếu một bộ $2^n$ các hàm $G_i$ thỏa mãn giả thuyết đề bài thì ta có thể sinh ra các hàm $G_i'$ cũng thỏa mãn hai tính chất trên. Mục tiêu của cách chứng minh này là, với một bộ $2^n$ ban đầu thỏa mãn, ta sẽ sinh ra tất cả tổ hợp $2^n$ hàm bất kì trong số $(2^n)!$ song ánh và mỗi tổ hợp đó đều thỏa mãn giả thuyết.
+
+Đầu tiên, với mọi $n=2^m$, luôn tồn tại $2^n$ hàm $G_i$ thỏa mãn hai tính chất trên.
+
+\begin{proof}
+    Xét tập các song ánh 
+    \begin{align*}
+        G_1 & = (0, 1, \ldots, 2^n-2, 2^n-1), \\
+        G_2 & = (1, 2, \ldots, 2^n-1, 0), \\
+        G_3 & = (2, 3, \ldots, 0, 1), \\
+        \cdots & = \cdots, \\
+        G_{2^n-1} & = (2^n-2, 2^n-1, \ldots, 2^n-4, 2^n-3), \\
+        G_{2^n} & = (2^n-1, 0, \ldots, 2^n-3, 2^n-2)
+    \end{align*}
+
+    Theo đó, trong ma trận $M$, cột 1 là bit đầu của các số $0, 1, 2, \ldots, 2^n-2, 2^n-1$, nói cách khác là \[ \underbrace{0, 0, \ldots, 0, 0}_{2^{n} / 2}, \underbrace{1, 1, \ldots, 1, 1}_{2^{n} / 2} \]
+
+    Cột thứ $1+n$ là bit đầu của các số $1, 2, 3, \ldots, 2^n-1, 0$, nói cách khác là \[ \underbrace{0, 0, \ldots, 0, 0}_{2^n/2-1}, \underbrace{1, 1, \ldots, 1, 1}_{2^n/2}, 0 \]
+
+    Cột thứ $1+2n$ là bit đầu của các số $2, 3, 4, \ldots, 0, 1$, nói cách khác là \[ \underbrace{0, 0, \ldots, 0, 0}_{2^n/2 - 2}, \underbrace{1, 1, \ldots, 1, 1}_{2^n/2}, 0, 0 \]
+
+    %Cứ như vậy tới cột thứ $1+(2^{n/2}-2)n$ là bit đầu của các số $2^{n/2}-2, 2^{n/2}-1, \ldots, 2^{n/2}-4, 2^{n/2}-3$, nói cách khác là \[ \underbrace{0, 0, \ldots, 0, 0}_{2^n/2 - (2^{n/2}-2)}, \underbrace{1, 1, \ldots, 1, 1}_{2^n/2}, \underbrace{0, 0, \ldots, 0, 0}_{2^{n/2}-2} \]
+
+    Cột thứ $1 + (2^n/2)n$ là bit đầu của các số $2^n/2, 2^n/2+1, \ldots, 2^n/2-2,2^n/2-1$, nói cách khác là \[ \underbrace{1, 1, \ldots, 1, 1}_{2^n/2}, \underbrace{0, 0, \ldots, 0, 0}_{2^n/2} \]
+
+    Cột thứ $1 + (2^n/2+1)n$ là bit đầu của các số $2^n/2+1, 2^n/2+2, \ldots, 2^n/2-1, 2^n/2$, nói cách khác là \[ \underbrace{1, 1, \ldots, 1, 1}_{2^n/2-1}, \underbrace{0, 0, \ldots, 0, 0}_{2^n/2}, 1 \]
+
+    Cột thứ $1 + (2^n/2+2)n$ là bit đầu của các số $2^n/2+2, 2^n/2+3, \ldots, 2^n/2, 2^n/2+1$, nói cách khác là \[\underbrace{1, 1, \ldots, 1, 1}_{2^n/2-2}, \underbrace{0, 0, \ldots, 0, 0}_{2^n/2}, 1, 1 \]
+    
+    Theo đó, ta bắt cặp cột 1 và cột $1 + (2^n/2)n$ (các bit của chúng đối nhau), tương tự là cột $1+n$ với cột $1+(2^n/2+1)n$, cột $1+2n$ với cột $1 + (2^n/2+2)n$, ..., cột $1+(2^{n/2}-1)n$ và cột $1+(2^n/2+2^{n/2}-1)n$.
+
+    Với các cột như vậy ta định nghĩa hàm $f(x_1, \ldots, x_{2^{n/2}}) = x_1 \cdot x_2 \cdots x_n$. Ta thấy rằng $x_i$ luôn là đối của bit $x_{i+2^{n/2}/2}$ nên giá trị hàm $f$ luôn luôn bằng 0. Thêm nữa, do có $2^{n/2}$ hạng tử nên có $2^{n/2}-1$ phép nhân cần thiết để tính giá trị hàm $f$.
+
+    Như vậy ta đã chứng minh được rằng với mọi $n$ ta luôn chọn được $2^n$ hàm boolean vector thỏa mãn hai tính chất.
+\end{proof}
+
+Tiếp theo, với mỗi đoạn $n$ bit của $G_1$, ứng với $G_1(0, 0, \ldots, 0, 0)$, $G_1(0, 0, \ldots, 0, 1)$, ..., $G_1(1, 1, \ldots, 1, 0)$ và $G_1(1, 1, \ldots, 1, 1)$, ta sẽ biến đổi theo general linear group. Nghĩa là \[ G_1(\bm{x}) \to G_1(\bm{x}) \cdot A \oplus \bm{b} \] với $A$ là ma trận thuộc $GL$ (ma trận có định thức bằng 1), và $\bm{b}$ là vector thuộc $\FF_2^n$.
+
+Ở bên trên khi chọn các hàm boolean vector $G_i$, ta xét các cột 1, 2, ..., $1 + (2^{n/2}-1)n$, tương ứng (đối bit) là cột $1 + (2^n/2)n$, $1 + (2^n/2+1)$, ..., $1 + (2^n/2+2^{n/2}-1)n$. Tương ứng bây giờ ta chỉ cần xem xét bit đầu của $G_1(\bm{x}) \cdot A \oplus \bm{b}$ là đủ.
+
+Ta chọn cột 1 và cột $1 + (2^n/2)n$ là để các bit đối nhau. Nếu xét cột 1 là bit đầu của vector $\bm{x} = G_1 (0, 0, \ldots, 0, 0) \in \FF_2^n$, thì cột $(1 + (2^n/2)n)$ là bit đầu của vector $\bm{x}' = G_1 (0, 0, \ldots, 0, 0) \oplus (1, 0, \ldots, 0, 0) = \bm{x} \oplus (1, 0, \ldots, 0, 0)$.
+
+Đặt $A = (a_1^T, a_2^T, \ldots, a_n^T)$ với $a_i^T$ là các cột của ma trận $A$, và $\bm{b} = (b_1, b_2, \ldots, b_n)$ thì bit đầu sau khi biến đổi $\bm{x} \cdot A \oplus \bm{b}$ là $\langle G_1 (\bm{x}), a_1^T \rangle \oplus b_1$.
+
+Tương tự, bit đầu của $\bm{x}' \cdot A \oplus \bm{b}$ là $\langle \bm{x}', a_1^T \rangle \oplus b_1$.
+
+Ta có \[ \langle \bm{x}', a_1^T \rangle \oplus b_1 = \langle \bm{x} \oplus (1, 0, \ldots, 0, 0), a_1^T \rangle \oplus b_1 = \langle \bm{x}, a_1^T \rangle \oplus \langle (1, 0, \ldots, 0, 0), a_1^T \rangle \oplus b_1 \]
+
+Tương đương với $\langle \bm{x}', a_1^T \rangle \oplus \langle \bm{x}, a_1^T \rangle = \langle (1, 0, \ldots, 0, 0), a_1^T \rangle \oplus b_1$. Gọi $a$ là bit đầu tiên của $a_1^T$. Như vậy $\bm{x}$ và $\bm{x}'$ có bit đầu trái dấu nhau qua tích vô hướng với $a_1^T$ nếu $a = 0, b_1 = 1$ hoặc $a_1 = 1, b_1 = 0$.
+
+\end{document}

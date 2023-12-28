@@ -1,0 +1,88 @@
+\chapter{Lattice-based crypto}
+
+\section{Introduction}
+
+\begin{definition}[Lattice]
+    Xét các vector thuộc $\RR^n$ độc lập tuyến tính $\{ \bm{v}_1, \ldots, \bm{v}_d \}$. \textbf{Lattice} là tập
+    \begin{equation}
+        L = \{ a_1 \bm{v}_1 + \ldots + a_d \bm{v}_d : a_i \in \ZZ \}
+    \end{equation}
+\end{definition}
+
+Tương tự với định nghĩa không gian vector, một \textbf{tập sinh} (hay \textbf{basis}) là bất cứ tập hợp các vector độc lập tuyến tính mà sinh ra $L$.
+
+Hai tập sinh luôn có cùng số phần tử. Khi đó, số vector trong tập sinh được gọi là \textbf{số chiều} (hay \textbf{dimension}).
+
+Giả sử $\{ \bm{v}_1, \bm{v}_2, \ldots, \bm{v}_d \}$ là một cơ sở của $L$. Tương tự, $\{ \bm{w}_1, \bm{w}_2, \ldots, \bm{w}_d \}$ là một cơ sở khác của $L$.
+
+Ta có thể viết mỗi $\bm{w}_i$ là tổ hợp tuyến tính của các vector $\bm{v}$ như sau
+\begin{align*}
+    \bm{w}_1 & = a_{11} \bm{v}_1 + a_{12} \bm{v}_2 + \ldots + a_{1d} \bm{v}_d \\
+    \bm{w}_2 & = a_{21} \bm{v}_1 + a_{22} \bm{v}_2 + \ldots + a_{2d} \bm{v}_d \\
+    \vdots & \\
+    \bm{w}_d & = a_{d1} \bm{v}_1 + a_{d2} \bm{v}_2 + \ldots + a_{dd} \bm{v}_d
+\end{align*}
+
+Khi đó, nếu viết các vector $\bm{w}_i$ thành hàng của ma trận $\bm{W}$ và $\bm{v}_j$ thành hàng của ma trận $\bm{V}$ thì biểu diễn trên tương đương với
+\begin{equation*}
+    \bm{W} = \begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1d} \\
+        a_{21} & a_{22} & \cdots & a_{2d} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{d1} & a_{d2} & \cdots & a_{dd}
+    \end{pmatrix} \cdot \bm{V}
+\end{equation*}
+
+Đặt
+\begin{equation*}
+    \bm{A} = \begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1d} \\
+        a_{21} & a_{22} & \cdots & a_{2d} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{d1} & a_{d2} & \cdots & a_{dd}
+    \end{pmatrix}
+\end{equation*}
+
+Do $\bm{W}$ và $\bm{V}$ là các cơ sở của $L$ nên nếu các vector $\bm{w}_i$ có thể biểu diễn qua các vector $\bm{v}_j$ thì ngược lại, các vector $\bm{v}_j$ cũng có thể được biểu diễn qua các vector $\bm{w}_i$.
+
+Suy ra ma trận $\bm{A}$ là ma trận khả nghịch. Do $a_{ij} \in \ZZ$ theo định nghĩa lattice, định thức của $\bm{A} \in \ZZ$.
+
+Hơn nữa, vì
+\begin{equation*}
+    I = \bm{A} \cdot \bm{A}^{-1} \Rightarrow 1 = \det (\bm{A}) \cdot \det (\bm{A}^{-1})
+\end{equation*}
+nên $\det(\bm{A}) = \pm 1$.
+
+\section{Thuật toán GGH}
+
+Phần này tham khảo trong \cite{HofJef-2014}
+
+Trong thuật toán GGH, ta chọn số nguyên tố $q$ làm public parameter.
+
+Sau đó chọn hai số $f$ và $g$ làm secret key. Hai số này phải thỏa mãn các điều kiện \[ f < \sqrt{q/2}, \quad \sqrt{q/4} < g < \sqrt{q/2}, \quad \gcd(f, qg) = 1 \]
+
+Tính $h = f^{-1} g \pmod q$. Khi đó public key là $h$.
+
+\textbf{Encryption}. Để encrypt message $m$ với số random $r$ thỏa mãn \[ 0 < m < \sqrt{q/4}, \quad 0 < r < \sqrt{q/2} \]
+
+Ta tính $e = rh + m \pmod q$ là ciphertext với $0 < e < q$.
+
+\textbf{Decryption}. Để decrypt ciphertext $e$ ta tính \[ a = fe \pmod q, \quad b = f^{-1} a \pmod g \]
+
+Lưu ý $f^{-1}$ là nghịch đảo modulo $g$. Khi đó $b \equiv m$ là message ban đầu.
+
+\begin{proof}
+    Để chứng minh rằng số $b$ sau khi tính toán bằng chính xác $m$ ban đầu ta cần xem xét điều kiện của secret key và public key.
+
+    Đầu tiên ta có \[ a \equiv fe \equiv f(rh + m) = f(r f^{-1} g + m) = rg + fm \pmod q \]
+
+    Từ điều kiện của $f$, $g$, $r$ và $m$ ta có \[ rg + fm < \sqrt{\dfrac{q}{2}} \cdot \sqrt{\dfrac{q}{2}} + \sqrt{\dfrac{q}{2}} \cdot \sqrt{\dfrac{q}{4}} < q \]
+
+    Nói cách khác $rg + fm$ giữ nguyên giá trị trong phép modulo $q$, hay $a \equiv rg + fm$.
+
+    Suy ra $b = f^{-1} a = f^{-1} (rg + fm) = m \pmod g$ (giá trị $a$ không thay đổi khi chuyển từ modulo $q$ sang modulo $g$). Do $0 < m < \sqrt{q/4}$ và $\sqrt{q/4} < g < \sqrt{q/2}$ nên $m < g$. Nói cách khác $b$ bằng đúng $m$ ban đầu.
+\end{proof}
+
+Để tấn công hệ mật mã này ta xây dựng lattice. Để ý rằng $h = f^{-1} g \pmod q$, hay $fh + kq = g$ với $k \in \ZZ$.
+
+Ta thấy rằng $f \cdot (h, 1) + k \cdot (q, 0) = (g, f)$. Như vậy lattice gồm hai vector $(h, 1)$ và $(q, 0)$. Thuật toán tối giản Gauss sẽ hoạt động trong trường hợp này (số chiều bằng 2).
