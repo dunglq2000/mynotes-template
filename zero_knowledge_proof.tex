@@ -1,0 +1,58 @@
+\chapter{Zero Knowledge Proofs}
+
+\section{Zero knowledge proof}
+
+ZKP là một protocol mật mã cho phép một bên thuyết phục bên còn lại rằng họ sở hữu những thông tin quan trọng mà không để lộ bất cứ thông tin nào về việc chứng minh.
+
+Khi đó, bên thuyết phục được gọi là \textbf{prover}, bên đưa ra thử thách để prover chứng minh bản thân gọi là \textbf{challenger} hoặc \textbf{verifier}.
+
+Mỗi protocol zero-knowledge phải đảm bảo ba tính chất sau:
+
+\begin{itemize}
+    \item Completeness (tính đầy đủ): nếu mệnh đề đúng thì verifier có thể xác nhận và bị thuyết phục bởi prover;
+    \item Soundness: nếu mệnh đề sai thì prover không thể thuyết phục verifier rằng nó đúng;
+    \item Zero-knowlegde: verifier không biết gì về tính đúng sai của mệnh đề.
+\end{itemize}
+
+Lấy một ví dụ đơn giản để xem cách hoạt động của ZKP là protocol QR\footnote{\url{https://www.cs.princeton.edu/courses/archive/fall07/cos433/lec15.pdf}}.
+
+\begin{example}
+    Mệnh đề cần kiểm tra: $x$ là thặng dư chính phương modulo $n$.
+
+    Public input: $x$ và $n$.
+
+    Prover's (Alice) private input: số $w$ sao cho $x = w^2 \pmod n$.
+
+    Prover $\to$ Verifier: Alice chọn ngẫu nhiên số $u$ từ $\ZZ_n^*$ và gửi Bob $y = u^2 \pmod n$.
+
+    Verifier $\to$ Prover: Bob chọn $b \in \{ 0, 1 \}$.
+
+    Prover $\to$ Verifier: Nếu $b = 0$ thì Alice gửi $u$ cho Bob. Nếu $b = 1$ thì Alice gửi $w \cdot u \pmod n$.
+
+    Verification: Gọi $z$ là số được gửi bởi ALice. Bob \textbf{chấp nhận} proof nếu $b = 0$ và $z^2 = y \pmod n$. Nếu $b = 1$ thì Bob chấp nhận nếu $z^2 = xy \pmod n$.
+\end{example}
+
+Bob chỉ biết $x$ và $n$ trong khi Alice biết căn bậc hai của $x$ modulo $n$ (thậm chí factor của $n = p \cdot q$ trong đó $p$ và $q$ là các số nguyên tố).
+
+Ở đây Alice muốn thuyết phục Bob rằng mình biết căn bậc hai của $x$ (thậm chí factor của $n$).
+
+Nếu Alice thật sự biết căn bậc hai của $x$ là $w$, hay $x = w^2 \pmod n$ thì Alice cần chứng minh cho Bob thấy.
+
+1. Alice chọn số random $u \in \ZZ_n^*$ và gửi $y = u^2 \pmod n$ cho Bob.
+
+2. Bob chọn ngẫu nhiên $b \in \{ 0, 1 \}$ và gửi cho Alice.
+
+3a. Nếu $b = 0$ thì Alice cần tính căn bậc hai của $y$ modulo $n$ và gửi cho Bob. Đó chính là $u$.
+
+3b. Nếu $b = 1$ thì Alice cần tính căn bậc hai của $xy$ ($x$ public và $y$ được gửi trước đó). Ta có $xy = w^2 u^2 \pmod n$ nên Alice cần gửi $wu$. Nếu Alice thật sự biết căn bậc hai của $x$ thì có thể tính được $wu$.
+
+Bob có thể kiểm tra số $z$ được gửi tới có thỏa mãn $z^2 = y \pmod n$ (nếu $b = 0$) hoặc thỏa mãn $z^2 = xy \pmod n$ (nếu $b = 1$) hay không.
+
+Trong ví dụ trên, ta thấy các tính chất của ZKP:
+
+\begin{itemize}
+    \item Completeness: khi $x$ thực sự là số chính phương modulo $n$ và Alice có thể đưa số $w$ sao cho $x = w^2 \pmod n$ thì Bob sẽ chấp nhận với xác suất bằng 1. Điều này khá dễ thấy;
+    \item Soundness: nếu $x$ không là số chính phương modulo $n$ thì Bob có thể bác bỏ chứng minh của Alice với xác suất ít nhất $1/2$ (trong trường hợp $b=1$). Trong khi đó $b=0$ thì vẫn có "cơ may" đúng;
+    \item Zero knowledge: Bob không biết bất cứ thông tin nào liên quan đến Alice nhưng Alice có thể thuyết phục Bob tin rằng mình biết căn bậc hai của $x$. Zero knowledge có nghĩa là trong suốt quá trình Bob không biết thêm thông tin gì hơn từ Alice.
+\end{itemize}
+

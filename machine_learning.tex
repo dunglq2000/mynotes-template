@@ -10,9 +10,21 @@ Mục tiêu là xây dựng hàm số $\hat{y} = f(x_1, x_2, \ldots, x_d)$ sao c
 
 Để hàm số đạt giá trị nhỏ nhất (hoặc lớn nhất) ta tìm cực trị của hàm số và khảo sát. Tuy nhiên không phải hàm số nào cũng đạo hàm được. Một cách tiếp cận đơn giản là sử dụng hàm tuyến tính, dễ xây dựng và luôn khả vi. Ta đặt \[ \hat{y} = f(x_1, x_2, \ldots, x_d) = w_0 + w_1 x_1 + w_2 x_2 + \ldots + w_d x_d \]
 
-Lúc này, hàm mất mát ở trên có dạng \[ \mathcal{L} = \sum_{i=1}^N \lVert y_i - (w_0 + w_1 x_{i1} + w_2 x_{i2} + \ldots + w_d x_{id} \rVert^2 \]
+Lúc này, hàm mất mát ở trên có dạng
+\begin{equation*}
+    \mathcal{L} = \sum_{i=1}^N \lVert y_i - (w_0 + w_1 x_{i1} + w_2 x_{i2} + \ldots + w_d x_{id}) \rVert^2
+\end{equation*}
 
-Bình phương chuẩn Euclid chính là bình phương của vector. Do đó dưới dấu tổng là các hàm số bình phương. Khi đạo hàm riêng theo $w_j$ ta có \[ \dfrac{\partial \mathcal{L}}{\partial w_j} = \sum_{i=1}^N 2 x_{ij} (y_i - (w_0 + w_1 x_{i1} + w_2 x_{i2} + \ldots + w_d x_{id})) \] với $1 \leq j \leq d$. Với $j = 0$ có chút khác biệt, $\dfrac{\partial \mathcal{L}}{\partial w_0} = \sum_{i=1}^N 2 (y_i - (w_0 + w_1 x_{i1} + \ldots + w_d x_{id}))$.
+Bình phương chuẩn Euclid chính là bình phương của vector. Do đó dưới dấu tổng là các hàm số bình phương. Khi đạo hàm riêng theo $w_j$ ta có
+\begin{equation*}
+    \dfrac{\partial \mathcal{L}}{\partial w_j} = \sum_{i=1}^N 2 x_{ij} \cdot \left[ y_i - (w_0 + w_1 x_{i1} + w_2 x_{i2} + \ldots + w_d x_{id}) \right]
+\end{equation*}
+với $1 \leqslant j \leqslant d$. 
+
+Với $j = 0$ có chút khác biệt:
+\begin{equation*}
+    \dfrac{\partial \mathcal{L}}{\partial w_0} = \sum_{i=1}^N 2 \cdot \left[ y_i - (w_0 + w_1 x_{i1} + \ldots + w_d x_{id}) \right]
+\end{equation*}
 
 Ta cho các đạo hàm riêng $\dfrac{\partial \mathcal{L}}{\partial w_j}$ bằng 0 thì được
 \begin{align*}

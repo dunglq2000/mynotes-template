@@ -1,0 +1,60 @@
+\chapter{NSUCRYPTO 2021}
+
+\section*{Problem 9. 2021-bit key}
+\addcontentsline{toc}{section}{Problem 9. 2021-bit key}
+
+\subsection*{Đề bài}
+
+Một generator dùng pseudo-random để sinh ra một dãy bit (0 hoặc 1) từng bước một. Để bắt đầu generator, một người phải trả 1 \textit{nsucoin} và generator sẽ sinh ngẫu nhiên một bit (dãy bit độ dài bằng 1). Khi đó, với một dãy $S$ được sinh có độ dài $l$, $l \geqslant 1$, một trong các động tác sau được thực hiện:
+
+\begin{enumerate}
+    \item Một dãy ngẫu nhiên độ dài 4 được thêm vào $S$, khi đó dãy $S'$ có độ dài $l + 4$. Việc này tốn 2 \textit{nsucoin}.
+    \item Một dãy ngẫu nhiên độ dài $2l$ được thêm vào $S$, khi đó dãy $S'$ có độ dài $3l$. Việc này tốn 5 \textit{nsucoin}.
+\end{enumerate}
+
+Bob cần sinh độ dài chính xác 2021 bit. Số lượng \textit{nsucoin} nhỏ nhất để thực hiện việc này là bao nhiêu?
+
+\subsection*{Giải}
+
+Dễ thấy rằng khi $l > 2$ thì sử dụng động tác thứ hai khiến độ dài dãy tăng lên rất nhanh như lại tốn thêm coin.
+
+Như vậy khi $l > 6$ mình sẽ chứng minh rằng động tác thứ hai hiệu quả hơn.
+
+\begin{proof}
+    Để ý rằng nếu mình sử dụng động tác thứ nhất ba lần liên tiếp, khi đó từ dãy có độ dài $l$ mình thu được dãy mới độ dài $l + 4 + 4 + 4 = l + 12$ và việc này tốn 6 \textit{nsucoin}.
+
+    Trong khi đó, nếu mình dùng động tác thứ hai một lần thì từ dãy độ dài $l$ mình thu được dãy độ dài $3l$ và tốn 5 \textit{nsucoin}.
+
+    Mình muốn $3l > l + 12$ vì mình đã có $3l$ tương ứng 5 \textit{nsucoin} và $l + 12$ tương ứng 6 \textit{nsucoin}. Như vậy $l > 6$.
+
+    Chiến thuật lúc này là mình sẽ dùng động tác thứ hai để triple độ dài bất cứ lúc nào có thể. Nói cách khác là khi đi ngược từ 2021 về 0 thì khi nào số chia hết cho 3, mình sẽ dùng động tác sau, không thì dùng động tác đầu.
+
+    Quá trình sẽ diễn ra theo bảng \ref{nsucrypto21:p9}.
+
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            $2021 - 4 = 2017$ & 2 \textit{nsucoin} \\ \hline
+            $2017 - 4 = 2013$ & 2 \textit{nsucoin} \\ \hline
+            $2013 / 3 = 671$ & 5 \textit{nsucoin} \\ \hline
+            $671 - 4 = 667$ & 2 \textit{nsucoin} \\ \hline
+            $667 - 4 = 663$ & 2 \textit{nsucoin} \\ \hline
+            $663 / 3 = 221$ & 5 \textit{nsucoin} \\ \hline
+            $221 - 4 = 217$ & 2 \textit{nsucoin} \\ \hline
+            $217 - 4 = 213$ & 2 \textit{nsucoin} \\ \hline
+            $213 / 3 = 71$ & 5 \textit{nsucoin} \\ \hline
+            $71 - 4 = 67$ & 2 \textit{nsucoin} \\ \hline
+            $67 - 4 = 63$ & 2 \textit{nsucoin} \\ \hline
+            $63 / 3 = 21$ & 5 \textit{nsucoin} \\ \hline
+        \end{tabular}
+        \caption{Tính nsucoin}
+        \label{nsucrypto21:p9}
+    \end{table}
+
+    Từ 21 trở đi không thể áp dụng quy tắc trên nữa vì theo chứng minh trên chiến thuật chỉ hiệu quả với $l > 6$.
+
+    Mình khai triển $21 = 1 + 4 + 4 + 4 + 4 + 4$, thực hiện 4 phép trừ (động tác đầu) tốn $5 \cdot 2 = 10$ \textit{nsucoin} và trừ 1 tốn 1 \textit{nsucoin}.
+
+    Như vậy tổng số \textit{nsucoin} nhỏ nhất cần là 47.
+\end{proof}

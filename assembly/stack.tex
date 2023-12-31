@@ -1,0 +1,136 @@
+\documentclass[tikz]{standalone}
+
+\input{../figure_config.tex}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix, positioning, calc, calligraphy, decorations.pathreplacing}
+
+\begin{document}
+\begin{tikzpicture}
+    \matrix [
+        matrix of nodes,
+        nodes={rectangle,draw, minimum width=2cm, minimum height=0.75cm, align=center},
+        %row 6/.style={nodes={rectangle, draw, minimum width=2cm, minimum height=1cm}}
+    ] (main) 
+    {
+        \node (d) {d}; \\
+        \node (c) {c}; \\
+        \node (b) {b}; \\
+        \node (a) {a}; \\
+    };
+    \draw [->, thick] ($(d.north west) + (-2em, 0)$) -- node [left=1em] {ebp} ($(d.north west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(d.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0x4} ($(d.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(c.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0x8} ($(c.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(b.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0xc} ($(b.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(a.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0x10} ($(a.south west) + (-0.5em, 0)$);
+
+    \draw [decorate, decoration = {brace, amplitude=0.5em, raise=0.25em}] (d.north east) -- node [midway, right=1em] {\texttt{main} stack frame} (a.south east);
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \matrix [
+        matrix of nodes,
+        nodes={rectangle,draw, minimum width=2cm, minimum height=0.75cm, align=center},
+        %row 6/.style={nodes={rectangle, draw, minimum width=2cm, minimum height=1cm}}
+    ] (main) 
+    {
+        \node (d) {d}; \\
+        \node (c) {c}; \\
+        \node (b) {b}; \\
+        \node (a) {a}; \\
+        \node (a4) {4}; \\
+        \node {}; \\
+        \node (square-ebp) {old epb}; \\
+    };
+
+    \draw [->, thick] ($(d.north west) + (-2em, 0)$) -- node [left=1em] {ebp} ($(d.north west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(d.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0x4} ($(d.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(c.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0x8} ($(c.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(b.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0xc} ($(b.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(a.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0x10} ($(a.south west) + (-0.5em, 0)$);
+
+    \draw [decorate, decoration = {brace, amplitude=0.5em, raise=0.25em}] (d.north east) -- node [midway, right=1em] {\texttt{main} stack frame} (a.south east);
+
+    \draw [->, thick] ($(a4.east) + (2em, 0)$) -- node [right=1em] {push \texttt{a} to stak} ($(a4.east) + (0.5em, 0)$);
+
+    \draw [->, thick] ($(a4.south west) + (-2em, 0)$) -- node [left=1em] {(\texttt{square}) epb+0x8} ($(a4.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(square-ebp.south west) + (-2em, 0)$) -- node [left=1em] {(\texttt{square}) epb} ($(square-ebp.south west) + (-0.5em, 0)$);
+
+    \draw [decorate, decoration = {brace, amplitude=0.5em, raise=0.25em}] (a4.south east) -- node [midway, right=1em] {\texttt{square} stack frame} (square-ebp.south east);
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \matrix [
+        matrix of nodes,
+        nodes={rectangle,draw, minimum width=2cm, minimum height=0.75cm, align=center},
+        %row 6/.style={nodes={rectangle, draw, minimum width=2cm, minimum height=1cm}}
+    ] (main) 
+    {
+        \node (d) {d}; \\
+        \node (c) {c}; \\
+        \node (b) {b}; \\
+        \node (a) {a}; \\
+        \node (b4) {8}; \\
+        \node {}; \\
+        \node (cube-ebp) {old epb}; \\
+    };
+
+    \draw [->, thick] ($(d.north west) + (-2em, 0)$) -- node [left=1em] {ebp} ($(d.north west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(d.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0x4} ($(d.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(c.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0x8} ($(c.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(b.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0xc} ($(b.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(a.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0x10} ($(a.south west) + (-0.5em, 0)$);
+
+    \draw [decorate, decoration = {brace, amplitude=0.5em, raise=0.25em}] (d.north east) -- node [midway, right=1em] {\texttt{main} stack frame} (a.south east);
+
+    \draw [->, thick] ($(b4.east) + (2em, 0)$) -- node [right=1em] {push \texttt{b} to stak} ($(b4.east) + (0.5em, 0)$);
+
+    \draw [->, thick] ($(b4.south west) + (-2em, 0)$) -- node [left=1em] {(\texttt{cube}) epb+0x8} ($(b4.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(cube-ebp.south west) + (-2em, 0)$) -- node [left=1em] {(\texttt{cube}) epb} ($(cube-ebp.south west) + (-0.5em, 0)$);
+
+    \draw [decorate, decoration = {brace, amplitude=0.5em, raise=0.25em}] (b4.south east) -- node [midway, right=1em] {\texttt{cube} stack frame} (cube-ebp.south east);
+\end{tikzpicture}
+
+\begin{tikzpicture}
+    \matrix [
+        matrix of nodes,
+        nodes={rectangle,draw, minimum width=2cm, minimum height=0.75cm, align=center},
+        %row 6/.style={nodes={rectangle, draw, minimum width=2cm, minimum height=1cm}}
+    ] (main) 
+    {
+        \node (d) {d}; \\
+        \node (c) {c}; \\
+        \node (b) {b}; \\
+        \node (a) {a}; \\
+        \node (b4) {8}; \\
+        \node {}; \\
+        \node (cube-ebp) {old ebp}; \\
+        \node (cube-8) {8}; \\
+        \node {}; \\
+        \node (square-ebp) {old ebp}; \\
+    };
+
+    \draw [->, thick] ($(d.north west) + (-2em, 0)$) -- node [left=1em] {ebp} ($(d.north west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(d.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0x4} ($(d.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(c.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0x8} ($(c.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(b.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0xc} ($(b.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(a.south west) + (-2em, 0)$) -- node [left=1em] {ebp-0x10} ($(a.south west) + (-0.5em, 0)$);
+
+    \draw [decorate, decoration = {brace, amplitude=0.5em, raise=0.25em}] (d.north east) -- node [midway, right=1em] {\texttt{main} stack frame} (a.south east);
+
+    \draw [->, thick] ($(b4.east) + (2em, 0)$) -- node [right=1em] {push \texttt{b} to stak} ($(b4.east) + (0.5em, 0)$);
+
+    \draw [->, thick] ($(b4.south west) + (-2em, 0)$) -- node [left=1em] {(\texttt{cube}) ebp+0x8} ($(b4.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(cube-ebp.south west) + (-2em, 0)$) -- node [left=1em] {(\texttt{cube}) ebp} ($(cube-ebp.south west) + (-0.5em, 0)$);
+
+    \draw [decorate, decoration = {brace, amplitude=0.5em, raise=0.25em}] (b4.south east) -- node [midway, right=1em] {\texttt{cube} stack frame} (cube-ebp.south east);
+
+    \draw [->, thick] ($(cube-8.east) + (2em, 0)$) -- node [right=1em] {push (\texttt{cube}) ebp+0x8 to stak} ($(cube-8.east) + (0.5em, 0)$);
+
+    \draw [->, thick] ($(cube-8.south west) + (-2em, 0)$) -- node [left=1em] {(\texttt{square}) ebp+0x8} ($(cube-8.south west) + (-0.5em, 0)$);
+    \draw [->, thick] ($(square-ebp.south west) + (-2em, 0)$) -- node [left=1em] {(\texttt{square}) ebp} ($(square-ebp.south west) + (-0.5em, 0)$);
+
+    \draw [decorate, decoration = {brace, amplitude=0.5em, raise=0.25em}] (cube-8.south east) -- node [midway, right=1em] {\texttt{square} stack frame} (square-ebp.south east);
+\end{tikzpicture}
+
+\end{document}

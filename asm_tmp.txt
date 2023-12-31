@@ -1,0 +1,607 @@
+
+\subsection*{Heap}
+
+Heap là 1 vùng nhớ có được từ việc cấp phát động. Trái ngược với stack: các biến được nạp vào stack khi chạy và bị hủy (lấy ra khỏi stack) khi hàm kết thúc, thì heap là vùng nhớ không theo cấu trúc vào sau ra trước mà là 1 thành phần ở bên ngoài được cấp phát bởi hệ điều hành.
+
+Khi sử dụng heap, ta cần khai báo 1 biến con trỏ để lưu địa chỉ của thành phần đầu tiên trong vùng nhớ heap mà ta muốn sử dụng. Do biến con trỏ này được khai báo trong main nên nó cũng là 1 biến nằm trong stack. 
+
+%\includegraphics[scale=0.7]{stackheap/h1.PNG}
+
+Điểm khác nhau khi khai báo 1 mảng int a[100] với việc int *a = new int[100] là khi khai báo tĩnh, 100 biến kiểu int được nạp vào stack, nhưng khi dùng con trỏ thì chỉ 1 biến con trỏ kiểu int được nạp vào stack. Vì vậy khi sử dụng heap, vùng nhớ sẽ lớn hơn nhiều so với stack do heap được hệ điều hành chọn vùng nhớ đủ lớn với yêu cầu.
+
+Xét chương trình sau:
+
+\begin{lstlisting}
+    #include <stdio.h>
+    #include <stdlib.h>
+    int main()
+    {
+        int *a = (int*)malloc(100*sizeof(int));
+        printf("%p\n", a);
+        printf("%p\n", a+1);
+        free(a);
+        return 0;
+    }
+\end{lstlisting}
+
+%\includegraphics[scale=0.75]{stackheap/h2.PNG}
+
+Vùng nhớ heap được điều khiển bởi người lập trình, không giống như stack là nạp và giải phóng tự động. Có 2 điều cần đặc biệt lưu ý khi sử dụng vùng nhớ heap đó là:
+\begin{itemize}
+    \item Con trỏ *a ở trên lưu địa chỉ đầu tiên của vùng nhớ (địa chỉ phần tử đầu tiên) và vùng nhớ heap có thể thay đổi kích cỡ (sử dụng hàm realloc của C).
+    \item Phải giải phóng vùng nhớ heap trước khi kết thúc chương trình bằng hàm free như trên. Nếu không thực hiện thủ tục xóa này thì vùng nhớ heap cấp phát cho chương trình sẽ còn tồn tại trên RAM cho tới khi khởi động lại máy tính. Hiện tượng này gọi là rò rỉ bộ nhớ (memory-leaking) và sẽ làm cạn bộ nhớ trên RAM.
+\end{itemize}
+
+Để sử dụng vùng nhớ heap cần sử dụng:
+
+\begin{itemize}
+    \item Trong C: sử dụng các hàm sau
+    \begin{itemize}
+        \item \textbf{malloc}, \textbf{calloc} để xin cấp phát vùng nhớ.
+        \item \textbf{realloc} để cấp phát lại vùng nhớ từ vùng nhớ heap có sẵn.
+        \item \textbf{free} để xóa vùng nhớ đã cấp phát.
+    \end{itemize}
+    
+    \item Trong C++: sử dụng các toán tử sau
+    \begin{itemize}
+        \item \textbf{new} để xin cấp phát vùng nhớ.
+        \item \textbf{delete} để xóa \textbf{ô nhớ} đã cấp phát. Trong trường hợp xóa mảng phần tử int *a = new int[100]; thì cần dùng delete[] a; để xóa cả mảng phần tử.
+    \end{itemize}
+\end{itemize}
+
+\section{So sánh stack và heap}
+
+\subsection*{Stack}
+
+\begin{itemize}
+    \item Truy cập nhanh: sử dụng base pointer để truy cập các thành phần cục bộ nên tốc độ truy cập nhanh.
+    \item Không cần thao tác giải phóng vùng nhớ đã sử dụng.
+    \item Vùng nhớ liên tục.
+    \item Không gian lưu trữ nhỏ.
+    \item Kích thước cố định.
+\end{itemize}
+
+\subsection*{Heap}
+
+\begin{itemize}
+    \item Truy cập chậm: cần tính toán dựa trên con trỏ quản lý vùng nhớ heap.
+    \item Cần thao tác xin cấp phát và luôn phải có thao tác giải phóng vùng nhớ đã được cấp.
+    \item Bộ nhớ có thể bị phân mảnh do việc xin cấp phát, giải phóng, cấp phát lại.
+    \item Không gian lưu trữ lớn.
+    \item Kích thước có thể thay đổi được.
+\end{itemize}
+
+\section{Calling Convention}
+
+Calling convention là những phương pháp đã được chuẩn hóa để máy tính có thể cài đặt và gọi các hàm. Calling convention đặc trưng cho số lượng tham số truyền vào, cách trả về giá trị, cách gọi hàm và cách 1 hàm sử dụng stack và quản lý stack frame của chính nó. Đây chính là cách mà hàm trong ngôn ngữ C/C++ chuyển code thành mã máy. Có nhiều cách để thực hiện việc này, thông dụng trên 32-bit x86 processor gồm: \textbf{stdcall, cdecl, fastcall, thiscall và 1 số loại khác}.
+
+Giải thích từ ngữ: 
+
+\begin{itemize}
+    \item \textbf{Hàm gọi (calling function)}: là hàm gọi hàm khác
+    \item \textbf{Hàm được gọi (called function)}: là hàm được gọi bởi hàm khác
+\end{itemize}
+
+\subsection*{Truyền tham số}
+
+Truyền tham số là cách hàm gọi đặt các tham số vào vị trí mà hàm được gọi sẽ tìm tới đó. Các tham số sẽ được truyền trước khi lệnh gọi được thực thi.
+
+\subsection*{Phải-Trái hoặc Trái-Phải}
+
+Định nghĩa cách đưa danh sách tham số vào ngăn xếp từ trái sang phải hay từ phải sang trái. Ví dụ, với lời gọi hàm:
+
+\begin{lstlisting}
+    x = cong(a, b);
+\end{lstlisting}
+
+Nếu truyền tham số theo hướng trái-phải thì cấu trúc stack sẽ là:
+
+\begin{lstlisting}
+    push a
+    push b
+    call _cong
+\end{lstlisting}
+
+Còn khi truyền tham số theo hướng phải-trái thì stack sẽ là:
+
+\begin{lstlisting}
+    push b
+    push a
+    call _cong
+\end{lstlisting}
+
+\textbf{Giá trị trả về}
+
+Đôi khi hàm sẽ cần trả về 1 giá trị nào đó (hàm khác hàm void) và hàm gọi cần phải lấy được giá trị này để xử lý tiếp. Do đó hàm được gọi phải lưu lại giá trị trả về ở chỗ hàm gọi có thể lấy được. Việc lưu lại này cũng phải xảy ra trước khi lệnh \textbf{ret} (lệnh kết thúc hàm) được gọi.
+
+\textbf{Dọn dẹp stack}
+
+Khi 1 hàm thực thi xong, các tham số đã truyền trước đó cần được lấy ra khỏi stack. Tùy vào cách calling convention mà hàm gọi hoặc hàm được gọi sẽ chịu trách nhiệm dọn dẹp stack và hủy stack pointer để reset lại stack pointer được dùng để gọi hàm trước đó.
+
+\textbf{Entry sequence}
+
+1 vài câu lệnh để chuẩn bị cho việc gọi hàm: lệnh lưu lại stack pointer hiện hành, gán base pointer bởi stack pointer hiện hành, ....
+
+\textbf{Exit sequence}
+
+1 vài câu lệnh thực hiện ở cuối lời gọi hàm, phục hồi lại các thanh ghi và stack. 1 số hàm gọi thực hiện việc dọn dẹp stack ở bước này.
+
+\section{Standard C Calling convention}
+
+Lấy ví dụ là đoạn mã sau:
+
+\begin{lstlisting}
+    void    MyFunc( char c, short s, int i, double f )
+    {
+        // Code here    
+        
+    }
+
+    void main(){
+        MyFunc ('x', 12, 8192, 2.7183);
+    }
+\end{lstlisting}
+
+\subsection*{CDECL}
+
+Tính chất:
+
+\begin{itemize}
+    \item tham số được nạp từ phải sang trái.
+    \item hàm gọi sẽ dọn dẹp stack sau khi gọi. Vì vậy CDECL có thể có danh sách tham số thay đổi được và danh sách tham số sẽ không đi chung với tên hàm khi được compile. Khi chạy assembler (dịch thành mã máy) và linker (link các thư viện) sẽ không nhận biết sai lệch về số lượng tham số.
+\end{itemize}
+
+Stack sau khi truyền các tham số (đi từ địa chỉ cao xuống địa chỉ thấp): 
+
+%\includegraphics[scale=1]{stackheap/cc1.PNG}
+
+\subsection*{STDCALL}
+
+Dạng calling convention còn được biết tới là windows api được phát triển và định nghĩa trên hệ điều hành Windows. Do đó tất cả compiler đều được cài đặt theo cách đó.
+
+Tính chất: 
+
+\begin{itemize}
+    \item tham số được nạp từ phải sang trái, giá trị trả về được lưu trong thanh ghi eax.
+    \item hàm được gọi thực hiện việc dọn dẹp stack, khác với CDECL, do đó không cho phép danh sách tham số thay đổi được.
+\end{itemize}
+
+Stack sau khi truyền tham số:
+
+%\includegraphics[scale=1]{stackheap/cc2.PNG}
+
+\subsection*{THISCALL}
+
+Trong C++, các đối tượng gọi tới các hàm thuộc chính đối tượng đó. Vì vậy cần 1 cơ chế để chắc chắn con trỏ trỏ tới đối tượng cũng trỏ tới hàm trong đối tượng
+
+Con trỏ trỏ tới đối tượng được lưu trong thanh ghi ecx, tham số nạp từ phải sang trái và giá trị trả về được lưu trong eax.
+
+Ví dụ: DoiTuong.PhuongThuc(a, b, c);
+
+Do đó, thanh ghi ecx chỉ dùng trong \textbf{THISCALL} mà không dùng trong \textbf{STDCALL}.
+
+\subsection*{FASTCALL}
+
+FASTCALL không phải dạng chuẩn trong các compiler, vì vậy khi sử dụng cần cẩn thận. Trong dạng calling convention này, 2 hoặc 3 nhóm 32 bit tham số đầu tiên sẽ được đưa vào các thanh ghi thông dụng như ecx, edx, eax. Các tham số còn lại hoặc tham số lớn hơn 4 byte sẽ được nạp vào stack từ phải qua trái như \textbf{CDECL}. Hàm gọi sẽ dọn dẹp stack sau khi gọi.
+
+Để tránh nhập nhằng, \textbf{FASTCALL} chỉ nên sử dụng khi có 1, 2 hoặc 3 tham số 32 bit để tăng tốc độ tính toán.
+
+Stack sau khi truyền tham số:
+
+%\includegraphics[scale=1]{stackheap/cc3.PNG}
+
+\section{Một số thắc mắc}
+
+\begin{enumerate}
+    \item Khi 1 hàm gọi 1 hàm khác, nó sẽ lưu trạng thái hiện tại lại vào 1 thanh ghi (hoặc vùng nhớ nào đó) để thực hiện xong lời gọi hàm rồi tiếp tục thực thi câu lệnh kế tiếp. Điều này có đúng không? Và nếu đúng, thanh ghi chịu trách nhiệm việc này có phải là Program Counter hay không? (em chỉ tìm thấy các giải thích chung về program counter, không thấy ghi về C).
+    
+    \item Ở hình này tham số là "3" biến kiểu int (4 bytes), tại sao lại cần lấy 8 bytes là [ebp + 8] trong khi tham số "2" cũng là kiểu int (4 bytes) và lấy [ebp + 12] là thêm 4 bytes kế 8 bytes trước.
+    %\includegraphics[scale=1]{stackheap/cc4.PNG}
+    
+    %Nguồn ảnh: https://en.wikibooks.org/wiki/X86\_Disassembly/Calling\_Conventions\#CDECL
+    
+    \item Hàm square ở phần \textbf{Stack và Heap} được viết trên Ubuntu 64 bit, tham số được truyền vào vị trí \%rbp + (-0x4) như hình vẽ: 
+    
+    %\includegraphics[scale=1]{stackheap/c2.PNG}
+    
+    Trong hàm square được viết bằng Code Blocks trên Windows 10 64 bit thì là ebp + 8 như hình:
+    
+    %\includegraphics[scale=1]{stackheap/cc5.PNG}
+    
+    Theo em tìm thấy thì địa chỉ của stack sẽ đi từ địa chỉ cao xuống địa chỉ thấp. Vậy ở đây có mâu thuần gì không?
+\end{enumerate}
+
+Example code:
+
+%\includegraphics[scale=1]{assembly/as1.PNG}
+
+\section{Assembly là gì?}
+
+Assembly (hay hợp ngữ) là 1 ngôn ngữ bậc thấp, gần với mã máy (machine code). 
+
+Một chương trình assembly gồm 3 phần:
+\begin{itemize}
+    \item Phần data
+    \item Phần bss
+    \item Phần text
+\end{itemize}
+
+\textbf{Phần data:}
+Dùng để khai báo các hằng số. Cú pháp khai báo: \\\textit{section .data}
+
+\textbf{Phần bss}
+Dùng để khai báo các biến. Cú pháp khai báo: \\\textit{section .bss}
+
+\textbf{Phần text}
+Nơi thực hiện chương trình chính. Cú pháp khai báo: \\\textit{section .text} \\\textit{global \_start}.
+
+\textbf{Comment}
+lập trình viên có thể viết comment giống như các ngôn ngữ bậc cao khác, 1 comment bắt đầu với dấu chấm phẩy (;)
+
+\textbf{Các hệ đếm cơ sở: }
+
+\begin{itemize}
+    \item Hệ nhị phân: là số có các chữ số là 0 hoặc 1.
+    \item Hệ bát phân: là số có các chữ số từ 0 đến 7.
+    \item Hệ thập phân: là các số có các chữ số từ 0 đến 9.
+    \item Hệ thập lục phân: là các số có các chữ số từ 0 đến 9 và 6 chữ cái A, B, C, D, E, F.
+\end{itemize}
+
+\section{Thanh ghi - Register}
+
+Dữ liệu thường được lưu trong bộ nhớ, nhưng khi đó việc truy xuất dữ liệu sẽ mất thời gian và làm chậm quá trình xử lý. Do đó các dữ liệu được lưu vào trong 1 vùng nhớ được gọi là thanh ghi.Trên chip xử lý đã được cài đặt 1 số lượng thanh ghi trên đó.
+
+Có 3 loại thanh ghi: 
+\begin{itemize}
+    \item General Register
+    \item Control Register
+    \item Segment Register
+\end{itemize}
+
+Trong đó General Register lại được chia thành 3 loại:
+\begin{itemize}
+    \item Data Register
+    \item Pointer Register
+    \item Index Register
+\end{itemize}
+
+\begin{enumerate}
+    \item Data Register
+    
+    Có 4 loại thanh ghi dùng cho việc tính toán số học, logic và các tác vụ khác. Có 3 cách để sử dụng các thanh ghi này là: 
+    \begin{itemize}
+        \item Sử dụng đầy đủ 32 bit của thanh ghi: EAX, EBX, ECX và EDX
+        \item Sử dụng 16 bit thấp của 32 bit, tức là 16 bit bên phải: AX, BX, CX, DX
+        \item Sử dụng 8 bit cao hoặc thấp của 16 bit trên: AH, AL, BH, BL, CH, CL, DH, DL.
+    \end{itemize}
+    
+
+\textbf{Chú ý: }16 bit của AX được tạo ra từ 8 bit của AH gắn thêm 8 bit của AL. Tương tự đối với 3 thanh ghi còn lại
+
+%\includegraphics[scale=0.5]{assembly/as2.PNG}
+
+Một số loại thanh ghi có chức năng đặc biệt trong tính toán số học
+
+\textbf{AX:} được sử dụng trong nhâp/xuất và trong tính toán số học. Dữ liệu được lưu vào trong AX hoặc EAX hoặc AL để phù hợp với kích cỡ toán hạng.
+
+\textbf{BX:} được dùng để lấy chỉ số của phần tử trong mảng.
+
+\textbf{CX:} được dùng để đếm (vòng lặp).
+
+\textbf{DX:} tương tự như AX và có thể lưu dữ liệu vào 2 thanh ghi này để thực hiện tính toán.
+
+    \item Pointer Register
+    
+Có 3 loại thanh ghi 32 bit là EIP, ESP và EBP. Tương tự như các thanh ghi Data ở trên, 3 thanh ghi này cũng có "phiên bản" 16 bit thấp của nó là IP, SP, BP.
+
+\begin{itemize}
+    \item \textbf{Instruction Pointer - IS} lưu địa chỉ của instruction kế tiếp trong bộ nhớ
+    \item \textbf{Stack Pointer - SP} lưu địa chỉ của đỉnh stack, nghĩa là quản lý dữ liệu trong stack bằng địa chỉ.
+    \item \textbf{Base Pointer - BP} lưu địa chỉ "nền" của stack, giống như SP ở trên đỉnh thì BP ở dưới đáy. Từ BP có thể tính ra địa chỉ của các biến trong stack.
+\end{itemize}
+    \item Index Register
+    
+2 thanh ghi ESI và EDI, và "phiên bản" 16 bit thấp của chúng, SI và DI, được dùng để đánh chỉ số (trong chuỗi ký tự) và đôi khi cũng dùng trong tính toán số học. \textbf{ESI (cũng như SI)} được sử dụng như chỉ số nguồn, còn \textbf{EDI (cũng như DI)} được sử dụng như chỉ số đích.
+    \item Control Register
+
+Instruction pointer register 32 bit kết hợp với flags register 32 bit sẽ được control register. Khi các lệnh thực thi sẽ xảy ra các trường hợp cần rẽ nhánh, kiểm tra trạng thái, điều kiện để quyết định lệnh kế tiếp, lúc đó cần các flag để đánh dấu lại. Các loại flag thông dụng gồm: 
+\begin{itemize}
+    \item \textbf{Overflow Flag - OF} kiểm tra hiện tượng tràn khi tính toán số học (xảy ra khi phép cộng 2 số cùng dấu cho kết quả vượt quá số bit được cấp).
+    \item \textbf{Direction Flag - DF} xác định hướng di chuyển hoặc so sánh dữ liệu. Khi DF là 0 thì chuỗi được thực hiện từ trái qua phải, tức là từ thấp (ví dụ least significant bit) lên cao (ví dụ most significant bit). Khi DF là 1 thì ngược lại, từ cao lên thấp.
+    \item \textbf{Interrupt Flag - IF} xác định việc một ngắt (ví dụ chờ đợi sự kiện nhập từ bàn phím) sẽ bị bỏ qua hay chờ xử lý. Nếu IF là 0 thì ngắt sẽ bị hủy, còn là 1 thì ngắt sẽ được xử lý.
+    \item \textbf{Trap Flag - TF} được dùng để xử lý từng dòng lệnh một. Flag này được sử dụng trong các chương trình debug để lập trình viên có thể chạy từng dòng lệnh và kiểm soát lỗi.
+    \item \textbf{Sign Flag - SF} bit dấu của số khi biểu diễn trên máy tính, nằm ở ngoài cùng bên trái của 1 số. 0 biểu diễn số dương, 1 biểu diễn số âm.
+    \item \textbf{Zero Flag - ZF} biểu diễn kết quả của tính toán số học hoặc các phép so sánh. Nếu kết quả khác 0 thì zero flag là 0 và ngược lại.
+    \item \textbf{Auxiliary Carry Flag - AF} giữ giá trị nhớ ở bit thứ 3 và sử dụng cho bit thứ 4, ví dụ 1 + 1 = 0 nhớ 1 và biến nhớ sẽ được mang qua sử dụng cho bit thứ 4 khi thực hiện phép cộng.
+    \item \textbf{Parity Flag - PF} biểu diễn số lượng bit 1 trong kết quả của 1 phép tính, PF là 0 nếu số lượng bit 1 là chẵn và là 1 khi số lượng bit 1 là lẻ.
+    \item \textbf{Carry Flag - CF} biểu diễn biến nhớ ngoài cùng bên trái sau khi thực hiện tính toán, hoặc để lưu giá trị của biến cuối cùng khi thực hiện dịch chuyển bit.
+\end{itemize}
+Hình 1 cho biết vị trí của các flag trên trong thanh ghi Flag 16 bit
+\item Segment Register
+
+Segment là những khu vực nhất định trong chương trình để lưu dữ liệu, code và stack. Có 3 loại segment chính là:
+\begin{itemize}
+    \item \textbf{Code segment - CS} chứa tất cả instruction để thực thi. Do đó, code segment registry sẽ chứa địa chỉ của instruction đầu tiên trong code segment.
+    \item \textbf{Data segment - DS} chứa các biến toàn cục hoặc biến static đã được gán giá trị. Data segment register sẽ chứa địa chỉ đầu tiên trong data segment.
+    \item \textbf{BSS Segment } chứa các biến toàn cục hoặc biến static chưa được gán giá trị.
+    \item \textbf{Stack segment - SS} chứa dữ liệu và giá trị trả về của các chương trình con và được cài đặt giống như cấu trúc dữ liệu stack (vào sau ra trước). Stack segment register sẽ chứa địa chỉ đầu tiên trong stack segment.
+\end{itemize}
+Ngoài ra, có các thanh ghi ES, FS và GS cũng tham gia vào việc lưu trữ các segment.
+\end{enumerate}
+
+\begin{figure}[h]
+    \centering
+    %\includegraphics[scale=1]{assembly/as3.PNG}
+    \caption{Vị trí các flag trong flag register}
+\end{figure}
+
+\section{PE/ELF file là gì?}
+
+\subsection{PE file}
+
+PE file là viết tắt của Portable Executable, là dạng file thực thi trên họ hệ điều hành Windows. PE file format là 1 dạng cấu trúc dữ liệu chứa các thông tin cần thiết để hệ điều hành Windows nhận biết và thực thi. 
+    
+Hình 2 cho thấy PE file có 2 phần chính là header và section. Trong 2 phần này lại được chia nhỏ thêm nữa. Sau đây chúng ta sẽ xem xét các thành phần trong 1 file PE.
+    
+
+\begin{figure}[h]
+    \centering
+    %\includegraphics[scale=1]{assembly/as4.jpg}
+    \caption{Cấu trúc 1 file PE}
+\end{figure}
+
+\begin{figure}
+    \centering
+    %\includegraphics{assembly/as5.PNG}
+    \caption{Các byte đầu của 1 file PE}
+\end{figure}
+
+\begin{figure}
+    \centering
+    %\includegraphics{assembly/as6.PNG}
+    \caption{Cấu trúc phần DOS MZ header}
+\end{figure}
+
+\newpage
+
+\subsubsection{DOS header}
+    
+    Phần này chiếm 64 byte đầu của file PE và được phát triển bởi Mark Zbikowsk nên còn được gọi là MZ. Nhờ vùng này mà DOS nhận diện file PE hợp lệ để thực thi ở chế độ DOS stub, thường sẽ in ra đoạn chữ "This program cannot be run in DOS mode".
+    
+    Hình 4 định nghĩa các thành phần trong DOS header, có 2 thành phần đáng lưu ý là trường đầu tiên \textbf{e\_magic} và trường cuối cùng \textbf{e\_lfanew}.
+    
+    Trường \textbf{e\_magic} còn được gọi là magic number, dùng để xác định 1 file thực thi trên môi trường MS\-DOS. Tất cả các file thực thi đều để trường này là 4Dh và 5Ah (mã hexa của M và Z). Trường này chiếm 2 byte.
+    
+    Trường \textbf{e\_lfanew} chiếm 4 byte cuối của DOS header, xác định điểm bắt đầu của PE file header. Thường thì trường này sẽ là 50h, 45h, 00h, 00h ("PE" thêm sau bởi 2 byte 00)
+    
+\subsubsection{PE file header}
+
+PE file header được truy xuất từ trường \textbf{e\_lfanew} của DOS header phía trên, chứa các thông tin vị trí và kích thước của phần code, .......  PE header thực chất là cấu trúc IMAGE\_NT\_HEADERS. IMAGE\_NT\_HEADERS được định nghĩa như sau: 
+
+%\includegraphics[scale=0.75]{assembly/as14.PNG}
+
+\begin{itemize}
+    \item Signature: là 1 DWORD (4 bytes), chứa giá trị 50h, 45h, 00h, 00h.
+    \item File header: 20 byte kế tiếp.
+    
+    %\includegraphics[scale=0.75]{assembly/as15.PNG}
+    
+    \begin{itemize}
+        \item NumberOfSections: chứa cách bố trí vật lý và thuộc tính của file như là số section trong file. Khi thêm/xóa section trong file cũng cần phải thay đổi trường này.
+        \item Machine: xác định dòng máy biên dịch PE file.
+        \item Characteristics: bit flag xác định dạng PE file (0x0102 nếu là file .EXE, 0x2102 nếu là file .DLL, ...).
+    \end{itemize}
+    
+    \item Optional Header: gồm 31 thành phần, 224 bytes, chứa sơ đồ các thành phần trong file. Một số thành phần cần lưu ý:
+    
+    \begin{itemize}
+        \item Magic: xác định file thuộc kiến trúc 32 bit (0x10b) hay kiến trúc 64 bit(0x20b) và 1 số loại khác.
+        \item AddressOfEntryPoint: địa chỉ của entry point, là địa chỉ ảo tương đối (RVA) của câu lệnh đều tiên sẽ thực thi. Nếu là file executable thì đây là địa chỉ bắt đầu. Nếu là driver của thiết bị thì là địa chỉ của hàm khởi tạo. Nếu là file DLL thì phần này tùy chọn.
+        \item ImageBase: địa chỉ ưu tiên cho PE khi load lên bộ nhớ.
+        \item SectionAlignment: phần liên kết giữa các section trên bộ nhớ, tức là 1 section luôn được bắt đầu bằng 1 bội số của section alignment, được tính bằng byte (mặc định là kích thước page). 
+        
+        Ví dụ: section alignment là 1000h, section đầu tiên bắt đầu ở vị trí 401000h và kích thước section là 10h thì section tiếp theo sẽ bắt đầu ở vị trí 401000h + 1000h = 402000h.
+        
+        \item FileAlignment: giống SectionAlignment nhưng không phải trên memory mà trên file.
+        
+        \item SizeOfImage: kích thước tổng của file, là tổng các header và section trong file, phải là 1 bội số của SectionAlignment.
+        
+        \item SizeOfHeaders: kích thước của tất cả header + section table.
+        
+        \item Data Directory: 1 mảng 16 phần tử kiểu \_IMAGE\_DATA\_DIRECTORY, 1 phần tử liên quan đến 1 cấu trúc dữ liệu trong file PE.  
+    \end{itemize}
+    
+    %\includegraphics[scale=0.75]{assembly/as17.PNG}
+    
+\end{itemize}
+
+%\includegraphics[scale=1]{assembly/as16.PNG}
+
+\textbf{Section Table}, Section Table nằm ngay sau PE header, bao gồm 1 mảng cấu trúc IMAGE\_SECTION\_HEADER. Kích thước của mảng này chính là số lượng section và được xác định bằng trường NumberOfSections đã đề cập ở trên.
+
+%\includegraphics[scale=0.75]{assembly/as18.PNG}
+
+\subsection{ELF file}
+
+ELF là file thực thi trên môi trường Linux và Unix, ELF là viết tắt của Executable and Linkable File. Phần này sẽ trình bày tổng quan về ELF, gồm 3 phần: ELF header, Sections, Segments.
+
+\textbf{ELF header}
+
+%\includegraphics[scale=0.75]{assembly/as7.png} \includegraphics[scale=0.8]{assembly/as8.PNG}
+
+ELF header được định nghĩa bằng 1 cấu trúc ElfXX\_Ehdr, với hệ điều hành 32 bit là Elf32\_Ehdr còn 64 bit sẽ là Elf64\_Ehdr. Tiếp theo ta sẽ xem xét các thành phần của 1 header.
+
+\begin{itemize}
+    \item e\_ident: mảng 16 ký tự chứa identification flags để giải mã và thông dịch các thông tin trong file ELF. Một số ví dụ về các identification flags: 
+    \begin{itemize}
+        \item EI\_MAGO-3: ELF Magic
+        \item EI\_CLASS: file class, dùng để xác định kiến trúc mà file thuộc vào, 01 nếu là kiến trúc 32 bit và là 02 nếu là kiến trúc 64 bit.
+        \item EI\_DATA: cách giải mã dữ liệu file, được gán là 01 đối với dạng LSB (Least Significant Big) hay còn gọi là little-endian, hoặc được gán là 02 đối với dạng MSB (Most Significant Big) hay big-endian. Thông tin này giúp file ELF phù hợp với các kiến trúc máy tính khác nhau.
+        \item EI\_VERSION: version của file, thường là 1.
+        \item EI\_OSABI: OS/ABI identification.
+        \item EI\_ABIVERSION: ABI version
+        \item EI\_PAD: các padding bytes.
+        \item EI\_NIDENT: kích thước của ei\_ident.
+    \end{itemize}
+    \item e\_type: loại file execute, dùng để chỉ chức năng của file. Có thể là CORE (4), DYN (Share object file, 3) dùng cho library, EXEC (Executable file, 2) dùng cho thực thi, REL (Relocatable file, 1) dùng trước khi link vào file executable.
+    \item e\_machine: kiến trúc file
+    \item e\_version: version của object file.
+    \item e\_entry:  điểm bắt đầu của application (ví dụ: hàm main).
+    \item e\_phoff: File offset của Bảng Program Header (1 số nguyên chỉ vị trí của Bảng này tính từ đầu ELF header, giống chỉ số mảng).
+    \item e\_shoff: giống e\_phoff nhưng là Bảng Section Header.
+    \item e\_flags: Processor-specific flags associated with the file.
+    \item e\_ehsize: kích thước ELF header.
+    \item e\_phentsize: Program Header entry size in Program Header Table.
+    \item e\_phnum: số lượng Program Header.
+    \item e\_shentsize: Section Header entry size in Section Header Table.
+    \item e\_shnum: số lượng Section Headers.
+    \item e\_shstrndx: index in Section Header Table Denoting Section dedicated to Hold Section names.
+    
+\end{itemize}
+
+\textbf{Sections}
+
+%\includegraphics[scale=1]{assembly/as10.PNG}
+%\includegraphics[scale=1]{assembly/as9.png}
+
+Các section chứa các thông tin cần thiết để link các object file vào file thực thi. Trong mỗi file ELF đều có 1 \textbf{Bảng Section Header}, bảng này chứa 1 mảng các cấu trúc ElfXX\_Shdr, mỗi section có 1 cấu trúc ElfXX\_Shdr, có dạng 1 trong 2 hình trên, XX là 32 (kiến trúc 32 bit) hoặc 64 (kiến trúc 64 bit) tương tự như phần ELF header. Trong đó: 
+
+\begin{itemize}
+    \item sh\_name: biểu diễn tên của section, giá trị của nó là 1 chỉ số trong bảng section header.
+    \item sh\_type: loại section (phân theo nội dung).
+    \item sh\_flag: chứa 1 bit flag xác định attribute của section: 0x1 nếu section chứa dữ liệu ghi được, 0x2 để xin tạo vùng nhớ, 0x4 nếu section chứa instruction thực thi, ....
+    \item sh\_addr: địa chỉ ảo của section, cho biết địa chỉ byte đầu tiên của section.
+    \item sh\_offset: offset của 1 section trên đĩa.
+    \item sh\_size: kích thước của section tính bằng byte.
+    \item sh\_link: chỉ số section link.
+    \item sh\_info: section extra information (thông tin thêm về section).
+    \item sh\_addralign: section alignment.
+    \item sh\_entsize: kích thước của entry trong section.
+\end{itemize}
+
+Một số section thông dụng:
+\begin{itemize}
+    \item .text: code
+    \item .data: dữ liệu có khởi tạo
+    \item .rodata: dữ liệu read-only
+    \item .bss: dữ liệu không khởi tạo
+    \item .dynamic: chứa thông tin để thực hiện dynamic linking
+\end{itemize}
+
+\textbf{Segments}
+
+%\includegraphics[scale=1]{assembly/as11.PNG}
+%\includegraphics[scale=1]{assembly/as12.png}
+
+Segments hay còn được gọi là Program Headers, tách binary của ELF thành các chunk nhỏ để load lên bộ nhớ. Do đó, phần này không cần thiết lúc thực thi, ngược lại với Sections là các thông tin cần thiết khi thực thi.
+
+Segment cũng giống Section là có \textbf{Bảng Program Header} chứa 1 mảng các cấu trúc ElfXX\_Phdr, XX là 32 khi sử dụng kiến trúc 32 bit và là 64 khi sử dụng kiến trúc 64 bit.
+
+Các thành phần của 1 Segment bao gồm: 
+\begin{itemize}
+    \item p\_type: loại segment, ví dụ PT\_NULL là segment không chức năng, thường ở đầu Bảng Program Header, PT\_LOAD là segment dùng để load.
+    \item p\_flags: chứa giá trị flag liên quan tới segment.
+    \item p\_offset: offset của segment.
+    \item p\_vaddr: địa chỉ ảo của segment.
+    \item p\_paddr: địa chỉ vật lý của segment.
+    \item p\_filesz: kích thước của segment trên đĩa.
+    \item p\_memsz: kích thước của segment trên bộ nhớ.
+    \item p\_align: trật tự vị trí của segment trong bộ nhớ.
+\end{itemize}
+
+\textbf{Secment và Section}
+
+Như đã đề cập ở trên, section chứa các thông tin cần thiết để thực hiện việc link và xây dựng file executable, trong khi program header lại chia file executable thành các phần nhỏ để load lên bộ nhớ.
+
+Hình bên dưới cho thấy, khi ELF file được load lên bộ nhớ thì segment sẽ gom 1 số section lại để việc thực thi hiệu quả hơn.
+
+Một vấn đề quan trọng khác của Segment chính là offset và địa chỉ ảo phải được modulo theo kích thước page và trường p\_align phải là bội của kích thước page. Lý do là vì các segment khác nhau thường sẽ có quyền truy cập vùng nhớ khác nhau nên cần tránh việc 2 segment dùng chung 1 memory page.
+
+%\includegraphics[scale=0.75]{assembly/as13.png}[h]
+
+
+Tất cả chỉ số trên có thể được tham khảo tại \url{https://opensource.apple.com/source/dtrace/dtrace-90/sys/elf.h}.
+
+
+%\begin{thebibliography}{10}
+%\bibitem{kowalczyk}
+%Krzysztof Kowalczyk: PE file format article,
+%\\\texttt{https://blog.kowalczyk.info/articles/pefileformat.html}
+
+%\bibitem{Infosec Institude}
+%infosecinstitute.com
+%\\\texttt{https://resources.infosecinstitute.com/2\-malware\-researchers\-handbook\-demystifying\-pe\-file/\#gref}
+
+%\bibitem{OpenADFortTk}
+%OpenADFortTk
+%\\\texttt{https://www.mcs.anl.gov/OpenAD/OpenADFortTkExtendedDox/structElf32\_\_Shdr.html}
+
+%\bibitem{Linux Audit}
+%Linux Audit
+%The Linux security blog about Auditing, Hardening, and Compliance
+%\\\texttt{https://linux-audit.com/elf-binaries-on-linux-understanding-and-analysis/\#elf-header}
+
+%\bibitem{Intezer}
+%Intezer - Genetic Malware Analysis
+%\\\texttt{https://www.intezer.com/executable-linkable-format-101-part1-sections-segments/}
+
+%\bibitem{TIS}
+%Tool Interface Standard (TIS)
+%\\\texttt{
+%Tool Interface Standard (TIS)
+%Executable and Linking Format (ELF)
+%Specification
+%Version 1.1}
+%\end{thebibliography}
+
+\section{Những vấn đề cần giải đáp và các ghi chú: }
+
+\begin{enumerate}
+    \item EI\_OSABI là gì?
+    
+    \item offset (số hiệu) là 1 số nguyên để xác định ví trị từ 1 điểm bắt đầu nào đó, giống như 1 mảng A[5] = {1, 2, 3, 4} thì offset = 3 sẽ là số 4 => sử dụng giống chỉ mục???
+    
+    \item sh\_offset là gì?
+    
+    \item Page là 1 khối bộ nhớ ảo có kích thước cố định, được xác định bởi page table (được cài dặt bởi các chiến lược cấp phát bộ nhớ). 
+    
+    \item Paging (phân trang) là 1 chiến lược quản lý bộ nhớ để loại bỏ việc cấp phát vùng nhớ liên tục trong bộ nhớ vật lý (cấp phát tĩnh), thay vào đó là việc phân bộ nhớ vật lý thành các block (khối) có kích thước cố định bằng nhau, gọi là page frame (khung). Khi cần nạp 1 tiến trình lên bộ nhớ để xử lý thì các page của tiến trình sẽ được nạp lên những khung trang nào còn trống.
+
+    \begin{enumerate}
+        \item Địa chỉ logic - hay địa chỉ ảo (biểu diễn bằng bit): địa chỉ sinh ra bởi bộ xử lý (CPU).
+        \item Địa chỉ vật lý (biểu diễn bằng bit): địa chỉ thực sự trên bộ nhớ (trình quản lý bộ nhớ thấy và thao tác).
+        \item Không gian địa chỉ logic - hay không gian địa chỉ ảo (biểu diễn bằng word hoặc bytes): tập hợp tất cả địa chỉ ảo phát sinh bởi 1 chương trình.
+        \item Không gian địa chỉ vật lý (biểu diễn bằng word hoặc bytes): tập hợp tất cả địa chỉ vật lý tương ứng với các địa chỉ ảo.
+    \end{enumerate}
+    
+    Địa chỉ ảo và địa chỉ vật lý là như nhau trong phương thức  kết buộc địa chỉ vào thời điểm biên dịch hoặc thời điểm nạp lên bộ nhớ. Nhưng vào thời điểm xử lý thì chúng có sự khác biệt.
+    
+    Chương trình của người dùng chỉ thao tác trên các địa chỉ ảo, không bao giờ thấy các địa chỉ vật lý. Như vậy cần 1 cơ chế phần cứng để mapping giữa địa chỉ ảo và địa chỉ vật lý, gọi là MMU (memory-management unit).
+    
+    Cơ chế phân trang (paging) ở trên sử dụng MMU là page map table (còn gọi là page table). Trong đó:
+    
+    \begin{enumerate}
+        \item Không gian địa chỉ vật lý được chia thành các khối gọi là frame.
+        \item Không gian địa chỉ ảo được chia thành các khối gọi là page.
+        \item page size = frame size (luôn là lũy thừa của 2).
+    \end{enumerate}
+    
+    Địa chỉ được tạo bởi bộ xử lý (CPU):
+    
+    \begin{enumerate}
+        \item Page number (p): số bit để biểu diễn chỉ mục của page trong page table.
+        \item Page offset (d): số bit để biểu diễn địa chỉ vật lý mà trình quản lý bộ nhớ sử dụng khi kết hợp với địa chỉ bắt đầu của trang. 
+    \end{enumerate}
+    \item e\_flags: Processor-specific flags associated with the file là gì?
+    
+    \item e\_phentsize: Program Header entry size in Program Header Table là gì?
+    
+    \item e\_shentsize: Section Header entry size in Section Header Table là gì?
+    
+    \item e\_shstrndx: index in Section Header Table Denoting Section dedicated to Hold Section names là gì?
+    
+    \item sh\_addralign là gì?
+    
+   \item sh\_entsize thì entry là gì?
+
+\end{enumerate}

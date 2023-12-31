@@ -70,6 +70,35 @@ Trong bảng, dãy nguyên tố có độ dài lớn nhất là 56 được bi�
     \frac{1}{4} \left( n^5 - 133 n^4 + 6729 n^3 - 158379 n^2 + 1720294 n - 6823316 \right)
 \end{equation*}
 
+Dựa theo lời giải của team Himanshu Sheoran, Yo Iida và Pranshu Kumar chúng ta có thể sinh một dãy có độ dài bất kì.
+
+Lời giải dựa trên bài blog của A. W. Walker\footnote{\url{https://awwalker.com/2017/02/27/prime-generating-polynomials/}}. Bài blog này phân tích về một bài báo năm 1977 bởi Chang và Lih với tiêu đề \emph{Polynomial Representation of Primes} nhưng hiện tại không có bản online.
+
+Bài báo này đưa ra một phương pháp xây dựng đa thức $F(n)$ bậc $n$ mà với mọi $x \in [0, n]$ thì $F(n)$ đều là số nguyên tố.
+
+Bài báo có thể được tóm gọn như sau. Xét đa thức
+\begin{equation*}
+    F(x) = 1 + \left| \sum_{n=0}^{M} \frac{a_n}{x - n} \prod_{j = 0}^{M} (x - j) \right|
+\end{equation*}
+sẽ sinh ra các số nguyên tố với mọi $x \in [0, M]$ nếu và chỉ nếu $a_n$ phân biệt và $(a_n \cdot M! + 1)$ là các số nguyên tố. Như vậy ta có một thuật toán đơn giản để bruteforce các đa thức trên.
+
+\begin{algorithm}[H]
+    \caption{Thuật toán sinh dãy nguyên tố độ dài $M$}
+    \begin{algorithmic}
+        \Require Độ dài dãy nguyên tố $M$
+        \Ensure Đa thức $F(x)$ cho kết quả là số nguyên tố với mọi $x \in [0, M]$
+        \State coeffs = [ ] chứa các số hạng $a_n$
+        \State $an \gets 1$
+        \While{Chưa đủ $M+1$ số hạng trong coeffs}
+            \If{$(an \cdot M! + 1)$ là số nguyên tố}
+                \State kết nạp $an$ vào dãy coeffs
+            \EndIf
+            \State $an \gets an + 1$
+        \EndWhile
+    \end{algorithmic}
+\end{algorithm}
+
+
 \section*{Problem 3. Mixed hashes}
 \addcontentsline{toc}{section}{Problem 3. Mixed hash}
 
@@ -101,10 +130,100 @@ Cuối cùng, mình giải mã lần lượt từng file với key trên, ghép 
 
 Vậy thông điệp gốc là "$\heartsuit$Loveyou". Bài này được 5/6 điểm vì không nộp code tính toán header, mất điểm vì chủ quan.
 
+\section*{Problem 4*. Column functions}
+\addcontentsline{toc}{section}{Problem 4*. Column functions}
+
+\subsection*{Đề bài}
+
+Alice muốn xây dựng mã đối xứng mạnh bằng việc giải một số bài toán khó.
+
+Xét $2^n$ hàm vectorial one-to-one đôi một khác nhau, $G_i \ : \ \FF_2^n \to \FF_2^n$, với $i = 1, \ldots, 2^n$. Sử dụng các hàm này, chúng ta xây dựng một ma trận binary đặc biệt và xác định một số tính chất của nó.
+
+Với $n=2^m$, $m \geqslant 5$, ta định nghĩa ma trận $M$ kích thước $2^n \times n 2^n$ theo quy tắc sau. Hàm thứ $i$, $i = 1, \ldots, 2^n$, là ghép của các giá trị $G_i(0, 0, \ldots, 0, 0)$, $G_i(0, 0, \ldots, 0, 1)$, \dots, $G_i(1, 1, \ldots, 1, 1)$. Các cột của $M$ có thể được xem như các vector của $n 2^n$ hàm boolean, mỗi hàm $n$ biến. Ta gọi chúng là \textit{column functions}.
+
+Chứng minh hoặc phản bác giả thuyết sau cho ít nhất một giá trị $m \geqslant 5$: với mọi cách xây dựng ma trận như trên, tồn tại $2^{n/2}$ columns functions $f_1, \ldots, f_{2^{n/2}}$ sao cho tồn tại một hàm boolean nonzero $f: \FF_2^{2^{n/2}} \to \FF_2$ thỏa mãn các điều kiện sau:
+
+\begin{itemize}
+    \item với mọi $\bm{x} \in \FF_2^n$
+    \begin{equation*}
+        f(f_1(\bm{x}), f_2(\bm{x}), \ldots, f_{2^{n/2}}(\bm{x})) = 0;
+    \end{equation*}
+    \item với mọi $\bm{y} \in \FF_2^{2^{n/2}}$, giá trị $f(\bm{y})$ có thể tính với không quá $2^{n/2}$ phép cộng và phép nhân modulo 2.
+\end{itemize}
+
+\begin{example}
+    Với $m=1$ thì $n=2$ và ta xây dựng ma trận $4 \times 8$. Xét các hàm boolean vectorial one-to-one $G_1, G_2, G_3, G_4$ từ $\FF_2^n$ tới $\FF_2^n$ xác định bởi các giá trị $(0, 1, 2, 3)$, $(0, 2, 1, 3)$, $(0, 3, 1, 2)$ và $(3, 2, 1, 0)$. Khi đó ma trận là
+    \begin{equation*}
+        \begin{pmatrix}
+            0 & 0 & 0 & 1 & 1 & 0 & 1 & 1 \\
+            0 & 0 & 1 & 0 & 0 & 1 & 1 & 1 \\
+            0 & 0 & 1 & 1 & 0 & 1 & 1 & 0 \\
+            1 & 1 & 1 & 0 & 0 & 1 & 0 & 0
+        \end{pmatrix}
+    \end{equation*}
+    Ta cần tìm $2^{n/2} = 2$ column functions. Gọi $f_1$ và $f_2$ là hàm bool ứng với cột đầu và cột thứ hai của ma trận, và $f(x_1, x_2) = x_1 \oplus x_2$. Khi đó $f(f_1(\bm{x}), f_2(\bm{x})) \equiv 0$ vì $f_1(\bm{x}) = f_2(\bm{x}) = 0$ với mọi $\bm{x} \in \FF_2^n$.
+
+    Ta cũng thấy rằng có thể chọn $f_1$ và $f_2$ là cột 5 và 6 của ma trận. Khi đó, đặt $f(x_1, x_2) = x_1 x_2$ thì $f(f_1(\bm{x}), f_2(\bm{x})) \equiv 0$ vì $f_1(\bm{x}) \neq f_2(\bm{x})$ với mọi $\bm{x} \in \FF_2^n$.
+
+    Trong cả hai trường hợp ta chỉ cần đúng một phép tính. Lưu ý rằng hàm $f$ thỏa $f_1$ và $f_2$ được gọi là \textit{algebraically dependent}.
+\end{example}
+
+\subsection*{Giải}
+
+Cách giải của mình không đúng hoàn toàn nên chỉ được 1/8. Dưới đây trình bày cách giải của đội Robin Jadoul, Jack Pope và Esrever Yu được 8/8 điểm.
+
+Giả thuyết trong đề bài đúng với $m$ lớn. Ý tưởng chính là chúng ta cố định các cột sẽ chọn, có một số lượng lũy thừa các hàm $f$ (rất rất lớn) nhưng chỉ có số lượng đa thức các hàng (ít lớn hơn \emoji{rolling-on-the-floor-laughing}), do đó chúng ta có thể chọn hàm $f$ triệt tiêu tất cả hàng.
+
+\begin{theorem}
+    Cho ma trận binary $M$ kích thước $2^n \times n 2^n$. Với $n+1$ column functions bất kì, tồn tại một hàm nonzero $f: \FF_2^{n+1} \to \FF_2$ triệt tiêu trên các column functions và sử dụng nhiều nhất $2n + 1$ toán tử cộng và nhân.
+\end{theorem}
+
+\begin{proof}
+    Gọi $f_1, f_2, \ldots, f_{n+1}$ là các column functions. Đặt
+    \begin{equation*}
+        S = \{ (f_1(\bm{x}), f_2(\bm{x}), \ldots, f_{n+1}(\bm{x})) \in \FF_2^{n+1} : \bm{x} \in \FF_2^n \}
+    \end{equation*}
+    là tập hợp các bộ giá trị từ các column functions. Vì $\lvert S \rvert < \lvert \FF_2^{n+1} \rvert$, ta có thể chọn vector $\bm{z} = (z_1, \ldots, z_{n+1}) \in \FF_2^{n+1} \backslash S$. Từ đây ta định nghĩa hàm $f$ là
+    \begin{equation*}
+        f(x_1, \ldots, x_{n+1}) = (x_1 \oplus (z_1 \oplus 1)) \cdot (x_2 \oplus (z_2 \oplus 1)) \cdots (x_{n+1} \oplus (z_{n+1} \oplus 1))
+    \end{equation*}
+
+    Lúc này, $f$ cho output là 1 chỉ khi $z$ là input (?), do đó với mọi $\bm{y} \in S$ thì $f(\bm{y}) = 0$.
+
+    Đối với số lượng phép tính, với mọi $i$, $z_i \oplus 1$ là hằng số nên ta không xét đến khi tính số lượng phép tính cho hàm $f$. Dựa trên vector $\bm{z}$, có tối đa $n+1$ phép cộng (tương ứng $x_i \oplus (z_i \oplus 1)$) và $n$ phép nhân $n+1$ hạng tử với nhau. Vì vậy số phép tính tối đa là $2n+1$.
+\end{proof}
+
+\begin{corollary}
+    Giả thuyết trên đúng với mọi $m \geqslant 4$.
+\end{corollary}
+
+\begin{proof}
+    Theo định lý trên ta có $f$\footnote{Bài toán yêu cầu hàm $f$ lấy $2^{n/2}$ input. Tuy nhiên chúng ta có thể thêm các dummy input miễn là số lượng cột không lớn hơn $n+1$ (mục tiêu ban đầu)}. Bây giờ ta chỉ cần chặn lại số lượng cột mà ta cần và số lượng phép tính.
+
+    Với số lượng cột, ta cần $n + 1 \leqslant 2^{n/2}$. Với số lượng phép tính, ta cần $2n + 1 \leqslant 2^{n/2}$. Kết hợp cả hai ta có $n \geqslant 9$, tương đương với $m \geqslant 4$.
+\end{proof}
+
+\subsection*{Bình luận}
+
+Về tổng thể cách giải của team kia hợp lý trừ phần mình đánh dấu, chưa hiểu lắm khi $\bm{z}$ là input nghĩa là sao.
+
+Thêm nữa, chưa có cơ sở để nghĩ ra bài giải này. Có vẻ như Esrever đã rất căng não để giải ra \emoji{smiling-face-with-tear}.
+
+\textbf{UPDATE}. Ý nghĩa của phần đánh dấu là: trong phép tính
+\begin{equation*}
+    f(x_1, \ldots, x_{n+1}) = (x_1 \oplus (z_1 \oplus 1)) \cdot (x_2 \oplus (z_2 \oplus 1)) \cdots (x_{n+1} \cdot (z_{n+1} \oplus 1))
+\end{equation*}
+
+Kết quả phép tính ra 1 khi vì chỉ khi tất cả hạng tử bằng 1. Nói cách khác $x_i \oplus (z_i \oplus 1) = 1$ với mọi $1 \leqslant i \leqslant n+1$.
+
+Điều này tương đương với $x_i = z_i$ với mọi $1 \leqslant i \leqslant n+1$. Nhưng điều này vô lý vì khi đó $\bm{x} \equiv \bm{z}$ mà hai vector này nằm ở hai tập rời nhau.
+
+Do đó kết quả hàm $f$ luôn là 0. Ta có điều phải chứng minh.
+
 \section*{Problem 5. Primes}
 \addcontentsline{toc}{section}{Problem 5. Primes}
 
-Đây là bài 5 của round 2 và được giải bởi người đồng đội Uyên.
+Đây là bài 5 của round 2 và được giải bởi bạn Uyên.
 
 \subsection*{Đề bài}
 
@@ -118,8 +237,8 @@ Do $p$ và $q$ là các số nguyên tố lớn nên chúng lẻ. Suy ra $m = p 
 
 Số chẵn kết thúc bởi 0, 2, 4, 6, 8 nên không thể kết thúc bởi 3. Do đó điều này không thể xảy ra.
 
-\section*{Problem 6. An aggregated signature}
-\addcontentsline{toc}{section}{Problem 6. An aggregated signature}
+\section*{Problem 6**. An aggregated signature}
+\addcontentsline{toc}{section}{Problem 6**. An aggregated signature}
 
 Bài này không biết làm \emoji{smiling-face-with-tear}.
 
@@ -414,6 +533,59 @@ Như vậy ta có hai nghiệm thỏa mãn chuỗi 8 bit $\gamma_{1201}, \ldots,
 
 Bài này bạn Chương được 4/4 điểm. Good job nigga \emoji{face-with-tears-of-joy}.
 
+\section*{Problem 9**. Finite-state machines}
+\addcontentsline{toc}{section}{Problem 9**. Finite-state machines}
+
+Bài này không biết làm!!!
+
+\subsection*{Đề bài}
+
+Alice muốn tạo một generator để sinh một dãy số với độ dài chu kỳ lớn nhất có thể. Vì cô ấy biết về finite-state machine, generator $G$ sẽ được xây dựng bởi hai machine $A_1$ và $A_2$ sao cho:
+
+\begin{itemize}
+    \item $A_1 = (\FF_2^n, \FF_2, g_1, f_1)$ với hàm state-transition (hàm chuyển trạng thái) $g_1 : \FF_2^n \to \FF_2^n$ và hàm output $f_1: \FF_2^n \to \FF_2$, $n \geqslant 1$;
+    \item $A_2 = (\FF_2, \FF_2^m, \FF_2, g_2, f_2)$ với hàm state-transition $g_2 : \FF_2 \times \FF_2^m \to \FF_2^n$ và hàm output $f_2 : \FF_2 \times \FF_2^m \to \FF_2$, $m \geqslant 1$.
+\end{itemize}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[page=1]{nsucrypto/2023/problem9_figures.pdf}
+\end{figure}
+
+Với mỗi $t=1, 2, \ldots$, đặt
+
+\begin{enumerate}
+    \item $x(t)$ và $y(t)$ là trạng thái của $A_1$ và $A_2$, $x(1)$ và $y(1)$ là các giá trị khởi tạo;
+    \item $x(t+1) = g_1 (t)$ là trạng thái tiếp theo của $A_1$ và $u(t) = f_1 (x(t))$ là output bit của $A_1$;
+    \item $y(t+1) = g_2(u(t), y(t))$ là trạng thái tiếp theo của $A_2$ và $z(t) = f_2(u(t), y(t))$ là output bit của $A_2$.
+\end{enumerate}
+
+Dãy $z(1), z(2), z(3), \ldots$ là output của generator $G$. Dễ thấy rằng dãy sinh bởi $G$ có chu kỳ nhỏ nhất không vượt quá $2^{n+m}$.
+
+Theo thí nghiệm Alice thấy rằng, dãy output của $G$ sẽ có chu kỳ nhỏ nhất nhỏ hơn $2^{n+m}$ nếu Hamming weight của $f_1$ là chẵn. Hãy chứng minh hoặc phủ định nhận xét của Alice.
+
+\subsection*{Giải}
+
+Note theo gợi ý của thầy Kolomeec, chưa hiểu hết.
+
+Dễ thấy rằng nếu $z(t)$ có chu kỳ tối đa thì các máy trạng thái $A_1$ và $A_2$ phải có chu kỳ tối đa lần lượt là $2^n$ và $2^m$.
+
+Các giá trị của $g_2$ có thể chia ra hai phần là $g_2(0, \bm{x})$ và $g_2(1, \bm{x})$ với $\bm{x} \in \FF_2^m$. Trong đó 0 và 1 xác định từ $f_1$.
+
+Nếu $g_2$ có chu kỳ cực đại thì trọng số phải là $2^{m}$, nói cách khác là hàm cân bằng, suy ra $g_2(0, \bm{x})$ và $g_2(1, \bm{x})$ đều có số chẵn phần tử.
+
+Điều này có nghĩa là $g_2$ sẽ sinh ra dãy có chu kỳ tạo thành hoán vị chẵn.
+
+Tuy nhiên nếu $g_2$ có chu kỳ cực đại thì chu kỳ đó phải tạo thành hoán vị lẻ vì khi đó hoán vị
+\begin{equation*}
+    1 \to 2 \to \cdots \to t \to 1 = (1, 2) (1, 3) \cdots (1, t)
+\end{equation*}
+có $t - 1$ tranposition. Nói cách khác đây là hoán vị lẻ vì $t=2^{m}$ chẵn.
+
+Như vậy để chu trình đạt chu kỳ tối đa thì nó phải là hoán vị lẻ, mâu thuẫn với phân tích ở trên $g_2$ sẽ sinh ra dãy là hoán vị chẵn.
+
+Trong cách giải này có hai chỗ mình không biết thầy lấy đâu ra: tại sao $g_2$ cân bằng thì cả $g_2(0, \bm{x})$ và $g_2(1, \bm{x})$ đều phải có số chẵn phần tử mà không phải là đều có số lẻ? Liên hệ giữa trọng số hàm bool và hoán vị chẵn/lẻ là gì?
+
 \section*{Problem 10. Quantum encryption}
 \addcontentsline{toc}{section}{Problem 10. Quantum encryption}
 
@@ -425,7 +597,7 @@ Bob tạo một thuật toán mã hóa encrypt 4 bit $(x_1, x_2, x_3, x_4)$ bằ
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[page=1]{nsucrypto/problem10_figures.pdf}
+    \includegraphics[page=1]{nsucrypto/2023/problem10_figures.pdf}
 \end{figure}
 
 Plaintext 4 bit $(x_1, x_2, x_3, x_4)$ được biểu diễn ở dạng 4-qubit "plainstate" $\lvert x1, x2, x3, x4 \rangle$. Quantum state này là input cho mạch ở dạng qubit đơn đi qua các cổng.
@@ -440,7 +612,7 @@ Bob có nhiệm vụ tăng số qubit đầu vào lên nhằm giảm các sai s�
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[page=2]{nsucrypto/problem10_figures.pdf}
+    \includegraphics[page=2]{nsucrypto/2023/problem10_figures.pdf}
 \end{figure}
 Alice nói rằng cô ấy có thể tìm lại được key nếu biết $N$ amplitude của kết quả $\lvert \psi \rangle$. Do có 8 qubits ở kết quả nên số lượng amplitude tối đa là $2^8 = 256$, nói cách khác $N \leqslant 256$. Vậy Alice cần ít nhất bao nhiêu amplitude là đủ để tìm lại key?
 
@@ -450,7 +622,7 @@ Alice nói rằng cô ấy có thể tìm lại được key nếu biết $N$ am
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[page=3]{nsucrypto/problem10_figures.pdf}
+    \includegraphics[page=3]{nsucrypto/2023/problem10_figures.pdf}
 \end{figure}
 Chúng ta xét dây 1 và 4 của mạch (tương tự cho dây 2 và 3). Áp dụng cổng CNOT liên tiếp 3 lần ta có
 \begin{equation*}
@@ -460,11 +632,11 @@ Chúng ta xét dây 1 và 4 của mạch (tương tự cho dây 2 và 3). Áp d�
 \begin{figure}[ht]
     \centering
     \begin{subfigure}{0.3\textwidth}
-        \includegraphics[page=4]{nsucrypto/problem10_figures.pdf}
+        \includegraphics[page=4]{nsucrypto/2023/problem10_figures.pdf}
         \caption{Dây 1 và dây 4}
     \end{subfigure}
     \begin{subfigure}{0.3\textwidth}
-        \includegraphics[page=5]{nsucrypto/problem10_figures.pdf}
+        \includegraphics[page=5]{nsucrypto/2023/problem10_figures.pdf}
         \caption{Dây 2 và dây 3}
     \end{subfigure}
 \end{figure}
@@ -475,7 +647,7 @@ Tương tự cho các cặp dây (5, 8) và (6, 7). Do đó khi tới trước c
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[page=6]{nsucrypto/problem10_figures.pdf}
+    \includegraphics[page=6]{nsucrypto/2023/problem10_figures.pdf}
     \caption{Qubits trước Hadamard}
     \label{nsucrypto23:p10_4}
 \end{figure}
@@ -487,7 +659,7 @@ Mạch sau khi đi qua Hadamard có dạng \ref{nsucrypto23:p10_5}
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[page=7]{nsucrypto/problem10_figures.pdf}
+    \includegraphics[page=7]{nsucrypto/2023/problem10_figures.pdf}
     \caption{Qubits sau Hadamard}
     \label{nsucrypto23:p10_5}
 \end{figure}
@@ -504,7 +676,7 @@ Bây giờ chúng ta quay lại toán tử CNOT. Ma trận tương ứng của t
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[page=8]{nsucrypto/problem10_figures.pdf}
+    \includegraphics[page=8]{nsucrypto/2023/problem10_figures.pdf}
 \end{figure}
 
 Như vậy, giả sử $\lvert z_2 \rangle = a \lvert 0 \rangle + b \lvert 1 \rangle$, $\lvert z_1 \rangle = c \lvert 0 \rangle + \lvert 1 \rangle$, $\lvert z_4 \rangle = e \lvert 0 \rangle + f \lvert 1 \rangle$, $\lvert z_3 \rangle = g \lvert 0 \rangle + h \lvert 1 \rangle$. Khi đó kết quả cipherstate là

@@ -1,6 +1,8 @@
 \chapter{Lý thuyết xác suất}
 
-\section{Định nghĩa xác suất}
+\section{Introduction}
+
+\subsection*{Định nghĩa xác suất}
 
 \begin{definition}[Định nghĩa cổ điển của xác suất]
     Định nghĩa thống kê của xác suất nói rằng, giả sử trong một phép thử có $n$ khả năng có thể xảy ra. Xét một biến cố $A$ xảy ra khi thực hiện phép thử có $k$ khả năng xảy ra. Khi đó xác suất của biến cố $A$ ký hiệu là $P(A)$ và được tính \[P(A) = \frac{k}{n}\]
@@ -48,7 +50,7 @@ Ta còn có thể ký hiệu $P(A+B)$ là $P(A \cup B)$ (hợp hai biến cố).
 
 Khi đó, nếu $A$ và $B$ là hai biến cố độc lập thì \[P(AB) = P(A)P(B)\]    
 
-\section{Xác suất có điều kiện}
+\subsection*{Xác suất có điều kiện}
 
 Xét hai tập hợp $A$ và $B$. Số phần tử của phép hợp hai tập hợp trong trường hợp tổng quát được tính như sau: \[|A \cup B| = |A| + |B| - |A \cap B|\]
     
@@ -94,7 +96,7 @@ Tổng quát, nếu $n$ biến cố $A_i$, $i=1, \ldots, n$ không độc lập 
     Như vậy, xác suất học sinh trả lời đúng câu thứ hai với điều kiện câu đầu trả lời đúng là: $P(B | A) = \frac{P(AB)}{P(A)} = \frac{3 / 16}{3 / 4} = \frac{1}{4}$
 \end{example}
 
-\section{Công thức xác suất đầy đủ}
+\subsection*{Công thức xác suất đầy đủ}
 
 \begin{definition}[Hệ biến cố đầy đủ]
     Xét phép thử có không gian mẫu là $\Omega$. Một hệ các biến cố $A_1$, $A_2$, ..., $A_n$ được gọi là \textbf{đầy đủ} nếu chúng thỏa các điều kiện:
@@ -118,9 +120,9 @@ Tổng quát, nếu $n$ biến cố $A_i$, $i=1, \ldots, n$ không độc lập 
     Với biến cố $B$ bất kì thì: \[P(A_i | B) = \frac{P(A_i) P(B | A_i)}{\displaystyle{\sum_{j=1}^n P(A_j) P(B | A_j)}}\] với $1 \leq i \leq n$.
 \end{theorem}
 
-\chapter{Biến ngẫu nhiên}
-
 \section{Biến ngẫu nhiên}
+
+\subsection*{Biến ngẫu nhiên}
 
 Xét phép thử với không gian mẫu $\Omega$. Với mỗi biến cố sơ cấp $\omega \in \Omega$ ta liên kết với một số thực $\xi(\omega) \in \RR$ thì $\xi$ được gọi là \textbf{biến ngẫu nhiên} (BNN).
 
@@ -148,7 +150,8 @@ Giá trị $\xi(\omega)$ được gọi là một giá trị của biến ngẫu
 \end{definition}
 
 Ở đây ta viết gọn $P(\xi \leq x)$ từ $P(\{ \omega: \xi(\omega) \leq x \})$. Tập hợp $\{ \omega: \xi(\omega) \leq x\}$ có thể không thuộc một biến cố nào, do đó có thể là tập rỗng (ứng với xác suất là 0).
-\section{Tính chất của hàm phân phối}
+
+\subsection*{Tính chất của hàm phân phối}
 
 \textbf{Tính chất 1.} Hàm phân phối $F(x)$ không giảm trên mọi đoạn thẳng.
 
@@ -168,7 +171,7 @@ Giá trị $\xi(\omega)$ được gọi là một giá trị của biến ngẫu
 
 Để chứng minh các tính chất 2, 3, 4 chúng ta cần các tiên đề của sự liên tục (continunity axioms) và sẽ không đề cập ở đây.
 
-\section{Biến ngẫu nhiên rời rạc}
+\subsection*{Biến ngẫu nhiên rời rạc}
 
 Cho BNN rời rạc $\xi = \xi(\omega)$, $\xi = \{ a_1, a_2, \ldots, a_n, \ldots \}$. Giả sử $a_1 < a_2 < \ldots < a_n < \ldots$ với xác suất tương ứng là $P(\xi = a_i) = p_i$, $i = 1, 2, \ldots$
 
@@ -214,22 +217,22 @@ Các biến ngẫu nhiên xung khắc nhau (vì $\xi$ không thể nhận hai gi
 
 Tham số $\lambda$ thể hiện số lần trung bình mà một sự kiện xảy ra trong một khoảng thời gian nhất định. Khi đó, nếu một biến ngẫu nhiên có số lần xuất hiện trung bình của một sự kiện trong thời gian $t$ thì nó có phân phối Poisson với tham số $\lambda t$, với $\lambda$ là số lần trung bình trong một đơn vị thời gian.
 
-\section{Biến ngẫu nhiên liên tục}
+\subsection*{Biến ngẫu nhiên liên tục}
 
 \begin{definition}[Biến ngẫu nhiên liên tục]
     Biến ngẫu nhiên $\xi$ được gọi là \textbf{liên tục}, nếu nó nhận giá trị tại mọi điểm thuộc một đoạn liên tục nào đó trên trục số, và tồn tại một hàm số không âm $p(x)$ sao cho với mọi đoạn $[a ,b]$ (hữu hạn hoặc vô hạn) ta có
     \begin{equation}
-        P(a \leq \xi \leq b) = \int_{a}^{b} p(x)\, dx
+        P(a \leq \xi \leq b) = \int\displaylimits_{a}^{b} p(x)\, dx
     \end{equation}
     Hàm $p(x)$ được gọi là \textbf{hàm mật độ} của biến ngẫu nhiên $\xi$.
 \end{definition}
 
-Tương tự biến ngẫu nhiên rời rạc, $p(x) \geq 0$ với mọi $x \in \RR$ và khi hai cận là vô cực thì biến ngẫu nhiên bao quát toàn bộ không gian mẫu. Nghĩa là \[ \int_{-\infty}^{+\infty} p(x)\, dx = 1 \]
+Tương tự biến ngẫu nhiên rời rạc, $p(x) \geq 0$ với mọi $x \in \RR$ và khi hai cận là vô cực thì biến ngẫu nhiên bao quát toàn bộ không gian mẫu. Nghĩa là \[ \int\displaylimits_{-\infty}^{+\infty} p(x)\, dx = 1 \]
 
 Từ định nghĩa của hàm phân phối $F(x) = P(\xi \leq x)$ ta có hai tính chất của hàm mật độ:
 
 \begin{enumerate}
-    \item $\displaystyle{F(x) = \int_{-\infty}^{x} p(x)\, dx}$
+    \item $\displaystyle{F(x) = \int\displaylimits_{-\infty}^{x} p(x)\, dx}$
     \item $p(x) = F'(x)$
 \end{enumerate}
 
@@ -249,14 +252,14 @@ Tính chất thứ nhất là từ định nghĩa hàm phân phối. Tính chấ
     \end{itemize}
 \end{remark}
 
-\section{Hàm mật độ của biến ngẫu nhiên liên tục}
+\subsection*{Hàm mật độ của biến ngẫu nhiên liên tục}
 
 \begin{definition}
-    Hàm số $f: \mathbb{R} \mapsto \mathbb{R}$ được gọi là \textbf{hàm mật độ} của biến ngẫu nhiên liên tục $X$ nếu: \[P(a \leq X \leq b) = \displaystyle{\int_a^b f(x)\,dx}, \forall a, b \in \mathbb{R}\]
+    Hàm số $f: \mathbb{R} \mapsto \mathbb{R}$ được gọi là \textbf{hàm mật độ} của biến ngẫu nhiên liên tục $X$ nếu: \[P(a \leq X \leq b) = \displaystyle{\int\displaylimits_a^b f(x)\,dx}, \forall a, b \in \mathbb{R}\]
 \end{definition}
 
 \begin{remark}
-    Với mọi $x \in \mathbb{R}$, $f(x) \geq 0$ và $\displaystyle{\int_{-\infty}^{+\infty}f(x)\,dx = 1}$.
+    Với mọi $x \in \mathbb{R}$, $f(x) \geq 0$ và $\displaystyle{\int\displaylimits_{-\infty}^{+\infty}f(x)\,dx = 1}$.
 \end{remark}
 
 \textbf{Ý nghĩa hình học}. Xác suất của biến ngẫu nhiên $X$ nhận giá trị trong $[a, b]$ bằng diện tích hình thang cong giới hạn bởi $x=a$, $x=b$, $y=f(x)$ và $Ox$.

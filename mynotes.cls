@@ -45,9 +45,9 @@
 
 % Definition
 \pgfdeclarehorizontalshading{definitionbackground}{100bp}
-    {color(0bp)=(blue!40); color(100bp)=(black!5)}
+    {color(0bp)=(magenta!40); color(100bp)=(black!5)}
 \pgfdeclarehorizontalshading{definitiontitle}{100bp}
-    {color(0bp)=(red!40); color(100bp)=(black!5)}
+    {color(0bp)=(blue!40); color(100bp)=(black!5)}
 
 \newcounter{definition}[chapter]
 \newenvironment{definition}[1][]{
@@ -72,21 +72,22 @@
         }
     }
     \mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
-            linewidth=1pt,topline=true,%
-            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
-            roundcorner=10pt,
-            nobreak=true,
-            apptotikzsetting={%
-                \tikzset{mdfbackground/.append style={shading=definitionbackground}}
-            }}
+        linewidth=1pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+        roundcorner=10pt,
+        nobreak=true,
+        apptotikzsetting={%
+            \tikzset{mdfbackground/.append style={shading=definitionbackground}}
+        }
+    }
     \begin{mdframed}[]\relax
 }{\end{mdframed}}
 
 % Remark
 \pgfdeclarehorizontalshading{remarkbackground}{100bp}
-    {color(0bp)=(blue!40); color(100bp)=(black!5)}
+    {color(0bp)=(orange!40); color(100bp)=(black!5)}
 \pgfdeclarehorizontalshading{remarktitle}{100bp}
-    {color(0bp)=(yellow!40); color(100bp)=(black!5)}
+    {color(0bp)=(violet!40); color(100bp)=(black!5)}
 
 \newcounter{remark}[chapter]
 \newenvironment{remark}[1][]{
@@ -101,13 +102,16 @@
         frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
         roundcorner=10pt,
         nobreak=true,
+        apptotikzsetting={%
+            \tikzset{mdfbackground/.append style={shading=remarkbackground}}
+        }
     }
     \begin{mdframed}[]\relax
 }{\end{mdframed}}
 
 % Theorem
 \pgfdeclarehorizontalshading{theorembackground}{100bp}
-    {color(0bp)=(green!40); color(100bp)=(black!5)}
+    {color(0bp)=(yellow!40); color(100bp)=(black!5)}
 \pgfdeclarehorizontalshading{theoremtitle}{100bp}
     {color(0bp)=(green!40); color(100bp)=(black!5)}
 
@@ -134,11 +138,14 @@
         }
     }
     \mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
-            linewidth=1pt,topline=true,%
-            frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
-            roundcorner=10pt,
-            nobreak=true,
-            }
+        linewidth=1pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+        roundcorner=10pt,
+        nobreak=true,
+        apptotikzsetting={%
+            \tikzset{mdfbackground/.append style={shading=theorembackground}}
+        }
+    }
     \begin{mdframed}[]\relax
 }{\end{mdframed}}
 
@@ -178,9 +185,28 @@
             }
     \begin{mdframed}[]\relax
 }{\end{mdframed}}
+
+\theoremstyle{definition}
+\newtheorem{example}{Ví dụ}
+\newtheorem{corollary}{Hệ quả}
+
+\renewcommand*{\proofname}{Chứng minh}
+\counterwithin*{example}{chapter}
+
+\renewcommand*{\chaptername}{Chương}
+\renewcommand*{\appendixname}{Phụ lục}
+\renewcommand*{\contentsname}{Mục lục}
+\renewcommand*{\figurename}{Hình}
+\renewcommand*{\tablename}{Bảng}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \RequirePackage{enumitem}
 \RequirePackage{hyperref}
 \RequirePackage{graphicx}
 \RequirePackage{indentfirst}
+
+\RequirePackage{caption}
+
+\DeclareCaptionLabelSeparator{bar}{.\space}
+\captionsetup[figure]{labelsep=bar}

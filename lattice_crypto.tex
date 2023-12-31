@@ -53,6 +53,50 @@ Hơn nữa, vì
 \end{equation*}
 nên $\det(\bm{A}) = \pm 1$.
 
+\begin{definition}[Fundamental domain]
+    Cho lattice $L$ có số chiều là $d$ với cơ sở gồm các vector $\{ \bm{v}_1, \bm{v}_2, \ldots, \bm{v}_d \}$. Ta gọi \textbf{fundamental domain} (hay \textbf{fundamental parallelepiped}) của $L$ ứng với cơ sở trên là tập
+    \begin{equation}
+        \mathcal{F} (\bm{v}_1, \ldots, \bm{v}_d) = \{ t_1 \bm{v}_1 + \ldots + t_d \bm{v}_d : 0 \leqslant t_i < 1 \}
+    \end{equation}
+\end{definition}
+
+Trong mặt phẳng $Oxy$ với hai vector $\bm{u}$ và $\bm{v}$ không cùng phương thì fundamental domain là hình bình hành tạo bởi hai vector đó.
+
+\begin{remark}
+    Gọi $L \subset \RR^n$ là lattice với số chiều là $n$ và gọi $\mathcal{F}$ là fundamental domain của $L$. Khi đó mọi vetor $\bm{w} \in \RR^n$ đều có thể viết dưới dạng
+    \begin{equation*}
+        \bm{w} = \bm{t} + \bm{v}
+    \end{equation*}
+    với $\bm{t}$ duy nhất thuộc $\mathcal{F}$ và $\bm{v}$ duy nhất thuộc $L$.
+
+    Một cách tương đương, hợp của các fundamental domains
+    \begin{equation*}
+        \mathcal{F} + \bm{v} = \{ \bm{t} + \bm{v} : \bm{t} \in \mathcal{F} \}
+    \end{equation*}
+    với $\bm{v}$ là các vector trong $L$, sẽ cover hết $\RR^n$.
+\end{remark}
+
+\begin{proof}
+    Để chứng minh nhận xét trên, giả sử $\{ \bm{v}_i : 1 \leqslant i \leqslant n \}$ là cơ sở của $L$. Khi đó các $\bm{v}_i$ độc lập tuyến tính nên cũng là cơ sở của $\RR^n$.
+
+    Ta viết các vector $\bm{w} \in \RR^n$ dưới dạng tổ hợp tuyến tính của $\bm{v}_i$ và tách hệ số trước mỗi vector thành phần nguyên và phần lẻ. Phần nguyên cho vector trong $L$ và phần lẻ cho vector trong $\mathcal{F}$.
+
+    Để chứng minh tính duy nhất của tổ hợp, xét hai cách biểu diễn khác nhau của $\bm{w}$ và chứng minh hai cách đó là một.
+\end{proof}
+
+\begin{theorem}[Bất đẳng thức Hadamard]
+    Cho lattice $L$, lấy cơ sở bất kỳ của $L$ là các vector $\bm{v}_1$, ..., $\bm{v}_n$ và gọi $\mathcal{F}$ là fundamental domain cho $L$. Khi đó
+    \begin{equation}
+        \det L = \text{Vol} (\mathcal{F}) \leqslant \lVert \bm{v}_1 \rVert \cdot \lVert \bm{v}_2 \rVert \cdots \lVert \bm{v}_n \rVert
+    \end{equation}
+\end{theorem}
+
+Cơ sở càng gần với trực giao thì bất đẳng thức Hadamard trên càng trở thành đẳng thức.
+
+\subsection*{Thuật toán Babai}
+
+Thuật toán này giúp tìm một cơ sở "đủ tốt" để giải \texttt{apprCVP}.
+
 \section{Thuật toán GGH}
 
 Phần này tham khảo trong \cite{HofJef-2014}

@@ -5,3 +5,4 @@ format: jb-book
 root: intro
 chapters:
 - file: gradient.ipynb
+- file: midnightsun2020.ipynb
