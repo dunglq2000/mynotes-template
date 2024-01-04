@@ -95,7 +95,7 @@ Nếu $\dim \overrightarrow{\alpha} = m$ thì ta nói $\alpha$ là một \textbf
 
 Theo cách gọi thông thường, 1-phẳng là đường thẳng, 2-phẳng là mặt phẳng. \textbf{Siêu phẳng} là tên gọi của phẳng có đối chiều 1, tức là nếu số chiều của không gian là $n$ thì số chiều của siêu phẳng là $n-1$.
 
-\begin{remark}
+Chúng ta có một số nhận xét sau.
 
 \begin{enumerate}
 	\item Nếu $\alpha$ là phẳng đi qua $P$ thì $P \in \alpha$ và với mọi $M$, $N$ thuộc $\alpha$ ta có $\overrightarrow{MN} = \overrightarrow{PN} - \overrightarrow{PM}$ cũng thuộc $\alpha$;
@@ -108,7 +108,6 @@ Theo cách gọi thông thường, 1-phẳng là đường thẳng, 2-phẳng l�
     \end{equation*}
 	Vì vậy ta có thể xem phẳng là không gian affine con.
 \end{enumerate}
-\end{remark}
 
 Để xác định đường thẳng ta chỉ cần biết một vector chỉ phương là đủ. Để xác định mặt phẳng ta chỉ cần biết hai vector không song song của mặt phẳng đó là đủ. Tổng quát, để xác định phương $\overrightarrow{\alpha}$ của $m$-phẳng $\alpha$ ta chỉ cần biết một cơ sở là đủ.
 
@@ -259,6 +258,8 @@ Do đó hệ điểm $\{ P_0, P_1, \ldots, P_m \}$ độc lập thì $\dim (P_0 
         = & \dim\overrightarrow{\alpha} + \dim\overrightarrow{\beta} + \dim\overrightarrow{\gamma} - \dim(\overrightarrow{\alpha} \cap \overrightarrow{\beta}) \\ 
         = & \dim\alpha + \dim\beta + 1 - \dim(\overrightarrow{\alpha} \cap \overrightarrow{\beta})
     \end{align*}
+
+    Như vậy ta có công thức tính số chiều của phẳng giao.
 \end{proof}
 
 \subsection*{Vị trí tương đối}
@@ -310,14 +311,14 @@ Khi đó bộ $(x_1, x_2, \ldots, x_n)$ được gọi là \textit{tọa độ} 
 
 Giả sử $M$ có tọa độ $(x_i)$ và $N$ có tọa độ $(y_i)$ đối với mục tiêu $\{\overrightarrow{e_i}\}$. Ta có $\overrightarrow{MN} = \overrightarrow{ON} - \overrightarrow{OM} = (y_i - x_i)$. Như vậy $(y_i - x_i)$ là tọa độ của vector $\overrightarrow{MN}$ trong mục tiêu $\{O, \overrightarrow{e_i}\}$.
 
-\begin{remark}
-    \begin{enumerate}
-        \item Giả sử trên $\Aa^n$ đã chọn được mục tiêu cố định $\{O, \overrightarrow{e_i}\}$. Xét ánh xạ 
-        \begin{align*}
-            \varphi: \, & \Aa \to \FF^n \\ & M \to (x_i)
-        \end{align*}
-        với $(x_i)$ là tọa độ của $M$. Khi đó $\varphi$ là song ánh và mỗi điểm được đồng nhất với một phần tử của $\FF^n$. Nói cách khác đối tượng hình học được đồng nhất với đối tượng đại số.
-        \item Xét mục tiêu affine $\{O, \overrightarrow{e_i}\}$ của $\Aa^n$ và gọi $E_i \in \Aa$ là các điểm sao cho $\overrightarrow{OE_i} = \overrightarrow{e_i}$. Khi đó hệ điểm $\{O, E_1, E_2, \ldots, E_n\}$ độc lập affine. Ngược lại, một hệ gồm $n+1$ điểm $\{O, E_1, E_2, \ldots, E_n\}$ độc lập affine xác định một mục tiêu affine $\{O, \overrightarrow{e_i}\}$ với $\overrightarrow{e_i} = \overrightarrow{OE_i}$. Nếu ta chọn $O = (0, \ldots, 0)$ và $E_i = (0, \ldots, 0, 1, 0, \ldots, 0)$ với số 1 ở vị trí $i$ thì đây được gọi là cơ sở chính tắc.
-        \item Siêu phẳng đi qua $n$ điểm độc lập $O$, $E_1$, $E_2$, ..., $E_{i-1}$, $E_{i+1}$, ..., $E_n$ được gọi là \textbf{siêu phẳng tọa độ thứ $i$}. Dễ thấy $M$ thuộc siêu phẳng tọa độ thứ $i$ khi và chỉ khi $x_i = 0$ với $x_i$ là tọa độ thứ $i$ của $M$.
-    \end{enumerate}
-\end{remark}
+Ta có một số nhận xét về mục tiêu affine.
+
+\begin{enumerate}
+    \item Giả sử trên $\Aa^n$ đã chọn được mục tiêu cố định $\{O, \overrightarrow{e_i}\}$. Xét ánh xạ 
+    \begin{align*}
+        \varphi: \, & \Aa \to \FF^n \\ & M \to (x_i)
+    \end{align*}
+    với $(x_i)$ là tọa độ của $M$. Khi đó $\varphi$ là song ánh và mỗi điểm được đồng nhất với một phần tử của $\FF^n$. Nói cách khác đối tượng hình học được đồng nhất với đối tượng đại số.
+    \item Xét mục tiêu affine $\{O, \overrightarrow{e_i}\}$ của $\Aa^n$ và gọi $E_i \in \Aa$ là các điểm sao cho $\overrightarrow{OE_i} = \overrightarrow{e_i}$. Khi đó hệ điểm $\{O, E_1, E_2, \ldots, E_n\}$ độc lập affine. Ngược lại, một hệ gồm $n+1$ điểm $\{O, E_1, E_2, \ldots, E_n\}$ độc lập affine xác định một mục tiêu affine $\{O, \overrightarrow{e_i}\}$ với $\overrightarrow{e_i} = \overrightarrow{OE_i}$. Nếu ta chọn $O = (0, \ldots, 0)$ và $E_i = (0, \ldots, 0, 1, 0, \ldots, 0)$ với số 1 ở vị trí $i$ thì đây được gọi là cơ sở chính tắc.
+    \item Siêu phẳng đi qua $n$ điểm độc lập $O$, $E_1$, $E_2$, ..., $E_{i-1}$, $E_{i+1}$, ..., $E_n$ được gọi là \textbf{siêu phẳng tọa độ thứ $i$}. Dễ thấy $M$ thuộc siêu phẳng tọa độ thứ $i$ khi và chỉ khi $x_i = 0$ với $x_i$ là tọa độ thứ $i$ của $M$.
+\end{enumerate}

@@ -1,0 +1,44 @@
+\chapter{Discrete logarithm}
+
+\section{Các thuật toán tính discrete logarithm}
+
+Thuật toán Baby-Step-Giant-Step (BSGS) giúp tính discrete logarithm trên nhóm cyclic với order là số nguyên tố \ref{alg:bsgs}.
+
+\begin{algorithm}[H]
+    \caption{Thuật toán Baby-Step-Giant-Step}
+    \label{alg:bsgs}
+    \begin{algorithmic}[1]
+        \Require Nhóm cyclic $G$ có order $n$, generator $g$ và phần tử $h \in G$.
+        \Ensure Số $x$ duy nhất thuộc $\{ 0, 1, \ldots, n-1 \}$ thỏa $g^x = h$.
+        $m \gets \lfloor \sqrt{n} \rfloor$
+        \For{$j = 0 \to m-1$}
+            \State Tính $g^j$. Lưu $(j, g^j)$ vào bảng.
+        \EndFor
+        \State Tính $g^{-m}$.
+        \State $\gamma \gets h$.
+        \For{$i = 0 \to m-1$}
+            \State a) Kiểm tra điều kiện $\gamma = g^j$ với $j = 0, 1, \ldots, m-1$.
+            \State b) Nếu điều kiện thỏa, trả về $im + j$.
+            \State c) Nếu không, đặt $\gamma \gets \gamma \cdot g^{-m}$.
+        \EndFor
+    \end{algorithmic}
+\end{algorithm}
+
+Khi order của cyclic group là lũy thừa một số nguyên tố thì ta dùng thuật toán Pohlig-Hellman \ref{alg:pohlig}.
+
+\begin{algorithm}[H]
+    \caption{Thuật toán Pohlig-Hellman}
+    \label{alg:pohlig}
+    \begin{algorithmic}[1]
+        \Require Nhóm cyclic $G$ có order $n=p^e$, generator $g$ và phần tử $h \in G$.
+        \Ensure Số $x$ duy nhất thuộc $\{ 0, 1, \ldots, n-1 \}$ thỏa $g^x = h$.
+        \State Khởi tạo $x_0 = 0$.
+        \State Tính $\gamma = g^{p^{e-1}}$. Theo định lý Lagrange, $\gamma$ có order là $p$.
+        \For{$k = 0 \to e-1$}
+            \State a) Tính $h_k = (g^{-x_k} \cdot h)^{e-1-k}$.
+            \State b) Sử dụng thuật toán baby-step-giant-step, tìm $d_k \in \{ 0, 1, \ldots, p-1 \}$ sao cho $\gamma^{d_k} = h_k$. % Bước này có độ phức tạp $O(\sqrt{p})$.
+            \State c) Tính $x_{k+1} = x_k + p^k d_k$.
+        \EndFor
+        \State Trả về $x_e$ là kết quả cần tìm.
+    \end{algorithmic}
+\end{algorithm}

@@ -1,0 +1,31 @@
+\documentclass{standalone}
+
+\usepackage[fontsize=14pt]{fontsize}
+\usepackage{fontspec}
+\usepackage{tikz}
+
+\usetikzlibrary{matrix}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \matrix [
+        matrix of nodes,
+        nodes in empty cells,
+        nodes={outer sep=0pt,inner sep=0pt,rectangle,draw,minimum width=1cm,},
+        row sep=-\pgflinewidth,
+        column sep=-\pgflinewidth,
+        text depth=0.5ex,
+        text height=2ex,
+        minimum height=1cm,
+        font=\bfseries
+    ] {
+        \node[fill=yellow] {K}; & \node[fill=green] {a}; & \node[fill=yellow] {u}; & \node[fill=green] {g}; & \node[fill=yellow] {z}; \\
+        \node[fill=green] {S}; & \node[fill=pink] {F}; & \node[fill=yellow] {n}; & \node[fill=pink] {t}; & \node[fill=green] {e}; \\
+        \node[fill=yellow] {y}; & \node[fill=pink] {e}; & \node[fill=pink] {s}; & \node[fill=pink] {e}; & \node[fill=yellow] {e}; \\
+        \node[fill=green] {h}; & \node[fill=pink] {i}; & \node[fill=yellow] {c}; & \node[fill=pink] {l}; & \node[fill=green] {M}; \\
+        \node[fill=yellow] {h}; & \node[fill=green] {t}; & \node[fill=yellow] {i}; & \node[fill=green] {a}; & \node[fill=yellow] {k}; \\
+    };
+\end{tikzpicture}
+
+\end{document}

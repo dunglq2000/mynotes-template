@@ -30,15 +30,19 @@ Nói cách khác, đặt toán tử quantum là ma trận $\mathcal{U} = \begin{
 
 \subsection*{Các toán tử quantum thường gặp}
 
-1. \textbf{Toán tử đồng nhất}. Toán tử đồng nhất identity giữ nguyên qubit đầu vào. Ma trận tương ứng là ma trận đơn vị $I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$.
+\begin{definition}[Toán tử đồng nhất]
+    Toán tử đồng nhất identity giữ nguyên qubit đầu vào. Ma trận tương ứng là ma trận đơn vị $I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$.
+\end{definition}
 
-2. \textbf{Toán tử NOT}. Toán tử NOT có ma trận tương ứng là $\text{NOT} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$. Khi đó $\text{NOT} \lvert \psi \rangle = b \lvert 0 \rangle + a \lvert 1 \rangle$ với $x \in \{ 0, 1 \}$.
+\begin{definition}[Toán tử NOT]
+    Toán tử NOT có ma trận tương ứng là $\text{NOT} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$. Khi đó $\text{NOT} \lvert \psi \rangle = b \lvert 0 \rangle + a \lvert 1 \rangle$ với $x \in \{ 0, 1 \}$.
+\end{definition}
 
 Khi qubit là $\lvert 0 \rangle$ hoặc $\lvert 1 \rangle$, tác dụng của toán tử NOT là phép XOR nên ta có $\text{NOT} \lvert x \rangle = \lvert x \oplus 1 \rangle$.
 
-3. \textbf{Toán tử Hadamard}. Đây là một toán tử đặc biệt và được quan tâm nhiều.
-
-Ma trận của toán tử Hadamard là $H = \dfrac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & - 1 \end{pmatrix}$. 
+\begin{definition}[Toán tử Hadamard]
+    Ma trận của toán tử Hadamard là $H = \dfrac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & - 1 \end{pmatrix}$. 
+\end{definition}
 
 \begin{example}
     Xét qubit $\lvert \psi \rangle = a \lvert 0 \rangle + b \lvert 1 \rangle$, toán tử Hadamard tương ứng với phép nhân ma trận
@@ -60,21 +64,24 @@ Tổng quát ta nhận thấy, với $x \in \{ 0, 1 \}$ thì $H \lvert x \rangle
 
 Ta thấy rằng toán tử ngược của toán tử Hadamard là chính nó.
 
-4. \textbf{Toán tử control}. Đây là toán tử thường được dùng nhất khi tính toán trên tích của nhiều qubit.
+Tiếp theo là toán tử thường được dùng nhất khi tính toán trên tích của nhiều qubit: toán tử control.
 
 Như đã xem xét ở trên, tích của $n$ qubit sẽ có $2^n$ phần tử tương ứng các bộ $\lvert 0, 0, \ldots, 0, 0 \rangle$, $\lvert 0, 0, \ldots, 0, 1 \rangle$, ... Do đó toán tử control sẽ là ma trận kích thước $2^n \times 2^n$.
 
-Gọi $\mathcal{U} = \begin{pmatrix} c_{11} & c_{12} \\ c_{21} & c_{22} \end{pmatrix}$ là toán tử tác động lên một qubit (ví dụ như 3 toán tử đã đề cập). Xét hai qubit là $\lvert x \rangle = a \lvert 0 \rangle + b \lvert 1 \rangle$ và $\lvert y \rangle = c \lvert 0 \rangle + d \lvert 1 \rangle$. Từ phía trên
-\begin{equation*}
-    \lvert x \rangle \otimes \lvert y \rangle = ac \lvert 00 \rangle + ad \lvert 01 \rangle + bc \lvert 10 \rangle + bd \lvert 11 \rangle
-\end{equation*}
 
-Khi đó toán tử control có dạng ma trận là
-\begin{equation*}
-    c \mathcal{U} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & c_{11} & c_{12} \\ 0 & 0 & c_{21} & c_{22} \end{pmatrix}
-\end{equation*}
+\begin{definition}[Toán tử control]    
+    Gọi $\mathcal{U} = \begin{pmatrix} c_{11} & c_{12} \\ c_{21} & c_{22} \end{pmatrix}$ là toán tử tác động lên một qubit (ví dụ như 3 toán tử đã đề cập). Xét hai qubit là $\lvert x \rangle = a \lvert 0 \rangle + b \lvert 1 \rangle$ và $\lvert y \rangle = c \lvert 0 \rangle + d \lvert 1 \rangle$. Từ phía trên
+    \begin{equation*}
+        \lvert x \rangle \otimes \lvert y \rangle = ac \lvert 00 \rangle + ad \lvert 01 \rangle + bc \lvert 10 \rangle + bd \lvert 11 \rangle
+    \end{equation*}
 
-Hay viết dưới dạng ma trận khối là $c \mathcal{U} = \begin{pmatrix} I & \mathcal{O} \\ \mathcal{O} & \mathcal{U} \end{pmatrix}$.
+    Khi đó toán tử control có dạng ma trận là
+    \begin{equation*}
+        c \mathcal{U} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & c_{11} & c_{12} \\ 0 & 0 & c_{21} & c_{22} \end{pmatrix}
+    \end{equation*}
+
+    Hay viết dưới dạng ma trận khối là $c \mathcal{U} = \begin{pmatrix} I & \mathcal{O} \\ \mathcal{O} & \mathcal{U} \end{pmatrix}$.
+\end{definition}
 
 Ta cũng viết tích $\lvert x \rangle \otimes \lvert y \rangle$ dưới dạng vector cột (4 phần tử). Khi đó
 \begin{equation*}
@@ -101,67 +108,11 @@ Tổng kết lại, với $x \in \{ 0, 1\}$ thì
 
 Tùy vào $x$ là 0 hay 1 mà toán tử quantum $\mathcal{U}$ sẽ bị bỏ qua hoặc xem xét. Ở đây qubit $\lvert x \rangle$ đóng vai trò điều khiển nên đây được gọi là toán tử control.
 
-5. \textbf{Toán tử control CNOT (Control NOT)}. Toán tử quantum CNOT có ma trận là
-\begin{equation*}
-    \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} = \begin{pmatrix} I & \mathcal{O} \\ \mathcal{O} & \text{NOT} \end{pmatrix}
-\end{equation*}
+\begin{definition}[Toán tử control CNOT (Control NOT)]
+    Toán tử quantum CNOT có ma trận là
+    \begin{equation*}
+        \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix} = \begin{pmatrix} I & \mathcal{O} \\ \mathcal{O} & \text{NOT} \end{pmatrix}
+    \end{equation*}
+\end{definition}
 
 Qubit $\lvert x \rangle$ với $x \in \{ 0, 1 \}$ đóng vai trò control cho qubit $\lvert y \rangle$. Khi $x \equiv 0$ thì $y$ giữ nguyên, hay $\lvert y \oplus 0 \rangle = \lvert y \oplus x \rangle$. Khi $x \equiv 1$ thì áp dụng cổng NOT bên trên, khi đó $y$ biến đổi thành $y \oplus 1 = y \oplus x$.
-
-\subsection*{Một ví dụ về qubit trong NSUCRYPTO 2022}
-
-Đố vui: nếu ta có qubit là $\alpha \lvert 0 \rangle + \beta \lvert 1 \rangle$, hãy xây dựng mạch logic để biến đổi qubit trên thành $\alpha \lvert 000 \rangle + \beta \lvert 111 \rangle$.
-
-Giải: sử dụng toán tử Hadamard và NOT. Ta có \[ NOT(\alpha \lvert 0 \rangle + \beta \lvert 1 \rangle) = \beta \lvert 0 \rangle + \alpha \lvert 1 \rangle\] và \[\mathcal{H} (\alpha \lvert 0 \rangle + \beta \lvert 1 \rangle) = \dfrac{1}{\sqrt{2}} (\alpha + \beta) \lvert 0 \rangle + \dfrac{1}{\sqrt{2}} (\alpha - \beta) \lvert 1 \rangle \]
-
-Toán tử $CNOT$ được biểu diễn bởi ma trận \[ CNOT = \begin{pmatrix}
-    1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0
-\end{pmatrix}\]
-
-Giả sử ta có hai qubit là $\lvert \alpha \rangle = x \lvert 0 \rangle + y \lvert 1 \rangle$ và $\lvert \beta \rangle = z \lvert 0 \rangle + t \lvert 1 \rangle$.
-
-Khi đó $\lvert \alpha \rangle \otimes \lvert \beta \rangle = xz \lvert 00 \rangle + xt \lvert 01 \rangle + yz \lvert 10 \rangle + yt \lvert 11 \rangle$.
-
-Qua toán tử $CNOT$ ta có
-
-\begin{align*}
-    CNOT (\lvert \alpha \rangle \otimes \lvert \beta \rangle) 
-    = & \begin{pmatrix}
-    1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0
-    \end{pmatrix} \begin{pmatrix}
-    xz \\ xt \\ yz \\ yt
-    \end{pmatrix}
-    = \begin{pmatrix}
-    xz \\ xt \\ yt \\ yz
-    \end{pmatrix} \\
-    = & xz \lvert 00 \rangle + xt \lvert 01 \rangle + yt \lvert 10 \rangle + yz \lvert 11 \rangle
-\end{align*}
-
-Trường hợp $\lvert \alpha \rangle = \lvert 0 \rangle$ thì $x = 1, y = 0$. Khi đó ta có tương đương 
-\begin{equation*}
-    CNOT (\lvert 0 \rangle \otimes \lvert \beta \rangle) = z \lvert 00 \rangle + t \lvert 01 \rangle = \lvert 0 \rangle \otimes (z \lvert 0 \rangle + t \lvert 1 \rangle) = \lvert 0 \rangle \otimes \lvert \beta \rangle.
-\end{equation*}
-
-Trường hợp $\lvert \alpha \rangle = \lvert 1 \rangle$ thì $x = 0, y = 1$. Khi đó ta có tương đương 
-\begin{equation*}
-    CNOT (\lvert 1 \rangle) \otimes \lvert \beta \rangle) = t \lvert 10 \rangle + z \lvert 11 \rangle = \lvert 1 \rangle \otimes (t \lvert 0 \rangle + z \lvert 1 \rangle) = \lvert 1 \rangle \otimes NOT(\lvert \beta \rangle)
-\end{equation*}
-
-Nói cách khác, nếu $x \in \{ 0, 1 \}$ thì 
-
-\begin{equation*}
-    CNOT (\lvert x \rangle \otimes \lvert \beta \rangle) = 
-    \begin{cases}
-        \lvert x \rangle \otimes \lvert \beta \rangle, & \text{nếu } x = 0 \\ 
-        \lvert x \rangle \otimes NOT(\lvert \beta \rangle), & \text{nếu } x = 1
-    \end{cases}
-\end{equation*}
-
-Do đó các toán tử có ma trận $\begin{pmatrix}
-    I_n & \mathcal{O} \\ \mathcal{O} & \mathcal{U}
-\end{pmatrix}$ được gọi là toán tử kiểm soát (controlled).
-
-Một trường hợp riêng nữa là khi $\beta = 0$ hoặc $\beta = 1$. Khi đó, với toán tử $NOT$ bên trên ta suy ra 
-\begin{equation*}
-    CNOT (\lvert x \rangle \otimes \lvert y \rangle) = \lvert x \rangle \otimes \lvert x \oplus y \rangle
-\end{equation*}
