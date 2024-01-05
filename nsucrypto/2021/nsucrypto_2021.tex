@@ -1,6 +1,35 @@
 \chapter*{NSUCRYPTO 2021}
 \addcontentsline{toc}{chapter}{NSUCRYPTO 2021}
 
+\section*{Problem 4 (R1). Elliptic curve points}
+
+\subsection*{Đề bài}
+
+Đặt $E / \FF_p$ là đường cong elliptic với dạng Weiertrass. Đường cong này có phương trình $y^2 = x^3 + ax + b$, với $a, b \in \FF_p$ và $4a^3 + 27a^2 \neq 0$. Các điểm affine trong $E$ và điểm vô cực $\mathcal{O}$ tạo thành một nhóm Abel, đặt
+\begin{equation*}
+    E(\FF_p) = \{ (x, y) \in \FF_p^2 : y^2 = x^3 + ax + b \} \cup \{ \mathcal{O} \}
+\end{equation*}
+
+Giả sử $b=0$. Gọi $R \in E(\FF_p)$ là điểm với order lẻ và $R \neq \mathcal{O}$. Xét $H = \langle R \rangle$ là subgroup sinh bởi $R$.
+
+Giúp Alice chứng minh rằng nếu $(u, v) \in H$ thì $u$ là số chính phương modulo $p$.
+
+\subsection*{Giải}
+
+Gọi $Q = (x', y') \in H$. Do $R$ có order lẻ nên $Q$ cũng có order lẻ (order của phần tử trong subgroup chia hết order của subgroup đó).
+
+Giả sử order của $Q$ là $n$ lẻ. Xét điểm $P = \dfrac{n+1}{2} Q$, do $n$ lẻ nên dễ thấy $P \in H$. Đặt $P = (x, y)$.
+
+Do $2P = (n+1) Q = Q$ (do $Q$ có order là $n$) nên theo công thức cộng hai điểm trên elliptic ta có
+\begin{align*}
+    x' & = \left(\frac{3x^2 + a}{2y}\right) - 2x \\
+       & = \frac{9x^4 + 6x^2 a + a^2 - 8x(x^3 + ax)}{(2y)^2} \\
+       & = \frac{x^4 - 2x^2 a + a^2}{(2y)^2} \\
+       & = \left(\frac{x^2-a}{2y}\right)
+\end{align*}
+
+Biểu thức cuối cho thấy rằng $x'$ là số chính phương modulo $p$ (đpcm).
+
 \section*{Problem 9. 2021-bit key}
 
 \subsection*{Đề bài}
