@@ -5,6 +5,8 @@ Tài liệu tham khảo trong phần này lấy từ sách \cite{Judson2012} và
 
 \section{Extension Fields}
 
+\subsection*{Extension Fields}
+
 \begin{definition}[Mở rộng trường (Extension Field)]
     Trường $E$ được gọi là \textbf{mở rộng trường} (hay \textbf{extension field}) của trường $F$ nếu $F$ là trường con của $E$. Khi đó $F$ được gọi là \textbf{trường cơ sở} (hay \textbf{base field}) và ký hiệu $F \subset E$.
 \end{definition}
@@ -69,6 +71,95 @@ Khi đó ta viết
     \end{enumerate}
 \end{remark}
 
+\subsection*{Biểu diễn quan hệ giữa các trường qua lattice}
+
+Ở phần trước, $\QQ(\sqrt{2})$ là mở rộng của $\QQ$ và với hai phần tử $a, b \in \QQ$ xác định một phần tử $a + b \sqrt{2} \in \QQ(\sqrt{2})$.
+
+Do $a + b \sqrt{2} = a \cdot 1 + b \cdot \sqrt{2}$ nên $\{ 1, \sqrt{2} \}$ là \textbf{cơ sở} (hay \textbf{basis}) của $\QQ(\sqrt{2})$. Cơ sở chứa hai phần tử nên ta nói \textbf{bậc của mở rộng đơn} (hay \textbf{degree}) từ $\QQ$ lên $\QQ(\sqrt{2})$ là 2.
+
+Tương tự, mở rộng từ $\QQ$ lên $\QQ(i)$ cũng có bậc là 2 với cơ sở là $(1, i)$.
+
+Như vậy ta cũng các trường $\QQ(\sqrt{2})$, $\QQ(\sqrt{3})$ và $\QQ(\sqrt{6})$ là các mở rộng đơn bậc 2 của $\QQ$ (hình \ref{extension_field:1}).
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[page=1]{extension_field.pdf}
+    \caption{Mở rộng trường $\QQ$ lên $\QQ(\sqrt{2})$, $\QQ(\sqrt{3})$ và $\QQ(\sqrt{6})$}
+    \label{extension_field:1}
+\end{figure}
+
+Do $\sqrt{6} = \sqrt{2} \cdot \sqrt{3}$ dẫn ta tới câu hỏi, trường nào nhỏ nhất chứa cả $\sqrt{2}$ và $\sqrt{3}$?
+
+Thực hiện tương tự với $\QQ(\sqrt{2}, i)$ ở trên ta có trường
+\begin{equation*}
+    \QQ(\sqrt{2}, \sqrt{3}) = \QQ(\sqrt{2})(\sqrt{3}) = \{ a + b \sqrt{2} + c \sqrt{3} + d \sqrt{6} : a, b, c, d \in \QQ \}
+\end{equation*}
+là trường nhỏ nhất chứa cả $\sqrt{2}$ và $\sqrt{3}$.
+
+Ở đây, $\QQ(\sqrt{2}, \sqrt{3})$ là mở rộng bậc 4 của $\QQ$ với cơ sở là $\{ 1, \sqrt{2}, \sqrt{3}, \sqrt{6} \}$.
+
+Bằng việc mở rộng từ $\QQ(\sqrt{2})$ lên $\QQ(\sqrt{2}, \sqrt{3}) = \QQ(\sqrt{2})(\sqrt{3})$ ta cũng có đây là mở rộng bậc 2 (tương tự chứng minh phía trên cho $\QQ(\sqrt{2}, i)$). Như vậy mở rộng từ $\QQ(\sqrt{3})$ lên $\QQ(\sqrt{2}, \sqrt{3})$ cũng là mở rộng bậc 2.
+
+Vậy mở rộng từ $\QQ(\sqrt{6})$ lên $\QQ(\sqrt{2}, \sqrt{3})$ là bậc mấy? Để xác định ta cần chứng minh nhận xét sau
+
+\begin{remark}
+    $\QQ(\sqrt{2}, \sqrt{3}) \equiv \QQ(\sqrt{2} + \sqrt{3})$, trong đó $\QQ(\sqrt{2} + \sqrt{3})$ là trường nhỏ nhất chứa $\QQ$ và $\sqrt{2} + \sqrt{3}$.
+\end{remark}
+
+\begin{proof}
+    Ta chứng minh $\QQ(\sqrt{2}, \sqrt{3}) \subset \QQ(\sqrt{2} + \sqrt{3})$.
+
+    Do $\sqrt{2} + \sqrt{3}$ nên nghịch đảo $\dfrac{1}{\sqrt{2} + \sqrt{3}} = \sqrt{3} - \sqrt{2} \in \QQ(\sqrt{2} + \sqrt{3})$.
+
+    Khi đó, $\dfrac{1}{2} \cdot (\sqrt{2} + \sqrt{3}) \pm \dfrac{1}{2} \cdot (\sqrt{3} - \sqrt{2}) \in \QQ(\sqrt{2} + \sqrt{3})$.
+
+    Vế trái sẽ bằng $\sqrt{2}$ hoặc $\sqrt{3}$. Như vậy $\sqrt{2}, \sqrt{3} \in \QQ(\sqrt{2} + \sqrt{3})$.
+
+    Phép nhân trên trường cho ta $\sqrt{2} \cdot \sqrt{3} = \sqrt{6} \in \QQ(\sqrt{2} + \sqrt{3})$.
+
+    Như vậy với mọi $a, b, c, d \in \QQ$ ta có $a + b \sqrt{2} + c \sqrt{3} + d \sqrt{6} \in \QQ(\sqrt{2} + \sqrt{3})$. Điều này tương đương với $\QQ(\sqrt{2}, \sqrt{3}) \subset \QQ(\sqrt{2} + \sqrt{3})$.
+
+    Nhưng mà $\QQ(\sqrt{2} + \sqrt{3})$ là trường nhỏ nhất chứa $\QQ$ và $\sqrt{2} + \sqrt{3}$, và $\QQ(\sqrt{2}, \sqrt{3})$ là trường nhỏ nhất chứa $\sqrt{2}$ và $\sqrt{3}$, kéo theo chứa cả $\sqrt{2} + \sqrt{3}$ nên $\QQ(\sqrt{2} + \sqrt{3}) \equiv \QQ(\sqrt{2}, \sqrt{3})$.
+\end{proof}
+
+Ta có $\QQ(\sqrt{6}) = \{ a + b \sqrt{6} : a, b \in \QQ \}$. Khi đó
+\begin{equation}
+    \label{QQ6_to_QQ2+3}
+    \QQ(\sqrt{6})(\sqrt{2} + \sqrt{3}) = \{ \alpha + \beta (\sqrt{2} + \sqrt{3}) : \alpha, \beta \in \QQ(\sqrt{6}) \}
+\end{equation}
+
+Đặt $\alpha = a + b \sqrt{6}$ và $\beta = c + d \sqrt{6}$, như vậy mỗi phần tử trong $\QQ(\sqrt{6})(\sqrt{2} + \sqrt{3})$ có dạng
+\begin{align*}
+    a + b \sqrt{6} + (c + \sqrt{6})(\sqrt{2} + \sqrt{3}) = & a + (c + 3d) \sqrt{2} + (c + 2d) \sqrt{3} + b \sqrt{6} \\
+        = & a' + b' \sqrt{2} + c' \sqrt{3} + d' \sqrt{6}
+\end{align*}
+với $a \to a'$, $c+3d \to b'$, $c + 2d \to c'$ và $b \to d'$.
+
+Biến đổi này tương đương với hệ phương trình tuyến tính
+\begin{equation*}
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 3 \\
+        0 & 0 & 1 & 2 \\
+        0 & 1 & 0 & 0
+    \end{pmatrix} \begin{pmatrix}
+        a \\ b \\ c \\ d
+    \end{pmatrix} = \begin{pmatrix}
+        a' \\ b' \\ c' \\ d'
+    \end{pmatrix}
+\end{equation*}
+
+Ma trận trên khả nghịch trên $\QQ$, do đó $\QQ(\sqrt{6})(\sqrt{2} + \sqrt{3}) \equiv \QQ(\sqrt{2}, \sqrt{3})$. Ở dạng biểu diễn \ref{QQ6_to_QQ2+3} ta suy ra mở rộng từ $\QQ(\sqrt{6})$ lên $\QQ(\sqrt{2}, \sqrt{3})$ là mở rộng bậc 2.
+
+Sơ đồ mở rộng trường bây giờ như sau
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[page=2]{extension_field.pdf}
+\end{figure}
+
+\subsection*{Splitting Field}
+
 \begin{definition}[Trường phân rã (Splitting Field)]
     Xét trường $F$ và đa thức khác hằng $p(x) = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0$ trên $F[x]$ ($a_i \in F$ với mọi $i = 1, 2, \ldots$).
 
@@ -90,54 +181,26 @@ Nói nôm na, nếu đa thức có hệ số trong một trường $F$ nào đó
     Đa thức $g(x) = x^2 + i$ trên $\QQ[x]$ không có nghiệm trên $\QQ$. Tuy nhiên $g(x)$ có hai nghiệm là $\pm i$ và $\QQ(i)$ chứa cả $\QQ$ và $\pm i$ nên $\QQ(i)$ là một trường phân rã của $g(x)$.
 \end{example}
 
-\begin{example}
-    Xét trường
-    \begin{equation*}
-        F = \QQ(\sqrt{2}) = \{ a + b  \sqrt{2}: a, b \in \QQ\}
-    \end{equation*}
+Ở đây, bậc của đa thức $f(x) = x^2 - 2$ bằng với bậc của mở rộng trường từ $\QQ$ lên $\QQ(\sqrt{2})$.
 
-    Ta gọi $E = \QQ(\sqrt{2} + \sqrt{3})$ là trường nhỏ nhất chứa cả $\QQ$ và $\sqrt{2} + \sqrt{3}$. Ta thấy rằng cả $E$ và $F$ đều là mở rộng của $\QQ$.
+Tương tự, bậc của mở rộng trường từ $\QQ$ lên $\QQ(\sqrt{3})$ bằng bậc đa thức $g(x) = x^2 - 3$, và bậc của mở rộng trường từ $\QQ$ lên $\QQ(\sqrt{6})$ bằng với bậc đa thức $h(x) = x^2 - 6$.
 
-    Ta sẽ chứng minh $E$ là một mở rộng trường của $F$.
+Ở trên ta đã chứng minh bậc của mở rộng trường từ $\QQ(\sqrt{2})$ lên $\QQ(\sqrt{2}, \sqrt{3})$ là 2, điều này tương ứng với bậc của đa thức $k(x) = (x^2 - 2)(x^2 - 3) = x^4 - 5 x + 6$.
 
-    \begin{proof}
-        Do $\sqrt{2} + \sqrt{3} \in E$ nên nghịch đảo của nó cũng nằm trong $E$, nghĩa là $\dfrac{1}{\sqrt{2} + \sqrt{3}} \in E$. Suy ra $\sqrt{3} - \sqrt{2} \in E$.
+Tổng kết lại, nếu $E$ là trường phân rã của $F$ trên đa thức $f(x) \in F[x]$ thì bậc của mở rộng trường từ $F$ lên $E$ bằng với bậc của $f(x)$.
 
-        Trong trường, mọi tổ hợp tuyến tính của hai phần tử bất kỳ luôn cho kết quả là phần tử trong trường. Do đó $\dfrac{1}{2} \cdot (\sqrt{2} + \sqrt{3}) - \dfrac{1}{2} \cdot (\sqrt{3} - \sqrt{2}) = \sqrt{2} \in E$.
+Từ sơ đồ mở rộng trường bên trên ta có sơ đồ với đa thức tương ứng.
 
-        Tương tự $\sqrt{3} \in E$. Do $E$ chứa $\QQ$ và chứa $\sqrt{2}$ nên $E$ chứa tất cả phần tử dạng $a + b \sqrt{2}$ với $a, b \in \QQ$ (tổ hợp tuyến tính của 1 và $\sqrt{2}$) nên $E$ là một mở rộng của $F$.
-    \end{proof}
-\end{example}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[page=3]{extension_field.pdf}
+\end{figure}
 
-%\begin{example}
-%    Ta xét trường
-%    \begin{equation*}
-%        \QQ(\sqrt{2}; \sqrt{3}) = \{ a + b \sqrt{2} + c \sqrt{3} + d \sqrt{6} : a, b, c, d \in \QQ \}
-%    \end{equation*}
+Vậy còn mở rộng từ $\QQ(\sqrt{6})$ thành $\QQ(\sqrt{2}, \sqrt{3})$? Ở trên ta đã chứng minh rằng đây là mở rộng bậc 2. Vậy chúng ta cần tìm một đa thức bậc 2 có hệ số trong $\QQ(\sqrt{6})$ mà không có nghiệm trong $\QQ(\sqrt{6})$.
 
-%    Ta xét trường $\QQ(\sqrt{2} + \sqrt{3})$ là trường nhỏ nhất chứa cả $\QQ$ và $\sqrt{2} + \sqrt{3}$.
+Quay lại một chút, ta đã mở rộng $\QQ(\sqrt{6})$ lên $\QQ(\sqrt{2}, \sqrt{3})$ với sự trợ giúp của phần tử $\sqrt{2} + \sqrt{3}$. Từ đây ta có thể xây dựng đa thức
+\begin{equation*}
+    m(x) = x^2 - (\sqrt{2} + \sqrt{3})^2 = x^2 - 5 - 2 \sqrt{6}
+\end{equation*}
 
-%    Ta sẽ chứng minh $\QQ(\sqrt{2}; \sqrt{3}) \equiv \QQ(\sqrt{2} + \sqrt{3})$.
-
-%    \begin{proof}
-%        1. Ta chứng minh $\QQ(\sqrt{2}; \sqrt{3}) \subset \QQ(\sqrt{2} + \sqrt{3})$.
-
-%        Do $\sqrt{2} + \sqrt{3}$ nên nghịch đảo $\dfrac{1}{\sqrt{2} + \sqrt{3}} = \sqrt{3} - \sqrt{2} \in \QQ(\sqrt{2} + \sqrt{3})$.
-
-%        Khi đó, $\dfrac{1}{2} \cdot (\sqrt{2} + \sqrt{3}) \pm \dfrac{1}{2} \cdot (\sqrt{3} - \sqrt{2}) \in \QQ(\sqrt{2} + \sqrt{3})$.
-
-%        Vế trái sẽ bằng $\sqrt{2}$ hoặc $\sqrt{3}$. Như vậy $\sqrt{2}, \sqrt{3} \in \QQ(\sqrt{2} + \sqrt{3})$.
-
-%        Phép nhân trên trường cho ta $\sqrt{2} \cdot \sqrt{3} = \sqrt{6} \in \QQ(\sqrt{2} + \sqrt{3})$.
-
-%        Như vậy với mọi $a, b, c, d \in \QQ$ ta có $a + b \sqrt{2} + c \sqrt{3} + d \sqrt{6} \in \QQ(\sqrt{2} + \sqrt{3})$. Điều này tương đương với $\QQ(\sqrt{2}; \sqrt{3}) \subset \QQ(\sqrt{2} + \sqrt{3})$.
-
-%        2. Ta chứng minh $\QQ(\sqrt{2} + \sqrt{3}) \subset \QQ(\sqrt{2}; \sqrt{3})$.
-
-%        Theo định nghĩa $\QQ(\sqrt{2}; \sqrt{3})$ ta có $\sqrt{2}, \sqrt{3} \in \QQ(\sqrt{2}; \sqrt{3})$.
-
-%        Từ đây suy ra $\sqrt{2} + \sqrt{3} \in \QQ(\sqrt{2}; \sqrt{3})$, mà $\QQ \subset \QQ(\sqrt{2}; \sqrt{3})$ nên cuối cùng $\QQ(\sqrt{2} + \sqrt{3}) \subset \QQ(\sqrt{2}; \sqrt{3})$.
-
-%        Từ hai điều trên ta có $\QQ(\sqrt{2} + \sqrt{3}) \equiv \QQ(\sqrt{2}; \sqrt{3})$.
-%    \end{proof}
-%\end{example}
+Đa thức $m(x)$ có hệ số trong $\QQ(\sqrt{6})$ nhưng không có nghiệm trong $\QQ(\sqrt{6})$ mà trong $\QQ(\sqrt{2}, \sqrt{3})$. Ta có điều phải chứng minh.

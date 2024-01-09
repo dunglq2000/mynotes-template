@@ -101,5 +101,5 @@
         
     ],
     "cSpell.enabled": false,
-    //"latex-workshop.latex.autoClean.run": "onBuilt"
+    "latex-workshop.latex.autoClean.run": "onFailed"
 }

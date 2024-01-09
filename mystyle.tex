@@ -1,0 +1,41 @@
+% Problem
+\pgfdeclarehorizontalshading{problembackground}{100bp}
+    {color(0bp)=(gray!40); color(100bp)=(black!5)}
+\pgfdeclarehorizontalshading{problemtitle}{100bp}
+    {color(0bp)=(violet!40); color(100bp)=(black!5)}
+
+\newcounter{problem}[section]
+\newenvironment{problem}[1][]{
+    \stepcounter{problem}
+    \ifstrempty{#1}
+    {
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                \node[line width=1pt,anchor=east,rectangle,rounded corners,draw=blue!20,fill=white,shading=problemtitle]
+                {\strut \color{black}{Định nghĩa}~\thedefinition};
+            },
+        }
+    }
+    {
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                \node[line width=1pt,anchor=east,rectangle,rounded corners,draw=blue!20,fill=white,shading=problemtitle]
+                {#1};
+            },
+        }
+    }
+    \mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
+        linewidth=1pt,topline=true,%
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+        roundcorner=10pt,
+        nobreak=true,
+        apptotikzsetting={%
+            \tikzset{mdfbackground/.append style={shading=problembackground}}
+        }
+    }
+    \begin{mdframed}[]\relax
+}{\end{mdframed}}
+
+\newtheorem*{solution}{Giải}

@@ -1,0 +1,50 @@
+\documentclass[tikz]{standalone}
+
+\usepackage{amsmath, amsfonts}
+\usepackage[fontsize=14pt]{fontsize}
+\usetikzlibrary{positioning, automata}
+
+\newcommand{\QQ}{\mathbb{Q}}
+
+\begin{document}
+    \begin{tikzpicture}
+        \node (QQ) {$\QQ$};
+        \node [above left=2cm and 2cm of QQ] (QQ2) {$\QQ(\sqrt{2})$};
+        \node [above=2cm of QQ] (QQ6) {$\QQ(\sqrt{6})$};
+        \node [above right=2cm and 2cm of QQ] (QQ3) {$\QQ(\sqrt{3})$};
+
+        \draw [->] (QQ) -- node [below] {2} (QQ2);
+        \draw [->] (QQ) -- node [left] {2} (QQ6);
+        \draw [->] (QQ) -- node [below] {2} (QQ3);
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+        \node (QQ) {$\QQ$};
+        \node [above left=2cm and 2cm of QQ] (QQ2) {$\QQ(\sqrt{2})$};
+        \node [above=2cm of QQ] (QQ6) {$\QQ(\sqrt{6})$};
+        \node [above right=2cm and 2cm of QQ] (QQ3) {$\QQ(\sqrt{3})$};
+        \node [above=2cm of QQ6] (QQ23) {$\QQ(\sqrt{2}, \sqrt{3})$};
+
+        \draw [->] (QQ) -- node [below] {2} (QQ2);
+        \draw [->] (QQ) -- node [left] {2} (QQ6);
+        \draw [->] (QQ) -- node [below] {2} (QQ3);
+        \draw [->] (QQ2) -- node [above] {2} (QQ23);
+        \draw [->] (QQ6) -- node [left] {2} (QQ23);
+        \draw [->] (QQ3) -- node [above] {2} (QQ23);
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+        \node (QQ) {$\QQ$};
+        \node [above left=2cm and 2cm of QQ] (QQ2) {$\QQ(\sqrt{2})$};
+        \node [above=2cm of QQ] (QQ6) {$\QQ(\sqrt{6})$};
+        \node [above right=2cm and 2cm of QQ] (QQ3) {$\QQ(\sqrt{3})$};
+        \node [above=2cm of QQ6] (QQ23) {$\QQ(\sqrt{2}, \sqrt{3})$};
+
+        \draw [->] (QQ) -- node [below=0.5cm, sloped, anchor=center] {$x^2 - 2$} (QQ2);
+        \draw [->] (QQ) -- node [above=0.5cm, sloped, anchor=center] {$x^2 - 6$} (QQ6);
+        \draw [->] (QQ) -- node [below=0.5cm, sloped, anchor=center] {$x^2 - 3$} (QQ3);
+        \draw [->] (QQ2) -- node [above=0.5cm, sloped, anchor=center] {$x^2 - 3$} (QQ23);
+        \draw [->] (QQ6) -- node [left] {?} (QQ23);
+        \draw [->] (QQ3) -- node [above=0.5cm, sloped, anchor=center] {$x^2 - 2$} (QQ23);
+    \end{tikzpicture}
+\end{document}
