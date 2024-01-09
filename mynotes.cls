@@ -26,8 +26,39 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography part
-\RequirePackage[backend=biber]{biblatex}
-\DeclareFieldFormat{urldate}{(truy cập vào #1)}
+\RequirePackage[
+    parentracker=true,
+    backend=biber,
+    hyperref=auto,
+    language=russian,
+    autolang=other,
+    citestyle=gost-numeric,
+    defernumbers=true,
+    bibstyle=gost-footnote,
+    sorting=none
+]{biblatex}
+
+\defbibenvironment{gostbibliography}
+  {\list
+     {\printtext[labelnumberwidth]{%
+	  \printfield{labelprefix}%
+	  \printfield{labelnumber}}}
+     {\toggletrue{bbx:gostbibliography}%
+      \renewcommand*{\revsdnamepunct}{\addcomma}%
+      \renewcommand*{\labelnamepunct}{\addperiod\space}%
+      %\renewcommand*{\bibname}{\hspace{1.27cm}Список используемых литератур}
+      %\setlength{\leftmargin}{\bibhang}%
+      %\setlength{\itemindent}{\leftmargin}%
+      %\setlength{\itemsep}{\bibitemsep}%
+      %\setlength{\parsep}{\bibparsep}
+      \setlength{\leftmargin}{0cm}
+      \setlength{\itemindent}{1.27cm}
+      }
+    }
+  {\endlist}
+  {\item}
+
+%\DeclareFieldFormat{urldate}{(дата обращения #1)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -151,7 +182,7 @@
 
 % Lemma
 \pgfdeclarehorizontalshading{lemmabackground}{100bp}
-    {color(0bp)=(blue!40); color(100bp)=(black!5)}
+    {color(0bp)=(teal!40); color(100bp)=(black!5)}
 \pgfdeclarehorizontalshading{lemmatitle}{100bp}
     {color(0bp)=(blue!40); color(100bp)=(black!5)}
 
@@ -182,7 +213,10 @@
             frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
             roundcorner=10pt,
             nobreak=true,
-            }
+            apptotikzsetting={%
+            \tikzset{mdfbackground/.append style={shading=lemmabackground}}
+        }
+    }
     \begin{mdframed}[]\relax
 }{\end{mdframed}}
 
@@ -210,3 +244,4 @@
 
 \DeclareCaptionLabelSeparator{bar}{.\space}
 \captionsetup[figure]{labelsep=bar}
+\captionsetup[table]{labelsep=bar}

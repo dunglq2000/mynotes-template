@@ -38,13 +38,34 @@
             "%DOC%"
         ],
         "env": {}
-    }
+    },
+    {
+        "name": "makeindex",
+        "command": "makeindex",
+        "args": [
+              "%DOCFILE%.nlo",
+              "-s",
+              "nomencl.ist",
+              "-o",
+              "%DOCFILE%.nls",
+        ]
+    },
     ],
     "latex-workshop.latex.recipes": [
         {
             "name": "lualatex",
             "tools": [
                 "lualatex",
+            ]
+        },
+        {
+            "name": "lualatex ➞ biber ➞ makeindex ➞ lualatex x 2x",
+            "tools": [
+                "lualatex",
+                "biber",
+                "lualatex",
+                "makeindex",
+                "lualatex"
             ]
         },
         {

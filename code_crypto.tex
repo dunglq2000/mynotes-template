@@ -1,0 +1,104 @@
+\chapter{Code-based cryptography}
+
+\section{Introduction}
+
+Thông tin thường được biểu diễn với các ký tự của một bảng chữ cái (alphabet) nào đó, thông thường là ở dạng dãy nhị phân $m$ phần tử ($m$-tuple).
+
+Dãy nhị phân độ dài $m$ sẽ đi qua một \textbf{encoder} thành dãy nhị phân độ dài $n$. Sau đó dãy độ dài $n$ được truyền đi trên các kênh truyền dữ liệu.
+
+Ở nơi nhận, dãy nhị phân độ dài $n$ đi qua một \textbf{decoder} để trở thành dãy nhị phân độ dài $m$.
+
+Việc truyền dữ liệu trên kênh truyền có thể dẫn đến các lỗi tín hiệu. Như vậy chúng ta cần cơ chế để xác định có lỗi xảy ra hay không và sửa chữa nó.
+
+\begin{definition}[Block code]
+    Code được gọi là \textbf{$(n, m)$-block code} nếu thông tin ban đầu có thể được chia thành các đoạn $m$ bit và mỗi đoạn như vậy được encode thành một đoạn $n$ bit. 
+\end{definition}
+
+Cụ thể hơn, $(n, m)$-block code sẽ có \textbf{hàm encode}
+\begin{equation*}
+    E: \FF_2^m \to \FF_2^n
+\end{equation*}
+và \textbf{hàm decode}
+\begin{equation*}
+    D: \FF_2^n \to \FF_2^m
+\end{equation*}
+
+Ta nói mỗi phần tử trong ảnh (image) của ánh xạ $E$ là \textbf{codeword}. Ánh xạ $E$ cần là đơn ánh (one-to-one) vì chúng ta không muốn hai dãy $m$ bit cùng encode ra một dãy $n$ bit vì khi decode chúng ta không biết sẽ ra dãy nào.
+
+Lưu ý rằng trường được sử dụng không nhất thiết là $\FF_2$ nhưng việc sử dụng trường này giúp tối ưu tốc độ tính toán cũng như xử lý trên máy tính.
+
+Nhắc lại, \textbf{khoảng cách Hamming} giữa hai vector $\bm{x}$ và $\bm{y}$ trong $\FF_2^n$ là trọng số $\wt(\bm{x} \oplus \bm{y})$. Ký hiệu $d(\bm{x}, \bm{y}) = \wt(\bm{x} \oplus \bm{y})$.
+
+\begin{definition}[Độ dài nhỏ nhất]
+    Trong code $\mathcal{C}$, \textbf{độ dài nhỏ nhất} là số $d$ bằng với khoảng cách Hamming ngắn nhất của các cặp vector bất kỳ trong $\mathcal{C}$.
+    \begin{equation*}
+        d = \min_{\bm{x}, \bm{y} \in \mathcal{C}, \bm{x} \neq \bm{y}} d(\bm{x} \oplus \bm{y})
+    \end{equation*}
+\end{definition}
+
+\subsection*{Bài toán decode}
+
+Khi dãy $n$ bit là vector $\bm{x}$ được truyền qua kênh truyền, không gì đảm bảo chúng ta sẽ nhận được chính xác $\bm{x}$, mà có thể là $\bm{y}$ nào đó.
+
+Các codeword nằm trong một block code nào đó là tập con của $\FF_2^n$, trong khi ở bên nhận có thể là một vector bất kỳ trong $\FF_2^n$. Bài toán decode đặt ra câu hỏi, làm sao biết được vector $\bm{y}$ sẽ được decode thành vector nào trong block code.
+
+\begin{definition}[Bài toán decode]
+    Cho block code $\mathcal{C}$ độ dài $n$. Giả sử ở bên nhận là vector $\bm{y} \in \FF_2^n$. Bài toán decode là bài toán tìm vector $\bm{c} \in \mathcal{C}$ sao cho $d(\bm{y}, \bm{c})$ nhỏ nhất.
+\end{definition}
+
+Bài toán decode có thể được phát biểu dưới dạng tương đương
+
+\begin{enumerate}
+    \item Tìm vector $\bm{c} \in \mathcal{C}$ sao cho $\wt(\bm{y}, \bm{c})$ đạt giá trị nhỏ nhất;
+    \item Tìm vector $\bm{e} \in \FF_2^n$ sao cho $\bm{y} \oplus \bm{e} \in \mathcal{C}$ và vector $\bm{e}$ có trọng số nhỏ nhất.
+\end{enumerate}
+
+\begin{definition}[Mã tuyến tính (Linear code)]
+    Block code $\mathcal{C}$ độ dài $n$ được gọi là \textbf{tuyến tính} (hay \textbf{linear}) nếu với mọi $a, b \in \FF_2$ và với mọi vector $\bm{x}, \bm{y} \in \mathcal{C}$ thì vector $a \cdot \bm{x} + b \cdot \bm{y}$ cũng là vector thuộc $\mathcal{C}$.
+\end{definition}
+
+\begin{remark}
+    Mã tuyến tính là một không gian con của $\FF_2^n$.
+\end{remark}
+
+Nhắc lại đại số tuyến tính, mỗi không gian vector đều tồn tại một tập các vector mà mọi vector trong không gian đều được biểu diễn dưới dạng tổ hợp tuyến tính của các vector trong tập đó. Các vector đó được gọi là \textbf{cơ sở} của không gian vector.
+
+\begin{definition}[Số chiều của mã tuyến tính]
+    Số chiều mã tuyến tính $\mathcal{C}$ là số $k$ bằng với số lượng vector trong cơ sở sinh ra mã tuyến tính. Mã tuyến tính độ dài $n$ và số chiều $k$ được gọi là $(n, k)$-code.
+\end{definition}
+
+Như vậy để sinh ra toàn bộ các vector trong mã tuyến tính ta chỉ cần một tập hợp các vector độc lập tuyến tính trong không gian và dùng nó để xây dựng nên ma trận sinh.
+
+\begin{definition}[Ma trận sinh (Generator Matrix)]
+    Ma trận sinh của code $\mathcal{C}$ là ma trận $\bm{G}$ bao gồm các vector của tập sinh trong không gian vector.
+
+    Như vậy ma trận sinh của $(n, k)$-code có kích thước $k \times n$ (mỗi vector trong cơ sở là một hàng trong $\bm{G}$ nên có $k$ hàng).
+\end{definition}
+
+\begin{remark}
+    Mọi codeword trong $(n, k)$-code $\mathcal{C}$ có thể được sinh ra nhờ ma trận sinh $\bm{G}$, nghĩa là
+    \begin{equation*}
+        \mathcal{C} = \{ \bm{a} \cdot \bm{G} : \bm{a} \in \FF_2^k \}
+    \end{equation*}
+\end{remark}
+
+Chú ý rằng $\bm{a}$ là vector hàng thuộc $\FF_2^k$. Điều này tương đương việc lấy tất cả tổ hợp tuyến tính của các vector trong cơ sở (hay các hàng của $\bm{G}$).
+
+\subsection*{Coder}
+
+\begin{definition}[Coder]
+    Code là một ánh xạ $\varphi: \FF_2^k \to \FF_2^n$ cho $(n, k)$-code $\mathcal{C}$ là biến đổi tuyến tính theo quy tắc
+    \begin{equation*}
+        \varphi_G(a_1, a_2, \ldots, a_k) = (a_1, a_2, \ldots, a_k) \cdot \bm{G}
+    \end{equation*}
+\end{definition}
+
+Trong không gian vector có thể có nhiều cơ sở, do đó đối với $(n, k)$-code cũng có nhiều ma trận sinh. Chúng ta cần ma trận sinh giúp dễ tính toán.
+
+\begin{definition}[Ma trận sinh dạng chuẩn]
+    Ma trận sinh $\bm{G}$ kích thước $k \times n$ được gọi là ở \textbf{dạng chuẩn} nếu nó có dạng
+    \begin{equation*}
+        \bm{G} = (\bm{I}_k \Vert \bm{G}_0)
+    \end{equation*}
+    Trong đó $\bm{I}_k$ là ma trận đơn vị cấp $k$ và $\bm{G}_0$ là ma trận kích thước $k \times (n-k)$.
+\end{definition}

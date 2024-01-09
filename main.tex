@@ -17,7 +17,13 @@
 \usepackage{epigraph}
 
 \usepackage{import}
-\usepackage[intoc]{nomencl}
+\usepackage{nomencl}
+\renewcommand{\nomname}{Ký hiệu chung}
+\makenomenclature
+
+\usepackage{tabularx}
+
+\usepackage{blindtext}
 
 \renewcommand*{\epigraphsize}{\normalsize}
 \PassOptionsToPackage{hyphens}{url}
@@ -26,6 +32,7 @@
 \newcommand{\FF}{\mathbb{F}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\II}{\mathbb{I}}
 \newcommand{\CC}{\mathbb{C}}
@@ -41,8 +48,12 @@
 \DeclareMathOperator{\spa}{spa}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\lb}{label}
+\DeclareMathOperator{\wt}{wt}
+\DeclareMathOperator{\Aut}{Aut}
 
 \setlength{\parskip}{4pt}
+\setlength{\extrarowheight}{4pt}
+
 \addbibresource{references.bib}
 
 \setcounter{tocdepth}{1}
@@ -51,10 +62,17 @@
 
 \begin{document}
 
-%\include{coverpage/coverpage.tex}
+%\input{coverpage/coverpage.tex}
 
 \tableofcontents
 
+\nomenclature{$\ZZ$}{Tập hợp số nguyên}
+\nomenclature{$\QQ$}{Tập hợp số hữu tỷ}
+\nomenclature{$\RR$}{Tập hợp số thực}
+\nomenclature{$\CC$}{Tập hợp số phức}
+
+\printnomenclature
+ 
 \part{Đại số tuyến tính}
 
 \input{matrix.tex}
@@ -65,9 +83,11 @@
 
 \subimport{discrete_mathematic/}{relationship}
 
-\subimport{discrete_mathematic/}{group_action.tex}
+\subimport{discrete_mathematic/}{group.tex}
 
-\subimport{discrete_mathematic/}{number_theory}
+\subimport{discrete_mathematic/}{number_theory.tex}
+
+\subimport{boolean/}{boolean_function.tex}
 
 \part{Giải tích}
 
@@ -87,19 +107,22 @@
 
 \input{zero_knowledge_proof.tex}
 
-
-
 \subimport{brachistochrone}{brachistochrone.tex}
 
 \input{assembly.tex}
 
 \input{lattice_crypto.tex}
 
+\input{code_crypto.tex}
+
 \input{quantum_computing.tex}
 
 \subimport{nsucrypto}{nsucrypto.tex}
 
-\printbibliography[heading=bibintoc,title={Tài liệu tham khảo}]
+{
+\hyphenpenalty=10000 \spaceskip=0.4em plus 0.8em minus 0.35em
+\printbibliography[env=gostbibliography,heading=bibintoc,title={Tài liệu tham khảo}]
+}
 
 \appendix
 
@@ -185,5 +208,7 @@ Xếp các hàm $f_i$ từ trên xuống dưới, ta có được đạo hàm c�
 \section*{Hàm bậc hai}
 
 Trong Machine Learning chúng ta sẽ gặp dạng toán sử dụng Linear Regression. Khi đó hàm regression là một hàm theo vector $\bm{w}$ có dạng \[ f(\bm{w}) = f (w_0, w_1, \ldots, w_n) = w_0 + w_1 x_1 + \ldots + w_n x_n \]
+
+\subimport{./}{galois_theory.tex}
 
 \end{document}

@@ -1,0 +1,143 @@
+\chapter*{Chuyên đề 1. Lý thuyết Galois}
+\addcontentsline{toc}{chapter}{Chuyên đề 1. Lý thuyết Galois}
+
+Tài liệu tham khảo trong phần này lấy từ sách \cite{Judson2012} và trang youtube\footnote{\url{https://youtu.be/Buv4Y74_z7I?si=sQ0lOodnuLR0Yb00}}.
+
+\section{Extension Fields}
+
+\begin{definition}[Mở rộng trường (Extension Field)]
+    Trường $E$ được gọi là \textbf{mở rộng trường} (hay \textbf{extension field}) của trường $F$ nếu $F$ là trường con của $E$. Khi đó $F$ được gọi là \textbf{trường cơ sở} (hay \textbf{base field}) và ký hiệu $F \subset E$.
+\end{definition}
+
+\begin{example}
+    Trường nào nhỏ nhất chứa $\QQ$ và $\sqrt{2}$?
+
+    Đáp án là trường $\QQ(\sqrt{2}) = \{ a + b \sqrt{2} : a, b \in \QQ \}$.
+
+    Việc chứng minh $\QQ(\sqrt{2})$ là trường khá đơn giản, phần tử nghịch đảo đối với phép nhân của $a + b \sqrt{2}$ là
+    \begin{equation*}
+        \frac{a}{a^2 - 2 b^2} + \frac{-2b}{a^2 - 2 b^2} \sqrt{2}
+    \end{equation*}
+\end{example}
+
+\begin{example}
+    Trường nào nhỏ nhất chứa $\QQ$ và $i$ (ở đây $i$ là đơn vị ảo, $i^2 = -1$)?
+
+    Đáp án là trường $\QQ(i) = \{ a + b i : a, b \in \QQ \}$. Tương tự, ở đây phần tử nghịch đảo đối với phép nhân của $a + b i$ là
+    \begin{equation*}
+        \frac{a}{a^2 + b^2} + \frac{-b}{a^2 + b^2} i
+    \end{equation*}
+\end{example}
+
+Ở đây $\QQ(\sqrt{2})$ và $\QQ(i)$ đều là mở rộng của $\QQ$ và đều là tập con của $\CC$. Tuy nhiên hai trường này không phải tập con của nhau.
+
+Như vậy, bằng việc mở rộng $\QQ$ với $\sqrt{2}$ ta có trường $\QQ(\sqrt{2})$.
+
+Tương tự, bằng việc mở rộng $\QQ$ với $i$ ta có trường $\QQ(i)$.
+
+Vậy trường nào chứa $\QQ$, $\sqrt{2}$ và $i$?
+
+\begin{example}
+    Trường chứa cả $\QQ$, $\sqrt{2}$ và $i$ là tập hợp
+    \begin{equation*}
+        \QQ(\sqrt{2}, i) = \{ a + b\sqrt{2} + c i + d \sqrt{2} i : a, b, c, d \in \QQ \}
+    \end{equation*}
+\end{example}
+
+Trường trên có thể suy ra từ logic sau. Ta đã có $\QQ(i)$ chứa $\QQ$ và $i$. Ta muốn thêm $\sqrt{2}$ vào trường $\QQ(i)$ nên ta sẽ muốn mở rộng $\QQ(i)$ lên $\QQ(i)(\sqrt{2})$.
+
+Khi đó $\QQ(i)(\sqrt{2})$ tương tự sẽ có dạng
+\begin{equation*}
+    \QQ(i)(\sqrt{2}) = \{ \alpha + \beta \sqrt{2} : \alpha, \beta \in \QQ(i) \}
+\end{equation*}
+
+Nói cách khác $\alpha = a + b i$ và $\beta = c + d i$, $a, b, c, d \in \QQ$, nên ta có
+\begin{equation*}
+    \alpha + \beta \sqrt{2} = a + b i + c \sqrt{2} + d \sqrt{2} i, \quad a, b, c, d \in \QQ
+\end{equation*}
+
+Khi đó ta viết
+\begin{equation*}
+    \QQ(i)(\sqrt{2}) = \QQ(\sqrt{2}, i) = \{ a + b\sqrt{2} + c i + d \sqrt{2} i : a, b, c, d \in \QQ \}
+\end{equation*}
+
+\begin{remark}
+    \begin{enumerate}
+        \item $\QQ(\sqrt{2})$ là trường con của $\RR$ nhưng $\QQ(i)$ không phải;
+        \item $\QQ(i)$ nhỏ hơn $\CC$ rất nhiều (không chứa $\sqrt{2}$);
+        \item $\QQ(\sqrt{2})$ chứa tất cả nghiệm của đa thức $f(x) = x^2 - 2$ trên $\QQ$. Do đó $\QQ(\sqrt{2})$ được gọi là \textbf{trường phân rã} của đa thức $f(x)$.
+    \end{enumerate}
+\end{remark}
+
+\begin{definition}[Trường phân rã (Splitting Field)]
+    Xét trường $F$ và đa thức khác hằng $p(x) = a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0$ trên $F[x]$ ($a_i \in F$ với mọi $i = 1, 2, \ldots$).
+
+    Trường mở rộng $E$ của trường $F$ được gọi là \textbf{trường phân rã} (hay \textbf{splitting field}) của $p(x)$ nếu tồn tại các phần tử $\alpha_1, \alpha_2, \ldots, \alpha_n$ thuộc $E$ sao cho $E = F(\alpha_1, \alpha_2, \ldots, \alpha_n)$ và
+    \begin{equation*}
+        p(x) = (x - \alpha_1) (x - \alpha_2) \cdots (x - \alpha_n)
+    \end{equation*}
+\end{definition}
+
+Khi đó ta nói đa thức $p(x) \in F[x]$ phân rã (split) trong $E$ nếu nó phân tích thành các nhân tử bậc nhất (tuyến tính) trong $E[x]$.
+
+Nói nôm na, nếu đa thức có hệ số trong một trường $F$ nào đó (tức thuộc $F[x]$) thì các nghiệm của nó nằm trong một trường lớn hơn chứa $F$.
+
+\begin{example}
+    Đa thức $f(x) = x^2 - 2$ trên $\QQ[x]$ không có nghiệm trên $\QQ$. Tuy nhiên $\QQ(\sqrt{2})$ là trường chứa $\QQ$ và các nghiệm của $f(x)$ là $\pm \sqrt{2}$. Vì vậy $\QQ(\sqrt{2})$ là trường phân rã của $f(x)$.
+\end{example}
+
+\begin{example}
+    Đa thức $g(x) = x^2 + i$ trên $\QQ[x]$ không có nghiệm trên $\QQ$. Tuy nhiên $g(x)$ có hai nghiệm là $\pm i$ và $\QQ(i)$ chứa cả $\QQ$ và $\pm i$ nên $\QQ(i)$ là một trường phân rã của $g(x)$.
+\end{example}
+
+\begin{example}
+    Xét trường
+    \begin{equation*}
+        F = \QQ(\sqrt{2}) = \{ a + b  \sqrt{2}: a, b \in \QQ\}
+    \end{equation*}
+
+    Ta gọi $E = \QQ(\sqrt{2} + \sqrt{3})$ là trường nhỏ nhất chứa cả $\QQ$ và $\sqrt{2} + \sqrt{3}$. Ta thấy rằng cả $E$ và $F$ đều là mở rộng của $\QQ$.
+
+    Ta sẽ chứng minh $E$ là một mở rộng trường của $F$.
+
+    \begin{proof}
+        Do $\sqrt{2} + \sqrt{3} \in E$ nên nghịch đảo của nó cũng nằm trong $E$, nghĩa là $\dfrac{1}{\sqrt{2} + \sqrt{3}} \in E$. Suy ra $\sqrt{3} - \sqrt{2} \in E$.
+
+        Trong trường, mọi tổ hợp tuyến tính của hai phần tử bất kỳ luôn cho kết quả là phần tử trong trường. Do đó $\dfrac{1}{2} \cdot (\sqrt{2} + \sqrt{3}) - \dfrac{1}{2} \cdot (\sqrt{3} - \sqrt{2}) = \sqrt{2} \in E$.
+
+        Tương tự $\sqrt{3} \in E$. Do $E$ chứa $\QQ$ và chứa $\sqrt{2}$ nên $E$ chứa tất cả phần tử dạng $a + b \sqrt{2}$ với $a, b \in \QQ$ (tổ hợp tuyến tính của 1 và $\sqrt{2}$) nên $E$ là một mở rộng của $F$.
+    \end{proof}
+\end{example}
+
+%\begin{example}
+%    Ta xét trường
+%    \begin{equation*}
+%        \QQ(\sqrt{2}; \sqrt{3}) = \{ a + b \sqrt{2} + c \sqrt{3} + d \sqrt{6} : a, b, c, d \in \QQ \}
+%    \end{equation*}
+
+%    Ta xét trường $\QQ(\sqrt{2} + \sqrt{3})$ là trường nhỏ nhất chứa cả $\QQ$ và $\sqrt{2} + \sqrt{3}$.
+
+%    Ta sẽ chứng minh $\QQ(\sqrt{2}; \sqrt{3}) \equiv \QQ(\sqrt{2} + \sqrt{3})$.
+
+%    \begin{proof}
+%        1. Ta chứng minh $\QQ(\sqrt{2}; \sqrt{3}) \subset \QQ(\sqrt{2} + \sqrt{3})$.
+
+%        Do $\sqrt{2} + \sqrt{3}$ nên nghịch đảo $\dfrac{1}{\sqrt{2} + \sqrt{3}} = \sqrt{3} - \sqrt{2} \in \QQ(\sqrt{2} + \sqrt{3})$.
+
+%        Khi đó, $\dfrac{1}{2} \cdot (\sqrt{2} + \sqrt{3}) \pm \dfrac{1}{2} \cdot (\sqrt{3} - \sqrt{2}) \in \QQ(\sqrt{2} + \sqrt{3})$.
+
+%        Vế trái sẽ bằng $\sqrt{2}$ hoặc $\sqrt{3}$. Như vậy $\sqrt{2}, \sqrt{3} \in \QQ(\sqrt{2} + \sqrt{3})$.
+
+%        Phép nhân trên trường cho ta $\sqrt{2} \cdot \sqrt{3} = \sqrt{6} \in \QQ(\sqrt{2} + \sqrt{3})$.
+
+%        Như vậy với mọi $a, b, c, d \in \QQ$ ta có $a + b \sqrt{2} + c \sqrt{3} + d \sqrt{6} \in \QQ(\sqrt{2} + \sqrt{3})$. Điều này tương đương với $\QQ(\sqrt{2}; \sqrt{3}) \subset \QQ(\sqrt{2} + \sqrt{3})$.
+
+%        2. Ta chứng minh $\QQ(\sqrt{2} + \sqrt{3}) \subset \QQ(\sqrt{2}; \sqrt{3})$.
+
+%        Theo định nghĩa $\QQ(\sqrt{2}; \sqrt{3})$ ta có $\sqrt{2}, \sqrt{3} \in \QQ(\sqrt{2}; \sqrt{3})$.
+
+%        Từ đây suy ra $\sqrt{2} + \sqrt{3} \in \QQ(\sqrt{2}; \sqrt{3})$, mà $\QQ \subset \QQ(\sqrt{2}; \sqrt{3})$ nên cuối cùng $\QQ(\sqrt{2} + \sqrt{3}) \subset \QQ(\sqrt{2}; \sqrt{3})$.
+
+%        Từ hai điều trên ta có $\QQ(\sqrt{2} + \sqrt{3}) \equiv \QQ(\sqrt{2}; \sqrt{3})$.
+%    \end{proof}
+%\end{example}
