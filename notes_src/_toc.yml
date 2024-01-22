@@ -6,5 +6,6 @@ root: intro
 chapters:
 - file: gradient.ipynb
 - file: Gradient Descent.ipynb
+- file: perceptron.ipynb
 - file: midnightsun2020.ipynb
 - file: TetCTF2022.ipynb
