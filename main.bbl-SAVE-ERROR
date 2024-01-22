@@ -192,6 +192,38 @@
       \verb 10.1007/978-1-4939-1711-2
       \endverb
     \endentry
+    \entry{Judson2012}{book}{}
+      \name{author}{1}{}{%
+        {{hash=fd2ebae7ee06e1bb400e2cd596b76728}{%
+           family={Judson},
+           familyi={J\bibinitperiod},
+           given={T.\bibnamedelimi W.},
+           giveni={T\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{fd2ebae7ee06e1bb400e2cd596b76728}
+      \strng{fullhash}{fd2ebae7ee06e1bb400e2cd596b76728}
+      \strng{bibnamehash}{fd2ebae7ee06e1bb400e2cd596b76728}
+      \strng{authorbibnamehash}{fd2ebae7ee06e1bb400e2cd596b76728}
+      \strng{authornamehash}{fd2ebae7ee06e1bb400e2cd596b76728}
+      \strng{authorfullhash}{fd2ebae7ee06e1bb400e2cd596b76728}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{12}
+      \field{month}{8}
+      \field{title}{Abstract Algebra. Theory and Applications}
+      \field{year}{2012}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb abstract.pugetsound.edu
+      \endverb
+      \verb{url}
+      \verb abstract.pugetsound.edu
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

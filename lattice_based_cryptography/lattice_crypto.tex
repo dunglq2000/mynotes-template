@@ -93,15 +93,85 @@ Trong mặt phẳng $Oxy$ với hai vector $\bm{u}$ và $\bm{v}$ không cùng ph
 
 Cơ sở càng gần với trực giao thì bất đẳng thức Hadamard trên càng trở thành đẳng thức.
 
+\subsection*{Short vectors trong lattice}
+
+Các bài toán liên quan tới lattice mà chúng ta cần quan tâm để xây dựng các thuật toán mã hóa lattice-based.
+
+\begin{enumerate}
+    \item \textbf{Shortest Vector Problem} (\texttt{SVP}): Tìm vector khác không có độ dài ngắn nhất trong lattice $L$, nghĩa là tìm vector $\bm{v} \in L$ mà $\lVert v \rVert$ nhỏ nhất;
+    \item \textbf{Closest Vector Problem} (\texttt{CVP}): Cho trước vector $\bm{w} \in \RR^n$ mà không nằm trong $L$, tìm vector $\bm{v} \in L$ gần với $\bm{w}$ nhất, nghĩa là tìm $\bm{v} \in L$ sao cho $\lVert \bm{w} - \bm{v} \rVert$ nhỏ nhất.
+\end{enumerate}
+
 \subsection*{Thuật toán Babai}
 
 Thuật toán này giúp tìm một cơ sở "đủ tốt" để giải \texttt{apprCVP}.
 
-\section{Thuật toán GGH}
+\begin{theorem}[Thuật toán Babai tìm Closest Vertex]
+    Gọi $L \subset \RR^n$ là lattice với cơ sở là $\bm{v}_1$, $\bm{v}_2$, \dots, $\bm{v}_n$ và gọi $\bm{w} \in \RR^n$ là vector bất kỳ. 
+    
+    Nếu các vector trong cơ sở trực giao nhau thì thuật toán Babai sẽ giải được \texttt{CVP}.
 
-Phần này tham khảo trong \cite{Hoffstein2014}
+    Nếu các vector trong cơ sở gần như trực giao thì thuật toán Babai sẽ giải được \texttt{apprCVP}.
 
-Trong thuật toán GGH, ta chọn số nguyên tố $q$ làm public parameter.
+    Ngược lại, nếu các vector trong cơ sở không trực giao (nhiều) thì kết quả thuật toán trả về sẽ xa hơn vector gần với $\bm{w}$.
+\end{theorem}
+
+\begin{algorithm}[htb]
+    \caption{Babai's Closest Vertex Algorithm}
+    \begin{algorithmic}
+        \State Biểu diễn $\bm{w} = t_1 \bm{v}_1 + t_2 \bm{v}_2 + \ldots + t_n \bm{v}_n$ với $t_1, \ldots, t_n \in \RR$.
+        \State Đặt $a_i = \lfloor t_i \rceil$ với $i = 1, \ldots, n$.
+        \State Trả về vector $\bm{v} = a_1 \bm{v}_1 + a_2 \bm{v}_2 + \ldots + a_n \bm{v}_n$.
+    \end{algorithmic}
+\end{algorithm}
+
+Mình có thể thấy rằng thuật toán Babai làm tròn hệ số để đưa trả về vector gần với $\bm{w}$.
+
+\section{Lattice reduction}
+
+Mục tiêu của việc giải các bài toán \texttt{SVP} hay \texttt{CVP} (hay các biến thể của chúng) là tìm vector ngắn trong lattice.
+
+Đối với lattice 2 chiều chúng ta có thuật toán Gauss reduction rất hữu dụng.
+
+\subsection*{Gaussian lattice reduction}
+
+Giả sử ta có $L \subset \RR^2$ là lattice 2 chiều với cơ sở là $\bm{v}_1$ và $\bm{v}_2$.
+
+Ta có thể đổi chỗ $\bm{v}_1$ và $\bm{v}_2$ nếu cần thiết để luôn đảm bảo $\lVert \bm{v}_1 \rVert < \lVert \bm{v}_2 \rVert$.
+
+Để làm nhỏ $\bm{v}_2$ ta có thể trừ đi một bội số của $\bm{v}_1$. Nếu ta sử dụng cách giống như thuật toán trực giao Gram-Schmidt thì
+\begin{equation*}
+    \bm{v}_2^* = \bm{v}_2 - \dfrac{\bm{v}_1 \cdot \bm{v}_2}{\lVert \bm{v}_1 \rVert^2} \bm{v}_1
+\end{equation*}
+
+Khi đó $\bm{v}_2^*$ sẽ trực giao với $\bm{v}_1$. Tuy nhiên vector này không nằm trong $L$ vì hệ số $\dfrac{\bm{v}_1 \cdot \bm{v}_2}{\lVert \bm{v}_1 \rVert^2}$ có thể không phải số nguyên. Để khắc phục ta chỉ việc lấy phần nguyên của hệ số này. Nghĩa là ta thay $\bm{v}_2$ bằng vector
+\begin{equation*}
+    \bm{v}_2 - m \bm{v}_1 \quad \text{với}\ m = \left\lfloor \dfrac{\bm{v}_1 \cdot \bm{v}_2}{\lVert \bm{v}_1 \rVert^2} \right\rceil
+\end{equation*}
+
+Nếu $\bm{v}_2$ vẫn lớn hơn $\bm{v}_1$ thì ta dừng thuật toán. Ngược lại ta đảo vị trí $\bm{v}_1$ và $\bm{v}_2$ rồi lặp lại bước trên. Thuật toán như sau
+
+\begin{algorithm}[htb]
+    \caption{Gaussian lattice reduction}
+    \begin{algorithmic}  
+        \Require Lattice 2 chiều $L \subset \RR^2$ với cơ sở $\bm{v}_1$ và $\bm{v}_2$
+        \Ensure Cơ sở mới $\bm{v}_1^*$ và $\bm{v}_2^*$ gần như trực giao nhau
+        \State Nếu $\lVert \bm{v}_2 \rVert < \lVert \bm{v}_1 \rVert$ thì ta đổi chỗ $\bm{v}_1$ và $\bm{v}_2$.
+        \State Tính $m = \left\lfloor \bm{v}_1 \cdot \bm{v}_2 / \lVert \bm{v}_1 \rVert^2 \right\rceil$.
+        \State Nếu $m = 0$ thì trả về cơ sở gồm $\bm{v}_1$ và $\bm{v}_2$.
+        \State Thay $\bm{v}_2$ bởi $\bm{v}_2 - m \bm{v}_1$.
+    \end{algorithmic}
+\end{algorithm}
+
+\subsection*{Thuật toán LLL}
+
+Khi số chiều lattice lớn hơn 2, chúng ta sử dụng thuật toán LLL.
+
+\section{Congruential public key cryptosystem}
+
+Phần này tham khảo trong \cite{Hoffstein2014}.
+
+Trong thuật toán này, ta chọn số nguyên tố $q$ làm public parameter.
 
 Sau đó chọn hai số $f$ và $g$ làm secret key. Hai số này phải thỏa mãn các điều kiện \[ f < \sqrt{q/2}, \quad \sqrt{q/4} < g < \sqrt{q/2}, \quad \gcd(f, qg) = 1 \]
 

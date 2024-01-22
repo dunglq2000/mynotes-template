@@ -24,6 +24,7 @@
 \usepackage{tabularx}
 
 \usepackage{blindtext}
+\usepackage{minitoc}
 
 \renewcommand*{\epigraphsize}{\normalsize}
 \PassOptionsToPackage{hyphens}{url}
@@ -58,6 +59,11 @@
 \addbibresource{references.bib}
 
 \setcounter{tocdepth}{1}
+\setcounter{parttocdepth}{3}
+
+\renewcommand{\ptctitle}{Phần này gồm}
+\renewcommand{\ptifont}{\Large\bf}
+\renewcommand{\ptcfont}{\normalsize\rm}
 
 \setlist[itemize,enumerate]{noitemsep,nosep,leftmargin=*}
 
@@ -65,6 +71,7 @@
 
 \begin{document}
 
+\doparttoc
 %\input{coverpage/coverpage.tex}
 
 \tableofcontents
@@ -78,9 +85,13 @@
  
 \part{Đại số tuyến tính}
 
+\parttoc
+
 \input{matrix.tex}
 
 \part{Toán rời rạc}
+
+\parttoc
 
 \subimport{discrete_mathematic/}{discrete_logarithm}
 
@@ -94,11 +105,15 @@
 
 \part{Giải tích}
 
+\parttoc
+
 \input{calculus}
 
 \input{probability.tex}
 
 \part{Hình học}
+
+\parttoc
 
 \subimport{analytic_geometry}{analytic_geometry.tex}
 
@@ -114,11 +129,19 @@
 
 \input{assembly.tex}
 
-\input{lattice_crypto.tex}
+\part{Quantum cryptography}
 
-\input{code_crypto.tex}
+\parttoc
 
 \input{quantum_computing.tex}
+
+\subimport{code_based_cryptography/}{code_crypto.tex}
+
+\part{Post-quantum cryptography}
+
+\parttoc
+
+\subimport{lattice_based_cryptography/}{lattice_crypto.tex}
 
 \subimport{nsucrypto}{nsucrypto.tex}
 
@@ -214,6 +237,6 @@ Xếp các hàm $f_i$ từ trên xuống dưới, ta có được đạo hàm c�
 
 Trong Machine Learning chúng ta sẽ gặp dạng toán sử dụng Linear Regression. Khi đó hàm regression là một hàm theo vector $\bm{w}$ có dạng \[ f(\bm{w}) = f (w_0, w_1, \ldots, w_n) = w_0 + w_1 x_1 + \ldots + w_n x_n \]
 
-\subimport{./}{galois_theory.tex}
+\subimport{discrete_mathematic/}{galois_theory.tex}
 
 \end{document}
