@@ -228,6 +228,7 @@
 \counterwithin*{example}{chapter}
 
 \renewcommand*{\chaptername}{Chương}
+\renewcommand*{\partname}{Phần}
 \renewcommand*{\appendixname}{Phụ lục}
 \renewcommand*{\contentsname}{Mục lục}
 \renewcommand*{\figurename}{Hình}
