@@ -1,0 +1,3 @@
+[submodule "lfsr-berlekamp-massey"]
+	path = lfsr-berlekamp-massey
+	url = https://github.com/dunglq2000/lfsr-berlekamp-massey.git
