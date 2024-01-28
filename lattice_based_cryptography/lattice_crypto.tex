@@ -167,7 +167,155 @@ Nếu $\bm{v}_2$ vẫn lớn hơn $\bm{v}_1$ thì ta dừng thuật toán. Ngư�
 
 Khi số chiều lattice lớn hơn 2, chúng ta sử dụng thuật toán LLL.
 
-\section{Congruential public key cryptosystem}
+\section{Phương pháp Coppersmith}
+
+Phương pháp Coppersmith được dùng để tìm nghiệm nhỏ của đa thức trên modulo. Phần này tham khảo chính từ quyển \cite{Galbraith}.
+
+\subsection*{Ý tưởng}
+
+Giả sử ta có phương trình $F(x) \equiv 0 \bmod M$​. Với số $X$​ cố định cho trước, phương pháp Coppersmith cho phép tìm nghiệm $x_0$ nhỏ thỏa mãn $\lvert x_0 \rvert \leqslant X$​.
+
+Ý tưởng của phương pháp này là thay vì tìm nghiệm $x_0$ của $F(x)$​ trên modulo $M$​, chúng ta sẽ mở rộng lên, tìm một hàm $G(x)$​ nào đó mà có nghiệm $x_0$​ trên $\mathbb{Z}$​.
+
+Đơn giản nhất là $G(x) = k \cdot F(x) + M \cdot g(x)$​, $k \in \mathbb{Z}$ và $\deg g(x) \leqslant \deg F(x)$. Rõ ràng khi modulo hai vế cho $M$​ thì $G(x_0) = F(x_0) = 0 \bmod M$.
+
+Phương pháp này giúp tìm nghiệm của một đa thức bậc nhỏ modulo $M$​. Do đó giả sử đặt:
+\begin{equation*}
+    F(x) = a_0 + a_1 x + \cdots + a_d x^d
+\end{equation*}​
+với $a_i \in \mathbb{Z}$.
+
+Lúc này chúng ta sẽ tìm hàm $G(x)$​ trên với hệ số nhỏ.
+
+Giả sử $g(x) = b_0 + b_1 x + \cdots + b_d x^d$ với $b_i \in \mathbb{Z}$.
+
+Khi đó $G(x) = (k \cdot a_0 + M \cdot b_0) + (k \cdot a_1 + M \cdot b_1) x + \cdots + (k \cdot a_d + M \cdot b_d) x^d$. 
+
+Ta mong muốn các hệ số $k \cdot a_0 + M \cdot b_0$​, $k \cdot a_1 + M \cdot b_1$​, $\cdots$​, $k \cdot a_d + M \cdot b_d$ nhỏ so với $M$​.
+
+Do đó với số $X$​ cho trước, nếu ta xây lattice ($d+2$ vector) sau:
+\begin{equation*}
+    \begin{array}{cccccccc}
+        \bm{v}_0 & \Leftarrow & M & 0 & 0 & \cdots & 0 & 0 \\
+        \bm{v}_1 & \Leftarrow & 0 & MX & 0 & \cdots & 0 & 0 \\
+        \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+        \bm{v}_d & \Leftarrow & 0 & 0 & 0 & \cdots & 0 & MX^d \\
+        \bm{v}_{d+1} & \Leftarrow & a_0 & a_1 X & a_2 X^2 & \cdots & a_{d-1} X^{d-1} & a_d X^d
+    \end{array}
+\end{equation*}
+
+Khi đó hệ số của mỗi dòng từ $\bm{v}_0$​ tới $\bm{v}_d$​ là $b_0$​ tới $b_d$​. Còn hệ số của $\bm{v}_{d+1}$​ là $k$​.
+
+Tuy nhiên chúng ta thường sẽ biến đổi để đa thức trở thành monic ($a_d = 1$​). Khi đó chúng ta bỏ đi $v_d$​ và còn $d+1$​ vector trong lattice.
+
+\subsection*{Cải tiến thuật toán}
+
+\subsubsection*{Dạng đơn giản}
+
+Giả sử $k(x)$​ có bậc là $h$​. Đặt $k(x) = c_0 + c_1 x + \cdots c_h x^h$​.
+
+Khi đó ​
+\begin{align*}
+    G(x) = & k(x) \cdot F(x) + M \cdot g(x) \\
+        = & (c_0 + c_1 x + \cdots c_h x^h) \cdot (a_0 + a_1 x + \cdots \\
+        + & x^d) + M \cdot (b_0 + b_1 x + \cdots + b_d x^d) \\
+        = & c_0 \cdot F(x) + c_1 \cdot xF(x) + \cdots c_h \cdot x^h F(x) + M \cdot (b_0 + b_1 x + \cdots b_d x^d)
+\end{align*}
+
+Lúc này mỗi đại lượng $F(x)$​, $xF(x)$​, $\cdots$​, $x^h F(x)$​ sẽ khiến hệ số của $F(x)$​ ban đầu tăng bậc. Nói cách khác hệ số $a_i$ của $x^i$​ trong $F(x)$​ sẽ là hệ số của $x^{i+j}$​ trong $x^j F(x)$​.
+
+Sách giáo khoa nói rằng nếu mình chọn $h=d-1$​ thì phương pháp Coppersmith sẽ cho ra kết quả nếu $X$​ được chọn thỏa $X \approx M^{1/(2d-1)}$.
+
+Tương tự, mình sẽ có các vector trong lattice như sau:
+\begin{equation*}
+    \begin{array}{ccccccccccc}
+        \bm{v}_0 & \Leftarrow & M & 0 & 0 & \cdots & 0 & 0 & 0 & 0 & \cdots \\​
+        \bm{v}_1 & \Leftarrow & 0 & MX & 0 & \cdots & 0 & 0 & 0 & 0 & \cdots \\
+        \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+        \bm{v}_{d-1} & \Leftarrow & 0 & 0 & 0 & \cdots & MX^{d-1} & 0 & 0 & 0 & \cdots \\
+        \bm{v}_d & \Leftarrow & a_0 & a_1 X & a_2 X^2 & \cdots & a_{d-1} X^{d-1} & X^d & 0 & 0 & \cdots
+    \end{array}
+\end{equation*}
+
+Sau đó thêm các vector khi shift vào (tương ứng với $xF(x)$​, $x^2 F(x)$​, $\cdots$).​
+
+\begin{equation*}
+    \begin{array}{cccccccccccc}
+        \bm{v}_{d+1} & \Leftarrow & 0 & a_0 X & a_1 X^2 & a_2 X^3 & \cdots & a_{d-1} X^d & a_d X^{d+1} & 0 & 0 & \cdots \\
+        \bm{v}_{d+2} & \Leftarrow & 0 & 0 & a_0 X^2 & a_1 X^3 & \cdots & a_{d-2} X^d & a_{d-1} X^{d+1} & a_d X^{d+2} & 0 & \cdots
+    \end{array}
+\end{equation*}
+
+Tuy nhiên vấn đề ở đây là bound của nghiệm bị thu hẹp lại. Ban nãy mình nói rằng nếu chọn $h=d-1$​ thì nghiệm cho kết quả nếu $X \approx M^{1/(2d-1)}$​. Ở đây $M = 10001$​ nên $X \approx 4$​. Trong khi ở bài viết trước thì $X = 10$​. Do đó có thể thấy việc mở rộng này đôi khi kém hiệu quả tùy thuộc vào $h$​.
+
+\subsubsection*{Dạng nâng cao}
+
+Coppersmith đã có một ý tưởng đột phá như sau :))))
+
+\begin{lemma}[Coppersmith]
+    Với $0 < \epsilon < \min \{0,18; 1/d\}$. Đặt $F(x)$​ là đa thức monic bậc $d$​ có một hoặc nhiều nghiệm $x_0$​ trên modulo $M$​ sao cho $\lvert x_0 \rvert \leqslant \frac{1}{2} M^{1/d-\epsilon}$. Khi đó $x_0$​ có thể tính với thời gian đa thức giới hạn bởi $d$​, $1/\epsilon$​ và $\log(M)$.
+\end{lemma}
+
+Để chứng minh bổ đề này thì Coppersmith đã xây dựng một hệ lattice để tính toán và cũng là cách xây dựng lattice sẽ đề cập tới đây.
+
+Chúng ta biết rằng $x_0$​ là nghiệm của đa thức $F(x) \equiv 0 \bmod M$​. Do đó ta suy ra $F(x_0)^k \equiv 0 \bmod M^k$​.
+
+Từ nhận xét này, mình mở rộng phần 1 lên tìm nghiệm trong modulo $M^{h-1}$​ với $h$ là một số được chọn trước.
+
+Với $k(x) = c_0 + c_1 x + \cdots + c_{d-1} x^{d-1}$ biểu diễn việc shift thành $F(x)$, $xF(x)$​, $x^2 F(x)$, ..., $x^{d-1} F(x)$​.
+
+Mình xét $h$​ đa thức sau:
+\begin{equation*}
+    \begin{array}{ccc}
+        M^{h-1} F(x)^0 k(x) & \equiv & 0 \bmod M^{h-1} \\
+        M^{h-2} F(x)^1 k(x) & \equiv & 0 \bmod M^{h-1} \\
+        \cdots & \ddots & \cdots \\
+        M^0 F(x)^{h-1} k(x) & \equiv & 0 \bmod M^{h-1}
+    \end{array}
+\end{equation*}
+
+Với mỗi đa thức $M^{h-1-j} F(x)^j$​ chúng ta có $d$​ lần shift tương ứng với từng hệ số của $k(x)$​. Cụ thể là $M^{h-1-j}F(x)^j$​, $M^{h-1-j}F(x)^j x$​, $M^{h-1-j}F(x)^j x^2$​, ..., $M^{h-1-j}F(x)^j x^{d-1}$​.
+
+Do đó có tất cả $dh$​ vector trong lattice. Số $h$​ thường được chọn sao cho $dh \approx \epsilon$. Và chặn nghiệm $X$​ có thể chọn là $\frac{1}{2}M^{1/d - \epsilon}$​ theo như bổ đề.
+
+Như vậy mình xây lattice như sau:
+
+\textbf{Bước 1.} Với $M^{h-1} F(x)^0$​ thì các vector sau lần lượt tương ứng với
+\begin{equation*}
+    M^{h-1} F(x)^0, M^{h-1} F(x)^0 x, \ldots, M^{h-1} F(x)^0 x^{d-1}.
+\end{equation*}
+
+Nói cách khác thì
+\begin{equation*}
+    \begin{array}{ccccccccc}
+    \bm{v}_0 & \Leftarrow & M^{h-1} & 0 & 0 & \cdots & 0 & 0 & \cdots \\
+    \bm{v}_1 & \Leftarrow & 0 & M^{h-1} X & 0 & \cdots & 0 & 0 & \cdots \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+    \bm{v}_{d-1} & \Leftarrow & 0 & 0 & 0 & \cdots & M^{h-1} X^{d-1} & 0 & \cdots
+    \end{array}
+\end{equation*}
+
+\textbf{Bước 2.} Với $M^{h-2} F(x)$​ thì các vector sau lần lượt tương ứng với
+\begin{equation*}
+    M^{h-2} F(x)^1, M^{h-2} F(x)^1 x, \ldots, M^{h-2} F(x)^1 x^{d-1}
+\end{equation*}
+
+\begin{equation*}
+    \begin{array}{cccccccccc}
+        \bm{v}_d & \Leftarrow & Ma_0 & M a_1 X & M a_2 X^2 & \cdots & M a_{d-1} X^{d-1} & M X^d & \cdots & \cdots \\ 
+        \bm{v}_{d+1} & \Leftarrow & 0 & Ma_0 X & Ma_1 X^2 & \cdots & M a_{d-2} X^{d-1} & M a_{d-1} X^d & M X^{d+1} & \cdots \\
+        \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+        \bm{v}_{2d-1} & \Leftarrow & 0 & 0 & 0 & \cdots & M a_0 X^{d-1} & M a_1 X^d & \cdots & \cdots
+    \end{array}
+\end{equation*}
+
+\textbf{Bước thứ $j$}. Cứ như vậy với $M^{h-1-j}F(x)^j$​.
+
+Chạy LLL trên lattice trên sẽ cho kết quả \emoji{zany-face}.
+
+\section{Các thuật toán mã hóa dựa trên lattice}
+
+\subsection*{Congruential public key cryptosystem}
 
 Phần này tham khảo trong \cite{Hoffstein2014}.
 

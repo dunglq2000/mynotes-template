@@ -677,6 +677,47 @@ Nói cách khác, nếu có một phần tử trong $R$ "sinh" ra được $I$ t
     Xét tập hợp $\ZZ$ là vành giao hoán với đơn vị. Khi đó nếu $n$ là số nguyên tố thì $n \ZZ$ là maximal ideal (đã chứng minh ở trên). Do đó tập $\ZZ / n\ZZ$ là trường hữu hạn modulo nguyên tố gồm các phần tử $\{ 0, 1, \ldots, p-1 \}$.
 \end{example}
 
+\subsection*{Ring kernel và ring homomorphism}
+
+Xét vành $(R, +, \times)$. Khi đó:
+
+\begin{itemize}
+    \item với mọi $a \in R$, $a \times 0 = 0 \times a = 0$;
+    \item $(-a) \times b = - (a \times b)$.
+\end{itemize}
+
+\begin{definition}[Ring homomorphism]
+    Xét hai vành là $(R_1, +, \times)$ và $(R_2, \boxplus, \otimes)$ và ánh xạ $f: \, R_1 \to R_2$.
+    
+    Ánh xạ $f$ được gọi là \textbf{homomorphism} trên hai vành nếu $f$ là homomorphism trên phép cộng và phép nhân.
+    \begin{itemize}
+        \item với mọi $a, b \in R_1$, $f(a) \boxplus f(b) = f(a + b)$;
+        \item với mọi $a, b \in R_1$, $f(a) \otimes f(b) = f(a \times b)$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}[Hạt nhân (kernel)]
+    \textbf{Hạt nhân} (hay \textbf{kernel}) của $f$ là
+    \begin{equation*}
+        \ker f = \{x \vert x \in R_1, f(x) = 0_{2}\}
+    \end{equation*}
+    với $0_{2}$ là phần tử trung hòa của $R_2$.
+\end{definition}
+
+\begin{theorem}
+    $\ker f$ là một ideal của $R_1$.
+\end{theorem}
+
+\begin{proof}
+    Ta có $f(0_1) = 0_2$ theo định nghĩa homomorphism. Do đó với mọi $a \in R_1$ và với mọi $b \in \ker f$ thì $f(a) \otimes f(b) = f(a) \otimes 0_2 = 0_2 = f(a \times b)$. 
+    
+    Do đó $a \times b \in \ker f$ nên suy ra $\ker f$ là ideal trái của $R_1$.
+
+    Tương tự cho với mọi $a \in R_1$ và với mọi $b \in \ker f$ thì $f(b) \otimes f(a) = 0_2 = f(b \times a)$. Suy ra $b \times a \in \ker f$ nên $\ker f$ cũng là ideal phải của $R_1$.
+
+    Kết luận: $\ker f$ là ideal của $R_1$.
+\end{proof}
+
 \section{Tác động nhóm}
 
 Tác động nhóm (Group Action) cho phép chúng ta đếm những cấu hình tổ hợp mà việc vét cạn rồi loại bỏ sẽ tốn nhiều công sức cũng như sai sót.
