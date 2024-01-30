@@ -242,7 +242,9 @@
 \RequirePackage{indentfirst}
 
 \RequirePackage{caption}
+\RequirePackage{subcaption}
 
 \DeclareCaptionLabelSeparator{bar}{.\space}
 \captionsetup[figure]{labelsep=bar}
 \captionsetup[table]{labelsep=bar}
+\captionsetup[sub]{font=normalsize}

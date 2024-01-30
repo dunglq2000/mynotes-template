@@ -238,7 +238,6 @@ Tương tự, mình sẽ có các vector trong lattice như sau:
 \end{equation*}
 
 Sau đó thêm các vector khi shift vào (tương ứng với $xF(x)$​, $x^2 F(x)$​, $\cdots$).​
-
 \begin{equation*}
     \begin{array}{cccccccccccc}
         \bm{v}_{d+1} & \Leftarrow & 0 & a_0 X & a_1 X^2 & a_2 X^3 & \cdots & a_{d-1} X^d & a_d X^{d+1} & 0 & 0 & \cdots \\
@@ -250,7 +249,7 @@ Tuy nhiên vấn đề ở đây là bound của nghiệm bị thu hẹp lại. 
 
 \subsubsection*{Dạng nâng cao}
 
-Coppersmith đã có một ý tưởng đột phá như sau :))))
+Coppersmith đã đề xuất ý tưởng như sau:
 
 \begin{lemma}[Coppersmith]
     Với $0 < \epsilon < \min \{0,18; 1/d\}$. Đặt $F(x)$​ là đa thức monic bậc $d$​ có một hoặc nhiều nghiệm $x_0$​ trên modulo $M$​ sao cho $\lvert x_0 \rvert \leqslant \frac{1}{2} M^{1/d-\epsilon}$. Khi đó $x_0$​ có thể tính với thời gian đa thức giới hạn bởi $d$​, $1/\epsilon$​ và $\log(M)$.
@@ -260,11 +259,11 @@ Coppersmith đã có một ý tưởng đột phá như sau :))))
 
 Chúng ta biết rằng $x_0$​ là nghiệm của đa thức $F(x) \equiv 0 \bmod M$​. Do đó ta suy ra $F(x_0)^k \equiv 0 \bmod M^k$​.
 
-Từ nhận xét này, mình mở rộng phần 1 lên tìm nghiệm trong modulo $M^{h-1}$​ với $h$ là một số được chọn trước.
+Từ nhận xét này, mình mở rộng phần cơ bản lên tìm nghiệm trong modulo $M^{h-1}$​ với $h$ là một số được chọn trước.
 
 Với $k(x) = c_0 + c_1 x + \cdots + c_{d-1} x^{d-1}$ biểu diễn việc shift thành $F(x)$, $xF(x)$​, $x^2 F(x)$, ..., $x^{d-1} F(x)$​.
 
-Mình xét $h$​ đa thức sau:
+Ta xét $h$​ đa thức sau:
 \begin{equation*}
     \begin{array}{ccc}
         M^{h-1} F(x)^0 k(x) & \equiv & 0 \bmod M^{h-1} \\
@@ -290,7 +289,7 @@ Nói cách khác thì
     \begin{array}{ccccccccc}
     \bm{v}_0 & \Leftarrow & M^{h-1} & 0 & 0 & \cdots & 0 & 0 & \cdots \\
     \bm{v}_1 & \Leftarrow & 0 & M^{h-1} X & 0 & \cdots & 0 & 0 & \cdots \\
-    \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
     \bm{v}_{d-1} & \Leftarrow & 0 & 0 & 0 & \cdots & M^{h-1} X^{d-1} & 0 & \cdots
     \end{array}
 \end{equation*}
@@ -300,6 +299,7 @@ Nói cách khác thì
     M^{h-2} F(x)^1, M^{h-2} F(x)^1 x, \ldots, M^{h-2} F(x)^1 x^{d-1}
 \end{equation*}
 
+Nói cách khác thì
 \begin{equation*}
     \begin{array}{cccccccccc}
         \bm{v}_d & \Leftarrow & Ma_0 & M a_1 X & M a_2 X^2 & \cdots & M a_{d-1} X^{d-1} & M X^d & \cdots & \cdots \\ 
