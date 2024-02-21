@@ -56,3 +56,42 @@ Trong ví dụ trên, ta thấy các tính chất của ZKP:
     \item Zero knowledge: Bob không biết bất cứ thông tin nào liên quan đến Alice nhưng Alice có thể thuyết phục Bob tin rằng mình biết căn bậc hai của $x$. Zero knowledge có nghĩa là trong suốt quá trình Bob không biết thêm thông tin gì hơn từ Alice.
 \end{itemize}
 
+Phần tiếp theo được tổng hợp từ một số nguồn dành cho newbie:
+
+\begin{itemize}
+    \item What is a zk-SNARK?\footnote{\url{https://blog.thirdweb.com/what-is-a-zk-snark/}}
+\end{itemize}
+
+\section{Mô hình zero-knowledge proof}
+
+ZKP bao gồm ba bước là: key generation, proof generation và verification.
+
+\subsection*{Key generation}
+
+Bước này tạo các tham số để một bên proof và để bên còn lại verification.
+
+Thông thường, ở bước này có một hàm $C(x, w)$ nhận hai tham số là $x$ (public input) và $w$ (private input, witness).
+
+Một tham số private là $\lambda$ giúp việc sinh ra các tham số gồm public key $pk$ và private key $vk$.
+
+Ký hiệu: $\text{Setup}(C, \lambda) \rightarrow (pk, vk)$.
+
+Trong đó $pk$ được gửi cho prover để họ chứng minh bản thân (thuyết phục verifier rằng họ sở hữu thông tin).
+
+Ngược lại, $vk$ được gửi cho verifier để họ kiểm tra mệnh đề từ prover.
+
+\subsection*{Proof generation}
+
+Bước này thực hiện bởi prover để sinh ra giá trị gửi cho bên verifier kiểm tra.
+
+Với đầu vào gồm private input là $w$, public input là $x$ và public key là $pk$, prover sẽ tính toán prf rồi gửi cho verifier.
+
+Ký hiệu: $\text{Prove}(w, x, pk) \rightarrow \text{prf}$.
+
+\subsection*{Verification}
+
+Bước này thực hiện bởi verifier để kiểm tra mệnh đề prf được gửi từ prover.
+
+Với đầu vào gồm public input $x$, proof là prf và private key là $vk$, verifier kiểm tra tính đúng đắn của prf.
+
+Ký hiệu: $\text{Verify}(x, \text{prf}, vk) \rightarrow$ đúng (nếu hợp lệ) hoặc sai (ngược lại).

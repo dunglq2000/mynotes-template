@@ -1,0 +1,60 @@
+\chapter*{CryptoFox 2024}
+\addcontentsline{toc}{chapter}{CryptoFox 2024}
+
+Olympiad mật mã và bảo mật thông tin CryptoFox 2024
+
+\section*{Задача 1. дешифрование файла}
+
+Bài này cho file encrypt bằng thuật toán Kuznyechik 256 bit. Với password bị ẩn đi, khóa cho Kuznyechik được sinh bằng việc hash password bằng Streebog, sau đó các bit sau khi hash đi qua một hoán vị.
+
+Do Streebog là hash 512 bit nên sau khi qua bảng hoán vị vẫn có 512 bit. Do đó khóa là 256 bit thấp sau khi hash.
+
+Cả Streebog và Kuznyechik là các tiêu chuẩn mật mã nên không thể phá. Lỗi nằm ở bảng hoán vị.
+
+Sau khi thử tạo key từ một số password (tiếng Nga), ta thấy rằng trong 256 bit của khóa chỉ có một số ít bit 1. Đặc biệt là các vị trí xuất hiện 1 là không nhiều. Do đó chúng ta có thể giảm không gian 256 bit xuống một tập nhỏ hơn.
+
+Giả sử ta tạo các key Kuznyechik $K_1, K_2, \ldots$ từ việc hash các password $w_1, w_2, \ldots$, nghĩa là $K_i = H(w_i)$, đặt $I_i$ là tập hợp các vị trí bit 1 xuất hiện.
+
+Đặt $I = I_1 \cup I_2 \cup \ldots$ là tập các vị trí có thể là bit 1 khi hash một password bất kì. Tập này chứa không quá 10 phần tử.
+
+Khi đó khóa Kuznyechik để mã hóa sẽ là khóa có bit 1 nằm ở các vị trí theo tập $J \subset I$. Thử tất cả tập con của $I$ đến khi decrypt và decode thành công.
+
+Khóa decrypt viết ở dạng hex là
+
+\texttt{0000e00000000080000000000000000000000004000000000000004000000004}
+
+\section*{Задача 2. Анализ GOST-CryptoFox}
+
+\subsection*{Phân tích GOST-CryptoFox}
+
+Đặt $V_{n}(2^m)$ là không gian vector $n$ chiều trên trường $\FF_{2^m}$, $\boxplus$ là phép cộng trên vành $\ZZ_{2^{32}}$ (modulo $2^{32}$), $\oplus$ là phép cộng trên $V_{n}(2)$ (phép XOR).
+
+Đặt $\psi : V_{32}(2) \to \ZZ_{2^{32}}$ là hàm biến đổi vector 32 bit thành số nguyên 32 bit. Công thức của hàm $\psi$ là
+
+\begin{equation*}
+    \psi(\beta) = \bar{\beta} = \sum_{i=1}^{32} \beta_i 2^{32-i}
+\end{equation*}
+với $\beta = (\beta_1, \beta_2, \ldots, \beta_{32}) \in V_{32}(2)$ và $\bar{\beta} \in \ZZ_{2^{32}}$.
+
+Trường $\FF_{2^8}$ dùng đa thức tối giản $1 + x^2 + x^3 + x^4 + x^8$ với nghiệm $\theta$. Phần tử trên $\FF_{2^8}$ được viết dưới dạng vector $V_8(2)$.
+
+GOST-CryptoFox dùng 32 vòng, độ dài khối là 64 bit và độ dài khóa là 256 bit.
+
+Ngoài ra, trong thuật toán sử dụng:
+
+\begin{itemize}
+    \item các hoán vị $\pi_1, \pi_2, \pi_3, \pi_4$ trên tập $\{ 1, 2, \ldots, 8 \}$ để chỉ định khóa con cho từng vòng
+    \item các hoán vị 8 bit $s_1, s_2, s_3, s_4$ là các S-box của thuật toán
+\end{itemize}
+
+\subsubsection*{Mã hóa}
+
+Khóa đầu vào $K$ có 256 bit.
+
+\begin{itemize}
+    \item Khóa $K$ đầu tiên được chia thành 8 đoạn 32 bit, $K = K_1 \Vert K_2 \Vert \ldots \Vert K_8$. Như vậy $K \in V_{256}(2)$, $K_i \in V_{32}(2)$ với $1 \leqslant i \leqslant 8$
+    \item Ở các vòng 1--8, sử dụng hoán vị $\pi_1$ để chỉ định khóa con, cụ thể là ở vòng thứ $i$ sẽ dùng khóa $k_i = K_{\pi_1(i)}$, $1 \leqslant i \leqslant 8$
+    \item Ở các vòng 9--16, sử dụng hoán vị $\pi_2$ để chỉ định khóa con, cụ thể là ở vòng thứ $i+8$ sẽ dùng khóa con $k_{i+8} = K_{\pi_2(i)}$, $1 \leqslant i \leqslant 8$
+    \item Ở các vòng 17--24, sử dụng hoán vị $\pi_3$ để chỉ định khóa con, cụ thể là ở vòng thứ $i+16$ sẽ dùng khóa con $k_{i+16} = K_{\pi_3(i)}$, $1 \leqslant i \leqslant 8$
+    \item Ở các vòng 25--32, sử dụng hoán vị $\pi_4$ để chỉ định khóa con, cụ thể là ở vòng thứ $i+24$ sẽ dùng khóa con $k_{i+24} =K_{\pi_4(i)}$, $1 \leqslant i \leqslant 8$
+\end{itemize}
