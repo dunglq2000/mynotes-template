@@ -47,7 +47,7 @@ Ngoài ra, trong thuật toán sử dụng:
     \item các hoán vị 8 bit $s_1, s_2, s_3, s_4$ là các S-box của thuật toán
 \end{itemize}
 
-\subsubsection*{Mã hóa}
+\subsubsection*{Thuật toán sinh khóa con}
 
 Khóa đầu vào $K$ có 256 bit.
 
@@ -58,3 +58,52 @@ Khóa đầu vào $K$ có 256 bit.
     \item Ở các vòng 17--24, sử dụng hoán vị $\pi_3$ để chỉ định khóa con, cụ thể là ở vòng thứ $i+16$ sẽ dùng khóa con $k_{i+16} = K_{\pi_3(i)}$, $1 \leqslant i \leqslant 8$
     \item Ở các vòng 25--32, sử dụng hoán vị $\pi_4$ để chỉ định khóa con, cụ thể là ở vòng thứ $i+24$ sẽ dùng khóa con $k_{i+24} =K_{\pi_4(i)}$, $1 \leqslant i \leqslant 8$
 \end{itemize}
+
+Khi đó các khóa con cho 32 vòng là $k_1, k_2, \ldots, k_{32}$.
+
+\subsubsection*{Thuật toán mã hóa}
+
+GOST-CryptoFox 2024 dựa trên mô hình Feistel. Round function $f_k : V_{64}(2) \to V_{64}(2)$ với khóa $k \in V_{32}(2)$:
+
+\begin{equation*}
+    f_k : (\alpha_1, \alpha_2) \to (\alpha_2, \alpha_1 \oplus g_k (\alpha_2, k)), \quad \alpha_1, \alpha_2 \in V_{32}(2)
+\end{equation*}
+với $g_k : V_{32}(2) \to V_{32}(2)$ xác định bởi
+
+\begin{equation*}
+    g_k : \alpha \to h(S(\psi^{-1}(\psi(\alpha) \boxplus \psi(k)))),
+\end{equation*}
+trong đó:
+
+\begin{itemize}
+    \item $h$ là ánh xạ tuyến tính trên $V_{32}(2)$ xác định bởi ma trận $4 \times 4$ là $\mathbf{H}$ trên $\FF_{2^8}$,
+    \begin{equation*}
+        h(\lambda^{(1)}, \ldots, \lambda^{(4)}) = (\lambda^{(1)}, \ldots, \lambda^{(4)}) \mathbf{H}, \quad \lambda^{(1)}, \ldots, \lambda^{(4)} \in \FF_{2^8},
+    \end{equation*}
+    \begin{equation*}
+        \mathbf{H} = \begin{pmatrix}
+            \theta & \theta \oplus 1 & 1 & 1 \\
+            1 & \theta & \theta \oplus 1 & 1 \\
+            1 & 1 & \theta & \theta \oplus 1 \\
+            \theta \oplus 1 & 1 & 1 & \theta \\
+        \end{pmatrix},
+    \end{equation*}
+    \item S-box $S = (s_1, s_2, s_3, s_4)$ gồm 4 S-box con theo quy tắc
+    \begin{equation*}
+        S(\beta) = (s_1 (\beta^{(1)}), \ldots, s_4 (\beta^{(4)})), \quad \beta = (\beta^{(1)}, \ldots, \beta^{(4)}) \in V_4(2^8),
+    \end{equation*}
+    nghĩa là khi đó:
+    \item hai vector 32 bit $\alpha$ và $k$ sẽ được chuyển thành số nguyên 32 bit và cộng modulo $2^{32}$, kết quả sau đó được chuyển lại thành vector 32 bit
+    \begin{equation*}
+        \lambda = \psi^{-1}(\psi(\alpha) \boxplus \psi(k));
+    \end{equation*}
+    \item vector 32 bit $\lambda$ được chia thành 4 đoạn $\lambda^{(1)}, \ldots, \lambda^{(4)}$ là các phần tử $\FF_{2^8}$ và biểu diễn $\lambda = (\lambda^{(1)}, \ldots, \lambda^{(4)})$ là không gian 4 chiều $V_4(2^8)$. Sau đó tính $\beta = \lambda \mathbf{H}$;
+    \item vector 32 bit $\beta$ được chia thành 4 vector 8 bit là $\beta^{(1)}, \ldots, \beta^{(4)}$. Sau đó mỗi vector $\beta^{(i)}$ đi qua S-box con $s_i$, $i = 1, 2, 3, 4$. Bốn kết quả được ghép lại nhau thành $S(\beta)$.
+\end{itemize}
+
+Mã hóa là hàm $b_K : V_{64}(2) \to V_{64}(2)$ định nghĩa bởi phương trình:
+
+\begin{equation*}
+    b_K(\alpha) = g_{k_32} g_{k_31} \ldots g_{k_2} g_{k_1} (\alpha), \quad \alpha \in V_{64}(2)
+\end{equation*}
+
